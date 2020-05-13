@@ -596,7 +596,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="gráfico-básico-6" class="section level3">
 <h3><span class="header-section-number">6.0.2</span> Gráfico básico</h3>
 <div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="histograma.html#cb165-1"></a><span class="kw">hist</span>(resposta)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-148-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-149-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="melhorias-5" class="section level3">
@@ -609,7 +609,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb166-6"><a href="histograma.html#cb166-6"></a><span class="st">        ylim=c(0,10),</span></span>
 <span id="cb166-7"><a href="histograma.html#cb166-7"></a><span class="st">        main=&quot;</span>Histograma<span class="st">&quot;)</span></span>
 <span id="cb166-8"><a href="histograma.html#cb166-8"></a><span class="st">abline(h=0)</span></span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-149-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-150-1.png" width="672" /></p>
 <p><strong>Comandos</strong>:</p>
 <p>las=1: deixar escala do eixo Y na vertical</p>
 <p>col=“cor”: mudar cor das barras (Ex. “red”,“blue”,“green” ou gray.colors(quantidade de tonalidades) para escala cinza ou rainbow(quantidade de cores) para escala colorida. Também é possível específicar a cor de cada barra (col=c(“red”,“green”,“yellow”,“gray”,“blue”))).</p>
@@ -641,7 +641,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb167-18"><a href="histograma.html#cb167-18"></a></span>
 <span id="cb167-19"><a href="histograma.html#cb167-19"></a><span class="st">## Plotando linha da curva normal</span></span>
 <span id="cb167-20"><a href="histograma.html#cb167-20"></a><span class="st">lines(xfit, yfit, col=&quot;</span>blue<span class="st">&quot;, lwd=2)</span></span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-150-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-151-1.png" width="672" /></p>
 <p><br></p>
 <hr />
 </div>
@@ -664,7 +664,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb168-11"><a href="histograma.html#cb168-11"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;Resposta&quot;</span>, <span class="dt">y=</span><span class="st">&quot;Frequência&quot;)+</span></span>
 <span id="cb168-12"><a href="histograma.html#cb168-12"></a><span class="st">stat_function(fun = function(x) dnorm(x, mean = mean, sd = sd) * n * largura,</span></span>
 <span id="cb168-13"><a href="histograma.html#cb168-13"></a><span class="st">    color = &quot;</span>red<span class="st">&quot;, size = 1)</span></span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-151-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-152-1.png" width="672" /></p>
 <p><strong>binwidth</strong> = largura de caixa</p>
 <p><strong>col</strong>= cor do contorno das caixas</p>
 <p><strong>fill</strong>= cor do interior das caixas</p>
@@ -690,14 +690,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb170-4"><a href="histograma.html#cb170-4"></a>     <span class="dt">xlab=</span><span class="st">&quot;&quot;</span>,</span>
 <span id="cb170-5"><a href="histograma.html#cb170-5"></a>     <span class="dt">ylim=</span><span class="kw">c</span>(<span class="op">-</span><span class="fl">0.1</span>,<span class="fl">0.5</span>),</span>
 <span id="cb170-6"><a href="histograma.html#cb170-6"></a>     <span class="dt">ylab=</span><span class="st">&quot;&quot;</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-153-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-154-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="removendo-marca-da-escala" class="section level3">
 <h3><span class="header-section-number">6.2.3</span> Removendo marca da escala</h3>
 <div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="histograma.html#cb171-1"></a><span class="kw">plot</span>(x,y,<span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">axes=</span>F,<span class="dt">xlab=</span><span class="st">&quot;&quot;</span>,<span class="dt">ylim=</span><span class="kw">c</span>(<span class="op">-</span><span class="fl">0.1</span>,<span class="fl">0.5</span>),</span>
 <span id="cb171-2"><a href="histograma.html#cb171-2"></a>     <span class="dt">ylab=</span><span class="st">&quot;&quot;</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-154-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-155-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="preenchimento-tracejado" class="section level3">
@@ -705,7 +705,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="histograma.html#cb172-1"></a><span class="kw">plot</span>(x,y,<span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">axes=</span>F,<span class="dt">xlab=</span><span class="st">&quot;&quot;</span>,<span class="dt">ylim=</span><span class="kw">c</span>(<span class="op">-</span><span class="fl">0.1</span>,<span class="fl">0.5</span>),</span>
 <span id="cb172-2"><a href="histograma.html#cb172-2"></a>     <span class="dt">ylab=</span><span class="st">&quot;&quot;</span>,<span class="dt">col=</span><span class="st">&quot;white&quot;</span>)</span>
 <span id="cb172-3"><a href="histograma.html#cb172-3"></a><span class="kw">polygon</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">3</span>,x,<span class="dv">3</span>),<span class="kw">c</span>(<span class="dv">0</span>,y,<span class="dv">0</span>),<span class="dt">density =</span> <span class="dv">30</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-155-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-156-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="valor-crítico-90" class="section level3">
@@ -718,7 +718,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb173-6"><a href="histograma.html#cb173-6"></a><span class="kw">polygon</span>(<span class="kw">c</span>(<span class="op">-</span><span class="fl">1.645</span>,x1,<span class="fl">1.645</span>),<span class="kw">c</span>(<span class="dv">0</span>,y1,<span class="dv">0</span>),<span class="dt">col=</span><span class="st">&quot;white&quot;</span>)</span>
 <span id="cb173-7"><a href="histograma.html#cb173-7"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>);</span>
 <span id="cb173-8"><a href="histograma.html#cb173-8"></a><span class="kw">lines</span>(<span class="dt">x=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>),<span class="dt">y=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="kw">max</span>(y)),<span class="dt">lty=</span><span class="dv">2</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-156-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-157-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="valor-crítico-95" class="section level3">
@@ -731,7 +731,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb174-6"><a href="histograma.html#cb174-6"></a><span class="kw">polygon</span>(<span class="kw">c</span>(<span class="op">-</span><span class="fl">1.96</span>,x1,<span class="fl">1.96</span>),<span class="kw">c</span>(<span class="dv">0</span>,y1,<span class="dv">0</span>),<span class="dt">col=</span><span class="st">&quot;white&quot;</span>)</span>
 <span id="cb174-7"><a href="histograma.html#cb174-7"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>);</span>
 <span id="cb174-8"><a href="histograma.html#cb174-8"></a><span class="kw">lines</span>(<span class="dt">x=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>),<span class="dt">y=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="kw">max</span>(y)),<span class="dt">lty=</span><span class="dv">2</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-157-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-158-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="valor-crítico-99" class="section level3">
@@ -744,7 +744,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb175-6"><a href="histograma.html#cb175-6"></a><span class="kw">polygon</span>(<span class="kw">c</span>(<span class="op">-</span><span class="fl">2.575</span>,x1,<span class="fl">2.575</span>),<span class="kw">c</span>(<span class="dv">0</span>,y1,<span class="dv">0</span>),<span class="dt">col=</span><span class="st">&quot;white&quot;</span>)</span>
 <span id="cb175-7"><a href="histograma.html#cb175-7"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>);</span>
 <span id="cb175-8"><a href="histograma.html#cb175-8"></a><span class="kw">lines</span>(<span class="dt">x=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>),<span class="dt">y=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="kw">max</span>(y)),<span class="dt">lty=</span><span class="dv">2</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-158-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-159-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="adicionando-legendas" class="section level3">
@@ -762,7 +762,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb176-11"><a href="histograma.html#cb176-11"></a><span class="kw">text</span>(<span class="op">-</span><span class="fl">2.5</span>,<span class="fl">0.1</span>,<span class="kw">expression</span>(<span class="kw">frac</span>(alpha,<span class="dv">2</span>)))</span>
 <span id="cb176-12"><a href="histograma.html#cb176-12"></a><span class="kw">text</span>(<span class="op">+</span><span class="fl">2.5</span>,<span class="fl">0.1</span>,<span class="kw">expression</span>(<span class="kw">frac</span>(alpha,<span class="dv">2</span>)))</span>
 <span id="cb176-13"><a href="histograma.html#cb176-13"></a><span class="kw">axis</span>(<span class="dv">1</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-159-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-160-1.png" width="672" /></p>
 <p><br><br><br></p>
 <hr />
 </div>

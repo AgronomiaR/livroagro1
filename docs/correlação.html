@@ -630,31 +630,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">11.0.3</span> Formato de Círculo</h3>
 <div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="correlação.html#cb267-1"></a><span class="kw">library</span>(corrplot)</span>
 <span id="cb267-2"><a href="correlação.html#cb267-2"></a><span class="kw">corrplot</span>(M, <span class="dt">method=</span><span class="st">&quot;circle&quot;</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-227-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-228-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="formato-de-quadrado-preenchido" class="section level3">
 <h3><span class="header-section-number">11.0.4</span> Formato de quadrado preenchido</h3>
 <div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="correlação.html#cb268-1"></a><span class="kw">corrplot</span>(M, <span class="dt">method=</span><span class="st">&quot;color&quot;</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-228-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-229-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="formato-numérico" class="section level3">
 <h3><span class="header-section-number">11.0.5</span> Formato Numérico</h3>
 <div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="correlação.html#cb269-1"></a><span class="kw">corrplot</span>(M, <span class="dt">method=</span><span class="st">&quot;number&quot;</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-229-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-230-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="circulo---matriz-superior" class="section level3">
 <h3><span class="header-section-number">11.0.6</span> Circulo - matriz superior</h3>
 <div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="correlação.html#cb270-1"></a><span class="kw">corrplot</span>(M, <span class="dt">type=</span><span class="st">&quot;upper&quot;</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-230-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-231-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="circulo---matriz-inferior" class="section level3">
 <h3><span class="header-section-number">11.0.7</span> Circulo - matriz inferior</h3>
 <div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="correlação.html#cb271-1"></a><span class="kw">corrplot</span>(M, <span class="dt">type=</span><span class="st">&quot;lower&quot;</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-231-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-232-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="quadrado-preenchido-número-e-sem-a-diagonal" class="section level3">
@@ -662,7 +662,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="correlação.html#cb272-1"></a><span class="kw">corrplot</span>(M, <span class="dt">method=</span><span class="st">&quot;color&quot;</span>,  </span>
 <span id="cb272-2"><a href="correlação.html#cb272-2"></a>         <span class="dt">type=</span><span class="st">&quot;upper&quot;</span>,</span>
 <span id="cb272-3"><a href="correlação.html#cb272-3"></a>         <span class="dt">addCoef.col =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">insig =</span> <span class="st">&quot;blank&quot;</span>, <span class="dt">diag=</span><span class="ot">FALSE</span> )</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-232-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-233-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="escala-cinza" class="section level3">
@@ -670,7 +670,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="correlação.html#cb273-1"></a><span class="kw">corrplot</span>(M, <span class="dt">method=</span><span class="st">&quot;color&quot;</span>,  </span>
 <span id="cb273-2"><a href="correlação.html#cb273-2"></a>         <span class="dt">type=</span><span class="st">&quot;upper&quot;</span>, <span class="dt">col=</span><span class="kw">gray.colors</span>(<span class="dv">100</span>)[<span class="dv">100</span><span class="op">:</span><span class="dv">1</span>],</span>
 <span id="cb273-3"><a href="correlação.html#cb273-3"></a>         <span class="dt">addCoef.col =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">insig =</span> <span class="st">&quot;blank&quot;</span>, <span class="dt">diag=</span><span class="ot">FALSE</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-233-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-234-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="cor-da-legenda" class="section level3">
@@ -678,7 +678,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="correlação.html#cb274-1"></a><span class="kw">corrplot</span>(M, <span class="dt">method=</span><span class="st">&quot;color&quot;</span>, <span class="dt">tl.col=</span><span class="st">&quot;black&quot;</span>, </span>
 <span id="cb274-2"><a href="correlação.html#cb274-2"></a>         <span class="dt">type=</span><span class="st">&quot;upper&quot;</span>, <span class="dt">col=</span><span class="kw">gray.colors</span>(<span class="dv">100</span>)[<span class="dv">100</span><span class="op">:</span><span class="dv">1</span>],</span>
 <span id="cb274-3"><a href="correlação.html#cb274-3"></a>         <span class="dt">addCoef.col =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">insig =</span> <span class="st">&quot;blank&quot;</span>, <span class="dt">diag=</span><span class="ot">FALSE</span> )</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-234-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-235-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="modificando-a-fonte" class="section level3">
@@ -687,7 +687,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb275-2"><a href="correlação.html#cb275-2"></a><span class="kw">corrplot</span>(M, <span class="dt">method=</span><span class="st">&quot;color&quot;</span>, <span class="dt">tl.col=</span><span class="st">&quot;black&quot;</span>, </span>
 <span id="cb275-3"><a href="correlação.html#cb275-3"></a>         <span class="dt">type=</span><span class="st">&quot;upper&quot;</span>, <span class="dt">col=</span><span class="kw">gray.colors</span>(<span class="dv">100</span>)[<span class="dv">100</span><span class="op">:</span><span class="dv">1</span>],</span>
 <span id="cb275-4"><a href="correlação.html#cb275-4"></a>         <span class="dt">addCoef.col =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">insig =</span> <span class="st">&quot;blank&quot;</span>, <span class="dt">diag=</span><span class="ot">FALSE</span> )</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-235-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-236-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="cor-do-valor-da-correlação" class="section level3">
@@ -697,7 +697,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb276-3"><a href="correlação.html#cb276-3"></a>         <span class="dt">type=</span><span class="st">&quot;upper&quot;</span>, <span class="dt">col=</span><span class="kw">gray.colors</span>(<span class="dv">100</span>)[<span class="dv">100</span><span class="op">:</span><span class="dv">1</span>],</span>
 <span id="cb276-4"><a href="correlação.html#cb276-4"></a>         <span class="dt">addCoef.col =</span> <span class="st">&quot;green&quot;</span>, <span class="dt">insig =</span> <span class="st">&quot;blank&quot;</span>, <span class="dt">diag=</span><span class="ot">FALSE</span> </span>
 <span id="cb276-5"><a href="correlação.html#cb276-5"></a>         )</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-236-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-237-1.png" width="672" /></p>
 <p><br><br><br></p>
 <hr />
 </div>
@@ -733,7 +733,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Instalar pacote (PerformanceAnalytics)</p>
 <div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="correlação.html#cb280-1"></a><span class="kw">library</span>(PerformanceAnalytics)</span>
 <span id="cb280-2"><a href="correlação.html#cb280-2"></a><span class="kw">chart.Correlation</span>(dados, <span class="dt">pch=</span><span class="dv">19</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-240-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-241-1.png" width="672" /></p>
 </div>
 <div id="conjunto-de-dados-20" class="section level3">
 <h3><span class="header-section-number">11.1.5</span> Conjunto de dados</h3>
@@ -751,14 +751,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">11.1.6</span> Usando o GGally</h3>
 <div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="correlação.html#cb282-1"></a><span class="kw">library</span>(GGally)</span>
 <span id="cb282-2"><a href="correlação.html#cb282-2"></a><span class="kw">ggpairs</span>(dados)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-242-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-243-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="usando-a-package-psych" class="section level3">
 <h3><span class="header-section-number">11.1.7</span> Usando a package psych</h3>
 <div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="correlação.html#cb283-1"></a><span class="kw">library</span>(psych)</span>
 <span id="cb283-2"><a href="correlação.html#cb283-2"></a><span class="kw">pairs.panels</span>(dados)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-243-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-244-1.png" width="672" /></p>
 <p><br><br></p>
 <hr />
 </div>
@@ -796,7 +796,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="correlação.html#cb289-1"></a><span class="kw">qgraph</span>(corre, <span class="dt">shape=</span><span class="st">&quot;circle&quot;</span>, </span>
 <span id="cb289-2"><a href="correlação.html#cb289-2"></a>       <span class="dt">posCol=</span><span class="st">&quot;darkgreen&quot;</span>, </span>
 <span id="cb289-3"><a href="correlação.html#cb289-3"></a>       <span class="dt">negCol=</span><span class="st">&quot;darkred&quot;</span>, <span class="dt">layout=</span><span class="st">&quot;groups&quot;</span>, <span class="dt">vsize=</span><span class="dv">10</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-247-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-248-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="matriz-de-correlação-kendall" class="section level3">
@@ -811,7 +811,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb291-2"><a href="correlação.html#cb291-2"></a><span class="kw">qgraph</span>(corre, <span class="dt">shape=</span><span class="st">&quot;circle&quot;</span>, </span>
 <span id="cb291-3"><a href="correlação.html#cb291-3"></a>       <span class="dt">posCol=</span><span class="st">&quot;darkgreen&quot;</span>, </span>
 <span id="cb291-4"><a href="correlação.html#cb291-4"></a>       <span class="dt">negCol=</span><span class="st">&quot;darkred&quot;</span>, <span class="dt">layout=</span><span class="st">&quot;groups&quot;</span>, <span class="dt">vsize=</span><span class="dv">10</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-249-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-250-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="matriz-de-correlação-spearman" class="section level3">
@@ -826,7 +826,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb293-2"><a href="correlação.html#cb293-2"></a><span class="kw">qgraph</span>(corre, <span class="dt">shape=</span><span class="st">&quot;circle&quot;</span>, </span>
 <span id="cb293-3"><a href="correlação.html#cb293-3"></a>       <span class="dt">posCol=</span><span class="st">&quot;darkgreen&quot;</span>, </span>
 <span id="cb293-4"><a href="correlação.html#cb293-4"></a>       <span class="dt">negCol=</span><span class="st">&quot;darkred&quot;</span>, <span class="dt">layout=</span><span class="st">&quot;groups&quot;</span>, <span class="dt">vsize=</span><span class="dv">10</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-251-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-252-1.png" width="672" /></p>
 <p><br><br><br></p>
 <hr />
 </div>

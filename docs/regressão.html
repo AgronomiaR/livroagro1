@@ -600,7 +600,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="gráfico-básico-4" class="section level3">
 <h3><span class="header-section-number">5.0.2</span> Gráfico básico</h3>
 <div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="regressão.html#cb130-1"></a><span class="kw">plot</span>(media<span class="op">~</span>Dose)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-122-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-123-1.png" width="672" /></p>
 </div>
 <div id="melhorias-4" class="section level3">
 <h3><span class="header-section-number">5.0.3</span> Melhorias</h3>
@@ -608,7 +608,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb131-2"><a href="regressão.html#cb131-2"></a>        <span class="dt">las=</span><span class="dv">1</span>,</span>
 <span id="cb131-3"><a href="regressão.html#cb131-3"></a>        <span class="dt">ylab=</span><span class="st">&quot;Resposta&quot;</span>,</span>
 <span id="cb131-4"><a href="regressão.html#cb131-4"></a>        <span class="dt">xlab=</span><span class="st">&quot;Dose&quot;</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-123-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-124-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="barras-de-desvio-padrão-8" class="section level3">
@@ -618,7 +618,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb132-3"><a href="regressão.html#cb132-3"></a>        <span class="dt">ylab=</span><span class="st">&quot;Resposta&quot;</span>,</span>
 <span id="cb132-4"><a href="regressão.html#cb132-4"></a>        <span class="dt">xlab=</span><span class="st">&quot;Dose&quot;</span>)</span>
 <span id="cb132-5"><a href="regressão.html#cb132-5"></a><span class="kw">arrows</span>(Dose,media<span class="op">+</span>desvio,Dose,media<span class="op">-</span>desvio,<span class="dt">length =</span> <span class="fl">0.05</span>,<span class="dt">angle=</span><span class="dv">90</span>,<span class="dt">code=</span><span class="dv">3</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-124-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-125-1.png" width="672" /></p>
 <p>Adicionando barras de desvio-padrão de largura 0.05 (length=0.05), com angulo de 90 graus e tipo de flecha 3 (T ou T invertido)</p>
 <p><br></p>
 </div>
@@ -630,7 +630,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb133-3"><a href="regressão.html#cb133-3"></a>        <span class="dt">ylab=</span><span class="kw">expression</span>(<span class="st">&quot;Resposta&quot;</span><span class="op">~</span><span class="er">~</span>(kg<span class="op">~</span>ha<span class="op">^-</span><span class="dv">1</span>)),</span>
 <span id="cb133-4"><a href="regressão.html#cb133-4"></a>        <span class="dt">xlab=</span><span class="kw">expression</span>(<span class="st">&quot;Dose&quot;</span><span class="op">~</span>(kg<span class="op">~</span>ha<span class="op">^-</span><span class="dv">1</span><span class="op">~</span>ano<span class="op">^-</span><span class="dv">1</span>)))</span>
 <span id="cb133-5"><a href="regressão.html#cb133-5"></a><span class="kw">arrows</span>(Dose,media<span class="op">+</span>desvio,Dose,media<span class="op">-</span>desvio,<span class="dt">length =</span> <span class="fl">0.02</span>,<span class="dt">angle=</span><span class="dv">90</span>,<span class="dt">code=</span><span class="dv">3</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-125-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-126-1.png" width="672" /></p>
 <p>A função expression também pode ser usada para textos em gráficos (Função “text()” - veremos posteriormente).</p>
 <p><br></p>
 </div>
@@ -642,7 +642,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb134-4"><a href="regressão.html#cb134-4"></a>        <span class="dt">ylab=</span><span class="kw">expression</span>(<span class="st">&quot;Resposta&quot;</span><span class="op">~</span><span class="er">~</span>(kg<span class="op">~</span>ha<span class="op">^-</span><span class="dv">1</span>)),</span>
 <span id="cb134-5"><a href="regressão.html#cb134-5"></a>        <span class="dt">xlab=</span><span class="kw">expression</span>(<span class="st">&quot;Dose&quot;</span><span class="op">~</span><span class="er">~</span>(kg<span class="op">~</span>ha<span class="op">^-</span><span class="dv">1</span><span class="op">~</span>ano<span class="op">^-</span><span class="dv">1</span>)))</span>
 <span id="cb134-6"><a href="regressão.html#cb134-6"></a><span class="kw">arrows</span>(Dose,media<span class="op">+</span>desvio,Dose,media<span class="op">-</span>desvio,<span class="dt">length =</span> <span class="fl">0.02</span>,<span class="dt">angle=</span><span class="dv">90</span>,<span class="dt">code=</span><span class="dv">3</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-126-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-127-1.png" width="672" /></p>
 <p>A função “options(OutDec=”,“)” converte a casa decimal de todas as saídas posteriores ao comando para vírgula, entretanto a função não altera para gráficos do pacote ggplot2.</p>
 <p><br></p>
 </div>
@@ -678,7 +678,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb137-7"><a href="regressão.html#cb137-7"></a>     <span class="dt">xlab=</span><span class="kw">expression</span>(<span class="st">&quot;Dose&quot;</span><span class="op">~</span><span class="er">~</span>(kg<span class="op">~</span>ha<span class="op">^-</span><span class="dv">1</span><span class="op">~</span>ano<span class="op">^-</span><span class="dv">1</span>)))</span>
 <span id="cb137-8"><a href="regressão.html#cb137-8"></a><span class="kw">arrows</span>(Dose,media<span class="op">+</span>desvio,Dose,media<span class="op">-</span>desvio,<span class="dt">length =</span> <span class="fl">0.02</span>,<span class="dt">angle=</span><span class="dv">90</span>,<span class="dt">code=</span><span class="dv">3</span>)</span>
 <span id="cb137-9"><a href="regressão.html#cb137-9"></a><span class="kw">curve</span>(modelo<span class="op">$</span>coefficients[<span class="dv">1</span>]<span class="op">+</span>modelo<span class="op">$</span>coefficients[<span class="dv">2</span>]<span class="op">*</span>x<span class="op">+</span>modelo<span class="op">$</span>coefficients[<span class="dv">3</span>]<span class="op">*</span>x<span class="op">^</span><span class="dv">2</span>, <span class="dt">add=</span>T,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-127-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-128-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="pontos-de-máximomínimo" class="section level3">
@@ -703,7 +703,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb142-10"><a href="regressão.html#cb142-10"></a><span class="kw">abline</span>(<span class="dt">h=</span>y,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>,<span class="dt">lty=</span><span class="dv">2</span>)</span>
 <span id="cb142-11"><a href="regressão.html#cb142-11"></a><span class="kw">abline</span>(<span class="dt">v=</span>x,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>,<span class="dt">lty=</span><span class="dv">2</span>)</span>
 <span id="cb142-12"><a href="regressão.html#cb142-12"></a><span class="kw">points</span>(x,y,<span class="dt">pch=</span><span class="dv">8</span>,<span class="dt">col=</span><span class="st">&quot;black&quot;</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-129-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-130-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="equação-e-r2" class="section level3">
@@ -722,7 +722,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb143-12"><a href="regressão.html#cb143-12"></a><span class="kw">points</span>(x,y,<span class="dt">pch=</span><span class="dv">8</span>,<span class="dt">col=</span><span class="st">&quot;black&quot;</span>)</span>
 <span id="cb143-13"><a href="regressão.html#cb143-13"></a><span class="kw">text</span>(<span class="dv">100</span>,<span class="dv">50</span>,<span class="kw">expression</span>(Y<span class="op">==</span><span class="fl">7.76013+1.881102</span><span class="op">*</span>x<span class="fl">-0.005567102</span> <span class="op">*</span>x<span class="op">^</span><span class="dv">2</span>),<span class="dt">cex=</span><span class="fl">0.8</span>)</span>
 <span id="cb143-14"><a href="regressão.html#cb143-14"></a><span class="kw">text</span>(<span class="dv">100</span>,<span class="dv">40</span>,<span class="kw">expression</span>(R<span class="op">^</span><span class="dv">2</span><span class="op">==</span><span class="fl">1.00</span>),<span class="dt">cex=</span><span class="fl">0.8</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-130-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-131-1.png" width="672" /></p>
 <p><br><br></p>
 <hr />
 </div>
@@ -735,7 +735,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="regressão.html#cb144-1"></a><span class="kw">library</span>(ggplot2)</span>
 <span id="cb144-2"><a href="regressão.html#cb144-2"></a>dados=<span class="kw">data.frame</span>(Dose,media)</span>
 <span id="cb144-3"><a href="regressão.html#cb144-3"></a><span class="kw">ggplot</span>(dados, <span class="kw">aes</span>(<span class="dt">x=</span>Dose, <span class="dt">y=</span>media)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-131-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-132-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="editando-gráfico" class="section level3">
@@ -747,7 +747,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb145-5"><a href="regressão.html#cb145-5"></a><span class="st">   </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Exemplo de gráfico de regressão no ggplot2&quot;</span>,</span>
 <span id="cb145-6"><a href="regressão.html#cb145-6"></a>       <span class="dt">y =</span> <span class="kw">expression</span>(Produtividade<span class="op">~</span><span class="er">~</span>(Kg<span class="op">~</span>ha<span class="op">^-</span><span class="dv">1</span>)), <span class="dt">x =</span> <span class="st">&quot;Dose&quot;</span>,</span>
 <span id="cb145-7"><a href="regressão.html#cb145-7"></a>       <span class="dt">caption =</span> <span class="st">&quot;Fonte: O autor&quot;</span>))</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-132-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-133-1.png" width="672" /></p>
 <p>geom_point(colour=“red”, size=3, shape=1): gráfico de dispersão, com pontos de cor vermelha, de tamanho 3 e formato 2 (Círculo sem preenchimento interno)</p>
 <p>geom_smooth(method=“lm”, se = F, formula = y~poly(x,2)): Comando para plotar curva de tendência para regressão polinomial de grau 2 (Quadrático)</p>
 <p>labs = nomear os eixos e títulos dos gráficos</p>
@@ -762,25 +762,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">5.1.4</span> Plotando o texto</h3>
 <div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="regressão.html#cb147-1"></a>(<span class="dt">grafico=</span>grafico<span class="op">+</span></span>
 <span id="cb147-2"><a href="regressão.html#cb147-2"></a><span class="st">   </span><span class="kw">geom_text</span>(<span class="kw">aes</span>(<span class="dt">x=</span>x, <span class="dt">y=</span>y, <span class="dt">label=</span>texto), <span class="dt">hjust=</span><span class="dv">1</span>, <span class="dt">vjust=</span><span class="dv">16</span>))</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-134-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-135-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="removendo-cor-de-fundo-1" class="section level3">
 <h3><span class="header-section-number">5.1.5</span> Removendo cor de fundo</h3>
 <div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="regressão.html#cb148-1"></a>(<span class="dt">grafico=</span>grafico<span class="op">+</span></span>
 <span id="cb148-2"><a href="regressão.html#cb148-2"></a><span class="st">   </span><span class="kw">theme_bw</span>())</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-135-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-136-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="removendo-grade" class="section level3">
 <h3><span class="header-section-number">5.1.6</span> Removendo grade</h3>
 <div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="regressão.html#cb149-1"></a>(<span class="dt">grafico=</span>grafico<span class="op">+</span></span>
 <span id="cb149-2"><a href="regressão.html#cb149-2"></a><span class="st">   </span><span class="kw">theme_classic</span>())</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-136-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-137-1.png" width="672" /></p>
 <div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="regressão.html#cb150-1"></a>(<span class="dt">grafico=</span>grafico<span class="op">+</span></span>
 <span id="cb150-2"><a href="regressão.html#cb150-2"></a><span class="st">   </span><span class="kw">theme</span>(<span class="dt">axis.title =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">12</span>),</span>
 <span id="cb150-3"><a href="regressão.html#cb150-3"></a>          <span class="dt">axis.text =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">12</span>)))</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-137-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-138-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="ponto-de-máximomínimo" class="section level3">
@@ -788,7 +788,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="regressão.html#cb151-1"></a>(<span class="dt">grafico=</span>grafico<span class="op">+</span></span>
 <span id="cb151-2"><a href="regressão.html#cb151-2"></a><span class="st">   </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> x, <span class="dt">colour=</span><span class="st">&quot;red&quot;</span>, <span class="dt">linetype=</span><span class="st">&quot;dotted&quot;</span>, <span class="dt">size=</span><span class="fl">1.2</span>)<span class="op">+</span></span>
 <span id="cb151-3"><a href="regressão.html#cb151-3"></a><span class="st">   </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span>y,<span class="dt">colour=</span><span class="st">&#39;red&#39;</span>, <span class="dt">linetype=</span><span class="st">&#39;dotted&#39;</span>, <span class="dt">size=</span><span class="fl">1.3</span>))</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-138-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-139-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="tipos-de-linhas" class="section level3">
@@ -801,7 +801,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb152-6"><a href="regressão.html#cb152-6"></a><span class="st">  </span><span class="kw">theme_classic</span>()<span class="op">+</span></span>
 <span id="cb152-7"><a href="regressão.html#cb152-7"></a><span class="st">  </span><span class="kw">scale_linetype_identity</span>()<span class="op">+</span></span>
 <span id="cb152-8"><a href="regressão.html#cb152-8"></a><span class="st">  </span><span class="kw">geom_segment</span>(<span class="dt">data=</span>d, <span class="dt">mapping=</span><span class="kw">aes</span>(<span class="dt">x=</span><span class="dv">0</span>, <span class="dt">xend=</span><span class="dv">1</span>, <span class="dt">y=</span>d<span class="op">$</span>lt, <span class="dt">yend=</span>d<span class="op">$</span>lt, <span class="dt">linetype=</span>d<span class="op">$</span>lt))</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-139-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-140-1.png" width="672" /></p>
 <p><br><br><br></p>
 <hr />
 </div>
@@ -863,7 +863,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb157-6"><a href="regressão.html#cb157-6"></a>     <span class="dt">xlab=</span><span class="kw">expression</span>(Dose<span class="op">~</span>(kg<span class="op">~</span>ha<span class="op">^-</span><span class="dv">1</span><span class="op">~</span>ano<span class="op">^-</span><span class="dv">1</span>)))</span>
 <span id="cb157-7"><a href="regressão.html#cb157-7"></a><span class="kw">curve</span>(<span class="kw">coef</span>(modelo)[<span class="dv">1</span>]<span class="op">+</span><span class="kw">coef</span>(modelo)[<span class="dv">2</span>]<span class="op">*</span>x<span class="op">+</span><span class="kw">coef</span>(modelo)[<span class="dv">3</span>]<span class="op">*</span>x<span class="op">^</span><span class="dv">2</span>, <span class="dt">add=</span>T,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</span>
 <span id="cb157-8"><a href="regressão.html#cb157-8"></a><span class="kw">legend</span>(<span class="st">&quot;topleft&quot;</span>,<span class="kw">expression</span>(Y<span class="op">==</span><span class="fl">7.76013+1.88110</span><span class="op">*</span>x<span class="fl">-0.00557</span> <span class="op">*</span>x<span class="op">^</span><span class="dv">2</span>, R<span class="op">^</span><span class="dv">2</span><span class="op">==</span><span class="fl">1.00</span>), <span class="dt">bty=</span><span class="st">&quot;n&quot;</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-142-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-143-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="tratamento-b" class="section level3">
@@ -897,7 +897,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb160-6"><a href="regressão.html#cb160-6"></a>     <span class="dt">xlab=</span><span class="kw">expression</span>(Dose<span class="op">~</span>(kg<span class="op">~</span>ha<span class="op">^-</span><span class="dv">1</span><span class="op">~</span>ano<span class="op">^-</span><span class="dv">1</span>)))</span>
 <span id="cb160-7"><a href="regressão.html#cb160-7"></a><span class="kw">curve</span>(<span class="kw">coef</span>(modelo1)[<span class="dv">1</span>]<span class="op">+</span><span class="kw">coef</span>(modelo1)[<span class="dv">2</span>]<span class="op">*</span>x<span class="op">+</span><span class="kw">coef</span>(modelo1)[<span class="dv">3</span>]<span class="op">*</span>x<span class="op">^</span><span class="dv">2</span>, <span class="dt">add=</span>T,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)</span>
 <span id="cb160-8"><a href="regressão.html#cb160-8"></a><span class="kw">legend</span>(<span class="st">&quot;topleft&quot;</span>,<span class="kw">expression</span>(Y<span class="op">==</span><span class="fl">28.70908+1.77830</span><span class="op">*</span>x<span class="fl">-0.00520</span><span class="op">*</span>x<span class="op">^</span><span class="dv">2</span>, R<span class="op">^</span><span class="dv">2</span><span class="op">==</span><span class="fl">0.99</span>), <span class="dt">bty=</span><span class="st">&quot;n&quot;</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-143-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-144-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="juntando-os-gráficos-2" class="section level3">
@@ -913,7 +913,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb161-6"><a href="regressão.html#cb161-6"></a><span class="kw">curve</span>(<span class="kw">coef</span>(modelo)[<span class="dv">1</span>]<span class="op">+</span><span class="kw">coef</span>(modelo)[<span class="dv">2</span>]<span class="op">*</span>x<span class="op">+</span><span class="kw">coef</span>(modelo)[<span class="dv">3</span>]<span class="op">*</span>x<span class="op">^</span><span class="dv">2</span>, <span class="dt">add=</span>T,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</span>
 <span id="cb161-7"><a href="regressão.html#cb161-7"></a><span class="kw">points</span>(media1<span class="op">~</span>Dose, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)</span>
 <span id="cb161-8"><a href="regressão.html#cb161-8"></a><span class="kw">curve</span>(<span class="kw">coef</span>(modelo1)[<span class="dv">1</span>]<span class="op">+</span><span class="kw">coef</span>(modelo1)[<span class="dv">2</span>]<span class="op">*</span>x<span class="op">+</span><span class="kw">coef</span>(modelo1)[<span class="dv">3</span>]<span class="op">*</span>x<span class="op">^</span><span class="dv">2</span>, <span class="dt">add=</span>T,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-144-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-145-1.png" width="672" /></p>
 <div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="regressão.html#cb162-1"></a><span class="kw">plot</span>(media<span class="op">~</span>Dose, </span>
 <span id="cb162-2"><a href="regressão.html#cb162-2"></a>     <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">250</span>),</span>
 <span id="cb162-3"><a href="regressão.html#cb162-3"></a>     <span class="dt">col=</span><span class="st">&quot;red&quot;</span>,</span>
@@ -922,7 +922,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb162-6"><a href="regressão.html#cb162-6"></a><span class="kw">curve</span>(<span class="kw">coef</span>(modelo)[<span class="dv">1</span>]<span class="op">+</span><span class="kw">coef</span>(modelo)[<span class="dv">2</span>]<span class="op">*</span>x<span class="op">+</span><span class="kw">coef</span>(modelo)[<span class="dv">3</span>]<span class="op">*</span>x<span class="op">^</span><span class="dv">2</span>, <span class="dt">add=</span>T,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</span>
 <span id="cb162-7"><a href="regressão.html#cb162-7"></a><span class="kw">points</span>(media1<span class="op">~</span>Dose, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)</span>
 <span id="cb162-8"><a href="regressão.html#cb162-8"></a><span class="kw">curve</span>(<span class="kw">coef</span>(modelo1)[<span class="dv">1</span>]<span class="op">+</span><span class="kw">coef</span>(modelo1)[<span class="dv">2</span>]<span class="op">*</span>x<span class="op">+</span><span class="kw">coef</span>(modelo1)[<span class="dv">3</span>]<span class="op">*</span>x<span class="op">^</span><span class="dv">2</span>, <span class="dt">add=</span>T,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-145-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-146-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="inserindo-legenda" class="section level3">
@@ -940,7 +940,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb163-11"><a href="regressão.html#cb163-11"></a>         <span class="kw">expression</span>(Y[B]<span class="op">==</span><span class="fl">28.70908+1.77830</span><span class="op">*</span>x<span class="fl">-0.00519</span><span class="op">*</span>x<span class="op">^</span><span class="dv">2</span><span class="op">~</span><span class="er">~</span>R<span class="op">^</span><span class="dv">2</span><span class="op">*</span><span class="st">&quot;=0,99&quot;</span>)))</span>
 <span id="cb163-12"><a href="regressão.html#cb163-12"></a><span class="kw">curve</span>(<span class="kw">coef</span>(modelo)[<span class="dv">1</span>]<span class="op">+</span><span class="kw">coef</span>(modelo)[<span class="dv">2</span>]<span class="op">*</span>x<span class="op">+</span><span class="kw">coef</span>(modelo)[<span class="dv">3</span>]<span class="op">*</span>x<span class="op">^</span><span class="dv">2</span>, <span class="dt">add=</span>T,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</span>
 <span id="cb163-13"><a href="regressão.html#cb163-13"></a><span class="kw">curve</span>(<span class="kw">coef</span>(modelo1)[<span class="dv">1</span>]<span class="op">+</span><span class="kw">coef</span>(modelo1)[<span class="dv">2</span>]<span class="op">*</span>x<span class="op">+</span><span class="kw">coef</span>(modelo1)[<span class="dv">3</span>]<span class="op">*</span>x<span class="op">^</span><span class="dv">2</span>, <span class="dt">add=</span>T,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-146-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-147-1.png" width="672" /></p>
 <p><br><br><br></p>
 <hr />
 </div>

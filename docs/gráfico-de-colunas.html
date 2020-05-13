@@ -603,7 +603,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-5"><a href="gráfico-de-colunas.html#cb1-5"></a>desvio=<span class="kw">tapply</span>(resposta,tratamentos,sd)</span></code></pre></div>
 <p><br></p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="gráfico-de-colunas.html#cb2-1"></a><span class="kw">barplot</span>(media)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="adicionando-melhorias" class="section level2">
@@ -615,7 +615,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-5"><a href="gráfico-de-colunas.html#cb3-5"></a>        <span class="dt">xlab=</span><span class="st">&quot;Tratamentos&quot;</span>,</span>
 <span id="cb3-6"><a href="gráfico-de-colunas.html#cb3-6"></a>        <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">300</span>))</span>
 <span id="cb3-7"><a href="gráfico-de-colunas.html#cb3-7"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p><strong>Comandos</strong>:</p>
 <p>las=1: deixar escala do eixo Y na vertical</p>
 <p>col=“cor”: mudar cor das barras (Ex. “red”,“blue”,“green” ou gray.colors(quantidade de tonalidades) para escala cinza ou rainbow(quantidade de cores) para escala colorida. Também é possível específicar a cor de cada barra (col=c(“red”,“green”,“yellow”,“gray”,“blue”))).</p>
@@ -634,7 +634,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb4-6"><a href="gráfico-de-colunas.html#cb4-6"></a>        <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">300</span>))</span>
 <span id="cb4-7"><a href="gráfico-de-colunas.html#cb4-7"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>)</span>
 <span id="cb4-8"><a href="gráfico-de-colunas.html#cb4-8"></a><span class="kw">arrows</span>(bar,media<span class="op">+</span>desvio,bar,media<span class="op">-</span>desvio,<span class="dt">length =</span> <span class="fl">0.1</span>,<span class="dt">angle=</span><span class="dv">90</span>,<span class="dt">code=</span><span class="dv">3</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="unidade-do-eixo-y" class="section level2">
@@ -648,7 +648,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb5-6"><a href="gráfico-de-colunas.html#cb5-6"></a>        <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">300</span>))</span>
 <span id="cb5-7"><a href="gráfico-de-colunas.html#cb5-7"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>)</span>
 <span id="cb5-8"><a href="gráfico-de-colunas.html#cb5-8"></a><span class="kw">arrows</span>(bar,media<span class="op">+</span>desvio,bar,media<span class="op">-</span>desvio,<span class="dt">length =</span> <span class="fl">0.1</span>,<span class="dt">angle=</span><span class="dv">90</span>,<span class="dt">code=</span><span class="dv">3</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="média-dos-tratamentos" class="section level2">
@@ -662,7 +662,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb6-7"><a href="gráfico-de-colunas.html#cb6-7"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>)</span>
 <span id="cb6-8"><a href="gráfico-de-colunas.html#cb6-8"></a><span class="kw">text</span>(bar,media<span class="op">+</span>desvio<span class="op">+</span><span class="dv">10</span>,media)</span>
 <span id="cb6-9"><a href="gráfico-de-colunas.html#cb6-9"></a><span class="kw">arrows</span>(bar,media<span class="op">+</span>desvio,bar,media<span class="op">-</span>desvio,<span class="dt">length =</span> <span class="fl">0.1</span>,<span class="dt">angle=</span><span class="dv">90</span>,<span class="dt">code=</span><span class="dv">3</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="separação-de-casa-decimal" class="section level2">
@@ -677,7 +677,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb7-8"><a href="gráfico-de-colunas.html#cb7-8"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>)</span>
 <span id="cb7-9"><a href="gráfico-de-colunas.html#cb7-9"></a><span class="kw">text</span>(bar,media<span class="op">+</span>desvio<span class="op">+</span><span class="dv">10</span>,media)</span>
 <span id="cb7-10"><a href="gráfico-de-colunas.html#cb7-10"></a><span class="kw">arrows</span>(bar,media<span class="op">+</span>desvio,bar,media<span class="op">-</span>desvio,<span class="dt">length =</span> <span class="fl">0.1</span>,<span class="dt">angle=</span><span class="dv">90</span>,<span class="dt">code=</span><span class="dv">3</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="letras-do-teste-de-comparação" class="section level2">
@@ -693,7 +693,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb8-9"><a href="gráfico-de-colunas.html#cb8-9"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>)</span>
 <span id="cb8-10"><a href="gráfico-de-colunas.html#cb8-10"></a><span class="kw">text</span>(bar,media<span class="op">+</span>desvio<span class="op">+</span><span class="dv">10</span>,<span class="kw">paste</span>(<span class="kw">round</span>(media,<span class="dv">0</span>),tukey))</span>
 <span id="cb8-11"><a href="gráfico-de-colunas.html#cb8-11"></a><span class="kw">arrows</span>(bar,media<span class="op">+</span>desvio,bar,media<span class="op">-</span>desvio,<span class="dt">length =</span> <span class="fl">0.1</span>,<span class="dt">angle=</span><span class="dv">90</span>,<span class="dt">code=</span><span class="dv">3</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 <p><br><br></p>
 <hr />
 </div>
@@ -717,7 +717,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="gráfico-com-média" class="section level3">
 <h3><span class="header-section-number">2.8.3</span> Gráfico com média</h3>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="gráfico-de-colunas.html#cb12-1"></a><span class="kw">plot</span>(a, <span class="dt">las=</span><span class="dv">1</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="gráfico-de-barras" class="section level3">
@@ -726,7 +726,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb13-2"><a href="gráfico-de-colunas.html#cb13-2"></a>          <span class="dt">las=</span><span class="dv">1</span>, </span>
 <span id="cb13-3"><a href="gráfico-de-colunas.html#cb13-3"></a>          <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">300</span>))</span>
 <span id="cb13-4"><a href="gráfico-de-colunas.html#cb13-4"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="barras-de-desvio-padrão-1" class="section level3">
@@ -736,7 +736,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb14-3"><a href="gráfico-de-colunas.html#cb14-3"></a>        <span class="dt">las=</span><span class="dv">1</span>,</span>
 <span id="cb14-4"><a href="gráfico-de-colunas.html#cb14-4"></a>        <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">300</span>))</span>
 <span id="cb14-5"><a href="gráfico-de-colunas.html#cb14-5"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="barras-de-erro-padrão" class="section level3">
@@ -746,7 +746,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb15-3"><a href="gráfico-de-colunas.html#cb15-3"></a>        <span class="dt">las=</span><span class="dv">1</span>,</span>
 <span id="cb15-4"><a href="gráfico-de-colunas.html#cb15-4"></a>        <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">300</span>))</span>
 <span id="cb15-5"><a href="gráfico-de-colunas.html#cb15-5"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="barras-de-máximo-mínimo" class="section level3">
@@ -756,7 +756,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb16-3"><a href="gráfico-de-colunas.html#cb16-3"></a>        <span class="dt">las=</span><span class="dv">1</span>,</span>
 <span id="cb16-4"><a href="gráfico-de-colunas.html#cb16-4"></a>        <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">300</span>))</span>
 <span id="cb16-5"><a href="gráfico-de-colunas.html#cb16-5"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="barras-da-distância-interquartil" class="section level3">
@@ -766,7 +766,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb17-3"><a href="gráfico-de-colunas.html#cb17-3"></a>        <span class="dt">las=</span><span class="dv">1</span>,</span>
 <span id="cb17-4"><a href="gráfico-de-colunas.html#cb17-4"></a>        <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">300</span>))</span>
 <span id="cb17-5"><a href="gráfico-de-colunas.html#cb17-5"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 <p><br><br><br></p>
 <hr />
 </div>
@@ -910,7 +910,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="gráfico-de-colunas.html#cb27-1"></a><span class="kw">ggplot</span>(dados1, </span>
 <span id="cb27-2"><a href="gráfico-de-colunas.html#cb27-2"></a>       <span class="kw">aes</span>(<span class="dt">x=</span>Trat,<span class="dt">y=</span>media))<span class="op">+</span></span>
 <span id="cb27-3"><a href="gráfico-de-colunas.html#cb27-3"></a><span class="st">  </span><span class="kw">geom_col</span>()</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
 </div>
 <div id="média-no-gráfico" class="section level3">
 <h3><span class="header-section-number">2.10.3</span> Média no gráfico</h3>
@@ -918,7 +918,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb28-2"><a href="gráfico-de-colunas.html#cb28-2"></a>       <span class="kw">aes</span>(<span class="dt">x=</span>Trat,<span class="dt">y=</span>media))<span class="op">+</span></span>
 <span id="cb28-3"><a href="gráfico-de-colunas.html#cb28-3"></a><span class="st">  </span><span class="kw">geom_col</span>()<span class="op">+</span></span>
 <span id="cb28-4"><a href="gráfico-de-colunas.html#cb28-4"></a><span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">label=</span><span class="kw">round</span>(media,<span class="dv">1</span>), <span class="dt">vjust=</span><span class="op">-</span><span class="dv">1</span>) </span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="gráfico-de-colunas.html#cb29-1"></a><span class="co"># Obs. Round é para arrendondar o valor, neste caso estamos pedindo até a primeira casa decimal</span></span></code></pre></div>
 <p><br></p>
 </div>
@@ -928,7 +928,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb30-2"><a href="gráfico-de-colunas.html#cb30-2"></a>       <span class="kw">aes</span>(<span class="dt">x=</span>Trat,<span class="dt">y=</span>media))<span class="op">+</span></span>
 <span id="cb30-3"><a href="gráfico-de-colunas.html#cb30-3"></a><span class="st">  </span><span class="kw">geom_col</span>()<span class="op">+</span></span>
 <span id="cb30-4"><a href="gráfico-de-colunas.html#cb30-4"></a><span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">label=</span><span class="kw">paste</span>(<span class="kw">round</span>(media,<span class="dv">1</span>),<span class="kw">c</span>(<span class="st">&quot;c&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;d&quot;</span>,<span class="st">&quot;a&quot;</span>)), <span class="dt">vjust=</span><span class="op">-</span><span class="dv">1</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="gráfico-de-colunas.html#cb31-1"></a><span class="co">#Obs. a função paste serve para juntar palavras, nesse caso está juntando cada média com suas respectivas letras do teste de comparação de médias</span></span></code></pre></div>
 <p><br></p>
 </div>
@@ -939,7 +939,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb32-3"><a href="gráfico-de-colunas.html#cb32-3"></a><span class="st">  </span><span class="kw">geom_col</span>()<span class="op">+</span></span>
 <span id="cb32-4"><a href="gráfico-de-colunas.html#cb32-4"></a><span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">label=</span><span class="kw">paste</span>(<span class="kw">round</span>(media,<span class="dv">1</span>),<span class="kw">c</span>(<span class="st">&quot;c&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;d&quot;</span>,<span class="st">&quot;a&quot;</span>)), <span class="dt">vjust=</span><span class="op">-</span><span class="dv">1</span>)<span class="op">+</span></span>
 <span id="cb32-5"><a href="gráfico-de-colunas.html#cb32-5"></a><span class="st">  </span><span class="kw">ylim</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">40</span>))</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="cor-das-colunas" class="section level3">
@@ -949,7 +949,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb33-3"><a href="gráfico-de-colunas.html#cb33-3"></a><span class="st">  </span><span class="kw">geom_col</span>(<span class="dt">fill=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>))<span class="op">+</span></span>
 <span id="cb33-4"><a href="gráfico-de-colunas.html#cb33-4"></a><span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">label=</span><span class="kw">paste</span>(<span class="kw">round</span>(media,<span class="dv">1</span>),<span class="kw">c</span>(<span class="st">&quot;c&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;d&quot;</span>,<span class="st">&quot;a&quot;</span>)), <span class="dt">vjust=</span><span class="op">-</span><span class="dv">1</span>)<span class="op">+</span></span>
 <span id="cb33-5"><a href="gráfico-de-colunas.html#cb33-5"></a><span class="st">  </span><span class="kw">ylim</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">40</span>))</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="removendo-cor-de-fundo" class="section level3">
@@ -960,7 +960,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb34-4"><a href="gráfico-de-colunas.html#cb34-4"></a><span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">label=</span><span class="kw">paste</span>(<span class="kw">round</span>(media,<span class="dv">1</span>),<span class="kw">c</span>(<span class="st">&quot;c&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;d&quot;</span>,<span class="st">&quot;a&quot;</span>)), <span class="dt">vjust=</span><span class="op">-</span><span class="dv">1</span>)<span class="op">+</span></span>
 <span id="cb34-5"><a href="gráfico-de-colunas.html#cb34-5"></a><span class="st">  </span><span class="kw">ylim</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">40</span>))<span class="op">+</span></span>
 <span id="cb34-6"><a href="gráfico-de-colunas.html#cb34-6"></a><span class="st">  </span><span class="kw">theme_bw</span>()</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="removendo-linhas-de-grade" class="section level3">
@@ -972,7 +972,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb35-5"><a href="gráfico-de-colunas.html#cb35-5"></a><span class="st">  </span><span class="kw">ylim</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">40</span>))<span class="op">+</span></span>
 <span id="cb35-6"><a href="gráfico-de-colunas.html#cb35-6"></a><span class="st">  </span><span class="kw">theme_bw</span>()<span class="op">+</span></span>
 <span id="cb35-7"><a href="gráfico-de-colunas.html#cb35-7"></a><span class="st">  </span><span class="kw">theme_classic</span>()</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="nome-dos-eixos-x-e-y" class="section level3">
@@ -986,7 +986,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb36-6"><a href="gráfico-de-colunas.html#cb36-6"></a><span class="st">  </span><span class="kw">theme_classic</span>()<span class="op">+</span></span>
 <span id="cb36-7"><a href="gráfico-de-colunas.html#cb36-7"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Resposta&quot;</span>)<span class="op">+</span></span>
 <span id="cb36-8"><a href="gráfico-de-colunas.html#cb36-8"></a><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot; &quot;</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="cor-do-contorno-das-colunas" class="section level3">
@@ -1000,7 +1000,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb37-7"><a href="gráfico-de-colunas.html#cb37-7"></a><span class="st">  </span><span class="kw">theme_classic</span>()<span class="op">+</span></span>
 <span id="cb37-8"><a href="gráfico-de-colunas.html#cb37-8"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Resposta&quot;</span>)<span class="op">+</span></span>
 <span id="cb37-9"><a href="gráfico-de-colunas.html#cb37-9"></a><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot; &quot;</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="barras-de-desvio-padrão-2" class="section level3">
@@ -1014,7 +1014,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb38-7"><a href="gráfico-de-colunas.html#cb38-7"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Resposta&quot;</span>)<span class="op">+</span></span>
 <span id="cb38-8"><a href="gráfico-de-colunas.html#cb38-8"></a><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot; &quot;</span>)<span class="op">+</span></span>
 <span id="cb38-9"><a href="gráfico-de-colunas.html#cb38-9"></a><span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymax=</span>media<span class="op">+</span>desvio,<span class="dt">ymin=</span>media<span class="op">-</span>desvio), <span class="dt">width=</span><span class="fl">0.25</span>) <span class="co"># Width é a largura da barra</span></span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="juntando-os-gráficos" class="section level3">
@@ -1063,7 +1063,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb41-9"><a href="gráfico-de-colunas.html#cb41-9"></a><span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymax=</span>media<span class="op">+</span>desvio,</span>
 <span id="cb41-10"><a href="gráfico-de-colunas.html#cb41-10"></a>                   <span class="dt">ymin=</span>media<span class="op">-</span>desvio), <span class="dt">width=</span><span class="fl">0.25</span>)</span></code></pre></div>
 <div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="gráfico-de-colunas.html#cb42-1"></a><span class="kw">grid.arrange</span>(a,b,c,<span class="dt">ncol=</span><span class="dv">3</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-38-1.png" width="960" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-39-1.png" width="960" /></p>
 <p><br><br></p>
 <hr />
 </div>
@@ -1087,7 +1087,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb45-2"><a href="gráfico-de-colunas.html#cb45-2"></a>          <span class="dt">x =</span> <span class="st">&quot;Trat&quot;</span>, </span>
 <span id="cb45-3"><a href="gráfico-de-colunas.html#cb45-3"></a>          <span class="dt">y =</span> <span class="st">&quot;exp1&quot;</span>,</span>
 <span id="cb45-4"><a href="gráfico-de-colunas.html#cb45-4"></a>          <span class="dt">add=</span><span class="st">&quot;mean&quot;</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="barras-de-desvio-padrão-3" class="section level3">
@@ -1096,7 +1096,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb46-2"><a href="gráfico-de-colunas.html#cb46-2"></a>          <span class="dt">x =</span> <span class="st">&quot;Trat&quot;</span>, </span>
 <span id="cb46-3"><a href="gráfico-de-colunas.html#cb46-3"></a>          <span class="dt">y =</span> <span class="st">&quot;exp1&quot;</span>,</span>
 <span id="cb46-4"><a href="gráfico-de-colunas.html#cb46-4"></a>          <span class="dt">add =</span> <span class="st">&quot;mean_sd&quot;</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="cor-da-coluna" class="section level3">
@@ -1106,14 +1106,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb47-3"><a href="gráfico-de-colunas.html#cb47-3"></a>          <span class="dt">y =</span> <span class="st">&quot;exp1&quot;</span>,</span>
 <span id="cb47-4"><a href="gráfico-de-colunas.html#cb47-4"></a>          <span class="dt">add =</span> <span class="st">&quot;mean_sd&quot;</span>, </span>
 <span id="cb47-5"><a href="gráfico-de-colunas.html#cb47-5"></a>          <span class="dt">fill =</span> <span class="st">&quot;Trat&quot;</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
 <div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="gráfico-de-colunas.html#cb48-1"></a><span class="kw">ggbarplot</span>(dados, </span>
 <span id="cb48-2"><a href="gráfico-de-colunas.html#cb48-2"></a>          <span class="dt">x =</span> <span class="st">&quot;Trat&quot;</span>, </span>
 <span id="cb48-3"><a href="gráfico-de-colunas.html#cb48-3"></a>          <span class="dt">y =</span> <span class="st">&quot;exp1&quot;</span>,</span>
 <span id="cb48-4"><a href="gráfico-de-colunas.html#cb48-4"></a>          <span class="dt">add =</span> <span class="st">&quot;mean_sd&quot;</span>, </span>
 <span id="cb48-5"><a href="gráfico-de-colunas.html#cb48-5"></a>          <span class="dt">fill =</span> <span class="st">&quot;Trat&quot;</span>,</span>
 <span id="cb48-6"><a href="gráfico-de-colunas.html#cb48-6"></a>          <span class="dt">palette =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>))</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="letra-do-teste-de-comparação" class="section level3">
@@ -1125,7 +1125,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb49-5"><a href="gráfico-de-colunas.html#cb49-5"></a>          <span class="dt">fill =</span> <span class="st">&quot;Trat&quot;</span>,</span>
 <span id="cb49-6"><a href="gráfico-de-colunas.html#cb49-6"></a>          <span class="dt">label =</span> <span class="kw">c</span>(<span class="st">&quot;c&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;d&quot;</span>,<span class="st">&quot;a&quot;</span>),</span>
 <span id="cb49-7"><a href="gráfico-de-colunas.html#cb49-7"></a>          <span class="dt">lab.vjust=</span><span class="op">-</span><span class="dv">2</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="adicionando-a-média" class="section level3">
@@ -1138,7 +1138,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb50-6"><a href="gráfico-de-colunas.html#cb50-6"></a>          <span class="dt">fill =</span> <span class="st">&quot;Trat&quot;</span>,</span>
 <span id="cb50-7"><a href="gráfico-de-colunas.html#cb50-7"></a>          <span class="dt">label =</span> <span class="kw">paste</span>(<span class="kw">round</span>(media,<span class="dv">1</span>),<span class="kw">c</span>(<span class="st">&quot;c&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;c&quot;</span>,<span class="st">&quot;a&quot;</span>)),</span>
 <span id="cb50-8"><a href="gráfico-de-colunas.html#cb50-8"></a>          <span class="dt">lab.vjust=</span><span class="op">-</span><span class="dv">2</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="escala-do-eixo-y-1" class="section level3">
@@ -1150,7 +1150,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb51-5"><a href="gráfico-de-colunas.html#cb51-5"></a>          <span class="dt">fill =</span> <span class="st">&quot;Trat&quot;</span>,</span>
 <span id="cb51-6"><a href="gráfico-de-colunas.html#cb51-6"></a>          <span class="dt">label =</span> <span class="kw">paste</span>(<span class="kw">round</span>(media,<span class="dv">1</span>),<span class="kw">c</span>(<span class="st">&quot;c&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;d&quot;</span>,<span class="st">&quot;a&quot;</span>)),</span>
 <span id="cb51-7"><a href="gráfico-de-colunas.html#cb51-7"></a>          <span class="dt">lab.vjust=</span><span class="op">-</span><span class="dv">2</span>)<span class="op">+</span><span class="kw">ylim</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">40</span>))</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="removendo-legenda" class="section level3">
@@ -1163,7 +1163,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb52-6"><a href="gráfico-de-colunas.html#cb52-6"></a>          <span class="dt">label =</span> <span class="kw">paste</span>(<span class="kw">round</span>(media,<span class="dv">1</span>),<span class="kw">c</span>(<span class="st">&quot;c&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;d&quot;</span>,<span class="st">&quot;a&quot;</span>)),</span>
 <span id="cb52-7"><a href="gráfico-de-colunas.html#cb52-7"></a>          <span class="dt">lab.vjust=</span><span class="op">-</span><span class="dv">2</span>,</span>
 <span id="cb52-8"><a href="gráfico-de-colunas.html#cb52-8"></a>          <span class="dt">legend=</span><span class="st">&quot;n&quot;</span>)<span class="op">+</span><span class="kw">ylim</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">40</span>))</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="juntando-os-gráficos-1" class="section level3">
@@ -1208,7 +1208,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb55-8"><a href="gráfico-de-colunas.html#cb55-8"></a>          <span class="dt">lab.vjust=</span><span class="op">-</span><span class="dv">3</span>,</span>
 <span id="cb55-9"><a href="gráfico-de-colunas.html#cb55-9"></a>          <span class="dt">legend=</span><span class="st">&quot;n&quot;</span>)<span class="op">+</span><span class="kw">ylim</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">40</span>))</span></code></pre></div>
 <div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="gráfico-de-colunas.html#cb56-1"></a><span class="kw">grid.arrange</span>(a,b,c,<span class="dt">ncol=</span><span class="dv">3</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-52-1.png" width="1152" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-53-1.png" width="1152" /></p>
 <p><br></p>
 <p><strong>Como deixar apenas o gráfico a esquerda com a escala de Y?</strong></p>
 <p>Existem casos em que uma mesma variável foi analisada em várias situações e dessa forma, geramos gráficos com a mesma unidade de medida. Nesse sentido, é frequente apresentar apenas uma escala de Y, geralmente o gráfico a esquerda. No pacote ggpubr, podemos efetuar da seguinte forma:</p>
@@ -1251,7 +1251,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb59-11"><a href="gráfico-de-colunas.html#cb59-11"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.y=</span><span class="kw">element_blank</span>())<span class="op">+</span></span>
 <span id="cb59-12"><a href="gráfico-de-colunas.html#cb59-12"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;&quot;</span>)</span></code></pre></div>
 <div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="gráfico-de-colunas.html#cb60-1"></a><span class="kw">grid.arrange</span>(a,b,c,<span class="dt">ncol=</span><span class="dv">3</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-56-1.png" width="1152" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-57-1.png" width="1152" /></p>
 <p><br><br><br></p>
 <hr />
 </div>
@@ -1274,7 +1274,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="gráfico-simples" class="section level3">
 <h3><span class="header-section-number">2.12.2</span> Gráfico simples</h3>
 <div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="gráfico-de-colunas.html#cb62-1"></a><span class="kw">barplot</span>(media, <span class="dt">beside =</span> T)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-58-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-59-1.png" width="672" /></p>
 <p>O argumento beside=T é refente a um gráfico de barras em que as barras são posicionadas lado a lado. Do contrário, as barras serão empilhadas (<em>stacked</em>).</p>
 <p><br></p>
 </div>
@@ -1286,7 +1286,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb63-4"><a href="gráfico-de-colunas.html#cb63-4"></a>        <span class="dt">xlab=</span><span class="st">&quot;Fator2&quot;</span>,</span>
 <span id="cb63-5"><a href="gráfico-de-colunas.html#cb63-5"></a>        <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">300</span>))</span>
 <span id="cb63-6"><a href="gráfico-de-colunas.html#cb63-6"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-59-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-60-1.png" width="672" /></p>
 <p><strong>Comandos</strong>:</p>
 <p><strong>las=1</strong>: deixar escala do eixo Y na vertical</p>
 <p><strong>col=“cor”</strong>: mudar cor das barras (Ex. “red”,“blue”,“green” ou gray.colors(quantidade de tonalidades) para escala cinza ou rainbow(quantidade de cores) para escala colorida. Também é possível específicar a cor de cada barra (col=c(“red”,“green”,“yellow”,“gray”,“blue”))).</p>
@@ -1301,7 +1301,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb64-2"><a href="gráfico-de-colunas.html#cb64-2"></a>                        <span class="st">&quot;yellow&quot;</span>,<span class="st">&quot;gray&quot;</span>,<span class="st">&quot;pink&quot;</span>,<span class="st">&quot;brown&quot;</span>,<span class="st">&quot;Gainsboro&quot;</span>, <span class="st">&quot;Lavender&quot;</span>, </span>
 <span id="cb64-3"><a href="gráfico-de-colunas.html#cb64-3"></a>                        <span class="st">&quot;DeepSkyBlue&quot;</span>,<span class="st">&quot;LawnGreen&quot;</span>, <span class="st">&quot;Gold&quot;</span>,<span class="st">&quot;MediumOrchid&quot;</span>,</span>
 <span id="cb64-4"><a href="gráfico-de-colunas.html#cb64-4"></a>                        <span class="st">&quot;LightSalmon&quot;</span>, <span class="st">&quot;Sienna&quot;</span>, <span class="st">&quot;Tomato&quot;</span>, <span class="st">&quot;DeepPink1&quot;</span>))</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-60-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-61-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="barras-de-desvio-padrão-4" class="section level3">
@@ -1313,7 +1313,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb65-5"><a href="gráfico-de-colunas.html#cb65-5"></a>        <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">300</span>))</span>
 <span id="cb65-6"><a href="gráfico-de-colunas.html#cb65-6"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>)</span>
 <span id="cb65-7"><a href="gráfico-de-colunas.html#cb65-7"></a><span class="kw">arrows</span>(bar,media<span class="op">+</span>desvio,bar,media<span class="op">-</span>desvio,<span class="dt">length =</span> <span class="fl">0.1</span>,<span class="dt">angle=</span><span class="dv">90</span>,<span class="dt">code=</span><span class="dv">3</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-61-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-62-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="unidade-do-eixo-y-1" class="section level3">
@@ -1326,7 +1326,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb66-5"><a href="gráfico-de-colunas.html#cb66-5"></a>        <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">300</span>))</span>
 <span id="cb66-6"><a href="gráfico-de-colunas.html#cb66-6"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>)</span>
 <span id="cb66-7"><a href="gráfico-de-colunas.html#cb66-7"></a><span class="kw">arrows</span>(bar,media<span class="op">+</span>desvio,bar,media<span class="op">-</span>desvio,<span class="dt">length =</span> <span class="fl">0.1</span>,<span class="dt">angle=</span><span class="dv">90</span>,<span class="dt">code=</span><span class="dv">3</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-62-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-63-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="média-acima-das-barras" class="section level3">
@@ -1339,7 +1339,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb67-6"><a href="gráfico-de-colunas.html#cb67-6"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>)</span>
 <span id="cb67-7"><a href="gráfico-de-colunas.html#cb67-7"></a><span class="kw">text</span>(bar,media<span class="op">+</span>desvio<span class="op">+</span><span class="dv">10</span>,media, <span class="dt">cex=</span><span class="fl">0.8</span>)</span>
 <span id="cb67-8"><a href="gráfico-de-colunas.html#cb67-8"></a><span class="kw">arrows</span>(bar,media<span class="op">+</span>desvio,bar,media<span class="op">-</span>desvio,<span class="dt">length =</span> <span class="fl">0.1</span>,<span class="dt">angle=</span><span class="dv">90</span>,<span class="dt">code=</span><span class="dv">3</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-63-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-64-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="separação-de-casa-decimal-1" class="section level3">
@@ -1353,7 +1353,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb68-7"><a href="gráfico-de-colunas.html#cb68-7"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>)</span>
 <span id="cb68-8"><a href="gráfico-de-colunas.html#cb68-8"></a><span class="kw">text</span>(bar,media<span class="op">+</span>desvio<span class="op">+</span><span class="dv">10</span>,media, <span class="dt">cex=</span><span class="fl">0.8</span>)</span>
 <span id="cb68-9"><a href="gráfico-de-colunas.html#cb68-9"></a><span class="kw">arrows</span>(bar,media<span class="op">+</span>desvio,bar,media<span class="op">-</span>desvio,<span class="dt">length =</span> <span class="fl">0.1</span>,<span class="dt">angle=</span><span class="dv">90</span>,<span class="dt">code=</span><span class="dv">3</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-64-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-65-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="letras-do-teste-de-comparação-2" class="section level3">
@@ -1368,7 +1368,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb69-8"><a href="gráfico-de-colunas.html#cb69-8"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>)</span>
 <span id="cb69-9"><a href="gráfico-de-colunas.html#cb69-9"></a><span class="kw">text</span>(bar,media<span class="op">+</span>desvio<span class="op">+</span><span class="dv">10</span>,<span class="kw">paste</span>(<span class="kw">round</span>(media,<span class="dv">0</span>),tukey), <span class="dt">cex=</span><span class="fl">0.8</span>)</span>
 <span id="cb69-10"><a href="gráfico-de-colunas.html#cb69-10"></a><span class="kw">arrows</span>(bar,media<span class="op">+</span>desvio,bar,media<span class="op">-</span>desvio,<span class="dt">length =</span> <span class="fl">0.1</span>,<span class="dt">angle=</span><span class="dv">90</span>,<span class="dt">code=</span><span class="dv">3</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-65-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-66-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="adicionando-legenda" class="section level3">
@@ -1388,7 +1388,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb70-11"><a href="gráfico-de-colunas.html#cb70-11"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>)</span>
 <span id="cb70-12"><a href="gráfico-de-colunas.html#cb70-12"></a><span class="kw">text</span>(bar,media<span class="op">+</span>desvio<span class="op">+</span><span class="dv">10</span>,<span class="kw">paste</span>(<span class="kw">round</span>(media,<span class="dv">0</span>),tukey), <span class="dt">cex=</span><span class="fl">0.8</span>)</span>
 <span id="cb70-13"><a href="gráfico-de-colunas.html#cb70-13"></a><span class="kw">arrows</span>(bar,media<span class="op">+</span>desvio,bar,media<span class="op">-</span>desvio,<span class="dt">length =</span> <span class="fl">0.1</span>,<span class="dt">angle=</span><span class="dv">90</span>,<span class="dt">code=</span><span class="dv">3</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-66-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-67-1.png" width="672" /></p>
 <p><br><br><br></p>
 <hr />
 </div>
@@ -1413,7 +1413,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="gráfico-básico-1" class="section level3">
 <h3><span class="header-section-number">2.13.2</span> Gráfico básico</h3>
 <div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="gráfico-de-colunas.html#cb72-1"></a><span class="kw">barplot</span>(media, <span class="dt">beside=</span>F)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-68-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-69-1.png" width="672" /></p>
 <p>O argumento beside=F é refente a um gráfico de barras em que as barras são posicionadas lado a lado. Do contrário, as barras serão empilhadas (<em>stacked</em>).</p>
 <p><br></p>
 </div>
@@ -1425,7 +1425,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb73-4"><a href="gráfico-de-colunas.html#cb73-4"></a>        <span class="dt">xlab=</span><span class="st">&quot;Fator2&quot;</span>,</span>
 <span id="cb73-5"><a href="gráfico-de-colunas.html#cb73-5"></a>        <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">600</span>))</span>
 <span id="cb73-6"><a href="gráfico-de-colunas.html#cb73-6"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-69-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-70-1.png" width="672" /></p>
 <p><strong>Comandos</strong>:</p>
 <p><strong>las=1</strong>: deixar escala do eixo Y na vertical</p>
 <p><strong>col=“cor”</strong>: mudar cor das barras (Ex. “red”,“blue”,“green” ou gray.colors(quantidade de tonalidades) para escala cinza ou rainbow(quantidade de cores) para escala colorida. Também é possível específicar a cor de cada barra (col=c(“red”,“green”,“yellow”,“gray”,“blue”))).</p>
@@ -1443,7 +1443,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb74-6"><a href="gráfico-de-colunas.html#cb74-6"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>)</span>
 <span id="cb74-7"><a href="gráfico-de-colunas.html#cb74-7"></a><span class="kw">arrows</span>(bar,media[<span class="dv">1</span>,]<span class="op">+</span>desvio[<span class="dv">1</span>,],bar,media[<span class="dv">1</span>,]<span class="op">-</span>desvio[<span class="dv">1</span>,],<span class="dt">length =</span> <span class="fl">0.1</span>,<span class="dt">angle=</span><span class="dv">90</span>,<span class="dt">code=</span><span class="dv">3</span>)</span>
 <span id="cb74-8"><a href="gráfico-de-colunas.html#cb74-8"></a><span class="kw">arrows</span>(bar,media[<span class="dv">1</span>,]<span class="op">+</span>media[<span class="dv">2</span>,]<span class="op">+</span>desvio[<span class="dv">2</span>,],bar,media[<span class="dv">1</span>,]<span class="op">+</span>media[<span class="dv">2</span>,]<span class="op">-</span>desvio[<span class="dv">2</span>,],<span class="dt">length =</span> <span class="fl">0.1</span>,<span class="dt">angle=</span><span class="dv">90</span>,<span class="dt">code=</span><span class="dv">3</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-70-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-71-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="unidade-do-eixo-y-2" class="section level3">
@@ -1457,7 +1457,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb75-6"><a href="gráfico-de-colunas.html#cb75-6"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>)</span>
 <span id="cb75-7"><a href="gráfico-de-colunas.html#cb75-7"></a><span class="kw">arrows</span>(bar,media[<span class="dv">1</span>,]<span class="op">+</span>desvio[<span class="dv">1</span>,],bar,media[<span class="dv">1</span>,]<span class="op">-</span>desvio[<span class="dv">1</span>,],<span class="dt">length =</span> <span class="fl">0.1</span>,<span class="dt">angle=</span><span class="dv">90</span>,<span class="dt">code=</span><span class="dv">3</span>)</span>
 <span id="cb75-8"><a href="gráfico-de-colunas.html#cb75-8"></a><span class="kw">arrows</span>(bar,media[<span class="dv">1</span>,]<span class="op">+</span>media[<span class="dv">2</span>,]<span class="op">+</span>desvio[<span class="dv">2</span>,],bar,media[<span class="dv">1</span>,]<span class="op">+</span>media[<span class="dv">2</span>,]<span class="op">-</span>desvio[<span class="dv">2</span>,],<span class="dt">length =</span> <span class="fl">0.1</span>,<span class="dt">angle=</span><span class="dv">90</span>,<span class="dt">code=</span><span class="dv">3</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-71-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-72-1.png" width="672" /></p>
 </div>
 <div id="média-acima-das-barras-1" class="section level3">
 <h3><span class="header-section-number">2.13.6</span> Média acima das barras</h3>
@@ -1471,7 +1471,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb76-8"><a href="gráfico-de-colunas.html#cb76-8"></a><span class="kw">text</span>(bar,media[<span class="dv">1</span>,]<span class="op">+</span>media[<span class="dv">2</span>,]<span class="op">+</span>desvio[<span class="dv">2</span>,]<span class="op">+</span><span class="dv">20</span>,media[<span class="dv">2</span>,], <span class="dt">cex=</span><span class="fl">0.8</span>)</span>
 <span id="cb76-9"><a href="gráfico-de-colunas.html#cb76-9"></a><span class="kw">arrows</span>(bar,media[<span class="dv">1</span>,]<span class="op">+</span>desvio[<span class="dv">1</span>,],bar,media[<span class="dv">1</span>,]<span class="op">-</span>desvio[<span class="dv">1</span>,],<span class="dt">length =</span> <span class="fl">0.1</span>,<span class="dt">angle=</span><span class="dv">90</span>,<span class="dt">code=</span><span class="dv">3</span>)</span>
 <span id="cb76-10"><a href="gráfico-de-colunas.html#cb76-10"></a><span class="kw">arrows</span>(bar,media[<span class="dv">1</span>,]<span class="op">+</span>media[<span class="dv">2</span>,]<span class="op">+</span>desvio[<span class="dv">2</span>,],bar,media[<span class="dv">1</span>,]<span class="op">+</span>media[<span class="dv">2</span>,]<span class="op">-</span>desvio[<span class="dv">2</span>,],<span class="dt">length =</span> <span class="fl">0.1</span>,<span class="dt">angle=</span><span class="dv">90</span>,<span class="dt">code=</span><span class="dv">3</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-72-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-73-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="separação-de-casa-decimal-2" class="section level3">
@@ -1487,7 +1487,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb77-9"><a href="gráfico-de-colunas.html#cb77-9"></a><span class="kw">text</span>(bar,media[<span class="dv">1</span>,]<span class="op">+</span>media[<span class="dv">2</span>,]<span class="op">+</span>desvio[<span class="dv">2</span>,]<span class="op">+</span><span class="dv">20</span>,media[<span class="dv">2</span>,], <span class="dt">cex=</span><span class="fl">0.8</span>)</span>
 <span id="cb77-10"><a href="gráfico-de-colunas.html#cb77-10"></a><span class="kw">arrows</span>(bar,media[<span class="dv">1</span>,]<span class="op">+</span>desvio[<span class="dv">1</span>,],bar,media[<span class="dv">1</span>,]<span class="op">-</span>desvio[<span class="dv">1</span>,],<span class="dt">length =</span> <span class="fl">0.1</span>,<span class="dt">angle=</span><span class="dv">90</span>,<span class="dt">code=</span><span class="dv">3</span>)</span>
 <span id="cb77-11"><a href="gráfico-de-colunas.html#cb77-11"></a><span class="kw">arrows</span>(bar,media[<span class="dv">1</span>,]<span class="op">+</span>media[<span class="dv">2</span>,]<span class="op">+</span>desvio[<span class="dv">2</span>,],bar,media[<span class="dv">1</span>,]<span class="op">+</span>media[<span class="dv">2</span>,]<span class="op">-</span>desvio[<span class="dv">2</span>,],<span class="dt">length =</span> <span class="fl">0.1</span>,<span class="dt">angle=</span><span class="dv">90</span>,<span class="dt">code=</span><span class="dv">3</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-73-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-74-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="letras-do-teste-de-comparação-3" class="section level3">
@@ -1504,7 +1504,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb78-10"><a href="gráfico-de-colunas.html#cb78-10"></a><span class="kw">text</span>(bar,media[<span class="dv">1</span>,]<span class="op">+</span>media[<span class="dv">2</span>,]<span class="op">+</span>desvio[<span class="dv">2</span>,]<span class="op">+</span><span class="dv">20</span>,<span class="kw">paste</span>(media[<span class="dv">2</span>,], tukey[<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">8</span>,<span class="dv">10</span>)]), <span class="dt">cex=</span><span class="fl">0.8</span>)</span>
 <span id="cb78-11"><a href="gráfico-de-colunas.html#cb78-11"></a><span class="kw">arrows</span>(bar,media[<span class="dv">1</span>,]<span class="op">+</span>desvio[<span class="dv">1</span>,],bar,media[<span class="dv">1</span>,]<span class="op">-</span>desvio[<span class="dv">1</span>,],<span class="dt">length =</span> <span class="fl">0.1</span>,<span class="dt">angle=</span><span class="dv">90</span>,<span class="dt">code=</span><span class="dv">3</span>)</span>
 <span id="cb78-12"><a href="gráfico-de-colunas.html#cb78-12"></a><span class="kw">arrows</span>(bar,media[<span class="dv">1</span>,]<span class="op">+</span>media[<span class="dv">2</span>,]<span class="op">+</span>desvio[<span class="dv">2</span>,],bar,media[<span class="dv">1</span>,]<span class="op">+</span>media[<span class="dv">2</span>,]<span class="op">-</span>desvio[<span class="dv">2</span>,],<span class="dt">length =</span> <span class="fl">0.1</span>,<span class="dt">angle=</span><span class="dv">90</span>,<span class="dt">code=</span><span class="dv">3</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-74-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-75-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="adicionando-legenda-1" class="section level3">
@@ -1526,7 +1526,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb79-13"><a href="gráfico-de-colunas.html#cb79-13"></a><span class="kw">text</span>(bar,media[<span class="dv">1</span>,]<span class="op">+</span>media[<span class="dv">2</span>,]<span class="op">+</span>desvio[<span class="dv">2</span>,]<span class="op">+</span><span class="dv">20</span>,<span class="kw">paste</span>(media[<span class="dv">2</span>,], tukey[<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">8</span>,<span class="dv">10</span>)]), <span class="dt">cex=</span><span class="fl">0.8</span>)</span>
 <span id="cb79-14"><a href="gráfico-de-colunas.html#cb79-14"></a><span class="kw">arrows</span>(bar,media[<span class="dv">1</span>,]<span class="op">+</span>desvio[<span class="dv">1</span>,],bar,media[<span class="dv">1</span>,]<span class="op">-</span>desvio[<span class="dv">1</span>,],<span class="dt">length =</span> <span class="fl">0.1</span>,<span class="dt">angle=</span><span class="dv">90</span>,<span class="dt">code=</span><span class="dv">3</span>)</span>
 <span id="cb79-15"><a href="gráfico-de-colunas.html#cb79-15"></a><span class="kw">arrows</span>(bar,media[<span class="dv">1</span>,]<span class="op">+</span>media[<span class="dv">2</span>,]<span class="op">+</span>desvio[<span class="dv">2</span>,],bar,media[<span class="dv">1</span>,]<span class="op">+</span>media[<span class="dv">2</span>,]<span class="op">-</span>desvio[<span class="dv">2</span>,],<span class="dt">length =</span> <span class="fl">0.1</span>,<span class="dt">angle=</span><span class="dv">90</span>,<span class="dt">code=</span><span class="dv">3</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-75-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-76-1.png" width="672" /></p>
 <p><br><br><br></p>
 <hr />
 </div>
@@ -1569,7 +1569,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb83-10"><a href="gráfico-de-colunas.html#cb83-10"></a>           <span class="dt">col=</span><span class="st">&quot;red&quot;</span>,</span>
 <span id="cb83-11"><a href="gráfico-de-colunas.html#cb83-11"></a>           <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">60</span>,<span class="dv">0</span>),</span>
 <span id="cb83-12"><a href="gráfico-de-colunas.html#cb83-12"></a>           <span class="dt">las=</span><span class="dv">1</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-79-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-80-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="escala-do-eixo-y-2" class="section level3">
@@ -1589,7 +1589,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb84-13"><a href="gráfico-de-colunas.html#cb84-13"></a>           <span class="dt">axisnames =</span> F,</span>
 <span id="cb84-14"><a href="gráfico-de-colunas.html#cb84-14"></a>           <span class="dt">las=</span><span class="dv">1</span>)</span>
 <span id="cb84-15"><a href="gráfico-de-colunas.html#cb84-15"></a><span class="kw">axis</span>(<span class="dv">2</span>,<span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">50</span>,<span class="dv">10</span>),<span class="dt">las=</span><span class="dv">1</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-80-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-81-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="barras-de-desvio-padrão-6" class="section level3">
@@ -1611,7 +1611,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb85-15"><a href="gráfico-de-colunas.html#cb85-15"></a>           <span class="dt">las=</span><span class="dv">1</span>)</span>
 <span id="cb85-16"><a href="gráfico-de-colunas.html#cb85-16"></a><span class="kw">axis</span>(<span class="dv">2</span>,<span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">50</span>,<span class="dv">10</span>),<span class="dt">las=</span><span class="dv">1</span>)</span>
 <span id="cb85-17"><a href="gráfico-de-colunas.html#cb85-17"></a><span class="kw">arrows</span>(b2,m2<span class="op">+</span>sd2,b2,m2<span class="op">-</span>sd2,<span class="dt">angle =</span> <span class="dv">90</span>,<span class="dt">code=</span><span class="dv">3</span>, <span class="dt">length =</span> <span class="fl">0.05</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-81-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-82-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="linha-em-0-e-título-de-y" class="section level3">
@@ -1635,7 +1635,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb86-17"><a href="gráfico-de-colunas.html#cb86-17"></a><span class="kw">title</span>(<span class="dt">ylab =</span> <span class="st">&quot;Resposta&quot;</span>,<span class="dt">outer=</span>T, <span class="dt">line =</span> <span class="dv">3</span>)</span>
 <span id="cb86-18"><a href="gráfico-de-colunas.html#cb86-18"></a><span class="kw">arrows</span>(b2,m2<span class="op">+</span>sd2,b2,m2<span class="op">-</span>sd2,<span class="dt">angle =</span> <span class="dv">90</span>,<span class="dt">code=</span><span class="dv">3</span>, <span class="dt">length =</span> <span class="fl">0.05</span>)</span>
 <span id="cb86-19"><a href="gráfico-de-colunas.html#cb86-19"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-82-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-83-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="título-para-ms-g" class="section level3">
@@ -1659,7 +1659,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb87-17"><a href="gráfico-de-colunas.html#cb87-17"></a><span class="kw">title</span>(<span class="dt">ylab =</span> <span class="kw">expression</span>(MS<span class="op">~</span>(g)),<span class="dt">outer=</span>T, <span class="dt">line =</span> <span class="dv">3</span>)</span>
 <span id="cb87-18"><a href="gráfico-de-colunas.html#cb87-18"></a><span class="kw">arrows</span>(b2,m2<span class="op">+</span>sd2,b2,m2<span class="op">-</span>sd2,<span class="dt">angle =</span> <span class="dv">90</span>,<span class="dt">code=</span><span class="dv">3</span>, <span class="dt">length =</span> <span class="fl">0.05</span>)</span>
 <span id="cb87-19"><a href="gráfico-de-colunas.html#cb87-19"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-83-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-84-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="coluna-hachurada" class="section level3">
@@ -1685,7 +1685,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb88-19"><a href="gráfico-de-colunas.html#cb88-19"></a><span class="kw">title</span>(<span class="dt">ylab =</span> <span class="kw">expression</span>(MS<span class="op">~</span>(g)),<span class="dt">outer=</span>T, <span class="dt">line =</span> <span class="dv">3</span>)</span>
 <span id="cb88-20"><a href="gráfico-de-colunas.html#cb88-20"></a><span class="kw">arrows</span>(b2,m2<span class="op">+</span>sd2,b2,m2<span class="op">-</span>sd2,<span class="dt">angle =</span> <span class="dv">90</span>,<span class="dt">code=</span><span class="dv">3</span>, <span class="dt">length =</span> <span class="fl">0.05</span>)</span>
 <span id="cb88-21"><a href="gráfico-de-colunas.html#cb88-21"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-84-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-85-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="adicionando-legenda-2" class="section level3">
@@ -1716,7 +1716,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb89-24"><a href="gráfico-de-colunas.html#cb89-24"></a><span class="kw">title</span>(<span class="dt">ylab =</span> <span class="kw">expression</span>(MS<span class="op">~</span>(g)),<span class="dt">outer=</span>T, <span class="dt">line =</span> <span class="dv">3</span>)</span>
 <span id="cb89-25"><a href="gráfico-de-colunas.html#cb89-25"></a><span class="kw">arrows</span>(b2,m2<span class="op">+</span>sd2,b2,m2<span class="op">-</span>sd2,<span class="dt">angle =</span> <span class="dv">90</span>,<span class="dt">code=</span><span class="dv">3</span>, <span class="dt">length =</span> <span class="fl">0.05</span>)</span>
 <span id="cb89-26"><a href="gráfico-de-colunas.html#cb89-26"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-85-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-86-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="teste-de-comparação" class="section level3">
@@ -1749,7 +1749,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb90-26"><a href="gráfico-de-colunas.html#cb90-26"></a><span class="kw">title</span>(<span class="dt">ylab =</span> <span class="kw">expression</span>(MS<span class="op">~</span>(g)),<span class="dt">outer=</span>T, <span class="dt">line =</span> <span class="dv">3</span>)</span>
 <span id="cb90-27"><a href="gráfico-de-colunas.html#cb90-27"></a><span class="kw">arrows</span>(b2,m2<span class="op">+</span>sd2,b2,m2<span class="op">-</span>sd2,<span class="dt">angle =</span> <span class="dv">90</span>,<span class="dt">code=</span><span class="dv">3</span>, <span class="dt">length =</span> <span class="fl">0.05</span>)</span>
 <span id="cb90-28"><a href="gráfico-de-colunas.html#cb90-28"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-86-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-87-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="mudando-fonte" class="section level3">
@@ -1783,7 +1783,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb91-27"><a href="gráfico-de-colunas.html#cb91-27"></a><span class="kw">title</span>(<span class="dt">ylab =</span> <span class="kw">expression</span>(MS<span class="op">~</span>(g)),<span class="dt">outer=</span>T, <span class="dt">line =</span> <span class="dv">3</span>)</span>
 <span id="cb91-28"><a href="gráfico-de-colunas.html#cb91-28"></a><span class="kw">arrows</span>(b2,m2<span class="op">+</span>sd2,b2,m2<span class="op">-</span>sd2,<span class="dt">angle =</span> <span class="dv">90</span>,<span class="dt">code=</span><span class="dv">3</span>, <span class="dt">length =</span> <span class="fl">0.05</span>)</span>
 <span id="cb91-29"><a href="gráfico-de-colunas.html#cb91-29"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-87-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-88-1.png" width="672" /></p>
 <p><br><br><br></p>
 <hr />
 </div>

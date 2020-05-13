@@ -598,23 +598,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="fator1-x-fator-2" class="section level3">
 <h3><span class="header-section-number">8.0.2</span> Fator1 x Fator 2</h3>
 <div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="interação.html#cb195-1"></a><span class="kw">with</span>(dados, <span class="kw">interaction.plot</span>(FATOR1, FATOR2, RESP))</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-170-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-171-1.png" width="672" /></p>
 </div>
 <div id="editando-o-gráfico" class="section level3">
 <h3><span class="header-section-number">8.0.3</span> Editando o gráfico</h3>
 <div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="interação.html#cb196-1"></a><span class="kw">with</span>(dados, <span class="kw">interaction.plot</span>(FATOR1, FATOR2, RESP, <span class="dt">las=</span><span class="dv">1</span>, <span class="dt">col=</span><span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dt">bty=</span><span class="st">&#39;l&#39;</span>, </span>
 <span id="cb196-2"><a href="interação.html#cb196-2"></a>                             <span class="dt">ylab=</span><span class="st">&#39;CBM&#39;</span>, <span class="dt">trace.label=</span><span class="st">&quot;FATOR2&quot;</span>))</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-171-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-172-1.png" width="672" /></p>
 </div>
 <div id="fator2-x-fator-1" class="section level3">
 <h3><span class="header-section-number">8.0.4</span> Fator2 x Fator 1</h3>
 <div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="interação.html#cb197-1"></a><span class="kw">with</span>(dados, <span class="kw">interaction.plot</span>(FATOR2, FATOR1, RESP))</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-172-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-173-1.png" width="672" /></p>
 </div>
 <div id="editando-o-gráfico-1" class="section level3">
 <h3><span class="header-section-number">8.0.5</span> Editando o gráfico</h3>
 <div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="interação.html#cb198-1"></a><span class="kw">with</span>(dados, <span class="kw">interaction.plot</span>(FATOR2,FATOR1, RESP, <span class="dt">las=</span><span class="dv">1</span>, <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;red&quot;</span>), <span class="dt">bty=</span><span class="st">&#39;l&#39;</span>,<span class="dt">xlab=</span><span class="st">&#39;&#39;</span>, <span class="dt">ylab=</span><span class="st">&#39;CBM&#39;</span>, <span class="dt">trace.label=</span><span class="st">&quot;repe&quot;</span>))</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-173-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-174-1.png" width="672" /></p>
 </div>
 <div id="usando-o-interactions" class="section level2">
 <h2><span class="header-section-number">8.1</span> Usando o interaction(s)</h2>
@@ -685,7 +685,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb201-5"><a href="interação.html#cb201-5"></a><span class="kw">interaction.plot</span>(data<span class="op">$</span>fatorB[data<span class="op">$</span>fatorA<span class="op">==</span><span class="st">&quot;2&quot;</span>],</span>
 <span id="cb201-6"><a href="interação.html#cb201-6"></a>                 data<span class="op">$</span>fatorC[data<span class="op">$</span>fatorA<span class="op">==</span><span class="st">&quot;2&quot;</span>],</span>
 <span id="cb201-7"><a href="interação.html#cb201-7"></a>                 data<span class="op">$</span>resp[data<span class="op">$</span>fatorA<span class="op">==</span><span class="st">&quot;2&quot;</span>])</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-175-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-176-1.png" width="672" /></p>
 </div>
 <div id="alterando-escala-do-eixo-y" class="section level3">
 <h3><span class="header-section-number">8.1.3</span> Alterando escala do eixo Y</h3>
@@ -698,7 +698,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb202-7"><a href="interação.html#cb202-7"></a>                 data<span class="op">$</span>fatorC[data<span class="op">$</span>fatorA<span class="op">==</span><span class="st">&quot;2&quot;</span>],</span>
 <span id="cb202-8"><a href="interação.html#cb202-8"></a>                 data<span class="op">$</span>resp[data<span class="op">$</span>fatorA<span class="op">==</span><span class="st">&quot;2&quot;</span>], </span>
 <span id="cb202-9"><a href="interação.html#cb202-9"></a>                 <span class="dt">las=</span><span class="dv">1</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-176-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-177-1.png" width="672" /></p>
 </div>
 <div id="título-do-eixo-x-e-y" class="section level3">
 <h3><span class="header-section-number">8.1.4</span> Título do eixo x e y</h3>
@@ -715,7 +715,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb203-11"><a href="interação.html#cb203-11"></a>                 <span class="dt">las=</span><span class="dv">1</span>,</span>
 <span id="cb203-12"><a href="interação.html#cb203-12"></a>                 <span class="dt">xlab=</span><span class="st">&quot;Fator B&quot;</span>,</span>
 <span id="cb203-13"><a href="interação.html#cb203-13"></a>                 <span class="dt">ylab=</span><span class="st">&quot;Resposta&quot;</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-177-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-178-1.png" width="672" /></p>
 </div>
 <div id="removendo-linhas-da-caixa" class="section level3">
 <h3><span class="header-section-number">8.1.5</span> Removendo linhas da caixa</h3>
@@ -734,7 +734,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb204-13"><a href="interação.html#cb204-13"></a>                 <span class="dt">xlab=</span><span class="st">&quot;Fator B&quot;</span>,</span>
 <span id="cb204-14"><a href="interação.html#cb204-14"></a>                 <span class="dt">ylab=</span><span class="st">&quot;Resposta&quot;</span>,</span>
 <span id="cb204-15"><a href="interação.html#cb204-15"></a>                 <span class="dt">bty=</span><span class="st">&quot;l&quot;</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-178-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-179-1.png" width="672" /></p>
 </div>
 <div id="cor-da-linhas" class="section level3">
 <h3><span class="header-section-number">8.1.6</span> Cor da linhas</h3>
@@ -755,7 +755,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb205-15"><a href="interação.html#cb205-15"></a>                 <span class="dt">ylab=</span><span class="st">&quot;Resposta&quot;</span>,</span>
 <span id="cb205-16"><a href="interação.html#cb205-16"></a>                 <span class="dt">bty=</span><span class="st">&quot;l&quot;</span>,</span>
 <span id="cb205-17"><a href="interação.html#cb205-17"></a>                 <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;red&quot;</span>,<span class="st">&quot;blue&quot;</span>))</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-179-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-180-1.png" width="672" /></p>
 </div>
 <div id="título-dos-gráficos" class="section level3">
 <h3><span class="header-section-number">8.1.7</span> Título dos gráficos</h3>
@@ -778,7 +778,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb206-17"><a href="interação.html#cb206-17"></a>                 <span class="dt">bty=</span><span class="st">&quot;l&quot;</span>,</span>
 <span id="cb206-18"><a href="interação.html#cb206-18"></a>                 <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;red&quot;</span>,<span class="st">&quot;blue&quot;</span>),</span>
 <span id="cb206-19"><a href="interação.html#cb206-19"></a>                 <span class="dt">main=</span><span class="st">&quot;Fator A = 2&quot;</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-180-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-181-1.png" width="672" /></p>
 </div>
 <div id="título-da-legenda" class="section level3">
 <h3><span class="header-section-number">8.1.8</span> Título da legenda</h3>
@@ -803,7 +803,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb207-19"><a href="interação.html#cb207-19"></a>                 <span class="dt">col =</span> <span class="kw">c</span>(<span class="st">&quot;red&quot;</span>,<span class="st">&quot;blue&quot;</span>),</span>
 <span id="cb207-20"><a href="interação.html#cb207-20"></a>                 <span class="dt">main=</span><span class="st">&quot;Fator A = 2&quot;</span>,</span>
 <span id="cb207-21"><a href="interação.html#cb207-21"></a>                 <span class="dt">trace.label =</span> <span class="st">&quot;Fator C&quot;</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-181-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-182-1.png" width="672" /></p>
 </div>
 <div id="pontos-da-média" class="section level3">
 <h3><span class="header-section-number">8.1.9</span> Pontos da média</h3>
@@ -845,7 +845,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb209-22"><a href="interação.html#cb209-22"></a>                 <span class="dt">main=</span><span class="st">&quot;Fator A = 2&quot;</span>,</span>
 <span id="cb209-23"><a href="interação.html#cb209-23"></a>                 <span class="dt">trace.label =</span> <span class="st">&quot;Fator C&quot;</span>)</span>
 <span id="cb209-24"><a href="interação.html#cb209-24"></a><span class="kw">points</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>),media1, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>, <span class="dt">pch=</span><span class="dv">16</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-183-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-184-1.png" width="672" /></p>
 </div>
 <div id="barras-de-desvio-padrão-9" class="section level3">
 <h3><span class="header-section-number">8.1.10</span> Barras de desvio-padrão</h3>
@@ -889,7 +889,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb211-24"><a href="interação.html#cb211-24"></a>                 <span class="dt">trace.label =</span> <span class="st">&quot;Fator C&quot;</span>)</span>
 <span id="cb211-25"><a href="interação.html#cb211-25"></a><span class="kw">points</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>),media1, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>, <span class="dt">pch=</span><span class="dv">16</span>)</span>
 <span id="cb211-26"><a href="interação.html#cb211-26"></a><span class="kw">arrows</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>), media1<span class="op">+</span>desvio1,<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>),media1<span class="op">-</span>desvio1, <span class="dt">code=</span><span class="dv">3</span>,<span class="dt">angle=</span><span class="dv">90</span>,<span class="dt">length =</span> <span class="fl">0.1</span>, <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;red&quot;</span>,<span class="st">&quot;red&quot;</span>,<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;blue&quot;</span>))</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-185-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-186-1.png" width="672" /></p>
 </div>
 </div>
 <div id="pacote-dae" class="section level2">
@@ -919,17 +919,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Para se construir esse gráfico é necessário instalar o pacote <code>dae</code></p>
 <div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="interação.html#cb213-1"></a><span class="kw">library</span>(dae)</span>
 <span id="cb213-2"><a href="interação.html#cb213-2"></a><span class="kw">interaction.ABC.plot</span>(resp,FATOR1,FATOR2,FATOR3,<span class="dt">data=</span>dados)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-187-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-188-1.png" width="672" /></p>
 <div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="interação.html#cb214-1"></a><span class="kw">interaction.ABC.plot</span>(resp,FATOR1,FATOR3,FATOR2,<span class="dt">data=</span>dados)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-187-2.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-188-2.png" width="672" /></p>
 <div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="interação.html#cb215-1"></a><span class="kw">interaction.ABC.plot</span>(resp,FATOR2,FATOR3,FATOR1,<span class="dt">data=</span>dados)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-187-3.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-188-3.png" width="672" /></p>
 <div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="interação.html#cb216-1"></a><span class="kw">interaction.ABC.plot</span>(resp,FATOR2,FATOR1,FATOR3,<span class="dt">data=</span>dados)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-187-4.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-188-4.png" width="672" /></p>
 <div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="interação.html#cb217-1"></a><span class="kw">interaction.ABC.plot</span>(resp,FATOR3,FATOR2,FATOR1,<span class="dt">data=</span>dados)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-187-5.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-188-5.png" width="672" /></p>
 <div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="interação.html#cb218-1"></a><span class="kw">interaction.ABC.plot</span>(resp,FATOR3,FATOR1,FATOR2,<span class="dt">data=</span>dados)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-187-6.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-188-6.png" width="672" /></p>
 </div>
 <div id="média-e-desvio-padrão-3" class="section level3">
 <h3><span class="header-section-number">8.2.3</span> Média e desvio-padrão</h3>
@@ -963,7 +963,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb229-4"><a href="interação.html#cb229-4"></a>                                          <span class="kw">aes</span>(<span class="dt">ymax=</span>media<span class="op">+</span>desvio, </span>
 <span id="cb229-5"><a href="interação.html#cb229-5"></a>                                              <span class="dt">ymin=</span>media<span class="op">-</span>desvio), </span>
 <span id="cb229-6"><a href="interação.html#cb229-6"></a>                                                   <span class="dt">width=</span><span class="fl">0.2</span>)))</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-191-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-192-1.png" width="672" /></p>
 <p><br><br><br></p>
 <hr />
 </div>
