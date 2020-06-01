@@ -24,7 +24,7 @@
 <meta name="author" content="Gabriel Danilo Shimizu" />
 
 
-<meta name="date" content="2020-05-13" />
+<meta name="date" content="2020-05-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="layout-graphics.html"/>
-
+<link rel="next" href="plotly.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -186,6 +186,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.10.13" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#variável-exp1"><i class="fa fa-check"></i><b>2.10.13</b> Variável exp1</a></li>
 <li class="chapter" data-level="2.10.14" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#variável-exp2"><i class="fa fa-check"></i><b>2.10.14</b> Variável exp2</a></li>
 <li class="chapter" data-level="2.10.15" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#variável-exp3"><i class="fa fa-check"></i><b>2.10.15</b> Variável exp3</a></li>
+<li class="chapter" data-level="2.10.16" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#outra-forma-de-fazer-no-ggplot2"><i class="fa fa-check"></i><b>2.10.16</b> Outra forma de fazer no ggplot2</a></li>
 </ul></li>
 <li class="chapter" data-level="2.11" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#pacote-ggpubr"><i class="fa fa-check"></i><b>2.11</b> Pacote ggpubr</a><ul>
 <li class="chapter" data-level="2.11.1" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#comando-base"><i class="fa fa-check"></i><b>2.11.1</b> Comando base</a></li>
@@ -204,13 +205,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.12.1" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#conjunto-de-dados-3"><i class="fa fa-check"></i><b>2.12.1</b> Conjunto de dados</a></li>
 <li class="chapter" data-level="2.12.2" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#gráfico-simples"><i class="fa fa-check"></i><b>2.12.2</b> Gráfico simples</a></li>
 <li class="chapter" data-level="2.12.3" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#melhorias"><i class="fa fa-check"></i><b>2.12.3</b> Melhorias</a></li>
-<li class="chapter" data-level="2.12.4" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#cores"><i class="fa fa-check"></i><b>2.12.4</b> Cores</a></li>
-<li class="chapter" data-level="2.12.5" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#barras-de-desvio-padrão-4"><i class="fa fa-check"></i><b>2.12.5</b> Barras de desvio-padrão</a></li>
-<li class="chapter" data-level="2.12.6" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#unidade-do-eixo-y-1"><i class="fa fa-check"></i><b>2.12.6</b> Unidade do eixo Y</a></li>
-<li class="chapter" data-level="2.12.7" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#média-acima-das-barras"><i class="fa fa-check"></i><b>2.12.7</b> Média acima das barras</a></li>
-<li class="chapter" data-level="2.12.8" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#separação-de-casa-decimal-1"><i class="fa fa-check"></i><b>2.12.8</b> Separação de casa decimal</a></li>
-<li class="chapter" data-level="2.12.9" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#letras-do-teste-de-comparação-2"><i class="fa fa-check"></i><b>2.12.9</b> Letras do teste de comparação</a></li>
-<li class="chapter" data-level="2.12.10" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#adicionando-legenda"><i class="fa fa-check"></i><b>2.12.10</b> Adicionando legenda</a></li>
+<li class="chapter" data-level="2.12.4" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#barras-de-desvio-padrão-4"><i class="fa fa-check"></i><b>2.12.4</b> Barras de desvio-padrão</a></li>
+<li class="chapter" data-level="2.12.5" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#unidade-do-eixo-y-1"><i class="fa fa-check"></i><b>2.12.5</b> Unidade do eixo Y</a></li>
+<li class="chapter" data-level="2.12.6" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#média-acima-das-barras"><i class="fa fa-check"></i><b>2.12.6</b> Média acima das barras</a></li>
+<li class="chapter" data-level="2.12.7" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#separação-de-casa-decimal-1"><i class="fa fa-check"></i><b>2.12.7</b> Separação de casa decimal</a></li>
+<li class="chapter" data-level="2.12.8" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#letras-do-teste-de-comparação-2"><i class="fa fa-check"></i><b>2.12.8</b> Letras do teste de comparação</a></li>
+<li class="chapter" data-level="2.12.9" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#adicionando-legenda"><i class="fa fa-check"></i><b>2.12.9</b> Adicionando legenda</a></li>
 </ul></li>
 <li class="chapter" data-level="2.13" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#colunas-empilhadas"><i class="fa fa-check"></i><b>2.13</b> Colunas empilhadas</a><ul>
 <li class="chapter" data-level="2.13.1" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#conjunto-de-dados-4"><i class="fa fa-check"></i><b>2.13.1</b> Conjunto de dados</a></li>
@@ -293,7 +293,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.1.5" data-path="regressão.html"><a href="regressão.html#removendo-cor-de-fundo-1"><i class="fa fa-check"></i><b>5.1.5</b> Removendo cor de fundo</a></li>
 <li class="chapter" data-level="5.1.6" data-path="regressão.html"><a href="regressão.html#removendo-grade"><i class="fa fa-check"></i><b>5.1.6</b> Removendo grade</a></li>
 <li class="chapter" data-level="5.1.7" data-path="regressão.html"><a href="regressão.html#ponto-de-máximomínimo"><i class="fa fa-check"></i><b>5.1.7</b> Ponto de máximo/mínimo</a></li>
-<li class="chapter" data-level="5.1.8" data-path="regressão.html"><a href="regressão.html#tipos-de-linhas"><i class="fa fa-check"></i><b>5.1.8</b> Tipos de linhas</a></li>
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="regressão.html"><a href="regressão.html#duas-curvas"><i class="fa fa-check"></i><b>5.2</b> Duas curvas</a><ul>
 <li class="chapter" data-level="5.2.1" data-path="regressão.html"><a href="regressão.html#conjunto-de-dados-8"><i class="fa fa-check"></i><b>5.2.1</b> Conjunto de dados</a></li>
@@ -479,7 +478,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.3" data-path="componentes-principais.html"><a href="componentes-principais.html#factoextra-gráficos-separados"><i class="fa fa-check"></i><b>15.3</b> factoextra (Gráficos separados)</a><ul>
 <li class="chapter" data-level="15.3.1" data-path="componentes-principais.html"><a href="componentes-principais.html#conjunto-de-dados-26"><i class="fa fa-check"></i><b>15.3.1</b> Conjunto de dados</a></li>
 <li class="chapter" data-level="15.3.2" data-path="componentes-principais.html"><a href="componentes-principais.html#calculando-as-médias"><i class="fa fa-check"></i><b>15.3.2</b> Calculando as médias</a></li>
-<li class="chapter" data-level="15.3.3" data-path="componentes-principais.html"><a href="componentes-principais.html#dendograma-definir-clusters"><i class="fa fa-check"></i><b>15.3.3</b> Dendograma (Definir Clusters)</a></li>
+<li class="chapter" data-level="15.3.3" data-path="componentes-principais.html"><a href="componentes-principais.html#dendrograma-definir-clusters"><i class="fa fa-check"></i><b>15.3.3</b> Dendrograma (Definir Clusters)</a></li>
 <li class="chapter" data-level="15.3.4" data-path="componentes-principais.html"><a href="componentes-principais.html#valores-dos-cp-1"><i class="fa fa-check"></i><b>15.3.4</b> Valores dos CP</a></li>
 <li class="chapter" data-level="15.3.5" data-path="componentes-principais.html"><a href="componentes-principais.html#gráfico-com-os-vetores"><i class="fa fa-check"></i><b>15.3.5</b> Gráfico com os vetores</a></li>
 <li class="chapter" data-level="15.3.6" data-path="componentes-principais.html"><a href="componentes-principais.html#renomeando-eixos"><i class="fa fa-check"></i><b>15.3.6</b> Renomeando eixos</a></li>
@@ -496,7 +495,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="15.4" data-path="componentes-principais.html"><a href="componentes-principais.html#gráfico-de-cp-manualmente"><i class="fa fa-check"></i><b>15.4</b> Gráfico de CP (Manualmente)</a><ul>
 <li class="chapter" data-level="15.4.1" data-path="componentes-principais.html"><a href="componentes-principais.html#calculando-as-médias-1"><i class="fa fa-check"></i><b>15.4.1</b> Calculando as médias</a></li>
-<li class="chapter" data-level="15.4.2" data-path="componentes-principais.html"><a href="componentes-principais.html#dendograma-definir-clusters-1"><i class="fa fa-check"></i><b>15.4.2</b> Dendograma (Definir Clusters)</a></li>
+<li class="chapter" data-level="15.4.2" data-path="componentes-principais.html"><a href="componentes-principais.html#dendrograma-definir-clusters-1"><i class="fa fa-check"></i><b>15.4.2</b> Dendrograma (Definir Clusters)</a></li>
 <li class="chapter" data-level="15.4.3" data-path="componentes-principais.html"><a href="componentes-principais.html#valores-dos-cp-2"><i class="fa fa-check"></i><b>15.4.3</b> Valores dos CP</a></li>
 <li class="chapter" data-level="15.4.4" data-path="componentes-principais.html"><a href="componentes-principais.html#gráfico-com-os-componentes"><i class="fa fa-check"></i><b>15.4.4</b> Gráfico com os componentes</a></li>
 <li class="chapter" data-level="15.4.5" data-path="componentes-principais.html"><a href="componentes-principais.html#ponto-dos-scores"><i class="fa fa-check"></i><b>15.4.5</b> Ponto dos scores</a></li>
@@ -536,17 +535,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.9.4" data-path="componentes-principais.html"><a href="componentes-principais.html#pca"><i class="fa fa-check"></i><b>15.9.4</b> PCA</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="dendograma.html"><a href="dendograma.html"><i class="fa fa-check"></i><b>16</b> Dendograma</a><ul>
-<li class="chapter" data-level="16.0.1" data-path="dendograma.html"><a href="dendograma.html#conjunto-de-dados-29"><i class="fa fa-check"></i><b>16.0.1</b> Conjunto de dados</a></li>
-<li class="chapter" data-level="16.0.2" data-path="dendograma.html"><a href="dendograma.html#calculando-as-distâncias"><i class="fa fa-check"></i><b>16.0.2</b> Calculando as distâncias</a></li>
-<li class="chapter" data-level="16.0.3" data-path="dendograma.html"><a href="dendograma.html#dendograma-1"><i class="fa fa-check"></i><b>16.0.3</b> Dendograma</a></li>
-<li class="chapter" data-level="16.0.4" data-path="dendograma.html"><a href="dendograma.html#altura-dos-rótulos"><i class="fa fa-check"></i><b>16.0.4</b> Altura dos rótulos</a></li>
-<li class="chapter" data-level="16.0.5" data-path="dendograma.html"><a href="dendograma.html#editando-argumentos"><i class="fa fa-check"></i><b>16.0.5</b> Editando argumentos</a></li>
-<li class="chapter" data-level="16.0.6" data-path="dendograma.html"><a href="dendograma.html#separando-em-grupos"><i class="fa fa-check"></i><b>16.0.6</b> Separando em grupos</a></li>
-<li class="chapter" data-level="16.0.7" data-path="dendograma.html"><a href="dendograma.html#caixas-separando-grupos"><i class="fa fa-check"></i><b>16.0.7</b> Caixas separando grupos</a></li>
-<li class="chapter" data-level="16.0.8" data-path="dendograma.html"><a href="dendograma.html#árvore-filogenética-em-círculo"><i class="fa fa-check"></i><b>16.0.8</b> Árvore filogenética (Em círculo)</a></li>
-<li class="chapter" data-level="16.0.9" data-path="dendograma.html"><a href="dendograma.html#cor-e-separando-por-grupo"><i class="fa fa-check"></i><b>16.0.9</b> Cor e separando por grupo</a></li>
-<li class="chapter" data-level="16.0.10" data-path="dendograma.html"><a href="dendograma.html#formato-radial"><i class="fa fa-check"></i><b>16.0.10</b> Formato radial</a></li>
+<li class="chapter" data-level="16" data-path="dendrograma.html"><a href="dendrograma.html"><i class="fa fa-check"></i><b>16</b> Dendrograma</a><ul>
+<li class="chapter" data-level="16.0.1" data-path="dendrograma.html"><a href="dendrograma.html#conjunto-de-dados-29"><i class="fa fa-check"></i><b>16.0.1</b> Conjunto de dados</a></li>
+<li class="chapter" data-level="16.0.2" data-path="dendrograma.html"><a href="dendrograma.html#calculando-as-distâncias"><i class="fa fa-check"></i><b>16.0.2</b> Calculando as distâncias</a></li>
+<li class="chapter" data-level="16.0.3" data-path="dendrograma.html"><a href="dendrograma.html#dendrograma-1"><i class="fa fa-check"></i><b>16.0.3</b> Dendrograma</a></li>
+<li class="chapter" data-level="16.0.4" data-path="dendrograma.html"><a href="dendrograma.html#altura-dos-rótulos"><i class="fa fa-check"></i><b>16.0.4</b> Altura dos rótulos</a></li>
+<li class="chapter" data-level="16.0.5" data-path="dendrograma.html"><a href="dendrograma.html#editando-argumentos"><i class="fa fa-check"></i><b>16.0.5</b> Editando argumentos</a></li>
+<li class="chapter" data-level="16.0.6" data-path="dendrograma.html"><a href="dendrograma.html#separando-em-grupos"><i class="fa fa-check"></i><b>16.0.6</b> Separando em grupos</a></li>
+<li class="chapter" data-level="16.0.7" data-path="dendrograma.html"><a href="dendrograma.html#caixas-separando-grupos"><i class="fa fa-check"></i><b>16.0.7</b> Caixas separando grupos</a></li>
+<li class="chapter" data-level="16.0.8" data-path="dendrograma.html"><a href="dendrograma.html#árvore-filogenética-em-círculo"><i class="fa fa-check"></i><b>16.0.8</b> Árvore filogenética (Em círculo)</a></li>
+<li class="chapter" data-level="16.0.9" data-path="dendrograma.html"><a href="dendrograma.html#cor-e-separando-por-grupo"><i class="fa fa-check"></i><b>16.0.9</b> Cor e separando por grupo</a></li>
+<li class="chapter" data-level="16.0.10" data-path="dendrograma.html"><a href="dendrograma.html#formato-radial"><i class="fa fa-check"></i><b>16.0.10</b> Formato radial</a></li>
 </ul></li>
 <li class="chapter" data-level="17" data-path="expression.html"><a href="expression.html"><i class="fa fa-check"></i><b>17</b> Expression()</a></li>
 <li class="chapter" data-level="18" data-path="layout-graphics.html"><a href="layout-graphics.html"><i class="fa fa-check"></i><b>18</b> layout (graphics)</a><ul>
@@ -560,6 +559,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19.0.5" data-path="ggplot2.html"><a href="ggplot2.html#dois-na-primeira-linha-e-uma-no-lado-esquerdo-da-segunda-linha"><i class="fa fa-check"></i><b>19.0.5</b> Dois na primeira linha e uma no lado esquerdo da segunda linha</a></li>
 <li class="chapter" data-level="19.0.6" data-path="ggplot2.html"><a href="ggplot2.html#dois-na-primeira-linha-e-uma-centralizado-na-segunda-linha"><i class="fa fa-check"></i><b>19.0.6</b> Dois na primeira linha e uma centralizado na segunda linha</a></li>
 <li class="chapter" data-level="19.0.7" data-path="ggplot2.html"><a href="ggplot2.html#dois-na-primeira-linha-e-uma-a-direita-na-segunda-linha"><i class="fa fa-check"></i><b>19.0.7</b> Dois na primeira linha e uma a direita na segunda linha</a></li>
+<li class="chapter" data-level="19.0.8" data-path="ggplot2.html"><a href="ggplot2.html#título-em-gráficos-agrupados"><i class="fa fa-check"></i><b>19.0.8</b> Título em gráficos agrupados</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="plotly.html"><a href="plotly.html"><i class="fa fa-check"></i><b>20</b> plotly</a><ul>
+<li class="chapter" data-level="20.1" data-path="plotly.html"><a href="plotly.html#conjunto-de-dados-31"><i class="fa fa-check"></i><b>20.1</b> Conjunto de dados</a></li>
+<li class="chapter" data-level="20.2" data-path="plotly.html"><a href="plotly.html#gráfico-de-caixas"><i class="fa fa-check"></i><b>20.2</b> Gráfico de caixas</a></li>
+<li class="chapter" data-level="20.3" data-path="plotly.html"><a href="plotly.html#gráfico-de-colunas-1"><i class="fa fa-check"></i><b>20.3</b> Gráfico de colunas</a></li>
+<li class="chapter" data-level="20.4" data-path="plotly.html"><a href="plotly.html#gráfico-de-dispersão-2"><i class="fa fa-check"></i><b>20.4</b> Gráfico de dispersão</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://agronomiar.github.io/livroagro/" target="blank">Anterior</a></li>
@@ -596,64 +602,74 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="conjunto-de-dados-30" class="section level4">
 <h4><span class="header-section-number">19.0.1.1</span> Conjunto de dados</h4>
 <p>Vamos trabalhar com três experimentos em DIC com quatro tratamentos e três repetições cada.</p>
-<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="ggplot2.html#cb451-1"></a>exp1=<span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">18</span>,<span class="dv">19</span>,<span class="dv">16</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">25</span>,<span class="dv">26</span>,<span class="dv">28</span>)</span>
-<span id="cb451-2"><a href="ggplot2.html#cb451-2"></a>exp2=<span class="kw">c</span>(<span class="dv">9</span>,<span class="dv">12</span>,<span class="dv">11</span>,<span class="dv">18</span>,<span class="dv">20</span>,<span class="dv">16</span>,<span class="dv">7</span>,<span class="dv">6</span>,<span class="dv">9</span>,<span class="dv">25</span>,<span class="dv">28</span>,<span class="dv">28</span>)</span>
-<span id="cb451-3"><a href="ggplot2.html#cb451-3"></a>exp3=<span class="kw">c</span>(<span class="dv">9</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">18</span>,<span class="dv">22</span>,<span class="dv">15</span>,<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">4</span>,<span class="dv">25</span>,<span class="dv">30</span>,<span class="dv">28</span>)  </span>
-<span id="cb451-4"><a href="ggplot2.html#cb451-4"></a>Trat=<span class="kw">rep</span>(<span class="kw">c</span>(<span class="kw">paste</span>(<span class="st">&quot;T&quot;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>)),<span class="dt">e=</span><span class="dv">3</span>)</span>
-<span id="cb451-5"><a href="ggplot2.html#cb451-5"></a>dados=<span class="kw">data.frame</span>(Trat,exp1,exp2,exp3)</span>
-<span id="cb451-6"><a href="ggplot2.html#cb451-6"></a>dados<span class="op">$</span>Trat=<span class="kw">as.factor</span>(Trat)</span></code></pre></div>
+<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="ggplot2.html#cb453-1"></a>exp1=<span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">18</span>,<span class="dv">19</span>,<span class="dv">16</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">25</span>,<span class="dv">26</span>,<span class="dv">28</span>)</span>
+<span id="cb453-2"><a href="ggplot2.html#cb453-2"></a>exp2=<span class="kw">c</span>(<span class="dv">9</span>,<span class="dv">12</span>,<span class="dv">11</span>,<span class="dv">18</span>,<span class="dv">20</span>,<span class="dv">16</span>,<span class="dv">7</span>,<span class="dv">6</span>,<span class="dv">9</span>,<span class="dv">25</span>,<span class="dv">28</span>,<span class="dv">28</span>)</span>
+<span id="cb453-3"><a href="ggplot2.html#cb453-3"></a>exp3=<span class="kw">c</span>(<span class="dv">9</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">18</span>,<span class="dv">22</span>,<span class="dv">15</span>,<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">4</span>,<span class="dv">25</span>,<span class="dv">30</span>,<span class="dv">28</span>)  </span>
+<span id="cb453-4"><a href="ggplot2.html#cb453-4"></a>Trat=<span class="kw">rep</span>(<span class="kw">c</span>(<span class="kw">paste</span>(<span class="st">&quot;T&quot;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>)),<span class="dt">e=</span><span class="dv">3</span>)</span>
+<span id="cb453-5"><a href="ggplot2.html#cb453-5"></a>dados=<span class="kw">data.frame</span>(Trat,exp1,exp2,exp3)</span>
+<span id="cb453-6"><a href="ggplot2.html#cb453-6"></a>dados<span class="op">$</span>Trat=<span class="kw">as.factor</span>(Trat)</span></code></pre></div>
 </div>
 </div>
 <div id="juntando-três-gráficos-do-ggplot2" class="section level3">
 <h3><span class="header-section-number">19.0.2</span> Juntando três gráficos do ggplot2</h3>
 <p><em>Obs</em> Para edição do gráfico ver tutorial sobre gráfico de colunas usando o ggplot2</p>
-<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="ggplot2.html#cb452-1"></a><span class="kw">library</span>(ggplot2)</span>
-<span id="cb452-2"><a href="ggplot2.html#cb452-2"></a>m1=<span class="kw">tapply</span>(exp1, Trat, mean);d1=<span class="kw">tapply</span>(exp1, Trat, sd)</span>
-<span id="cb452-3"><a href="ggplot2.html#cb452-3"></a>dados1=<span class="kw">data.frame</span>(<span class="dt">Trat=</span><span class="kw">rownames</span>(m1),m1,d1)</span>
-<span id="cb452-4"><a href="ggplot2.html#cb452-4"></a>a=<span class="kw">ggplot</span>(dados1, <span class="kw">aes</span>(<span class="dt">x=</span>Trat,<span class="dt">y=</span>m1))<span class="op">+</span><span class="kw">geom_col</span>()<span class="op">+</span><span class="kw">theme_bw</span>()<span class="op">+</span></span>
-<span id="cb452-5"><a href="ggplot2.html#cb452-5"></a><span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymax=</span>m1<span class="op">+</span>d1, <span class="dt">ymin=</span>m1<span class="op">-</span>d1), <span class="dt">width=</span><span class="fl">0.25</span>)</span>
-<span id="cb452-6"><a href="ggplot2.html#cb452-6"></a>m2=<span class="kw">tapply</span>(exp2, Trat, mean);d2=<span class="kw">tapply</span>(exp2, Trat, sd)</span>
-<span id="cb452-7"><a href="ggplot2.html#cb452-7"></a>dados2=<span class="kw">data.frame</span>(<span class="dt">Trat=</span><span class="kw">rownames</span>(m2),m2,d2)</span>
-<span id="cb452-8"><a href="ggplot2.html#cb452-8"></a>b=<span class="kw">ggplot</span>(dados2, <span class="kw">aes</span>(<span class="dt">x=</span>Trat,<span class="dt">y=</span>m2))<span class="op">+</span><span class="kw">geom_col</span>()<span class="op">+</span><span class="kw">theme_bw</span>()<span class="op">+</span></span>
-<span id="cb452-9"><a href="ggplot2.html#cb452-9"></a><span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymax=</span>m2<span class="op">+</span>d2,<span class="dt">ymin=</span>m2<span class="op">-</span>d2), <span class="dt">width=</span><span class="fl">0.25</span>)</span>
-<span id="cb452-10"><a href="ggplot2.html#cb452-10"></a>m3=<span class="kw">tapply</span>(exp3, Trat, mean);d3=<span class="kw">tapply</span>(exp3, Trat, sd)</span>
-<span id="cb452-11"><a href="ggplot2.html#cb452-11"></a>dados3=<span class="kw">data.frame</span>(<span class="dt">Trat=</span><span class="kw">rownames</span>(m3),m3,d3)</span>
-<span id="cb452-12"><a href="ggplot2.html#cb452-12"></a>c=<span class="kw">ggplot</span>(dados3, <span class="kw">aes</span>(<span class="dt">x=</span>Trat,<span class="dt">y=</span>m3))<span class="op">+</span><span class="kw">geom_col</span>()<span class="op">+</span><span class="kw">theme_bw</span>()<span class="op">+</span></span>
-<span id="cb452-13"><a href="ggplot2.html#cb452-13"></a><span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymax=</span>m3<span class="op">+</span>d3,<span class="dt">ymin=</span>m3<span class="op">-</span>d3),<span class="dt">width=</span><span class="fl">0.25</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb454-1"><a href="ggplot2.html#cb454-1"></a><span class="kw">library</span>(ggplot2)</span>
+<span id="cb454-2"><a href="ggplot2.html#cb454-2"></a>m1=<span class="kw">tapply</span>(exp1, Trat, mean);d1=<span class="kw">tapply</span>(exp1, Trat, sd)</span>
+<span id="cb454-3"><a href="ggplot2.html#cb454-3"></a>dados1=<span class="kw">data.frame</span>(<span class="dt">Trat=</span><span class="kw">rownames</span>(m1),m1,d1)</span>
+<span id="cb454-4"><a href="ggplot2.html#cb454-4"></a>a=<span class="kw">ggplot</span>(dados1, <span class="kw">aes</span>(<span class="dt">x=</span>Trat,<span class="dt">y=</span>m1))<span class="op">+</span><span class="kw">geom_col</span>()<span class="op">+</span><span class="kw">theme_bw</span>()<span class="op">+</span></span>
+<span id="cb454-5"><a href="ggplot2.html#cb454-5"></a><span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymax=</span>m1<span class="op">+</span>d1, <span class="dt">ymin=</span>m1<span class="op">-</span>d1), <span class="dt">width=</span><span class="fl">0.25</span>)</span>
+<span id="cb454-6"><a href="ggplot2.html#cb454-6"></a>m2=<span class="kw">tapply</span>(exp2, Trat, mean);d2=<span class="kw">tapply</span>(exp2, Trat, sd)</span>
+<span id="cb454-7"><a href="ggplot2.html#cb454-7"></a>dados2=<span class="kw">data.frame</span>(<span class="dt">Trat=</span><span class="kw">rownames</span>(m2),m2,d2)</span>
+<span id="cb454-8"><a href="ggplot2.html#cb454-8"></a>b=<span class="kw">ggplot</span>(dados2, <span class="kw">aes</span>(<span class="dt">x=</span>Trat,<span class="dt">y=</span>m2))<span class="op">+</span><span class="kw">geom_col</span>()<span class="op">+</span><span class="kw">theme_bw</span>()<span class="op">+</span></span>
+<span id="cb454-9"><a href="ggplot2.html#cb454-9"></a><span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymax=</span>m2<span class="op">+</span>d2,<span class="dt">ymin=</span>m2<span class="op">-</span>d2), <span class="dt">width=</span><span class="fl">0.25</span>)</span>
+<span id="cb454-10"><a href="ggplot2.html#cb454-10"></a>m3=<span class="kw">tapply</span>(exp3, Trat, mean);d3=<span class="kw">tapply</span>(exp3, Trat, sd)</span>
+<span id="cb454-11"><a href="ggplot2.html#cb454-11"></a>dados3=<span class="kw">data.frame</span>(<span class="dt">Trat=</span><span class="kw">rownames</span>(m3),m3,d3)</span>
+<span id="cb454-12"><a href="ggplot2.html#cb454-12"></a>c=<span class="kw">ggplot</span>(dados3, <span class="kw">aes</span>(<span class="dt">x=</span>Trat,<span class="dt">y=</span>m3))<span class="op">+</span><span class="kw">geom_col</span>()<span class="op">+</span><span class="kw">theme_bw</span>()<span class="op">+</span></span>
+<span id="cb454-13"><a href="ggplot2.html#cb454-13"></a><span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymax=</span>m3<span class="op">+</span>d3,<span class="dt">ymin=</span>m3<span class="op">-</span>d3),<span class="dt">width=</span><span class="fl">0.25</span>)</span></code></pre></div>
 </div>
 <div id="gráficos-lado-a-lado" class="section level3">
 <h3><span class="header-section-number">19.0.3</span> Gráficos lado a lado</h3>
-<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="ggplot2.html#cb453-1"></a><span class="kw">library</span>(gridExtra)</span>
-<span id="cb453-2"><a href="ggplot2.html#cb453-2"></a><span class="kw">grid.arrange</span>(a,b,c,<span class="dt">ncol=</span><span class="dv">3</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-391-1.png" width="672" /></p>
+<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="ggplot2.html#cb455-1"></a><span class="kw">library</span>(gridExtra)</span>
+<span id="cb455-2"><a href="ggplot2.html#cb455-2"></a><span class="kw">grid.arrange</span>(a,b,c,<span class="dt">ncol=</span><span class="dv">3</span>)</span></code></pre></div>
+<p><img src="index_files/figure-html/unnamed-chunk-394-1.png" width="672" /></p>
 </div>
 <div id="gráficos-um-abaixo-do-outro" class="section level3">
 <h3><span class="header-section-number">19.0.4</span> Gráficos um abaixo do outro</h3>
-<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb454-1"><a href="ggplot2.html#cb454-1"></a><span class="kw">library</span>(gridExtra)</span>
-<span id="cb454-2"><a href="ggplot2.html#cb454-2"></a><span class="kw">grid.arrange</span>(a,b,c,<span class="dt">ncol=</span><span class="dv">1</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-392-1.png" width="672" /></p>
+<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="ggplot2.html#cb456-1"></a><span class="kw">library</span>(gridExtra)</span>
+<span id="cb456-2"><a href="ggplot2.html#cb456-2"></a><span class="kw">grid.arrange</span>(a,b,c,<span class="dt">ncol=</span><span class="dv">1</span>)</span></code></pre></div>
+<p><img src="index_files/figure-html/unnamed-chunk-395-1.png" width="672" /></p>
 </div>
 <div id="dois-na-primeira-linha-e-uma-no-lado-esquerdo-da-segunda-linha" class="section level3">
 <h3><span class="header-section-number">19.0.5</span> Dois na primeira linha e uma no lado esquerdo da segunda linha</h3>
-<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="ggplot2.html#cb455-1"></a><span class="kw">library</span>(gridExtra)</span>
-<span id="cb455-2"><a href="ggplot2.html#cb455-2"></a><span class="kw">grid.arrange</span>(a,b,c,<span class="dt">ncol=</span><span class="dv">2</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-393-1.png" width="672" /></p>
+<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="ggplot2.html#cb457-1"></a><span class="kw">library</span>(gridExtra)</span>
+<span id="cb457-2"><a href="ggplot2.html#cb457-2"></a><span class="kw">grid.arrange</span>(a,b,c,<span class="dt">ncol=</span><span class="dv">2</span>)</span></code></pre></div>
+<p><img src="index_files/figure-html/unnamed-chunk-396-1.png" width="672" /></p>
 </div>
 <div id="dois-na-primeira-linha-e-uma-centralizado-na-segunda-linha" class="section level3">
 <h3><span class="header-section-number">19.0.6</span> Dois na primeira linha e uma centralizado na segunda linha</h3>
-<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="ggplot2.html#cb456-1"></a><span class="kw">library</span>(gridExtra)</span>
-<span id="cb456-2"><a href="ggplot2.html#cb456-2"></a><span class="kw">grid.arrange</span>(a,b,c,</span>
-<span id="cb456-3"><a href="ggplot2.html#cb456-3"></a>             <span class="dt">layout_matrix =</span> <span class="kw">rbind</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>), <span class="kw">c</span>(<span class="ot">NA</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="ot">NA</span>)))</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-394-1.png" width="672" /></p>
+<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb458-1"><a href="ggplot2.html#cb458-1"></a><span class="kw">library</span>(gridExtra)</span>
+<span id="cb458-2"><a href="ggplot2.html#cb458-2"></a><span class="kw">grid.arrange</span>(a,b,c,</span>
+<span id="cb458-3"><a href="ggplot2.html#cb458-3"></a>             <span class="dt">layout_matrix =</span> <span class="kw">rbind</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>), <span class="kw">c</span>(<span class="ot">NA</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="ot">NA</span>)))</span></code></pre></div>
+<p><img src="index_files/figure-html/unnamed-chunk-397-1.png" width="672" /></p>
 </div>
 <div id="dois-na-primeira-linha-e-uma-a-direita-na-segunda-linha" class="section level3">
 <h3><span class="header-section-number">19.0.7</span> Dois na primeira linha e uma a direita na segunda linha</h3>
 <p><br></p>
-<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="ggplot2.html#cb457-1"></a><span class="kw">library</span>(gridExtra)</span>
-<span id="cb457-2"><a href="ggplot2.html#cb457-2"></a><span class="kw">grid.arrange</span>(a,b,c,</span>
-<span id="cb457-3"><a href="ggplot2.html#cb457-3"></a>             <span class="dt">layout_matrix =</span> <span class="kw">rbind</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>), <span class="kw">c</span>(<span class="ot">NA</span>,<span class="ot">NA</span>,<span class="dv">3</span>,<span class="dv">3</span>)))</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-395-1.png" width="672" /></p>
-
+<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb459-1"><a href="ggplot2.html#cb459-1"></a><span class="kw">library</span>(gridExtra)</span>
+<span id="cb459-2"><a href="ggplot2.html#cb459-2"></a><span class="kw">grid.arrange</span>(a,b,c,</span>
+<span id="cb459-3"><a href="ggplot2.html#cb459-3"></a>             <span class="dt">layout_matrix =</span> <span class="kw">rbind</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>), <span class="kw">c</span>(<span class="ot">NA</span>,<span class="ot">NA</span>,<span class="dv">3</span>,<span class="dv">3</span>)))</span></code></pre></div>
+<p><img src="index_files/figure-html/unnamed-chunk-398-1.png" width="672" /></p>
+</div>
+<div id="título-em-gráficos-agrupados" class="section level3">
+<h3><span class="header-section-number">19.0.8</span> Título em gráficos agrupados</h3>
+<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="ggplot2.html#cb460-1"></a><span class="kw">library</span>(gridExtra)</span>
+<span id="cb460-2"><a href="ggplot2.html#cb460-2"></a>a1=<span class="kw">grid.arrange</span>(a,b,<span class="dt">layout_matrix =</span> <span class="kw">rbind</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>)),<span class="dt">top=</span><span class="st">&quot;Titulo 1&quot;</span>)</span></code></pre></div>
+<p><img src="index_files/figure-html/unnamed-chunk-399-1.png" width="672" /></p>
+<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb461-1"><a href="ggplot2.html#cb461-1"></a>a2=<span class="kw">grid.arrange</span>(a,b,<span class="dt">layout_matrix =</span> <span class="kw">rbind</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>)),<span class="dt">top=</span><span class="st">&quot;Titulo 2&quot;</span>)</span></code></pre></div>
+<p><img src="index_files/figure-html/unnamed-chunk-399-2.png" width="672" /></p>
+<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="ggplot2.html#cb462-1"></a><span class="kw">grid.arrange</span>(a1,a2)</span></code></pre></div>
+<p><img src="index_files/figure-html/unnamed-chunk-399-3.png" width="672" /></p>
+<hr />
 </div>
 </div>
             </section>
@@ -661,8 +677,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="layout-graphics.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="layout-graphics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="plotly.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

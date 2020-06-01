@@ -24,7 +24,7 @@
 <meta name="author" content="Gabriel Danilo Shimizu" />
 
 
-<meta name="date" content="2020-05-13" />
+<meta name="date" content="2020-05-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="quantis-teóricos.html"/>
-<link rel="next" href="dendograma.html"/>
+<link rel="next" href="dendrograma.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -186,6 +186,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.10.13" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#variável-exp1"><i class="fa fa-check"></i><b>2.10.13</b> Variável exp1</a></li>
 <li class="chapter" data-level="2.10.14" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#variável-exp2"><i class="fa fa-check"></i><b>2.10.14</b> Variável exp2</a></li>
 <li class="chapter" data-level="2.10.15" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#variável-exp3"><i class="fa fa-check"></i><b>2.10.15</b> Variável exp3</a></li>
+<li class="chapter" data-level="2.10.16" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#outra-forma-de-fazer-no-ggplot2"><i class="fa fa-check"></i><b>2.10.16</b> Outra forma de fazer no ggplot2</a></li>
 </ul></li>
 <li class="chapter" data-level="2.11" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#pacote-ggpubr"><i class="fa fa-check"></i><b>2.11</b> Pacote ggpubr</a><ul>
 <li class="chapter" data-level="2.11.1" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#comando-base"><i class="fa fa-check"></i><b>2.11.1</b> Comando base</a></li>
@@ -204,13 +205,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.12.1" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#conjunto-de-dados-3"><i class="fa fa-check"></i><b>2.12.1</b> Conjunto de dados</a></li>
 <li class="chapter" data-level="2.12.2" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#gráfico-simples"><i class="fa fa-check"></i><b>2.12.2</b> Gráfico simples</a></li>
 <li class="chapter" data-level="2.12.3" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#melhorias"><i class="fa fa-check"></i><b>2.12.3</b> Melhorias</a></li>
-<li class="chapter" data-level="2.12.4" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#cores"><i class="fa fa-check"></i><b>2.12.4</b> Cores</a></li>
-<li class="chapter" data-level="2.12.5" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#barras-de-desvio-padrão-4"><i class="fa fa-check"></i><b>2.12.5</b> Barras de desvio-padrão</a></li>
-<li class="chapter" data-level="2.12.6" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#unidade-do-eixo-y-1"><i class="fa fa-check"></i><b>2.12.6</b> Unidade do eixo Y</a></li>
-<li class="chapter" data-level="2.12.7" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#média-acima-das-barras"><i class="fa fa-check"></i><b>2.12.7</b> Média acima das barras</a></li>
-<li class="chapter" data-level="2.12.8" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#separação-de-casa-decimal-1"><i class="fa fa-check"></i><b>2.12.8</b> Separação de casa decimal</a></li>
-<li class="chapter" data-level="2.12.9" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#letras-do-teste-de-comparação-2"><i class="fa fa-check"></i><b>2.12.9</b> Letras do teste de comparação</a></li>
-<li class="chapter" data-level="2.12.10" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#adicionando-legenda"><i class="fa fa-check"></i><b>2.12.10</b> Adicionando legenda</a></li>
+<li class="chapter" data-level="2.12.4" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#barras-de-desvio-padrão-4"><i class="fa fa-check"></i><b>2.12.4</b> Barras de desvio-padrão</a></li>
+<li class="chapter" data-level="2.12.5" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#unidade-do-eixo-y-1"><i class="fa fa-check"></i><b>2.12.5</b> Unidade do eixo Y</a></li>
+<li class="chapter" data-level="2.12.6" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#média-acima-das-barras"><i class="fa fa-check"></i><b>2.12.6</b> Média acima das barras</a></li>
+<li class="chapter" data-level="2.12.7" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#separação-de-casa-decimal-1"><i class="fa fa-check"></i><b>2.12.7</b> Separação de casa decimal</a></li>
+<li class="chapter" data-level="2.12.8" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#letras-do-teste-de-comparação-2"><i class="fa fa-check"></i><b>2.12.8</b> Letras do teste de comparação</a></li>
+<li class="chapter" data-level="2.12.9" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#adicionando-legenda"><i class="fa fa-check"></i><b>2.12.9</b> Adicionando legenda</a></li>
 </ul></li>
 <li class="chapter" data-level="2.13" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#colunas-empilhadas"><i class="fa fa-check"></i><b>2.13</b> Colunas empilhadas</a><ul>
 <li class="chapter" data-level="2.13.1" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#conjunto-de-dados-4"><i class="fa fa-check"></i><b>2.13.1</b> Conjunto de dados</a></li>
@@ -293,7 +293,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.1.5" data-path="regressão.html"><a href="regressão.html#removendo-cor-de-fundo-1"><i class="fa fa-check"></i><b>5.1.5</b> Removendo cor de fundo</a></li>
 <li class="chapter" data-level="5.1.6" data-path="regressão.html"><a href="regressão.html#removendo-grade"><i class="fa fa-check"></i><b>5.1.6</b> Removendo grade</a></li>
 <li class="chapter" data-level="5.1.7" data-path="regressão.html"><a href="regressão.html#ponto-de-máximomínimo"><i class="fa fa-check"></i><b>5.1.7</b> Ponto de máximo/mínimo</a></li>
-<li class="chapter" data-level="5.1.8" data-path="regressão.html"><a href="regressão.html#tipos-de-linhas"><i class="fa fa-check"></i><b>5.1.8</b> Tipos de linhas</a></li>
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="regressão.html"><a href="regressão.html#duas-curvas"><i class="fa fa-check"></i><b>5.2</b> Duas curvas</a><ul>
 <li class="chapter" data-level="5.2.1" data-path="regressão.html"><a href="regressão.html#conjunto-de-dados-8"><i class="fa fa-check"></i><b>5.2.1</b> Conjunto de dados</a></li>
@@ -479,7 +478,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.3" data-path="componentes-principais.html"><a href="componentes-principais.html#factoextra-gráficos-separados"><i class="fa fa-check"></i><b>15.3</b> factoextra (Gráficos separados)</a><ul>
 <li class="chapter" data-level="15.3.1" data-path="componentes-principais.html"><a href="componentes-principais.html#conjunto-de-dados-26"><i class="fa fa-check"></i><b>15.3.1</b> Conjunto de dados</a></li>
 <li class="chapter" data-level="15.3.2" data-path="componentes-principais.html"><a href="componentes-principais.html#calculando-as-médias"><i class="fa fa-check"></i><b>15.3.2</b> Calculando as médias</a></li>
-<li class="chapter" data-level="15.3.3" data-path="componentes-principais.html"><a href="componentes-principais.html#dendograma-definir-clusters"><i class="fa fa-check"></i><b>15.3.3</b> Dendograma (Definir Clusters)</a></li>
+<li class="chapter" data-level="15.3.3" data-path="componentes-principais.html"><a href="componentes-principais.html#dendrograma-definir-clusters"><i class="fa fa-check"></i><b>15.3.3</b> Dendrograma (Definir Clusters)</a></li>
 <li class="chapter" data-level="15.3.4" data-path="componentes-principais.html"><a href="componentes-principais.html#valores-dos-cp-1"><i class="fa fa-check"></i><b>15.3.4</b> Valores dos CP</a></li>
 <li class="chapter" data-level="15.3.5" data-path="componentes-principais.html"><a href="componentes-principais.html#gráfico-com-os-vetores"><i class="fa fa-check"></i><b>15.3.5</b> Gráfico com os vetores</a></li>
 <li class="chapter" data-level="15.3.6" data-path="componentes-principais.html"><a href="componentes-principais.html#renomeando-eixos"><i class="fa fa-check"></i><b>15.3.6</b> Renomeando eixos</a></li>
@@ -496,7 +495,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="15.4" data-path="componentes-principais.html"><a href="componentes-principais.html#gráfico-de-cp-manualmente"><i class="fa fa-check"></i><b>15.4</b> Gráfico de CP (Manualmente)</a><ul>
 <li class="chapter" data-level="15.4.1" data-path="componentes-principais.html"><a href="componentes-principais.html#calculando-as-médias-1"><i class="fa fa-check"></i><b>15.4.1</b> Calculando as médias</a></li>
-<li class="chapter" data-level="15.4.2" data-path="componentes-principais.html"><a href="componentes-principais.html#dendograma-definir-clusters-1"><i class="fa fa-check"></i><b>15.4.2</b> Dendograma (Definir Clusters)</a></li>
+<li class="chapter" data-level="15.4.2" data-path="componentes-principais.html"><a href="componentes-principais.html#dendrograma-definir-clusters-1"><i class="fa fa-check"></i><b>15.4.2</b> Dendrograma (Definir Clusters)</a></li>
 <li class="chapter" data-level="15.4.3" data-path="componentes-principais.html"><a href="componentes-principais.html#valores-dos-cp-2"><i class="fa fa-check"></i><b>15.4.3</b> Valores dos CP</a></li>
 <li class="chapter" data-level="15.4.4" data-path="componentes-principais.html"><a href="componentes-principais.html#gráfico-com-os-componentes"><i class="fa fa-check"></i><b>15.4.4</b> Gráfico com os componentes</a></li>
 <li class="chapter" data-level="15.4.5" data-path="componentes-principais.html"><a href="componentes-principais.html#ponto-dos-scores"><i class="fa fa-check"></i><b>15.4.5</b> Ponto dos scores</a></li>
@@ -536,17 +535,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.9.4" data-path="componentes-principais.html"><a href="componentes-principais.html#pca"><i class="fa fa-check"></i><b>15.9.4</b> PCA</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="dendograma.html"><a href="dendograma.html"><i class="fa fa-check"></i><b>16</b> Dendograma</a><ul>
-<li class="chapter" data-level="16.0.1" data-path="dendograma.html"><a href="dendograma.html#conjunto-de-dados-29"><i class="fa fa-check"></i><b>16.0.1</b> Conjunto de dados</a></li>
-<li class="chapter" data-level="16.0.2" data-path="dendograma.html"><a href="dendograma.html#calculando-as-distâncias"><i class="fa fa-check"></i><b>16.0.2</b> Calculando as distâncias</a></li>
-<li class="chapter" data-level="16.0.3" data-path="dendograma.html"><a href="dendograma.html#dendograma-1"><i class="fa fa-check"></i><b>16.0.3</b> Dendograma</a></li>
-<li class="chapter" data-level="16.0.4" data-path="dendograma.html"><a href="dendograma.html#altura-dos-rótulos"><i class="fa fa-check"></i><b>16.0.4</b> Altura dos rótulos</a></li>
-<li class="chapter" data-level="16.0.5" data-path="dendograma.html"><a href="dendograma.html#editando-argumentos"><i class="fa fa-check"></i><b>16.0.5</b> Editando argumentos</a></li>
-<li class="chapter" data-level="16.0.6" data-path="dendograma.html"><a href="dendograma.html#separando-em-grupos"><i class="fa fa-check"></i><b>16.0.6</b> Separando em grupos</a></li>
-<li class="chapter" data-level="16.0.7" data-path="dendograma.html"><a href="dendograma.html#caixas-separando-grupos"><i class="fa fa-check"></i><b>16.0.7</b> Caixas separando grupos</a></li>
-<li class="chapter" data-level="16.0.8" data-path="dendograma.html"><a href="dendograma.html#árvore-filogenética-em-círculo"><i class="fa fa-check"></i><b>16.0.8</b> Árvore filogenética (Em círculo)</a></li>
-<li class="chapter" data-level="16.0.9" data-path="dendograma.html"><a href="dendograma.html#cor-e-separando-por-grupo"><i class="fa fa-check"></i><b>16.0.9</b> Cor e separando por grupo</a></li>
-<li class="chapter" data-level="16.0.10" data-path="dendograma.html"><a href="dendograma.html#formato-radial"><i class="fa fa-check"></i><b>16.0.10</b> Formato radial</a></li>
+<li class="chapter" data-level="16" data-path="dendrograma.html"><a href="dendrograma.html"><i class="fa fa-check"></i><b>16</b> Dendrograma</a><ul>
+<li class="chapter" data-level="16.0.1" data-path="dendrograma.html"><a href="dendrograma.html#conjunto-de-dados-29"><i class="fa fa-check"></i><b>16.0.1</b> Conjunto de dados</a></li>
+<li class="chapter" data-level="16.0.2" data-path="dendrograma.html"><a href="dendrograma.html#calculando-as-distâncias"><i class="fa fa-check"></i><b>16.0.2</b> Calculando as distâncias</a></li>
+<li class="chapter" data-level="16.0.3" data-path="dendrograma.html"><a href="dendrograma.html#dendrograma-1"><i class="fa fa-check"></i><b>16.0.3</b> Dendrograma</a></li>
+<li class="chapter" data-level="16.0.4" data-path="dendrograma.html"><a href="dendrograma.html#altura-dos-rótulos"><i class="fa fa-check"></i><b>16.0.4</b> Altura dos rótulos</a></li>
+<li class="chapter" data-level="16.0.5" data-path="dendrograma.html"><a href="dendrograma.html#editando-argumentos"><i class="fa fa-check"></i><b>16.0.5</b> Editando argumentos</a></li>
+<li class="chapter" data-level="16.0.6" data-path="dendrograma.html"><a href="dendrograma.html#separando-em-grupos"><i class="fa fa-check"></i><b>16.0.6</b> Separando em grupos</a></li>
+<li class="chapter" data-level="16.0.7" data-path="dendrograma.html"><a href="dendrograma.html#caixas-separando-grupos"><i class="fa fa-check"></i><b>16.0.7</b> Caixas separando grupos</a></li>
+<li class="chapter" data-level="16.0.8" data-path="dendrograma.html"><a href="dendrograma.html#árvore-filogenética-em-círculo"><i class="fa fa-check"></i><b>16.0.8</b> Árvore filogenética (Em círculo)</a></li>
+<li class="chapter" data-level="16.0.9" data-path="dendrograma.html"><a href="dendrograma.html#cor-e-separando-por-grupo"><i class="fa fa-check"></i><b>16.0.9</b> Cor e separando por grupo</a></li>
+<li class="chapter" data-level="16.0.10" data-path="dendrograma.html"><a href="dendrograma.html#formato-radial"><i class="fa fa-check"></i><b>16.0.10</b> Formato radial</a></li>
 </ul></li>
 <li class="chapter" data-level="17" data-path="expression.html"><a href="expression.html"><i class="fa fa-check"></i><b>17</b> Expression()</a></li>
 <li class="chapter" data-level="18" data-path="layout-graphics.html"><a href="layout-graphics.html"><i class="fa fa-check"></i><b>18</b> layout (graphics)</a><ul>
@@ -560,6 +559,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19.0.5" data-path="ggplot2.html"><a href="ggplot2.html#dois-na-primeira-linha-e-uma-no-lado-esquerdo-da-segunda-linha"><i class="fa fa-check"></i><b>19.0.5</b> Dois na primeira linha e uma no lado esquerdo da segunda linha</a></li>
 <li class="chapter" data-level="19.0.6" data-path="ggplot2.html"><a href="ggplot2.html#dois-na-primeira-linha-e-uma-centralizado-na-segunda-linha"><i class="fa fa-check"></i><b>19.0.6</b> Dois na primeira linha e uma centralizado na segunda linha</a></li>
 <li class="chapter" data-level="19.0.7" data-path="ggplot2.html"><a href="ggplot2.html#dois-na-primeira-linha-e-uma-a-direita-na-segunda-linha"><i class="fa fa-check"></i><b>19.0.7</b> Dois na primeira linha e uma a direita na segunda linha</a></li>
+<li class="chapter" data-level="19.0.8" data-path="ggplot2.html"><a href="ggplot2.html#título-em-gráficos-agrupados"><i class="fa fa-check"></i><b>19.0.8</b> Título em gráficos agrupados</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="plotly.html"><a href="plotly.html"><i class="fa fa-check"></i><b>20</b> plotly</a><ul>
+<li class="chapter" data-level="20.1" data-path="plotly.html"><a href="plotly.html#conjunto-de-dados-31"><i class="fa fa-check"></i><b>20.1</b> Conjunto de dados</a></li>
+<li class="chapter" data-level="20.2" data-path="plotly.html"><a href="plotly.html#gráfico-de-caixas"><i class="fa fa-check"></i><b>20.2</b> Gráfico de caixas</a></li>
+<li class="chapter" data-level="20.3" data-path="plotly.html"><a href="plotly.html#gráfico-de-colunas-1"><i class="fa fa-check"></i><b>20.3</b> Gráfico de colunas</a></li>
+<li class="chapter" data-level="20.4" data-path="plotly.html"><a href="plotly.html#gráfico-de-dispersão-2"><i class="fa fa-check"></i><b>20.4</b> Gráfico de dispersão</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://agronomiar.github.io/livroagro/" target="blank">Anterior</a></li>
@@ -614,7 +620,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">15.1.3</span> Dispersão com os autovalores</h3>
 <div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="componentes-principais.html#cb325-1"></a><span class="kw">library</span>(ggfortify)</span>
 <span id="cb325-2"><a href="componentes-principais.html#cb325-2"></a><span class="kw">autoplot</span>(pca,<span class="dt">data=</span>iris)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-272-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-273-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="agrupando-por-espécies" class="section level3">
@@ -622,7 +628,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Obs. a coluna de “Species” está na dataset <em>iris</em></p>
 <div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="componentes-principais.html#cb326-1"></a><span class="kw">library</span>(ggfortify)</span>
 <span id="cb326-2"><a href="componentes-principais.html#cb326-2"></a><span class="kw">autoplot</span>(pca,<span class="dt">data=</span>iris,<span class="dt">colour=</span><span class="st">&quot;Species&quot;</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-273-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-274-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="vetor-das-respostas" class="section level3">
@@ -632,7 +638,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb327-3"><a href="componentes-principais.html#cb327-3"></a>         <span class="dt">data=</span>iris,</span>
 <span id="cb327-4"><a href="componentes-principais.html#cb327-4"></a>         <span class="dt">colour=</span><span class="st">&quot;Species&quot;</span>,</span>
 <span id="cb327-5"><a href="componentes-principais.html#cb327-5"></a>         <span class="dt">loadings=</span>T)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-274-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-275-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="nome-dos-vetores" class="section level3">
@@ -643,7 +649,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb328-4"><a href="componentes-principais.html#cb328-4"></a>         <span class="dt">colour=</span><span class="st">&quot;Species&quot;</span>,</span>
 <span id="cb328-5"><a href="componentes-principais.html#cb328-5"></a>         <span class="dt">loadings=</span>T,</span>
 <span id="cb328-6"><a href="componentes-principais.html#cb328-6"></a>         <span class="dt">loadings.label=</span>T)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-275-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-276-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="polígono-de-agrupamento" class="section level3">
@@ -655,7 +661,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb329-5"><a href="componentes-principais.html#cb329-5"></a>         <span class="dt">loadings=</span>T,</span>
 <span id="cb329-6"><a href="componentes-principais.html#cb329-6"></a>         <span class="dt">loadings.label=</span>T,</span>
 <span id="cb329-7"><a href="componentes-principais.html#cb329-7"></a>         <span class="dt">frame=</span>T)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-276-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-277-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="modificando-para-elipse" class="section level3">
@@ -668,7 +674,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb330-6"><a href="componentes-principais.html#cb330-6"></a>         <span class="dt">loadings.label=</span>T,</span>
 <span id="cb330-7"><a href="componentes-principais.html#cb330-7"></a>         <span class="dt">frame=</span>T, </span>
 <span id="cb330-8"><a href="componentes-principais.html#cb330-8"></a>         <span class="dt">frame.type=</span><span class="st">&quot;norm&quot;</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-277-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-278-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="cor-do-vetor-e-do-nome" class="section level3">
@@ -683,7 +689,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb331-8"><a href="componentes-principais.html#cb331-8"></a>         <span class="dt">frame.type=</span><span class="st">&quot;norm&quot;</span>,</span>
 <span id="cb331-9"><a href="componentes-principais.html#cb331-9"></a>         <span class="dt">loadings.colour=</span><span class="st">&quot;black&quot;</span>,</span>
 <span id="cb331-10"><a href="componentes-principais.html#cb331-10"></a>         <span class="dt">loadings.label.colour=</span><span class="st">&quot;black&quot;</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-278-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-279-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="fonte-linha-de-grade-e-cor-de-fundo" class="section level3">
@@ -700,7 +706,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb332-10"><a href="componentes-principais.html#cb332-10"></a>         <span class="dt">loadings.label.colour=</span><span class="st">&quot;black&quot;</span>,</span>
 <span id="cb332-11"><a href="componentes-principais.html#cb332-11"></a>         <span class="dt">loadings.label.family=</span><span class="st">&quot;serif&quot;</span>)<span class="op">+</span><span class="kw">theme_bw</span>()<span class="op">+</span></span>
 <span id="cb332-12"><a href="componentes-principais.html#cb332-12"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">text =</span> <span class="kw">element_text</span>(<span class="dt">family=</span><span class="st">&quot;serif&quot;</span>))</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-279-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-280-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="linha-em-y0-e-x0" class="section level3">
@@ -719,7 +725,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb333-12"><a href="componentes-principais.html#cb333-12"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">text =</span> <span class="kw">element_text</span>(<span class="dt">family=</span><span class="st">&quot;serif&quot;</span>))<span class="op">+</span></span>
 <span id="cb333-13"><a href="componentes-principais.html#cb333-13"></a><span class="st">  </span><span class="kw">geom_vline</span>(,<span class="dt">xintercept =</span> <span class="dv">0</span>,<span class="dt">linetype=</span><span class="dv">2</span>)<span class="op">+</span></span>
 <span id="cb333-14"><a href="componentes-principais.html#cb333-14"></a><span class="st">  </span><span class="kw">geom_hline</span>(,<span class="dt">yintercept =</span> <span class="dv">0</span>,<span class="dt">linetype=</span><span class="dv">2</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-280-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-281-1.png" width="672" /></p>
 <p><br><br></p>
 <hr />
 </div>
@@ -759,7 +765,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">15.2.2</span> Gráfico básico</h3>
 <div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="componentes-principais.html#cb337-1"></a><span class="kw">require</span>(factoextra)</span>
 <span id="cb337-2"><a href="componentes-principais.html#cb337-2"></a><span class="kw">fviz_pca_biplot</span>(pca,<span class="dt">geom =</span> <span class="kw">c</span>(<span class="st">&quot;point&quot;</span>))</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-283-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-284-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="elipse-geral" class="section level3">
@@ -767,7 +773,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="componentes-principais.html#cb338-1"></a><span class="kw">require</span>(factoextra)</span>
 <span id="cb338-2"><a href="componentes-principais.html#cb338-2"></a><span class="kw">fviz_pca_biplot</span>(pca,<span class="dt">geom =</span> <span class="kw">c</span>(<span class="st">&quot;point&quot;</span>),</span>
 <span id="cb338-3"><a href="componentes-principais.html#cb338-3"></a>                <span class="dt">addEllipses =</span> T)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-284-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-285-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="elipse-por-tratamentos" class="section level3">
@@ -775,7 +781,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="componentes-principais.html#cb339-1"></a><span class="kw">require</span>(factoextra)</span>
 <span id="cb339-2"><a href="componentes-principais.html#cb339-2"></a><span class="kw">fviz_pca_biplot</span>(pca,<span class="dt">geom =</span> <span class="kw">c</span>(<span class="st">&quot;point&quot;</span>),</span>
 <span id="cb339-3"><a href="componentes-principais.html#cb339-3"></a>                <span class="dt">addEllipses =</span> T, <span class="dt">fill.ind =</span> dados<span class="op">$</span>Tratamento)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-285-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-286-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="removendo-título" class="section level3">
@@ -785,7 +791,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb340-3"><a href="componentes-principais.html#cb340-3"></a>                <span class="dt">addEllipses =</span> T, </span>
 <span id="cb340-4"><a href="componentes-principais.html#cb340-4"></a>                <span class="dt">fill.ind =</span> dados<span class="op">$</span>Tratamento,</span>
 <span id="cb340-5"><a href="componentes-principais.html#cb340-5"></a>                <span class="dt">title =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-286-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-287-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="sobreposição-de-legendas" class="section level3">
@@ -796,7 +802,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb341-4"><a href="componentes-principais.html#cb341-4"></a>                <span class="dt">fill.ind =</span> dados<span class="op">$</span>Tratamento,</span>
 <span id="cb341-5"><a href="componentes-principais.html#cb341-5"></a>                <span class="dt">title =</span> <span class="st">&quot;&quot;</span>,</span>
 <span id="cb341-6"><a href="componentes-principais.html#cb341-6"></a>                <span class="dt">repel=</span>T)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-287-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-288-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="tamanho-do-ponto-letra-e-a-cor" class="section level3">
@@ -808,7 +814,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb342-5"><a href="componentes-principais.html#cb342-5"></a>                <span class="dt">title =</span> <span class="st">&quot;&quot;</span>,</span>
 <span id="cb342-6"><a href="componentes-principais.html#cb342-6"></a>                <span class="dt">repel=</span>T, </span>
 <span id="cb342-7"><a href="componentes-principais.html#cb342-7"></a>                <span class="dt">pointshape=</span><span class="dv">21</span>,<span class="dt">pointsize=</span><span class="dv">2</span>,<span class="dt">textsize=</span><span class="fl">0.5</span>, <span class="dt">col.var=</span><span class="st">&quot;black&quot;</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-288-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-289-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="título-das-ellipses" class="section level3">
@@ -820,7 +826,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb343-5"><a href="componentes-principais.html#cb343-5"></a>                <span class="dt">title =</span> <span class="st">&quot;&quot;</span>,</span>
 <span id="cb343-6"><a href="componentes-principais.html#cb343-6"></a>                <span class="dt">repel=</span>T, </span>
 <span id="cb343-7"><a href="componentes-principais.html#cb343-7"></a>                <span class="dt">pointshape=</span><span class="dv">21</span>,<span class="dt">pointsize=</span><span class="dv">2</span>,<span class="dt">textsize=</span><span class="fl">0.5</span>, <span class="dt">col.var=</span><span class="st">&quot;black&quot;</span>,<span class="dt">fill=</span> <span class="st">&quot;Cultivares&quot;</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-289-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-290-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="título-do-1-e-2-cp" class="section level3">
@@ -833,7 +839,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb344-6"><a href="componentes-principais.html#cb344-6"></a>                <span class="dt">repel=</span>T, </span>
 <span id="cb344-7"><a href="componentes-principais.html#cb344-7"></a>                <span class="dt">pointshape=</span><span class="dv">21</span>,<span class="dt">pointsize=</span><span class="dv">2</span>,<span class="dt">textsize=</span><span class="fl">0.5</span>,</span>
 <span id="cb344-8"><a href="componentes-principais.html#cb344-8"></a>                <span class="dt">col.var=</span><span class="st">&quot;black&quot;</span>,<span class="dt">fill=</span> <span class="st">&quot;Cultivares&quot;</span>)<span class="op">+</span><span class="kw">ylab</span>(<span class="st">&quot;CP2(20,2%)&quot;</span>)<span class="op">+</span><span class="kw">xlab</span>(<span class="st">&quot;CP1(37,8%)&quot;</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-290-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-291-1.png" width="672" /></p>
 <p><br><br></p>
 <hr />
 </div>
@@ -866,12 +872,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb346-8"><a href="componentes-principais.html#cb346-8"></a>dadosm=<span class="kw">data.frame</span>(mph,mHAL,mK,mP,mCa,mMg,mV)</span></code></pre></div>
 <p><br></p>
 </div>
-<div id="dendograma-definir-clusters" class="section level3">
-<h3><span class="header-section-number">15.3.3</span> Dendograma (Definir Clusters)</h3>
+<div id="dendrograma-definir-clusters" class="section level3">
+<h3><span class="header-section-number">15.3.3</span> Dendrograma (Definir Clusters)</h3>
 <div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="componentes-principais.html#cb347-1"></a>dend=<span class="kw">as.dendrogram</span>(<span class="kw">hclust</span>(<span class="kw">dist</span>(dadosm), <span class="dt">method=</span><span class="st">&#39;average&#39;</span>), <span class="dt">hang =</span> <span class="dv">-1</span>)</span>
 <span id="cb347-2"><a href="componentes-principais.html#cb347-2"></a><span class="kw">plot</span>(dend)</span>
 <span id="cb347-3"><a href="componentes-principais.html#cb347-3"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">8</span>, <span class="dt">lty=</span><span class="dv">2</span>, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-293-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-294-1.png" width="672" /></p>
 <div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="componentes-principais.html#cb348-1"></a><span class="co">## Cluster 1: T8, T10, T6,T9,T2,T4</span></span>
 <span id="cb348-2"><a href="componentes-principais.html#cb348-2"></a><span class="co">## Cluster 2: T7, T3, T1, T5</span></span></code></pre></div>
 <p><br></p>
@@ -895,26 +901,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">15.3.5</span> Gráfico com os vetores</h3>
 <div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="componentes-principais.html#cb351-1"></a><span class="kw">library</span>(factoextra)</span>
 <span id="cb351-2"><a href="componentes-principais.html#cb351-2"></a><span class="kw">fviz_pca_var</span>(pca)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-295-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-296-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="renomeando-eixos" class="section level3">
 <h3><span class="header-section-number">15.3.6</span> Renomeando eixos</h3>
 <div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="componentes-principais.html#cb352-1"></a><span class="kw">fviz_pca_var</span>(pca)<span class="op">+</span><span class="kw">ylab</span>(<span class="st">&quot;CP2 (14,9)&quot;</span>)<span class="op">+</span><span class="kw">xlab</span>(<span class="st">&quot;CP1 (72,3%)&quot;</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-296-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-297-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="removendo-título-1" class="section level3">
 <h3><span class="header-section-number">15.3.7</span> Removendo título</h3>
 <div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="componentes-principais.html#cb353-1"></a><span class="kw">fviz_pca_var</span>(pca, <span class="dt">title=</span><span class="st">&quot;&quot;</span>)<span class="op">+</span><span class="kw">ylab</span>(<span class="st">&quot;CP2 (14,9)&quot;</span>)<span class="op">+</span><span class="kw">xlab</span>(<span class="st">&quot;CP1 (72,3%)&quot;</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-297-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-298-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="renomeando-os-vetores" class="section level3">
 <h3><span class="header-section-number">15.3.8</span> Renomeando os vetores</h3>
 <div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="componentes-principais.html#cb354-1"></a><span class="kw">rownames</span>(pca<span class="op">$</span>var<span class="op">$</span>coord)=<span class="kw">c</span>(<span class="st">&quot;pH&quot;</span>,<span class="st">&quot;H+AL&quot;</span>,<span class="st">&quot;K&quot;</span>,<span class="st">&quot;P&quot;</span>,<span class="st">&quot;Ca&quot;</span>,<span class="st">&quot;Mg&quot;</span>,<span class="st">&quot;V&quot;</span>)</span>
 <span id="cb354-2"><a href="componentes-principais.html#cb354-2"></a><span class="kw">fviz_pca_var</span>(pca, <span class="dt">title=</span><span class="st">&quot;&quot;</span>)<span class="op">+</span><span class="kw">ylab</span>(<span class="st">&quot;CP2 (14,9)&quot;</span>)<span class="op">+</span><span class="kw">xlab</span>(<span class="st">&quot;CP1 (72,3%)&quot;</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-298-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-299-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="sobreposição-dos-nomes" class="section level3">
@@ -923,7 +929,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb355-2"><a href="componentes-principais.html#cb355-2"></a><span class="kw">fviz_pca_var</span>(pca, </span>
 <span id="cb355-3"><a href="componentes-principais.html#cb355-3"></a>             <span class="dt">title=</span><span class="st">&quot;&quot;</span>, </span>
 <span id="cb355-4"><a href="componentes-principais.html#cb355-4"></a>             <span class="dt">repel=</span>T)<span class="op">+</span><span class="kw">ylab</span>(<span class="st">&quot;CP2 (14,9)&quot;</span>)<span class="op">+</span><span class="kw">xlab</span>(<span class="st">&quot;CP1 (72,3%)&quot;</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-299-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-300-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="removendo-linhas-de-grade-1" class="section level3">
@@ -935,19 +941,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb356-5"><a href="componentes-principais.html#cb356-5"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;CP2 (14,9)&quot;</span>)<span class="op">+</span></span>
 <span id="cb356-6"><a href="componentes-principais.html#cb356-6"></a><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;CP1 (72,3%)&quot;</span>)<span class="op">+</span></span>
 <span id="cb356-7"><a href="componentes-principais.html#cb356-7"></a><span class="st">  </span><span class="kw">theme_classic</span>()</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-300-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-301-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="pontos-dos-scores" class="section level3">
 <h3><span class="header-section-number">15.3.11</span> Pontos dos scores</h3>
 <div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="componentes-principais.html#cb357-1"></a><span class="kw">fviz_pca_ind</span>(pca)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-301-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-302-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="renomeando-eixos-e-título" class="section level3">
 <h3><span class="header-section-number">15.3.12</span> Renomeando eixos e título</h3>
 <div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="componentes-principais.html#cb358-1"></a><span class="kw">fviz_pca_ind</span>(pca, <span class="dt">title=</span><span class="st">&quot;&quot;</span>)<span class="op">+</span><span class="kw">ylab</span>(<span class="st">&quot;CP2 (14,9)&quot;</span>)<span class="op">+</span><span class="kw">xlab</span>(<span class="st">&quot;CP1 (72,3%)&quot;</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-302-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-303-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="marcando-os-clusters-por-coloração" class="section level3">
@@ -962,7 +968,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb359-8"><a href="componentes-principais.html#cb359-8"></a>             <span class="dt">col.ind =</span> <span class="kw">as.factor</span>(cluster))<span class="op">+</span></span>
 <span id="cb359-9"><a href="componentes-principais.html#cb359-9"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;CP2 (14,9)&quot;</span>)<span class="op">+</span></span>
 <span id="cb359-10"><a href="componentes-principais.html#cb359-10"></a><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;CP1 (72,3%)&quot;</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-303-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-304-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="marcando-os-clusters-por-formato-de-ponto" class="section level3">
@@ -978,7 +984,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb360-9"><a href="componentes-principais.html#cb360-9"></a>             <span class="dt">pointsize=</span><span class="dv">2</span>)<span class="op">+</span></span>
 <span id="cb360-10"><a href="componentes-principais.html#cb360-10"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;CP2 (14,9)&quot;</span>)<span class="op">+</span></span>
 <span id="cb360-11"><a href="componentes-principais.html#cb360-11"></a><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;CP1 (72,3%)&quot;</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-304-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-305-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="marcando-os-clusters-por-coloração-e-formato-de-ponto" class="section level3">
@@ -992,7 +998,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb361-7"><a href="componentes-principais.html#cb361-7"></a>             <span class="dt">habillage =</span> <span class="kw">as.factor</span>(cluster))<span class="op">+</span></span>
 <span id="cb361-8"><a href="componentes-principais.html#cb361-8"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;CP2 (14,9)&quot;</span>)<span class="op">+</span></span>
 <span id="cb361-9"><a href="componentes-principais.html#cb361-9"></a><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;CP1 (72,3%)&quot;</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-305-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-306-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="removendo-linhas-de-grade-2" class="section level3">
@@ -1006,12 +1012,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb362-7"><a href="componentes-principais.html#cb362-7"></a>             <span class="dt">habillage =</span> <span class="kw">as.factor</span>(cluster))<span class="op">+</span></span>
 <span id="cb362-8"><a href="componentes-principais.html#cb362-8"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;CP2 (14,9)&quot;</span>)<span class="op">+</span></span>
 <span id="cb362-9"><a href="componentes-principais.html#cb362-9"></a><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;CP1 (72,3%)&quot;</span>)<span class="op">+</span><span class="kw">theme_classic</span>()</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-306-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-307-1.png" width="672" /></p>
 <div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="componentes-principais.html#cb363-1"></a>a=<span class="kw">fviz_pca_ind</span>(pca, <span class="dt">title=</span><span class="st">&quot;&quot;</span>)<span class="op">+</span><span class="kw">theme_classic</span>()</span>
 <span id="cb363-2"><a href="componentes-principais.html#cb363-2"></a>b=<span class="kw">fviz_pca_var</span>(pca, <span class="dt">title=</span><span class="st">&quot;&quot;</span>)<span class="op">+</span><span class="kw">theme_classic</span>()</span>
 <span id="cb363-3"><a href="componentes-principais.html#cb363-3"></a><span class="kw">library</span>(gridExtra)</span>
 <span id="cb363-4"><a href="componentes-principais.html#cb363-4"></a><span class="kw">grid.arrange</span>(a,b, <span class="dt">ncol=</span><span class="dv">2</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-307-1.png" width="960" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-308-1.png" width="960" /></p>
 <p><br><br></p>
 <hr />
 </div>
@@ -1032,14 +1038,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb364-8"><a href="componentes-principais.html#cb364-8"></a>dadosm=<span class="kw">data.frame</span>(mph,mHAL,mK,mP,mCa,mMg,mV)</span></code></pre></div>
 <p><br></p>
 </div>
-<div id="dendograma-definir-clusters-1" class="section level3">
-<h3><span class="header-section-number">15.4.2</span> Dendograma (Definir Clusters)</h3>
+<div id="dendrograma-definir-clusters-1" class="section level3">
+<h3><span class="header-section-number">15.4.2</span> Dendrograma (Definir Clusters)</h3>
 <p>Obs. Fica a critério do pesquisador o valor do corte (Neste caso optei pelo corte em 8, formando assim dois <em>clusters</em>)</p>
 <p>Podemos fazer como neste exemplo abaixo:</p>
 <div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="componentes-principais.html#cb365-1"></a>dend=<span class="kw">as.dendrogram</span>(<span class="kw">hclust</span>(<span class="kw">dist</span>(dadosm), <span class="dt">method=</span><span class="st">&#39;average&#39;</span>), <span class="dt">hang =</span> <span class="dv">-1</span>)</span>
 <span id="cb365-2"><a href="componentes-principais.html#cb365-2"></a><span class="kw">plot</span>(dend)</span>
 <span id="cb365-3"><a href="componentes-principais.html#cb365-3"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">8</span>, <span class="dt">lty=</span><span class="dv">2</span>, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-309-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-310-1.png" width="672" /></p>
 <div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="componentes-principais.html#cb366-1"></a><span class="co">## Cluster 1: T8, T10, T6,T9,T2,T4</span></span>
 <span id="cb366-2"><a href="componentes-principais.html#cb366-2"></a><span class="co">## Cluster 2: T7, T3, T1, T5</span></span></code></pre></div>
 <p>ou,</p>
@@ -1050,7 +1056,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb367-5"><a href="componentes-principais.html#cb367-5"></a><span class="kw">plot</span>(dend,<span class="dt">las=</span><span class="dv">1</span>,<span class="dt">ylab=</span><span class="st">&quot;Distância&quot;</span>)</span>
 <span id="cb367-6"><a href="componentes-principais.html#cb367-6"></a><span class="kw">par</span>(<span class="dt">cex=</span><span class="fl">0.8</span>)</span>
 <span id="cb367-7"><a href="componentes-principais.html#cb367-7"></a><span class="kw">rect.dendrogram</span>(dend, <span class="dt">k=</span><span class="dv">2</span>,<span class="dt">border =</span> <span class="dv">8</span>, <span class="dt">lty =</span> <span class="dv">5</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-310-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-311-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="valores-dos-cp-2" class="section level3">
@@ -1071,7 +1077,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="gráfico-com-os-componentes" class="section level3">
 <h3><span class="header-section-number">15.4.4</span> Gráfico com os componentes</h3>
 <div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="componentes-principais.html#cb370-1"></a><span class="kw">plot</span>(pca<span class="op">$</span>eig[,<span class="dv">2</span>], <span class="dt">type=</span><span class="st">&quot;b&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;Porcentagem de variância&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;CP&quot;</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-312-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-313-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="ponto-dos-scores" class="section level3">
@@ -1081,7 +1087,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb371-3"><a href="componentes-principais.html#cb371-3"></a>     <span class="dt">ylab=</span><span class="st">&quot;CP2 (14.8 %)&quot;</span>, <span class="co"># renomeando eixo y</span></span>
 <span id="cb371-4"><a href="componentes-principais.html#cb371-4"></a>     <span class="dt">pch=</span><span class="dv">16</span>) <span class="co"># alterando formato de ponto (&quot;Bolinha preenchida&quot;)</span></span>
 <span id="cb371-5"><a href="componentes-principais.html#cb371-5"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>,<span class="dt">v=</span><span class="dv">0</span>, <span class="dt">lty=</span><span class="dv">2</span>) <span class="co"># traçando linha em x e y = 0; lty=2 é linha tracejada </span></span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-313-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-314-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="identificando-pontos" class="section level3">
@@ -1094,7 +1100,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb372-6"><a href="componentes-principais.html#cb372-6"></a><span class="kw">text</span>(pca<span class="op">$</span>ind<span class="op">$</span>coord[,<span class="dv">1</span>],</span>
 <span id="cb372-7"><a href="componentes-principais.html#cb372-7"></a>     pca<span class="op">$</span>ind<span class="op">$</span>coord[,<span class="dv">2</span>]<span class="op">-</span><span class="fl">0.1</span>, </span>
 <span id="cb372-8"><a href="componentes-principais.html#cb372-8"></a>     <span class="kw">rownames</span>(pca<span class="op">$</span>ind<span class="op">$</span>coord))</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-314-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-315-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="modificando-nome-dos-pontos" class="section level3">
@@ -1108,7 +1114,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb373-7"><a href="componentes-principais.html#cb373-7"></a><span class="kw">text</span>(pca<span class="op">$</span>ind<span class="op">$</span>coord[,<span class="dv">1</span>],</span>
 <span id="cb373-8"><a href="componentes-principais.html#cb373-8"></a>     pca<span class="op">$</span>ind<span class="op">$</span>coord[,<span class="dv">2</span>]<span class="op">-</span><span class="fl">0.1</span>, </span>
 <span id="cb373-9"><a href="componentes-principais.html#cb373-9"></a>     <span class="kw">rownames</span>(pca<span class="op">$</span>ind<span class="op">$</span>coord))</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-315-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-316-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="limite-da-seta-dos-vetores" class="section level3">
@@ -1120,7 +1126,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb374-5"><a href="componentes-principais.html#cb374-5"></a>     <span class="dt">ylim=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>), <span class="co"># Alterando escala de Y para -1 até 1</span></span>
 <span id="cb374-6"><a href="componentes-principais.html#cb374-6"></a>     <span class="dt">xlim=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>)) <span class="co"># Alterando escala de X para -1 até 1</span></span>
 <span id="cb374-7"><a href="componentes-principais.html#cb374-7"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>,<span class="dt">v=</span><span class="dv">0</span>, <span class="dt">lty=</span><span class="dv">2</span>) <span class="co"># traçando linha em x e y = 0; lty=2 é linha tracejada </span></span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-316-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-317-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="convertendo-o-ponto-para-seta" class="section level3">
@@ -1146,7 +1152,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb375-13"><a href="componentes-principais.html#cb375-13"></a><span class="kw">arrows</span>(<span class="dv">0</span>,<span class="dv">0</span>,pca<span class="op">$</span>var<span class="op">$</span>coord[<span class="dv">6</span>,<span class="dv">1</span>],pca<span class="op">$</span>var<span class="op">$</span>coord[<span class="dv">6</span>,<span class="dv">2</span>], <span class="dt">length =</span> <span class="fl">0.1</span>) <span class="co"># vetor 6 - Mg</span></span>
 <span id="cb375-14"><a href="componentes-principais.html#cb375-14"></a><span class="kw">arrows</span>(<span class="dv">0</span>,<span class="dv">0</span>,pca<span class="op">$</span>var<span class="op">$</span>coord[<span class="dv">7</span>,<span class="dv">1</span>],pca<span class="op">$</span>var<span class="op">$</span>coord[<span class="dv">7</span>,<span class="dv">2</span>], <span class="dt">length =</span> <span class="fl">0.1</span>) <span class="co"># vetor 7 - V</span></span>
 <span id="cb375-15"><a href="componentes-principais.html#cb375-15"></a><span class="kw">text</span>(pca<span class="op">$</span>var<span class="op">$</span>coord<span class="fl">-0.01</span>,<span class="kw">rownames</span>(pca<span class="op">$</span>var<span class="op">$</span>coord)) <span class="co"># Estou colocando os nomes dos vetores (-0.01 significa abaixo da coordenada a 0.01)</span></span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-317-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-318-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="alterando-posição-do-nome-do-vetores" class="section level3">
@@ -1169,7 +1175,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb376-15"><a href="componentes-principais.html#cb376-15"></a><span class="kw">text</span>(pca<span class="op">$</span>var<span class="op">$</span>coord[,<span class="dv">1</span>]<span class="op">+</span></span>
 <span id="cb376-16"><a href="componentes-principais.html#cb376-16"></a><span class="st">       </span><span class="kw">ifelse</span>(pca<span class="op">$</span>var<span class="op">$</span>coord[,<span class="dv">1</span>]<span class="op">&lt;</span><span class="dv">0</span>,<span class="op">-</span><span class="fl">0.2</span>,<span class="op">+</span><span class="fl">0.2</span>),  </span>
 <span id="cb376-17"><a href="componentes-principais.html#cb376-17"></a>     pca<span class="op">$</span>var<span class="op">$</span>coord[,<span class="dv">2</span>],<span class="kw">rownames</span>(pca<span class="op">$</span>var<span class="op">$</span>coord))</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-318-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-319-1.png" width="672" /></p>
 <p><code>ifelse(pca$var$coord[,1]&lt;0,-0.2,+0.2)</code>: estamos definindo que se <code>pca$var$coord[,1]</code> for menor que 0, irá adicionar -0.2, do contrário irá somar 0.2</p>
 <p><strong>Obs.</strong> Nessa caso estamos alterando apenas em X, este princípio também pode ser aplicado em Y. Também é possível estabelecer manualmente a localização do texto (Criar um vetor com as coordenadas)</p>
 <p><br></p>
@@ -1196,7 +1202,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb377-18"><a href="componentes-principais.html#cb377-18"></a><span class="kw">draw.circle</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="kw">max</span>(<span class="kw">ifelse</span>(<span class="kw">c</span>(pca<span class="op">$</span>var<span class="op">$</span>coord[,<span class="dv">1</span>],pca<span class="op">$</span>var<span class="op">$</span>coord[,<span class="dv">2</span>])<span class="op">&lt;</span><span class="dv">0</span>,</span>
 <span id="cb377-19"><a href="componentes-principais.html#cb377-19"></a>                           <span class="kw">c</span>(pca<span class="op">$</span>var<span class="op">$</span>coord[,<span class="dv">1</span>],pca<span class="op">$</span>var<span class="op">$</span>coord[,<span class="dv">2</span>])<span class="op">*-</span><span class="dv">1</span>,</span>
 <span id="cb377-20"><a href="componentes-principais.html#cb377-20"></a>                           <span class="kw">c</span>(pca<span class="op">$</span>var<span class="op">$</span>coord[,<span class="dv">1</span>],pca<span class="op">$</span>var<span class="op">$</span>coord[,<span class="dv">2</span>]))))</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-319-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-320-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="renomeando-vetores" class="section level3">
@@ -1223,7 +1229,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb378-20"><a href="componentes-principais.html#cb378-20"></a><span class="kw">draw.circle</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="kw">max</span>(<span class="kw">ifelse</span>(<span class="kw">c</span>(pca<span class="op">$</span>var<span class="op">$</span>coord[,<span class="dv">1</span>],pca<span class="op">$</span>var<span class="op">$</span>coord[,<span class="dv">2</span>])<span class="op">&lt;</span><span class="dv">0</span>,</span>
 <span id="cb378-21"><a href="componentes-principais.html#cb378-21"></a>                           <span class="kw">c</span>(pca<span class="op">$</span>var<span class="op">$</span>coord[,<span class="dv">1</span>],pca<span class="op">$</span>var<span class="op">$</span>coord[,<span class="dv">2</span>])<span class="op">*-</span><span class="dv">1</span>,</span>
 <span id="cb378-22"><a href="componentes-principais.html#cb378-22"></a>                           <span class="kw">c</span>(pca<span class="op">$</span>var<span class="op">$</span>coord[,<span class="dv">1</span>],pca<span class="op">$</span>var<span class="op">$</span>coord[,<span class="dv">2</span>]))))</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-320-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-321-1.png" width="672" /></p>
 <p><br><br></p>
 <hr />
 </div>
@@ -1254,14 +1260,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">15.5.3</span> Pacote FactomineR</h3>
 <div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="componentes-principais.html#cb381-1"></a><span class="kw">library</span>(FactoMineR)</span>
 <span id="cb381-2"><a href="componentes-principais.html#cb381-2"></a>pca=<span class="kw">PCA</span>(dadosm)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-323-1.png" width="672" /><img src="index_files/figure-html/unnamed-chunk-323-2.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-324-1.png" width="672" /><img src="index_files/figure-html/unnamed-chunk-324-2.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="screeplot-do-factoextra" class="section level3">
 <h3><span class="header-section-number">15.5.4</span> Screeplot do factoextra</h3>
 <div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="componentes-principais.html#cb382-1"></a><span class="kw">library</span>(factoextra)</span>
 <span id="cb382-2"><a href="componentes-principais.html#cb382-2"></a><span class="kw">fviz_screeplot</span>(pca)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-324-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-325-1.png" width="672" /></p>
 <div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="componentes-principais.html#cb383-1"></a><span class="kw">fviz_screeplot</span>(pca,</span>
 <span id="cb383-2"><a href="componentes-principais.html#cb383-2"></a>               <span class="dt">title=</span><span class="st">&quot;&quot;</span>, <span class="co"># removendo título</span></span>
 <span id="cb383-3"><a href="componentes-principais.html#cb383-3"></a>               <span class="dt">font.family=</span><span class="st">&quot;serif&quot;</span>, <span class="co"># fonte times new roman</span></span>
@@ -1270,7 +1276,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb383-6"><a href="componentes-principais.html#cb383-6"></a>               <span class="dt">ggtheme=</span><span class="kw">theme_classic</span>())<span class="op">+</span></span>
 <span id="cb383-7"><a href="componentes-principais.html#cb383-7"></a><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Componente Principal&quot;</span>)<span class="op">+</span><span class="st"> </span><span class="co"># nomeando eixo x</span></span>
 <span id="cb383-8"><a href="componentes-principais.html#cb383-8"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Porcentagem de explicação da variância&quot;</span>) <span class="co"># nomeando eixo y</span></span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-325-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-326-1.png" width="672" /></p>
 <p><br></p>
 <hr />
 </div>
@@ -1284,7 +1290,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="componentes-principais.html#cb384-1"></a><span class="kw">par</span>(<span class="dt">family=</span><span class="st">&quot;serif&quot;</span>) <span class="co"># fonte times new roman</span></span>
 <span id="cb384-2"><a href="componentes-principais.html#cb384-2"></a>bar=<span class="kw">barplot</span>(pca<span class="op">$</span>eig[,<span class="dv">2</span>], </span>
 <span id="cb384-3"><a href="componentes-principais.html#cb384-3"></a>        <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">100</span>))</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-326-1.png" width="768" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-327-1.png" width="768" /></p>
 <p><br></p>
 </div>
 <div id="com-colunas-pontos-e-linhas" class="section level3">
@@ -1295,7 +1301,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb385-4"><a href="componentes-principais.html#cb385-4"></a><span class="kw">points</span>(bar,</span>
 <span id="cb385-5"><a href="componentes-principais.html#cb385-5"></a>       pca<span class="op">$</span>eig[,<span class="dv">2</span>], </span>
 <span id="cb385-6"><a href="componentes-principais.html#cb385-6"></a>       <span class="dt">type =</span> <span class="st">&quot;o&quot;</span>)</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-327-1.png" width="768" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-328-1.png" width="768" /></p>
 <p><br></p>
 </div>
 <div id="com-colunas-pontos-linhas-e-legenda" class="section level3">
@@ -1309,7 +1315,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb386-7"><a href="componentes-principais.html#cb386-7"></a><span class="kw">text</span>(bar,</span>
 <span id="cb386-8"><a href="componentes-principais.html#cb386-8"></a>     pca<span class="op">$</span>eig[,<span class="dv">2</span>]<span class="op">+</span><span class="dv">5</span>,</span>
 <span id="cb386-9"><a href="componentes-principais.html#cb386-9"></a>     <span class="kw">round</span>(pca<span class="op">$</span>eig[,<span class="dv">2</span>],<span class="dv">2</span>))</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-328-1.png" width="768" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-329-1.png" width="768" /></p>
 <p><br></p>
 </div>
 <div id="editando" class="section level3">
@@ -1329,7 +1335,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb387-13"><a href="componentes-principais.html#cb387-13"></a><span class="kw">text</span>(bar,</span>
 <span id="cb387-14"><a href="componentes-principais.html#cb387-14"></a>     pca<span class="op">$</span>eig[,<span class="dv">2</span>]<span class="op">+</span><span class="dv">5</span>,</span>
 <span id="cb387-15"><a href="componentes-principais.html#cb387-15"></a>     <span class="kw">round</span>(pca<span class="op">$</span>eig[,<span class="dv">2</span>],<span class="dv">2</span>))</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-329-1.png" width="768" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-330-1.png" width="768" /></p>
 <p><br><br></p>
 <hr />
 </div>
@@ -1419,7 +1425,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb393-7"><a href="componentes-principais.html#cb393-7"></a>                 <span class="dt">scales=</span><span class="kw">list</span>(<span class="dt">fontfamily=</span><span class="st">&quot;serif&quot;</span>,<span class="dt">cex=</span><span class="fl">1.2</span>),</span>
 <span id="cb393-8"><a href="componentes-principais.html#cb393-8"></a>                 <span class="dt">auto.key=</span><span class="kw">list</span>(<span class="dt">cex=</span><span class="fl">1.2</span>),</span>
 <span id="cb393-9"><a href="componentes-principais.html#cb393-9"></a>                 <span class="dt">pch=</span><span class="dv">16</span>))</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-333-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-334-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="correlação-com-a-variável-latente-cp2" class="section level3">
@@ -1431,7 +1437,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb394-5"><a href="componentes-principais.html#cb394-5"></a>                 <span class="dt">col=</span><span class="st">&quot;black&quot;</span>,</span>
 <span id="cb394-6"><a href="componentes-principais.html#cb394-6"></a>                 <span class="dt">scales=</span><span class="kw">list</span>(<span class="dt">fontfamily=</span><span class="st">&quot;serif&quot;</span>,<span class="dt">cex=</span><span class="fl">1.2</span>),</span>
 <span id="cb394-7"><a href="componentes-principais.html#cb394-7"></a>                 <span class="dt">pch=</span><span class="dv">16</span>))</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-334-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-335-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="correlação-com-a-variável-latente-cp3" class="section level3">
@@ -1443,7 +1449,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb395-5"><a href="componentes-principais.html#cb395-5"></a>                 <span class="dt">col=</span><span class="st">&quot;black&quot;</span>,</span>
 <span id="cb395-6"><a href="componentes-principais.html#cb395-6"></a>                 <span class="dt">scales=</span><span class="kw">list</span>(<span class="dt">fontfamily=</span><span class="st">&quot;serif&quot;</span>,<span class="dt">cex=</span><span class="fl">1.2</span>),</span>
 <span id="cb395-7"><a href="componentes-principais.html#cb395-7"></a>                 <span class="dt">pch=</span><span class="dv">16</span>))</span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-335-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-336-1.png" width="672" /></p>
 <p><br><br><br></p>
 <hr />
 </div>
@@ -1481,7 +1487,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb399-2"><a href="componentes-principais.html#cb399-2"></a>data=dados[,<span class="dv">2</span><span class="op">:</span><span class="dv">5</span>]</span>
 <span id="cb399-3"><a href="componentes-principais.html#cb399-3"></a><span class="kw">rownames</span>(data)=dados<span class="op">$</span>trat</span>
 <span id="cb399-4"><a href="componentes-principais.html#cb399-4"></a><span class="kw">fviz_pca_biplot</span>(<span class="kw">PCA</span>(data),<span class="dt">col.ind =</span> cluster, <span class="dt">addEllipses =</span> T) <span class="co"># default e padronizado</span></span></code></pre></div>
-<p><img src="index_files/figure-html/unnamed-chunk-339-1.png" width="672" /><img src="index_files/figure-html/unnamed-chunk-339-2.png" width="672" /><img src="index_files/figure-html/unnamed-chunk-339-3.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-340-1.png" width="672" /><img src="index_files/figure-html/unnamed-chunk-340-2.png" width="672" /><img src="index_files/figure-html/unnamed-chunk-340-3.png" width="672" /></p>
 <hr />
 </div>
 </div>
@@ -1492,7 +1498,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="quantis-teóricos.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="dendograma.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="dendrograma.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

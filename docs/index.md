@@ -1,7 +1,7 @@
 --- 
 title: "Aplicações práticas do software R para Agronomia"
 author: "Gabriel Danilo Shimizu"
-date: "2020-05-13"
+date: "2020-05-31"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
@@ -155,7 +155,7 @@ options(OutDec=",")
 bar=barplot(media, 
         las=1,
         col="lightyellow",
-        ylab=expression("Resposta"*" "*(kg*" "*ha^-1)),
+        ylab=expression("Resposta"~(kg~ha^-1)),
         xlab="Tratamentos",
         ylim=c(0,300))
 abline(h=0)
@@ -178,7 +178,7 @@ options(OutDec=",")
 bar=barplot(media, 
         las=1,
         col="lightyellow",
-        ylab=expression("Resposta"*" "*(kg*" "*ha^-1)),
+        ylab=expression("Resposta"~(kg~ha^-1)),
         xlab="Tratamentos",
         ylim=c(0,300))
 abline(h=0)
@@ -238,7 +238,8 @@ plot(a, las=1)
 
 
 ```r
-bar.group(a$groups, col="lightblue",
+bar.group(a$groups, 
+          col="lightblue",
           las=1, 
           ylim=c(0,300))
 abline(h=0)
@@ -253,7 +254,8 @@ abline(h=0)
 
 ```r
 bar.err(a$means,
-        variation="SD", col="lightblue",
+        variation="SD", 
+        col="lightblue",
         las=1,
         ylim=c(0,300))
 abline(h=0)
@@ -268,7 +270,8 @@ abline(h=0)
 
 ```r
 bar.err(a$means,
-        variation="SE", col="lightblue",
+        variation="SE", 
+        col="lightblue",
         las=1,
         ylim=c(0,300))
 abline(h=0)
@@ -283,7 +286,8 @@ abline(h=0)
 
 ```r
 bar.err(a$means,
-        variation="range", col="lightblue",
+        variation="range", 
+        col="lightblue",
         las=1,
         ylim=c(0,300))
 abline(h=0)
@@ -298,7 +302,8 @@ abline(h=0)
 
 ```r
 bar.err(a$means,
-        variation="IQR", col="lightblue",
+        variation="IQR", 
+        col="lightblue",
         las=1,
         ylim=c(0,300))
 abline(h=0)
@@ -713,6 +718,49 @@ grid.arrange(a,b,c,ncol=3)
 
 <img src="index_files/figure-html/unnamed-chunk-39-1.png" width="960" />
 
+### Outra forma de fazer no ggplot2
+
+Conjunto de dados
+
+
+```r
+tratamentos=rep(c(paste("T",1:5)),e=4)
+resp=rnorm(20,4,1)
+dados=data.frame(tratamentos,resp)
+```
+
+Calculando média, desvio-padrão e erro padrão
+
+
+```r
+media=tapply(resp,tratamentos, mean)
+desvio=tapply(resp,tratamentos, sd)
+erro=desvio/sqrt(4)
+data1=data.frame(tratamentos=names(media),
+                 media,
+                 sup=media+erro,
+                 inf=media-erro,
+                 letra=c("a","a","a","a","a"))
+```
+
+
+
+```r
+library(ggplot2)
+ggplot(dados,aes(y=resp,x=tratamentos))+
+  stat_summary(aes(fill=tratamentos), 
+               geom="bar",col="black")+
+  stat_summary(aes(fill=tratamentos), 
+               geom="errorbar",col="black", width=0.3)+
+  theme_bw()+
+  theme(text=element_text(size=14, color="black", family = "serif"))+
+  ylab("Resposta")+xlab("")+ylim(0,7)+
+  geom_text(data=data1,aes(y=sup+0.3, 
+                           label=paste(format(media,digits=2),letra)))
+```
+
+<img src="index_files/figure-html/unnamed-chunk-42-1.png" width="672" />
+
 <br><br>
 
 ****
@@ -751,7 +799,7 @@ ggbarplot(dados,
           add="mean")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-42-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-45-1.png" width="672" />
 
 <br>
 
@@ -765,7 +813,7 @@ ggbarplot(dados,
           add = "mean_sd")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-43-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-46-1.png" width="672" />
 
 <br>
 
@@ -780,7 +828,7 @@ ggbarplot(dados,
           fill = "Trat")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-44-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-47-1.png" width="672" />
 
 
 ```r
@@ -792,7 +840,7 @@ ggbarplot(dados,
           palette = c(1,2,3,4))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-45-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-48-1.png" width="672" />
 
 <br>
 
@@ -809,7 +857,7 @@ ggbarplot(dados,
           lab.vjust=-2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-46-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-49-1.png" width="672" />
 
 <br>
 
@@ -827,7 +875,7 @@ ggbarplot(dados,
           lab.vjust=-2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-47-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-50-1.png" width="672" />
 
 <br>
 
@@ -844,7 +892,7 @@ ggbarplot(dados,
           lab.vjust=-2)+ylim(c(0,40))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-48-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-51-1.png" width="672" />
 
 <br>
 
@@ -862,7 +910,7 @@ ggbarplot(dados,
           legend="n")+ylim(c(0,40))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-49-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-52-1.png" width="672" />
 
 <br>
 
@@ -924,7 +972,7 @@ c=ggbarplot(dados,
 grid.arrange(a,b,c,ncol=3)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-53-1.png" width="1152" />
+<img src="index_files/figure-html/unnamed-chunk-56-1.png" width="1152" />
 
 <br>
 
@@ -990,7 +1038,7 @@ c=ggbarplot(dados,
 grid.arrange(a,b,c,ncol=3)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-57-1.png" width="1152" />
+<img src="index_files/figure-html/unnamed-chunk-60-1.png" width="1152" />
 
 <br><br><br>
 
@@ -1024,7 +1072,7 @@ desvio=with(dados, tapply(resposta,list(Fator1, Fator2), sd))
 barplot(media, beside = T)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-59-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-62-1.png" width="672" />
 
 O argumento beside=T é refente a um gráfico de barras em que as barras são posicionadas lado a lado. Do contrário, as barras serão empilhadas (*stacked*). 
 
@@ -1034,15 +1082,17 @@ O argumento beside=T é refente a um gráfico de barras em que as barras são po
 
 
 ```r
-barplot(media, beside = T,
-        las=1, col=c("lawngreen","gold"),
+barplot(media, 
+        beside = T,
+        las=1, 
+        col=c("lawngreen","gold"),
         ylab="Resposta",
         xlab="Fator2",
         ylim=c(0,300))
 abline(h=0)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-60-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-63-1.png" width="672" />
 
 **Comandos**:
 
@@ -1058,34 +1108,21 @@ abline(h=0)
 
 <br>
 
-### Cores
-
-
-```r
-barplot(1:21, col=c("red","white","black","lightyellow","green","blue","orange",
-                        "yellow","gray","pink","brown","Gainsboro", "Lavender", 
-                        "DeepSkyBlue","LawnGreen", "Gold","MediumOrchid",
-                        "LightSalmon", "Sienna", "Tomato", "DeepPink1"))
-```
-
-<img src="index_files/figure-html/unnamed-chunk-61-1.png" width="672" />
-
-<br>
-
 ### Barras de desvio-padrão
 
 
 ```r
-bar=barplot(media,beside=T, 
-        las=1,
-        ylab="Resposta",
-        xlab="Tratamentos",
-        ylim=c(0,300))
+bar=barplot(media,
+            beside=T,
+            las=1,
+            ylab="Resposta",
+            xlab="Tratamentos",
+            ylim=c(0,300))
 abline(h=0)
 arrows(bar,media+desvio,bar,media-desvio,length = 0.1,angle=90,code=3)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-62-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-64-1.png" width="672" />
 
 <br>
 
@@ -1097,14 +1134,14 @@ arrows(bar,media+desvio,bar,media-desvio,length = 0.1,angle=90,code=3)
 ```r
 bar=barplot(media, beside=T,
         las=1,
-        ylab=expression("Resposta"*" "*(kg*" "*ha^-1)),
+        ylab=expression("Resposta"~(kg~ha^-1)),
         xlab="Tratamentos",
         ylim=c(0,300))
 abline(h=0)
 arrows(bar,media+desvio,bar,media-desvio,length = 0.1,angle=90,code=3)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-63-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-65-1.png" width="672" />
 
 <br>
 
@@ -1112,17 +1149,18 @@ arrows(bar,media+desvio,bar,media-desvio,length = 0.1,angle=90,code=3)
 
 
 ```r
-bar=barplot(media, beside=T,
-        las=1,
-        ylab=expression("Resposta"*" "*(kg*" "*ha^-1)),
-        xlab="Tratamentos",
-        ylim=c(0,300))
+bar=barplot(media, 
+            beside=T,
+            las=1,
+            ylab=expression("Resposta"~(kg~ha^-1)),
+            xlab="Tratamentos",
+            ylim=c(0,300))
 abline(h=0)
 text(bar,media+desvio+10,media, cex=0.8)
 arrows(bar,media+desvio,bar,media-desvio,length = 0.1,angle=90,code=3)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-64-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-66-1.png" width="672" />
 
 <br>
 
@@ -1133,7 +1171,7 @@ arrows(bar,media+desvio,bar,media-desvio,length = 0.1,angle=90,code=3)
 options(OutDec=",")
 bar=barplot(media, beside=T,
         las=1,
-        ylab=expression("Resposta"*" "*(kg*" "*ha^-1)),
+        ylab=expression("Resposta"~(kg~ha^-1)),
         xlab="Tratamentos",
         ylim=c(0,300))
 abline(h=0)
@@ -1141,7 +1179,7 @@ text(bar,media+desvio+10,media, cex=0.8)
 arrows(bar,media+desvio,bar,media-desvio,length = 0.1,angle=90,code=3)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-65-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-67-1.png" width="672" />
 
 <br>
 
@@ -1153,7 +1191,7 @@ tukey=c("dB","dA","cB","cA","cB","cA","bB","bA","aB","aA")
 options(OutDec=",")
 bar=barplot(media, beside=T,
         las=1,
-        ylab=expression("Resposta"*" "*(kg*" "*ha^-1)),
+        ylab=expression("Resposta"~(kg~ha^-1)),
         xlab="Tratamentos",
         ylim=c(0,300))
 abline(h=0)
@@ -1161,7 +1199,7 @@ text(bar,media+desvio+10,paste(round(media,0),tukey), cex=0.8)
 arrows(bar,media+desvio,bar,media-desvio,length = 0.1,angle=90,code=3)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-66-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-68-1.png" width="672" />
 
 <br>
 
@@ -1180,7 +1218,7 @@ bar=barplot(media,
             legend.text = rownames(media),
             args.legend = list(x="topleft", bty="n"),
         las=1,
-        ylab=expression("Resposta"*" "*(kg*" "*ha^-1)),
+        ylab=expression("Resposta"~(kg~ha^-1)),
         xlab="Tratamentos",
         ylim=c(0,300))
 abline(h=0)
@@ -1188,7 +1226,7 @@ text(bar,media+desvio+10,paste(round(media,0),tukey), cex=0.8)
 arrows(bar,media+desvio,bar,media-desvio,length = 0.1,angle=90,code=3)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-67-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-69-1.png" width="672" />
 
 <br><br><br>
 
@@ -1224,7 +1262,7 @@ desvio=with(dados, tapply(resposta,list(Fator1, Fator2), sd))
 barplot(media, beside=F)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-69-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-71-1.png" width="672" />
 
 O argumento beside=F é refente a um gráfico de barras em que as barras são posicionadas lado a lado. Do contrário, as barras serão empilhadas (*stacked*). 
 
@@ -1234,15 +1272,17 @@ O argumento beside=F é refente a um gráfico de barras em que as barras são po
 
 
 ```r
-barplot(media, beside=F,
-        las=1, col=c("lawngreen","gold"),
+barplot(media, 
+        beside=F,
+        las=1, 
+        col=c("lawngreen","gold"),
         ylab="Resposta",
         xlab="Fator2",
         ylim=c(0,600))
 abline(h=0)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-70-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-72-1.png" width="672" />
 
 **Comandos**:
 
@@ -1260,17 +1300,19 @@ abline(h=0)
 
 
 ```r
-bar=barplot(media,beside=F, 
-        las=1,col=c("lawngreen","gold"),
-        ylab="Resposta",
-        xlab="Tratamentos",
-        ylim=c(0,600))
+bar=barplot(media,
+            beside=F,
+            las=1,
+            col=c("lawngreen","gold"),
+            ylab="Resposta",
+            xlab="Tratamentos",
+            ylim=c(0,600))
 abline(h=0)
 arrows(bar,media[1,]+desvio[1,],bar,media[1,]-desvio[1,],length = 0.1,angle=90,code=3)
 arrows(bar,media[1,]+media[2,]+desvio[2,],bar,media[1,]+media[2,]-desvio[2,],length = 0.1,angle=90,code=3)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-71-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-73-1.png" width="672" />
 
 <br>
 
@@ -1290,7 +1332,7 @@ arrows(bar,media[1,]+desvio[1,],bar,media[1,]-desvio[1,],length = 0.1,angle=90,c
 arrows(bar,media[1,]+media[2,]+desvio[2,],bar,media[1,]+media[2,]-desvio[2,],length = 0.1,angle=90,code=3)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-72-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-74-1.png" width="672" />
 
 ### Média acima das barras
 
@@ -1308,7 +1350,7 @@ arrows(bar,media[1,]+desvio[1,],bar,media[1,]-desvio[1,],length = 0.1,angle=90,c
 arrows(bar,media[1,]+media[2,]+desvio[2,],bar,media[1,]+media[2,]-desvio[2,],length = 0.1,angle=90,code=3)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-73-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-75-1.png" width="672" />
 
 <br>
 
@@ -1329,7 +1371,7 @@ arrows(bar,media[1,]+desvio[1,],bar,media[1,]-desvio[1,],length = 0.1,angle=90,c
 arrows(bar,media[1,]+media[2,]+desvio[2,],bar,media[1,]+media[2,]-desvio[2,],length = 0.1,angle=90,code=3)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-74-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-76-1.png" width="672" />
 
 <br>
 
@@ -1351,7 +1393,7 @@ arrows(bar,media[1,]+desvio[1,],bar,media[1,]-desvio[1,],length = 0.1,angle=90,c
 arrows(bar,media[1,]+media[2,]+desvio[2,],bar,media[1,]+media[2,]-desvio[2,],length = 0.1,angle=90,code=3)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-75-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-77-1.png" width="672" />
 
 <br>
 
@@ -1380,7 +1422,7 @@ arrows(bar,media[1,]+desvio[1,],bar,media[1,]-desvio[1,],length = 0.1,angle=90,c
 arrows(bar,media[1,]+media[2,]+desvio[2,],bar,media[1,]+media[2,]-desvio[2,],length = 0.1,angle=90,code=3)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-76-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-78-1.png" width="672" />
 
 <br><br><br>
 
@@ -1443,7 +1485,7 @@ b2=barplot(m2,
            las=1)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-80-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-82-1.png" width="672" />
 
 <br>
 
@@ -1468,7 +1510,7 @@ b1=barplot(m2,
 axis(2,seq(0,50,10),las=1)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-81-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-83-1.png" width="672" />
 
 <br>
 
@@ -1495,7 +1537,7 @@ axis(2,seq(0,50,10),las=1)
 arrows(b2,m2+sd2,b2,m2-sd2,angle = 90,code=3, length = 0.05)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-82-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-84-1.png" width="672" />
 
 <br>
 
@@ -1524,7 +1566,7 @@ arrows(b2,m2+sd2,b2,m2-sd2,angle = 90,code=3, length = 0.05)
 abline(h=0)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-83-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-85-1.png" width="672" />
 
 <br>
 
@@ -1545,7 +1587,6 @@ b2=barplot(m2,
            axes=F,
            col="red",
            ylim=c(60,0),
-#           axisnames = F,
            las=1)
 axis(2,seq(0,50,10),las=1)
 title(ylab = expression(MS~(g)),outer=T, line = 3)
@@ -1553,7 +1594,7 @@ arrows(b2,m2+sd2,b2,m2-sd2,angle = 90,code=3, length = 0.05)
 abline(h=0)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-84-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-86-1.png" width="672" />
 
 <br>
 
@@ -1576,7 +1617,6 @@ b2=barplot(m2,
            col="red",
            ylim=c(60,0),
            density = 20,
-#           axisnames = F,
            las=1)
 axis(2,seq(0,50,10),las=1)
 title(ylab = expression(MS~(g)),outer=T, line = 3)
@@ -1584,7 +1624,7 @@ arrows(b2,m2+sd2,b2,m2-sd2,angle = 90,code=3, length = 0.05)
 abline(h=0)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-85-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-87-1.png" width="672" />
 
 <br>
 
@@ -1612,7 +1652,6 @@ b2=barplot(m2,
            col="red",
            ylim=c(60,0),
            density = 20,
-#           axisnames = F,
            las=1)
 axis(2,seq(0,50,10),las=1)
 title(ylab = expression(MS~(g)),outer=T, line = 3)
@@ -1620,7 +1659,7 @@ arrows(b2,m2+sd2,b2,m2-sd2,angle = 90,code=3, length = 0.05)
 abline(h=0)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-86-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-88-1.png" width="672" />
 
 <br>
 
@@ -1649,7 +1688,6 @@ b2=barplot(m2,
            col="red",
            ylim=c(60,0),
            density = 20,
-#           axisnames = F,
            las=1)
 axis(2,seq(0,50,10),las=1)
 text(b2,m2+sd2+5,c("e","d","c","b","a"))
@@ -1658,7 +1696,7 @@ arrows(b2,m2+sd2,b2,m2-sd2,angle = 90,code=3, length = 0.05)
 abline(h=0)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-87-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-89-1.png" width="672" />
 
 <br>
 
@@ -1688,7 +1726,6 @@ b2=barplot(m2,
            col="red",
            ylim=c(60,0),
            density = 20,
-#           axisnames = F,
            las=1)
 axis(2,seq(0,50,10),las=1)
 text(b2,m2+sd2+5,c("e","d","c","b","a"))
@@ -1697,7 +1734,7 @@ arrows(b2,m2+sd2,b2,m2-sd2,angle = 90,code=3, length = 0.05)
 abline(h=0)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-88-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-90-1.png" width="672" />
 
 <br><br><br>
 
@@ -1735,10 +1772,11 @@ desvio=tapply(resposta,tratamentos,sd)
 
 
 ```r
-barplot(media, horiz = T)
+barplot(media, 
+        horiz = T)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-90-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-92-1.png" width="672" />
 
 <br>
 
@@ -1746,7 +1784,8 @@ barplot(media, horiz = T)
 
 
 ```r
-barplot(media, horiz = T, 
+barplot(media, 
+        horiz = T, 
         las=1,
         col="lightyellow",
         ylab="Resposta",
@@ -1755,7 +1794,7 @@ barplot(media, horiz = T,
 abline(v=0)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-91-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-93-1.png" width="672" />
 
 <br>
 
@@ -1764,7 +1803,8 @@ abline(v=0)
 
 ```r
 bar=barplot(media, 
-        las=1,horiz = T,
+        las=1,
+        horiz = T,
         col="lightyellow",
         ylab="Resposta",
         xlab="Tratamentos",
@@ -1773,7 +1813,7 @@ abline(v=0)
 arrows(media+desvio,bar,media-desvio,bar,length = 0.1,angle=90,code=3)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-92-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-94-1.png" width="672" />
 
 <br>
 
@@ -1784,16 +1824,17 @@ arrows(media+desvio,bar,media-desvio,bar,length = 0.1,angle=90,code=3)
 
 ```r
 bar=barplot(media, 
-        las=1,horiz = T,
+        las=1,
+        horiz = T,
         col="lightyellow",
-        ylab=expression("Resposta"*" "*(kg*" "*ha^-1)),
+        ylab=expression("Resposta"~(kg~ha^-1)),
         xlab="Tratamentos",
         xlim=c(0,300))
 abline(v=0)
 arrows(media+desvio,bar,media-desvio,bar,length = 0.1,angle=90,code=3)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-93-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-95-1.png" width="672" />
 
 <br>
 
@@ -1804,7 +1845,7 @@ arrows(media+desvio,bar,media-desvio,bar,length = 0.1,angle=90,code=3)
 bar=barplot(media, 
         las=1,horiz = T,
         col="lightyellow",
-        ylab=expression("Resposta"*" "*(kg*" "*ha^-1)),
+        ylab=expression("Resposta"~(kg~ha^-1)),
         xlab="Tratamentos",
         xlim=c(0,300))
 abline(v=0)
@@ -1812,7 +1853,7 @@ text(media+desvio+20,bar,media)
 arrows(media+desvio,bar,media-desvio,bar,length = 0.1,angle=90,code=3)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-94-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-96-1.png" width="672" />
 
 <br>
 
@@ -1822,9 +1863,10 @@ arrows(media+desvio,bar,media-desvio,bar,length = 0.1,angle=90,code=3)
 ```r
 options(OutDec=",")
 bar=barplot(media, 
-        las=1,horiz = T,
+        las=1,
+        horiz = T,
         col="lightyellow",
-        ylab=expression("Resposta"*" "*(kg*" "*ha^-1)),
+        ylab=expression("Resposta"~(kg~ha^-1)),
         xlab="Tratamentos",
         xlim=c(0,300))
 abline(v=0)
@@ -1832,7 +1874,7 @@ text(media+desvio+20,bar,media)
 arrows(media+desvio,bar,media-desvio,bar,length = 0.1,angle=90,code=3)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-95-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-97-1.png" width="672" />
 
 <br>
 
@@ -1843,9 +1885,10 @@ arrows(media+desvio,bar,media-desvio,bar,length = 0.1,angle=90,code=3)
 tukey=c("d","c","c","b","a")
 options(OutDec=",")
 bar=barplot(media, 
-        las=1,horiz = T,
+        las=1,
+        horiz = T,
         col="lightyellow",
-        ylab=expression("Resposta"*" "*(kg*" "*ha^-1)),
+        ylab=expression("Resposta"~(kg~ha^-1)),
         xlab="Tratamentos",
         xlim=c(0,300))
 abline(v=0)
@@ -1853,7 +1896,7 @@ text(media+desvio+20,bar,paste(round(media,0),tukey))
 arrows(media+desvio,bar,media-desvio,bar,length = 0.1,angle=90,code=3)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-96-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-98-1.png" width="672" />
 
 <br><br><br>
 
@@ -1916,7 +1959,7 @@ require(car)
 Boxplot(resposta ~ tratamentos)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-98-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-100-1.png" width="672" />
 
 <br>
 
@@ -1936,7 +1979,7 @@ boxplot(resposta ~ tratamentos,
         ylim=c(0,300))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-99-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-101-1.png" width="672" />
 
 <br>
 
@@ -1966,7 +2009,7 @@ boxplot(resposta ~ tratamentos,
 points(Médias, pch='+', col="red")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-100-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-102-1.png" width="672" />
 
 <br>
 
@@ -1980,12 +2023,12 @@ boxplot(resposta ~ tratamentos,
         las=1,
         col="lightyellow",
         xlab="Tratamentos",
-        ylab=expression(Produção~~(kg~ha^-1)),
+        ylab=expression("Produção"~~(kg~ha^-1)),
         ylim=c(50,300))
 points(Médias, pch='+', col="red")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-101-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-103-1.png" width="672" />
 
 <br>
 
@@ -2017,7 +2060,7 @@ points(Médias, pch='+', col="red")
 text(c(1:5), superior + 10, Médias)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-103-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-105-1.png" width="672" />
 
 <br>
 
@@ -2036,7 +2079,7 @@ points(Médias, pch='+', col="red")
 text(c(1:5), superior + 20, Médias)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-104-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-106-1.png" width="672" />
 
 <br>
 
@@ -2056,7 +2099,7 @@ points(Médias, pch='+', col="red")
 text(c(1:5), superior + 20, paste(round(Médias, 0), tukey))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-105-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-107-1.png" width="672" />
 
 <br><br>
 
@@ -2083,39 +2126,6 @@ dados$Trat=as.factor(Trat)
 ExpDes.pt::dic(Trat,exp1)
 ```
 
-```
-## ------------------------------------------------------------------------
-## Quadro da analise de variancia
-## ------------------------------------------------------------------------
-##            GL     SQ QM     Fc     Pr>Fc
-## Tratamento  3 582,75    7,9556 0,0034723
-## Residuo    12 293,00                    
-## Total      15 875,75                    
-## ------------------------------------------------------------------------
-## CV = 26,18 %
-## 
-## ------------------------------------------------------------------------
-## Teste de normalidade dos residuos 
-## Valor-p:  0,06507919 
-## De acordo com o teste de Shapiro-Wilk a 5% de significancia, os residuos podem ser considerados normais.
-## ------------------------------------------------------------------------
-## 
-## ------------------------------------------------------------------------
-## Teste de homogeneidade de variancia 
-## valor-p:  0,237053 
-## De acordo com o teste de bartlett a 5% de significancia, as variancias podem ser consideradas homogeneas.
-## ------------------------------------------------------------------------
-## 
-## Teste de Tukey
-## ------------------------------------------------------------------------
-## Grupos Tratamentos Medias
-## a 	 T 4 	 28,5 
-## ab 	 T 2 	 18,5 
-##  b 	 T 1 	 16,5 
-##  b 	 T 3 	 12 
-## ------------------------------------------------------------------------
-```
-
 <br>
 
 ## Utilizando o *ggplot2*
@@ -2136,7 +2146,7 @@ ggplot(dados,
   geom_boxplot()
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-109-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-111-1.png" width="672" />
 
 <br>
 
@@ -2153,7 +2163,7 @@ ggplot(dados,
                outlier.size = 2)           # Tamanho do outlier
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-110-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-112-1.png" width="672" />
 
 <br>
 
@@ -2166,7 +2176,7 @@ ggplot(dados,
   geom_boxplot(aes(fill=dados$Trat))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-111-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-113-1.png" width="672" />
 
 <br>
 
@@ -2185,7 +2195,7 @@ ggplot(dados,
   xlab("Tratamentos")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-112-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-114-1.png" width="672" />
 
 <br>
 
@@ -2206,7 +2216,7 @@ ggplot(dados,
   theme_classic()
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-113-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-115-1.png" width="672" />
 
 <br>
 
@@ -2216,9 +2226,8 @@ ggplot(dados,
 
 
 ```r
-a=data.frame(Trat=levels(as.factor(Trat)),
-             exp1=c(1,1,1,1),                # Deve ter o mesmo da variável
-                                             # esse 1 é para Y=1
+a=data.frame(Trat=levels(as.factor(Trat)), # Deve ter o mesmo da variável
+             exp1=c(1,1,1,1),              # esse 1 é para Y=1
              letra=c("b","ab","b","a"))
 ggplot(dados, 
        aes(x=Trat,y=exp1))+
@@ -2234,7 +2243,7 @@ ggplot(dados,
   geom_text(data = a, aes(label = letra))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-114-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-116-1.png" width="672" />
 
 <br>
 
@@ -2248,7 +2257,7 @@ ggboxplot(dados,            # data.frame com os dados e tratamentos
           'exp1')           # Nome da resposta
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-115-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-117-1.png" width="672" />
 
 <br>
 
@@ -2262,7 +2271,7 @@ ggboxplot(dados,
           fill="red")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-116-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-118-1.png" width="672" />
 
 <br>
 
@@ -2277,7 +2286,7 @@ ggboxplot(dados,
           color = "blue")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-117-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-119-1.png" width="672" />
 
 <br>
 
@@ -2293,7 +2302,7 @@ ggboxplot(dados,
           title="(A)")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-118-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-120-1.png" width="672" />
 
 <br>
 
@@ -2311,7 +2320,7 @@ ggboxplot(dados,
           ylab="Resposta")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-119-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-121-1.png" width="672" />
 
 <br>
 
@@ -2330,7 +2339,7 @@ ggboxplot(dados,
           add="mean")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-120-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-122-1.png" width="672" />
 
 <br>
 
@@ -2367,7 +2376,7 @@ ggboxplot(dados,
   geom_text(data = a, aes(label = letra))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-121-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-123-1.png" width="672" />
 
 <br><br><br>
 
@@ -2402,7 +2411,7 @@ desvio=tapply(resposta,tratamentos,sd)
 plot(media~Dose)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-123-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-125-1.png" width="672" />
 
 ### Melhorias
 
@@ -2414,7 +2423,7 @@ plot(media~Dose,
         xlab="Dose")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-124-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-126-1.png" width="672" />
 
 <br>
 
@@ -2422,14 +2431,14 @@ plot(media~Dose,
 
 
 ```r
-reg=plot(media~Dose, 
+plot(media~Dose, 
         las=1,
         ylab="Resposta",
         xlab="Dose")
 arrows(Dose,media+desvio,Dose,media-desvio,length = 0.05,angle=90,code=3)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-125-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-127-1.png" width="672" />
 
 Adicionando barras de desvio-padrão de largura 0.05 (length=0.05), com angulo de 90 graus e tipo de flecha 3 (T ou T invertido)
 
@@ -2441,14 +2450,14 @@ Y (Ex. $Kg\ ha^{-1}$) e X(Ex.$Kg\ ha^{-1}\ ano^{-1}$)
 
 
 ```r
-reg=plot(media~Dose, 
+plot(media~Dose, 
         las=1,
         ylab=expression("Resposta"~~(kg~ha^-1)),
         xlab=expression("Dose"~(kg~ha^-1~ano^-1)))
 arrows(Dose,media+desvio,Dose,media-desvio,length = 0.02,angle=90,code=3)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-126-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-128-1.png" width="672" />
 
 A função expression também pode ser usada para textos em gráficos (Função "text()" - veremos posteriormente).
 
@@ -2459,14 +2468,14 @@ A função expression também pode ser usada para textos em gráficos (Função 
 
 ```r
 options(OutDec=",")
-reg=plot(media~Dose, 
+plot(media~Dose, 
         las=1,
         ylab=expression("Resposta"~~(kg~ha^-1)),
         xlab=expression("Dose"~~(kg~ha^-1~ano^-1)))
 arrows(Dose,media+desvio,Dose,media-desvio,length = 0.02,angle=90,code=3)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-127-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-129-1.png" width="672" />
 
 A função "options(OutDec=",")" converte a casa decimal de todas as saídas posteriores ao comando para vírgula, entretanto a função não altera para gráficos do pacote ggplot2.
 
@@ -2514,7 +2523,7 @@ arrows(Dose,media+desvio,Dose,media-desvio,length = 0.02,angle=90,code=3)
 curve(modelo$coefficients[1]+modelo$coefficients[2]*x+modelo$coefficients[3]*x^2, add=T,col="blue")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-128-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-130-1.png" width="672" />
 
 <br>
 
@@ -2557,7 +2566,7 @@ abline(v=x,col="red",lty=2)
 points(x,y,pch=8,col="black")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-130-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-132-1.png" width="672" />
 
 <br>
 
@@ -2581,7 +2590,7 @@ text(100,50,expression(Y==7.76013+1.881102*x-0.005567102 *x^2),cex=0.8)
 text(100,40,expression(R^2==1.00),cex=0.8)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-131-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-133-1.png" width="672" />
 
 <br><br>
 
@@ -2602,7 +2611,7 @@ dados=data.frame(Dose,media)
 ggplot(dados, aes(x=Dose, y=media)) + geom_point()
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-132-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-134-1.png" width="672" />
 
 <br>
 
@@ -2619,7 +2628,7 @@ ggplot(dados, aes(x=Dose, y=media)) + geom_point()
        caption = "Fonte: O autor"))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-133-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-135-1.png" width="672" />
 
 geom_point(colour="red", size=3, shape=1): gráfico de dispersão, com pontos de cor vermelha, de tamanho 3 e formato 2 (Círculo sem preenchimento interno)
 
@@ -2646,7 +2655,7 @@ texto <- sprintf('y = %.2f + %.2fx %.2fx², r² = %.2f',modelo$coefficients[1],m
    geom_text(aes(x=x, y=y, label=texto), hjust=1, vjust=16))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-135-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-137-1.png" width="672" />
 
 <br>
 
@@ -2658,7 +2667,7 @@ texto <- sprintf('y = %.2f + %.2fx %.2fx², r² = %.2f',modelo$coefficients[1],m
    theme_bw())
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-136-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-138-1.png" width="672" />
 
 <br>
 
@@ -2670,7 +2679,7 @@ texto <- sprintf('y = %.2f + %.2fx %.2fx², r² = %.2f',modelo$coefficients[1],m
    theme_classic())
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-137-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-139-1.png" width="672" />
 
 
 ```r
@@ -2679,7 +2688,7 @@ texto <- sprintf('y = %.2f + %.2fx %.2fx², r² = %.2f',modelo$coefficients[1],m
           axis.text = element_text(size = 12)))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-138-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-140-1.png" width="672" />
 
 <br>
 
@@ -2692,28 +2701,9 @@ texto <- sprintf('y = %.2f + %.2fx %.2fx², r² = %.2f',modelo$coefficients[1],m
    geom_hline(yintercept =y,colour='red', linetype='dotted', size=1.3))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-139-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-141-1.png" width="672" />
 
-<br>
-
-### Tipos de linhas
-
-
-```r
-d=data.frame(lt=c("blank", "solid", "dashed", "dotted", "dotdash", "longdash", "twodash", "1F", "F1", "4C88C488", "12345678"))
-ggplot()+
-  scale_x_continuous(name="",limits=c(0,1))+
-  scale_y_discrete(name="linetype")+
-  theme_bw()+
-  theme_classic()+
-  scale_linetype_identity()+
-  geom_segment(data=d, mapping=aes(x=0, xend=1, y=d$lt, yend=d$lt, linetype=d$lt))
-```
-
-<img src="index_files/figure-html/unnamed-chunk-140-1.png" width="672" />
-
-
-<br><br><br>
+<br><br>
 
 ****
 
@@ -2786,7 +2776,7 @@ summary(modelo)
 
 ```r
 plot(media~Dose, 
-     main="TRATAMENTO A",
+     main="Tratamento A",
      ylim=c(0,200),
      col="red",
      ylab=expression(Resposta~(kg~ha^-1)),
@@ -2795,7 +2785,7 @@ curve(coef(modelo)[1]+coef(modelo)[2]*x+coef(modelo)[3]*x^2, add=T,col="red")
 legend("topleft",expression(Y==7.76013+1.88110*x-0.00557 *x^2, R^2==1.00), bty="n")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-143-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-144-1.png" width="672" />
 
 <br>
 
@@ -2831,7 +2821,7 @@ summary(modelo1)
 
 ```r
 plot(media1~Dose, 
-     main="TRATAMENTO B",
+     main="Tratamento B",
      ylim=c(0,200),
      col="blue",
      ylab=expression(Resposta~(kg~ha^-1)),
@@ -2840,7 +2830,7 @@ curve(coef(modelo1)[1]+coef(modelo1)[2]*x+coef(modelo1)[3]*x^2, add=T,col="blue"
 legend("topleft",expression(Y==28.70908+1.77830*x-0.00520*x^2, R^2==0.99), bty="n")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-144-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-145-1.png" width="672" />
 
 <br>
 
@@ -2860,7 +2850,7 @@ points(media1~Dose, col="blue")
 curve(coef(modelo1)[1]+coef(modelo1)[2]*x+coef(modelo1)[3]*x^2, add=T,col="blue")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-145-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-146-1.png" width="672" />
 
 
 ```r
@@ -2874,7 +2864,7 @@ points(media1~Dose, col="blue")
 curve(coef(modelo1)[1]+coef(modelo1)[2]*x+coef(modelo1)[3]*x^2, add=T,col="blue")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-146-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-147-1.png" width="672" />
 
 <br>
 
@@ -2897,7 +2887,7 @@ curve(coef(modelo)[1]+coef(modelo)[2]*x+coef(modelo)[3]*x^2, add=T,col="red")
 curve(coef(modelo1)[1]+coef(modelo1)[2]*x+coef(modelo1)[3]*x^2, add=T,col="blue")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-147-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-148-1.png" width="672" />
 
 <br><br><br>
 
@@ -2927,7 +2917,7 @@ data=data.frame(tratamentos, resposta)
 hist(resposta)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-149-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-150-1.png" width="672" />
 
 <br>
 
@@ -2945,7 +2935,7 @@ hist(resposta,
 abline(h=0)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-150-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-151-1.png" width="672" />
 
 **Comandos**:
 
@@ -2989,7 +2979,7 @@ yfit <- yfit*diff(histograma$mids[1:2])*length(resposta)
 lines(xfit, yfit, col="blue", lwd=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-151-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-152-1.png" width="672" />
 
 <br>
 
@@ -3022,7 +3012,7 @@ stat_function(fun = function(x) dnorm(x, mean = mean, sd = sd) * n * largura,
     color = "red", size = 1)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-152-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-153-1.png" width="672" />
 
 **binwidth** = largura de caixa
 
@@ -3064,7 +3054,7 @@ plot(x,
      ylab="")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-154-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-155-1.png" width="672" />
 
 <br>
 
@@ -3076,7 +3066,7 @@ plot(x,y,type="l",axes=F,xlab="",ylim=c(-0.1,0.5),
      ylab="")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-155-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-156-1.png" width="672" />
 
 <br>
 
@@ -3089,7 +3079,7 @@ plot(x,y,type="l",axes=F,xlab="",ylim=c(-0.1,0.5),
 polygon(c(-3,x,3),c(0,y,0),density = 30)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-156-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-157-1.png" width="672" />
 
 <br>
 
@@ -3107,7 +3097,7 @@ abline(h=0);
 lines(x=c(0,0),y=c(0,max(y)),lty=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-157-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-158-1.png" width="672" />
 
 <br>
 
@@ -3125,7 +3115,7 @@ abline(h=0);
 lines(x=c(0,0),y=c(0,max(y)),lty=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-158-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-159-1.png" width="672" />
 
 <br>
 
@@ -3143,7 +3133,7 @@ abline(h=0);
 lines(x=c(0,0),y=c(0,max(y)),lty=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-159-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-160-1.png" width="672" />
 
 <br>
 
@@ -3166,7 +3156,7 @@ text(+2.5,0.1,expression(frac(alpha,2)))
 axis(1)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-160-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-161-1.png" width="672" />
 
 <br><br><br>
 
@@ -3235,7 +3225,7 @@ proporção = prop.table(table(variedade))
 pie(proporção*100)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-163-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-164-1.png" width="672" />
 
 <br>
 
@@ -3250,7 +3240,7 @@ pie(proporção*100,
     main="Variedades de abacate")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-164-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-165-1.png" width="672" />
 
 <br>
 
@@ -3268,7 +3258,7 @@ pie(proporção*100,
     main="Variedades de abacate")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-165-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-166-1.png" width="672" />
 
 <br><br>
 
@@ -3329,7 +3319,7 @@ library(plotrix)
 pie3D(proporção*100)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-167-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-168-1.png" width="672" />
 
 <br>
 
@@ -3342,7 +3332,7 @@ pie3D(proporção*100,
       main="Variedades de abacate")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-168-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-169-1.png" width="672" />
 
 <br>
 
@@ -3358,7 +3348,7 @@ pie3D(proporção*100,
       main="Variedades de abacate")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-169-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-170-1.png" width="672" />
 
 <br><br><br>
 
@@ -3390,7 +3380,7 @@ dados = data.frame(FATOR1,FATOR2,repe,RESP)
 with(dados, interaction.plot(FATOR1, FATOR2, RESP))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-171-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-172-1.png" width="672" />
 
 ### Editando o gráfico
 
@@ -3400,7 +3390,7 @@ with(dados, interaction.plot(FATOR1, FATOR2, RESP, las=1, col=1:6, bty='l',
                              ylab='CBM', trace.label="FATOR2"))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-172-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-173-1.png" width="672" />
 
 ### Fator2 x Fator 1
 
@@ -3409,7 +3399,7 @@ with(dados, interaction.plot(FATOR1, FATOR2, RESP, las=1, col=1:6, bty='l',
 with(dados, interaction.plot(FATOR2, FATOR1, RESP))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-173-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-174-1.png" width="672" />
 
 ### Editando o gráfico
 
@@ -3418,7 +3408,7 @@ with(dados, interaction.plot(FATOR2, FATOR1, RESP))
 with(dados, interaction.plot(FATOR2,FATOR1, RESP, las=1, col=c("blue","red"), bty='l',xlab='', ylab='CBM', trace.label="repe"))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-174-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-175-1.png" width="672" />
 
 ## Usando o interaction(s)
 
@@ -3500,7 +3490,7 @@ interaction.plot(data$fatorB[data$fatorA=="2"],
                  data$resp[data$fatorA=="2"])
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-176-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-177-1.png" width="672" />
 
 ### Alterando escala do eixo Y
 
@@ -3517,7 +3507,7 @@ interaction.plot(data$fatorB[data$fatorA=="2"],
                  las=1)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-177-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-178-1.png" width="672" />
 
 ### Título do eixo x e y
 
@@ -3538,7 +3528,7 @@ interaction.plot(data$fatorB[data$fatorA=="2"],
                  ylab="Resposta")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-178-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-179-1.png" width="672" />
 
 ### Removendo linhas da caixa
 
@@ -3561,7 +3551,7 @@ interaction.plot(data$fatorB[data$fatorA=="2"],
                  bty="l")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-179-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-180-1.png" width="672" />
 
 ### Cor da linhas
 
@@ -3586,7 +3576,7 @@ interaction.plot(data$fatorB[data$fatorA=="2"],
                  col = c("red","blue"))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-180-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-181-1.png" width="672" />
 
 ### Título dos gráficos
 
@@ -3613,7 +3603,7 @@ interaction.plot(data$fatorB[data$fatorA=="2"],
                  main="Fator A = 2")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-181-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-182-1.png" width="672" />
 
 ### Título da legenda
 
@@ -3642,7 +3632,7 @@ interaction.plot(data$fatorB[data$fatorA=="2"],
                  trace.label = "Fator C")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-182-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-183-1.png" width="672" />
 
 
 ### Pontos da média
@@ -3695,7 +3685,7 @@ interaction.plot(data$fatorB[data$fatorA=="2"],
 points(c(1,2,1,2),media1, col="red", pch=16)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-184-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-185-1.png" width="672" />
 
 ### Barras de desvio-padrão
 
@@ -3748,7 +3738,7 @@ points(c(1,2,1,2),media1, col="red", pch=16)
 arrows(c(1,2,1,2), media1+desvio1,c(1,2,1,2),media1-desvio1, code=3,angle=90,length = 0.1, col=c("red","red","blue","blue"))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-186-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-187-1.png" width="672" />
 
 ## Pacote dae
 
@@ -3786,37 +3776,37 @@ library(dae)
 interaction.ABC.plot(resp,FATOR1,FATOR2,FATOR3,data=dados)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-188-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-189-1.png" width="672" />
 
 ```r
 interaction.ABC.plot(resp,FATOR1,FATOR3,FATOR2,data=dados)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-188-2.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-189-2.png" width="672" />
 
 ```r
 interaction.ABC.plot(resp,FATOR2,FATOR3,FATOR1,data=dados)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-188-3.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-189-3.png" width="672" />
 
 ```r
 interaction.ABC.plot(resp,FATOR2,FATOR1,FATOR3,data=dados)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-188-4.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-189-4.png" width="672" />
 
 ```r
 interaction.ABC.plot(resp,FATOR3,FATOR2,FATOR1,data=dados)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-188-5.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-189-5.png" width="672" />
 
 ```r
 interaction.ABC.plot(resp,FATOR3,FATOR1,FATOR2,data=dados)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-188-6.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-189-6.png" width="672" />
 
 ### Média e desvio-padrão
 
@@ -3885,7 +3875,7 @@ interaction.ABC.plot(media,F1,F2,F3,data=data,
                                                    width=0.2)))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-192-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-193-1.png" width="672" />
 
 <br><br><br>
 
@@ -3916,28 +3906,28 @@ library(lattice)
 with(dados, xyplot(RESP ~ FATOR1|FATOR2, groups=repe))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-194-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-195-1.png" width="672" />
 
 
 ```r
 with(dados, xyplot(RESP ~ FATOR1|FATOR2, groups=repe, aspect="xy"))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-195-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-196-1.png" width="672" />
 
 
 ```r
 with(dados, xyplot(RESP ~ FATOR1|FATOR2, groups=repe, aspect="xy", type="o"))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-196-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-197-1.png" width="672" />
 
 
 ```r
 with(dados, xyplot(RESP ~ FATOR1|FATOR2, groups=repe, aspect="xy", type="o", ylab='CBM',strip=strip.custom(strip.names=TRUE, strip.levels=TRUE)))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-197-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-198-1.png" width="672" />
 
 ### Fator 1 x Fator 2
 
@@ -3946,7 +3936,7 @@ with(dados, xyplot(RESP ~ FATOR1|FATOR2, groups=repe, aspect="xy", type="o", yla
 with(dados, xyplot(RESP ~ FATOR2|FATOR1, groups=repe, type="o", ylab='CBM', strip=strip.custom(strip.names=TRUE,strip.levels=TRUE)))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-198-1.png" width="960" />
+<img src="index_files/figure-html/unnamed-chunk-199-1.png" width="960" />
 
 <br><br><br>
 
@@ -3982,7 +3972,7 @@ plot(UR~TEMPO,
      col="blue", las=1)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-200-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-201-1.png" width="672" />
 
 <br>
 
@@ -3996,7 +3986,7 @@ plot(UR~TEMPO,
      col="blue", las=1)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-201-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-202-1.png" width="672" />
 
 <br>
 
@@ -4010,7 +4000,7 @@ plot(UR~TEMPO,
      col="blue", las=1)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-202-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-203-1.png" width="672" />
 
 
 ```r
@@ -4020,7 +4010,7 @@ plot(UR~TEMPO,
      col="blue", las=1)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-203-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-204-1.png" width="672" />
 
 <br>
 
@@ -4034,7 +4024,7 @@ plot(UR~TEMPO,
      col="blue", las=1)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-204-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-205-1.png" width="672" />
 
 <br>
 
@@ -4048,7 +4038,7 @@ plot(UR~TEMPO,
      col="blue", las=1)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-205-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-206-1.png" width="672" />
 
 <br>
 
@@ -4082,7 +4072,7 @@ plot(UR~TEMPO,cex=0.5,
      col="blue", las=1)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-206-1.png" width="864" />
+<img src="index_files/figure-html/unnamed-chunk-207-1.png" width="864" />
 
 <br>
 
@@ -4112,7 +4102,7 @@ plot(TM~TEMPO, ylab="Temperatura")
 plot(UR~TEMPO, ylab="Umidade relativa")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-208-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-209-1.png" width="672" />
 
 <br>
 
@@ -4136,7 +4126,7 @@ plot(UR~TEMPO,
      lty=4) # modificando formato de linha
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-209-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-210-1.png" width="672" />
 
 <br>
 
@@ -4161,7 +4151,7 @@ plot(UR~TEMPO,
      lty=4)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-210-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-211-1.png" width="672" />
 
 <br>
 
@@ -4188,7 +4178,7 @@ plot(UR~TEMPO,
      lty=4)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-211-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-212-1.png" width="672" />
 
 
 ```r
@@ -4215,7 +4205,7 @@ axis(4,las=2) # escala do eixo y secundário
 axis(side=1,las=1, at=seq(0, 100, by=10)) # escala do eixo x 
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-212-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-213-1.png" width="672" />
 
 ```r
 ## Obs. at=seq(0, 100, by=10) estou definindo um intervalo de 0 a 100 como marca a cada 10 unidades
@@ -4251,7 +4241,7 @@ axis(side=1,las=1, at=seq(0, 100, by=10))
 text(par("usr")[2]*1.11,mean(par("usr")[3:4]), "UR (%)", srt = -90, xpd = TRUE, pos = 4)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-213-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-214-1.png" width="672" />
 
 <br>
 
@@ -4287,7 +4277,7 @@ legend("bottomleft", # posição da legenda
        bty="n") # caixa da legenda sem margem
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-214-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-215-1.png" width="672" />
 
 <br>
 
@@ -4315,7 +4305,7 @@ plot(TM~TEMPO,
      col="red", las=1)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-216-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-217-1.png" width="672" />
 
 
 ```r
@@ -4325,7 +4315,7 @@ plot(UR~TEMPO,
      las=1)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-217-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-218-1.png" width="672" />
 
 <br>
 
@@ -4360,14 +4350,14 @@ ggplot(data,
   xlab("Tempo (dias)")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-219-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-220-1.png" width="672" />
 
 
 ```r
 ggplot(data, aes(x = tempo))+geom_line(aes(y = Umidade, colour = "Umidade"), col="blue")+ xlab("Tempo (dias)")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-220-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-221-1.png" width="672" />
 
 <br>
 
@@ -4383,7 +4373,7 @@ ggplot(data, aes(x = tempo))+geom_line(aes(y = Umidade, colour = "Umidade"), col
                 colour = "Temperatura")))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-221-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-222-1.png" width="672" />
 
 <br>
 
@@ -4396,7 +4386,7 @@ ggplot(data, aes(x = tempo))+geom_line(aes(y = Umidade, colour = "Umidade"), col
     limits = c(0, 100)))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-222-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-223-1.png" width="672" />
 
 <br>
 
@@ -4410,7 +4400,7 @@ ggplot(data, aes(x = tempo))+geom_line(aes(y = Umidade, colour = "Umidade"), col
                                          name = expression("Temperatura"^o*"C"))))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-223-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-224-1.png" width="672" />
 
 <br>
 
@@ -4424,7 +4414,7 @@ ggplot(data, aes(x = tempo))+geom_line(aes(y = Umidade, colour = "Umidade"), col
                        values = c("red","blue")))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-224-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-225-1.png" width="672" />
 
 <br>
 
@@ -4437,7 +4427,7 @@ ggplot(data, aes(x = tempo))+geom_line(aes(y = Umidade, colour = "Umidade"), col
          panel.grid.minor = element_blank()))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-225-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-226-1.png" width="672" />
 
 <br><br><br>
 
@@ -4512,7 +4502,7 @@ library(corrplot)
 corrplot(M, method="circle")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-228-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-229-1.png" width="672" />
 
 <br>
 
@@ -4523,7 +4513,7 @@ corrplot(M, method="circle")
 corrplot(M, method="color")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-229-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-230-1.png" width="672" />
 
 <br>
 
@@ -4534,7 +4524,7 @@ corrplot(M, method="color")
 corrplot(M, method="number")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-230-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-231-1.png" width="672" />
 
 <br>
 
@@ -4545,7 +4535,7 @@ corrplot(M, method="number")
 corrplot(M, type="upper")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-231-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-232-1.png" width="672" />
 
 <br>
 
@@ -4556,7 +4546,7 @@ corrplot(M, type="upper")
 corrplot(M, type="lower")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-232-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-233-1.png" width="672" />
 
 <br>
 
@@ -4569,7 +4559,7 @@ corrplot(M, method="color",
          addCoef.col = "black", insig = "blank", diag=FALSE )
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-233-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-234-1.png" width="672" />
 
 <br>
 
@@ -4582,7 +4572,7 @@ corrplot(M, method="color",
          addCoef.col = "black", insig = "blank", diag=FALSE)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-234-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-235-1.png" width="672" />
 
 <br>
 
@@ -4595,7 +4585,7 @@ corrplot(M, method="color", tl.col="black",
          addCoef.col = "black", insig = "blank", diag=FALSE )
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-235-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-236-1.png" width="672" />
 
 <br>
 
@@ -4609,7 +4599,7 @@ corrplot(M, method="color", tl.col="black",
          addCoef.col = "black", insig = "blank", diag=FALSE )
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-236-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-237-1.png" width="672" />
 
 <br>
 
@@ -4624,7 +4614,7 @@ corrplot(M, method="color", tl.col="black",
          )
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-237-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-238-1.png" width="672" />
 
 <br><br><br>
 
@@ -4681,7 +4671,7 @@ library(PerformanceAnalytics)
 chart.Correlation(dados, pch=19)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-241-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-242-1.png" width="672" />
 
 ### Conjunto de dados
 
@@ -4707,7 +4697,7 @@ library(GGally)
 ggpairs(dados)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-243-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-244-1.png" width="672" />
 
 <br>
 
@@ -4719,7 +4709,7 @@ library(psych)
 pairs.panels(dados)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-244-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-245-1.png" width="672" />
 
 <br><br>
 
@@ -4782,7 +4772,7 @@ qgraph(corre, shape="circle",
        negCol="darkred", layout="groups", vsize=10)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-248-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-249-1.png" width="672" />
 
 <br>
 
@@ -4807,7 +4797,7 @@ qgraph(corre, shape="circle",
        negCol="darkred", layout="groups", vsize=10)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-250-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-251-1.png" width="672" />
 
 <br>
 
@@ -4832,7 +4822,7 @@ qgraph(corre, shape="circle",
        negCol="darkred", layout="groups", vsize=10)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-252-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-253-1.png" width="672" />
 
 <br><br><br>
 
@@ -4969,7 +4959,7 @@ library(plotly)
 ```
 
 <!--html_preserve--><div id="htmlwidget-7598595affc4f25ab85b" style="width:672px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-7598595affc4f25ab85b">{"x":{"visdat":{"3a5811766127":["function () ","plotlyVisDat"]},"cur_data":"3a5811766127","attrs":{"3a5811766127":{"fill":"toself","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar"},"3a5811766127.1":{"fill":"toself","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar","r":[6.5,6.16666666666667,5.66666666666667,5,5.83333333333333],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B100","inherit":true},"3a5811766127.2":{"fill":"toself","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar","r":[3.16666666666667,3.33333333333333,3,3.83333333333333,3],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"N100","inherit":true},"3a5811766127.3":{"fill":"toself","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar","r":[6.33333333333333,5.66666666666667,6,6,5.83333333333333],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B75N25","inherit":true},"3a5811766127.4":{"fill":"toself","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar","r":[5.33333333333333,4.66666666666667,4.83333333333333,4.83333333333333,5.5],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B50N50","inherit":true},"3a5811766127.5":{"fill":"toself","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar","r":[4,4.16666666666667,5.33333333333333,4,4.33333333333333],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B25N75","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"polar":{"radialaxis":{"visible":true}},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"fillcolor":"rgba(31,119,180,0,5)","fill":"toself","type":"scatterpolar","mode":"markers","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"line":{"color":"rgba(31,119,180,1)"},"frame":null},{"fillcolor":"rgba(255,127,14,0,5)","fill":"toself","type":"scatterpolar","r":[6.5,6.16666666666667,5.66666666666667,5,5.83333333333333],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B100","mode":"markers","marker":{"color":"rgba(255,127,14,1)","line":{"color":"rgba(255,127,14,1)"}},"line":{"color":"rgba(255,127,14,1)"},"frame":null},{"fillcolor":"rgba(44,160,44,0,5)","fill":"toself","type":"scatterpolar","r":[3.16666666666667,3.33333333333333,3,3.83333333333333,3],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"N100","mode":"markers","marker":{"color":"rgba(44,160,44,1)","line":{"color":"rgba(44,160,44,1)"}},"line":{"color":"rgba(44,160,44,1)"},"frame":null},{"fillcolor":"rgba(214,39,40,0,5)","fill":"toself","type":"scatterpolar","r":[6.33333333333333,5.66666666666667,6,6,5.83333333333333],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B75N25","mode":"markers","marker":{"color":"rgba(214,39,40,1)","line":{"color":"rgba(214,39,40,1)"}},"line":{"color":"rgba(214,39,40,1)"},"frame":null},{"fillcolor":"rgba(148,103,189,0,5)","fill":"toself","type":"scatterpolar","r":[5.33333333333333,4.66666666666667,4.83333333333333,4.83333333333333,5.5],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B50N50","mode":"markers","marker":{"color":"rgba(148,103,189,1)","line":{"color":"rgba(148,103,189,1)"}},"line":{"color":"rgba(148,103,189,1)"},"frame":null},{"fillcolor":"rgba(140,86,75,0,5)","fill":"toself","type":"scatterpolar","r":[4,4.16666666666667,5.33333333333333,4,4.33333333333333],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B25N75","mode":"markers","marker":{"color":"rgba(140,86,75,1)","line":{"color":"rgba(140,86,75,1)"}},"line":{"color":"rgba(140,86,75,1)"},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<script type="application/json" data-for="htmlwidget-7598595affc4f25ab85b">{"x":{"visdat":{"358c2f77765":["function () ","plotlyVisDat"]},"cur_data":"358c2f77765","attrs":{"358c2f77765":{"fill":"toself","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar"},"358c2f77765.1":{"fill":"toself","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar","r":[6.5,6.16666666666667,5.66666666666667,5,5.83333333333333],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B100","inherit":true},"358c2f77765.2":{"fill":"toself","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar","r":[3.16666666666667,3.33333333333333,3,3.83333333333333,3],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"N100","inherit":true},"358c2f77765.3":{"fill":"toself","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar","r":[6.33333333333333,5.66666666666667,6,6,5.83333333333333],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B75N25","inherit":true},"358c2f77765.4":{"fill":"toself","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar","r":[5.33333333333333,4.66666666666667,4.83333333333333,4.83333333333333,5.5],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B50N50","inherit":true},"358c2f77765.5":{"fill":"toself","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar","r":[4,4.16666666666667,5.33333333333333,4,4.33333333333333],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B25N75","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"polar":{"radialaxis":{"visible":true}},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"fillcolor":"rgba(31,119,180,0,5)","fill":"toself","type":"scatterpolar","mode":"markers","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"line":{"color":"rgba(31,119,180,1)"},"frame":null},{"fillcolor":"rgba(255,127,14,0,5)","fill":"toself","type":"scatterpolar","r":[6.5,6.16666666666667,5.66666666666667,5,5.83333333333333],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B100","mode":"markers","marker":{"color":"rgba(255,127,14,1)","line":{"color":"rgba(255,127,14,1)"}},"line":{"color":"rgba(255,127,14,1)"},"frame":null},{"fillcolor":"rgba(44,160,44,0,5)","fill":"toself","type":"scatterpolar","r":[3.16666666666667,3.33333333333333,3,3.83333333333333,3],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"N100","mode":"markers","marker":{"color":"rgba(44,160,44,1)","line":{"color":"rgba(44,160,44,1)"}},"line":{"color":"rgba(44,160,44,1)"},"frame":null},{"fillcolor":"rgba(214,39,40,0,5)","fill":"toself","type":"scatterpolar","r":[6.33333333333333,5.66666666666667,6,6,5.83333333333333],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B75N25","mode":"markers","marker":{"color":"rgba(214,39,40,1)","line":{"color":"rgba(214,39,40,1)"}},"line":{"color":"rgba(214,39,40,1)"},"frame":null},{"fillcolor":"rgba(148,103,189,0,5)","fill":"toself","type":"scatterpolar","r":[5.33333333333333,4.66666666666667,4.83333333333333,4.83333333333333,5.5],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B50N50","mode":"markers","marker":{"color":"rgba(148,103,189,1)","line":{"color":"rgba(148,103,189,1)"}},"line":{"color":"rgba(148,103,189,1)"},"frame":null},{"fillcolor":"rgba(140,86,75,0,5)","fill":"toself","type":"scatterpolar","r":[4,4.16666666666667,5.33333333333333,4,4.33333333333333],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B25N75","mode":"markers","marker":{"color":"rgba(140,86,75,1)","line":{"color":"rgba(140,86,75,1)"}},"line":{"color":"rgba(140,86,75,1)"},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 </center>
 
@@ -5045,7 +5035,7 @@ sciplot::lineplot.CI(Trat,msraiz,type="l",las=2,xlab="",ylim=c(0,5),
                      cex.lab=1.25,cex.names=1)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-261-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-262-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -5058,7 +5048,7 @@ sciplot::lineplot.CI(Trat,msraiz,type="p",las=2,xlab="",ylim=c(0,5),
                      cex.lab=1.25,cex.names=1)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-262-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-263-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -5071,7 +5061,7 @@ sciplot::lineplot.CI(Trat,msraiz,type="b",las=2,xlab="",ylim=c(0,5),
                      cex.lab=1.25,cex.names=1)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-263-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-264-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -5086,7 +5076,7 @@ sciplot::bargraph.CI(Trat,msraiz,las=2,xlab="",
 abline(h=0)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-264-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-265-1.png" width="672" style="display: block; margin: auto;" />
 
 <br><br><br>
 
@@ -5169,7 +5159,7 @@ hnp::hnp(mod,
          pch=16)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-267-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-268-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -5184,7 +5174,7 @@ hnp::hnp(mod,
          print.on=T)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-268-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-269-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -5201,7 +5191,7 @@ hnp::hnp(mod,
          col.paint.out="red")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-269-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-270-1.png" width="672" style="display: block; margin: auto;" />
 
 <br><br><br>
 
@@ -5259,7 +5249,7 @@ library(ggfortify)
 autoplot(pca,data=iris)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-272-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-273-1.png" width="672" />
 
 <br>
 
@@ -5273,7 +5263,7 @@ library(ggfortify)
 autoplot(pca,data=iris,colour="Species")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-273-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-274-1.png" width="672" />
 
 <br>
 
@@ -5288,7 +5278,7 @@ autoplot(pca,
          loadings=T)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-274-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-275-1.png" width="672" />
 
 <br>
 
@@ -5304,7 +5294,7 @@ autoplot(pca,
          loadings.label=T)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-275-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-276-1.png" width="672" />
 
 <br>
 
@@ -5322,7 +5312,7 @@ autoplot(pca,
          frame=T)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-276-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-277-1.png" width="672" />
 
 <br>
 
@@ -5341,7 +5331,7 @@ autoplot(pca,
          frame.type="norm")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-277-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-278-1.png" width="672" />
 
 <br>
 
@@ -5362,7 +5352,7 @@ autoplot(pca,
          loadings.label.colour="black")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-278-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-279-1.png" width="672" />
 
 <br>
 
@@ -5385,7 +5375,7 @@ autoplot(pca,
   theme(text = element_text(family="serif"))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-279-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-280-1.png" width="672" />
 
 <br>
 
@@ -5409,7 +5399,7 @@ autoplot(pca,
   geom_hline(,yintercept = 0,linetype=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-280-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-281-1.png" width="672" />
 
 <br><br>
 
@@ -5467,7 +5457,7 @@ require(factoextra)
 fviz_pca_biplot(pca,geom = c("point"))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-283-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-284-1.png" width="672" />
 
 <br>
 
@@ -5480,7 +5470,7 @@ fviz_pca_biplot(pca,geom = c("point"),
                 addEllipses = T)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-284-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-285-1.png" width="672" />
 
 <br>
 
@@ -5493,7 +5483,7 @@ fviz_pca_biplot(pca,geom = c("point"),
                 addEllipses = T, fill.ind = dados$Tratamento)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-285-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-286-1.png" width="672" />
 
 <br>
 
@@ -5508,7 +5498,7 @@ fviz_pca_biplot(pca,geom = c("point"),
                 title = "")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-286-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-287-1.png" width="672" />
 
 <br>
 
@@ -5524,7 +5514,7 @@ fviz_pca_biplot(pca,geom = c("point"),
                 repel=T)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-287-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-288-1.png" width="672" />
 
 <br>
 
@@ -5541,7 +5531,7 @@ fviz_pca_biplot(pca,geom = c("point"),
                 pointshape=21,pointsize=2,textsize=0.5, col.var="black")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-288-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-289-1.png" width="672" />
 
 <br>
 
@@ -5558,7 +5548,7 @@ fviz_pca_biplot(pca,geom = c("point"),
                 pointshape=21,pointsize=2,textsize=0.5, col.var="black",fill= "Cultivares")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-289-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-290-1.png" width="672" />
 
 <br>
 
@@ -5576,7 +5566,7 @@ fviz_pca_biplot(pca,geom = c("point"),
                 col.var="black",fill= "Cultivares")+ylab("CP2(20,2%)")+xlab("CP1(37,8%)")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-290-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-291-1.png" width="672" />
 
 <br><br>
 
@@ -5620,7 +5610,7 @@ dadosm=data.frame(mph,mHAL,mK,mP,mCa,mMg,mV)
 
 <br>
 
-### Dendograma (Definir Clusters)
+### Dendrograma (Definir Clusters)
 
 
 ```r
@@ -5629,7 +5619,7 @@ plot(dend)
 abline(h=8, lty=2, col="red")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-293-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-294-1.png" width="672" />
 
 ```r
 ## Cluster 1: T8, T10, T6,T9,T2,T4
@@ -5668,7 +5658,7 @@ library(factoextra)
 fviz_pca_var(pca)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-295-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-296-1.png" width="672" />
 
 <br>
 
@@ -5679,7 +5669,7 @@ fviz_pca_var(pca)
 fviz_pca_var(pca)+ylab("CP2 (14,9)")+xlab("CP1 (72,3%)")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-296-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-297-1.png" width="672" />
 
 <br>
 
@@ -5690,7 +5680,7 @@ fviz_pca_var(pca)+ylab("CP2 (14,9)")+xlab("CP1 (72,3%)")
 fviz_pca_var(pca, title="")+ylab("CP2 (14,9)")+xlab("CP1 (72,3%)")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-297-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-298-1.png" width="672" />
 
 <br>
 
@@ -5702,7 +5692,7 @@ rownames(pca$var$coord)=c("pH","H+AL","K","P","Ca","Mg","V")
 fviz_pca_var(pca, title="")+ylab("CP2 (14,9)")+xlab("CP1 (72,3%)")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-298-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-299-1.png" width="672" />
 
 <br>
 
@@ -5716,7 +5706,7 @@ fviz_pca_var(pca,
              repel=T)+ylab("CP2 (14,9)")+xlab("CP1 (72,3%)")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-299-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-300-1.png" width="672" />
 
 <br>
 
@@ -5733,7 +5723,7 @@ fviz_pca_var(pca,
   theme_classic()
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-300-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-301-1.png" width="672" />
 
 <br>
 
@@ -5744,7 +5734,7 @@ fviz_pca_var(pca,
 fviz_pca_ind(pca)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-301-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-302-1.png" width="672" />
 
 <br>
 
@@ -5755,7 +5745,7 @@ fviz_pca_ind(pca)
 fviz_pca_ind(pca, title="")+ylab("CP2 (14,9)")+xlab("CP1 (72,3%)")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-302-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-303-1.png" width="672" />
 
 <br>
 
@@ -5775,7 +5765,7 @@ fviz_pca_ind(pca,
   xlab("CP1 (72,3%)")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-303-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-304-1.png" width="672" />
 
 <br>
 
@@ -5796,7 +5786,7 @@ fviz_pca_ind(pca,
   xlab("CP1 (72,3%)")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-304-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-305-1.png" width="672" />
 
 <br>
 
@@ -5815,7 +5805,7 @@ fviz_pca_ind(pca,
   xlab("CP1 (72,3%)")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-305-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-306-1.png" width="672" />
 
 <br>
 
@@ -5834,7 +5824,7 @@ fviz_pca_ind(pca,
   xlab("CP1 (72,3%)")+theme_classic()
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-306-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-307-1.png" width="672" />
 
 
 ```r
@@ -5844,7 +5834,7 @@ library(gridExtra)
 grid.arrange(a,b, ncol=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-307-1.png" width="960" />
+<img src="index_files/figure-html/unnamed-chunk-308-1.png" width="960" />
 
 <br><br>
 
@@ -5872,7 +5862,7 @@ dadosm=data.frame(mph,mHAL,mK,mP,mCa,mMg,mV)
 
 <br>
 
-### Dendograma (Definir Clusters)
+### Dendrograma (Definir Clusters)
 
 Obs. Fica a critério do pesquisador o valor do corte (Neste caso optei pelo corte em 8, formando assim dois *clusters*)
 
@@ -5885,7 +5875,7 @@ plot(dend)
 abline(h=8, lty=2, col="red")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-309-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-310-1.png" width="672" />
 
 ```r
 ## Cluster 1: T8, T10, T6,T9,T2,T4
@@ -5905,7 +5895,7 @@ par(cex=0.8)
 rect.dendrogram(dend, k=2,border = 8, lty = 5, lwd = 2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-310-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-311-1.png" width="672" />
 
 <br>
 
@@ -5938,7 +5928,7 @@ round(pca$eig,3)
 plot(pca$eig[,2], type="b",ylab="Porcentagem de variância",xlab="CP")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-312-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-313-1.png" width="672" />
 
 <br>
 
@@ -5953,7 +5943,7 @@ plot(pca$ind$coord, # Extraindo da pca os valores das coordenadas em x e CP1 e y
 abline(h=0,v=0, lty=2) # traçando linha em x e y = 0; lty=2 é linha tracejada 
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-313-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-314-1.png" width="672" />
 
 <br>
 
@@ -5971,7 +5961,7 @@ text(pca$ind$coord[,1],
      rownames(pca$ind$coord))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-314-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-315-1.png" width="672" />
 
 <br>
 
@@ -5990,7 +5980,7 @@ text(pca$ind$coord[,1],
      rownames(pca$ind$coord))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-315-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-316-1.png" width="672" />
 
 <br>
 
@@ -6007,7 +5997,7 @@ plot(pca$var$coord, # Extraindo da pca os valores da coordenadas em x e y dos ve
 abline(h=0,v=0, lty=2) # traçando linha em x e y = 0; lty=2 é linha tracejada 
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-316-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-317-1.png" width="672" />
 
 <br>
 
@@ -6039,7 +6029,7 @@ arrows(0,0,pca$var$coord[7,1],pca$var$coord[7,2], length = 0.1) # vetor 7 - V
 text(pca$var$coord-0.01,rownames(pca$var$coord)) # Estou colocando os nomes dos vetores (-0.01 significa abaixo da coordenada a 0.01)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-317-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-318-1.png" width="672" />
 
 <br>
 
@@ -6068,7 +6058,7 @@ text(pca$var$coord[,1]+
      pca$var$coord[,2],rownames(pca$var$coord))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-318-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-319-1.png" width="672" />
 
 `ifelse(pca$var$coord[,1]<0,-0.2,+0.2)`: estamos definindo que se `pca$var$coord[,1]` for menor que 0, irá adicionar -0.2, do contrário irá somar 0.2
 
@@ -6102,7 +6092,7 @@ draw.circle(0,0,max(ifelse(c(pca$var$coord[,1],pca$var$coord[,2])<0,
                            c(pca$var$coord[,1],pca$var$coord[,2]))))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-319-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-320-1.png" width="672" />
 
 <br>
 
@@ -6134,7 +6124,7 @@ draw.circle(0,0,max(ifelse(c(pca$var$coord[,1],pca$var$coord[,2])<0,
                            c(pca$var$coord[,1],pca$var$coord[,2]))))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-320-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-321-1.png" width="672" />
 
 <br><br>
 
@@ -6180,7 +6170,7 @@ library(FactoMineR)
 pca=PCA(dadosm)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-323-1.png" width="672" /><img src="index_files/figure-html/unnamed-chunk-323-2.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-324-1.png" width="672" /><img src="index_files/figure-html/unnamed-chunk-324-2.png" width="672" />
 
 <br>
 
@@ -6192,7 +6182,7 @@ library(factoextra)
 fviz_screeplot(pca)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-324-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-325-1.png" width="672" />
 
 
 ```r
@@ -6206,7 +6196,7 @@ fviz_screeplot(pca,
   ylab("Porcentagem de explicação da variância") # nomeando eixo y
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-325-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-326-1.png" width="672" />
 
 <br>
 
@@ -6227,7 +6217,7 @@ bar=barplot(pca$eig[,2],
         ylim=c(0,100))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-326-1.png" width="768" />
+<img src="index_files/figure-html/unnamed-chunk-327-1.png" width="768" />
 
 <br>
 
@@ -6243,7 +6233,7 @@ points(bar,
        type = "o")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-327-1.png" width="768" />
+<img src="index_files/figure-html/unnamed-chunk-328-1.png" width="768" />
 
 <br>
 
@@ -6262,7 +6252,7 @@ text(bar,
      round(pca$eig[,2],2))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-328-1.png" width="768" />
+<img src="index_files/figure-html/unnamed-chunk-329-1.png" width="768" />
 
 <br>
 
@@ -6287,7 +6277,7 @@ text(bar,
      round(pca$eig[,2],2))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-329-1.png" width="768" />
+<img src="index_files/figure-html/unnamed-chunk-330-1.png" width="768" />
 
 <br><br>
 
@@ -6402,7 +6392,7 @@ sorted.loadings1 <- load[order(load[,1]),1]
                  pch=16))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-333-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-334-1.png" width="672" />
 
 <br>
 
@@ -6419,7 +6409,7 @@ sorted.loadings2 <- load[order(load[,2]),2]
                  pch=16))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-334-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-335-1.png" width="672" />
 
 <br>
 
@@ -6436,7 +6426,7 @@ sorted.loadings3 <- load[order(load[,3]),3]
                  pch=16))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-335-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-336-1.png" width="672" />
 
 <br><br><br>
 
@@ -6491,11 +6481,11 @@ rownames(data)=dados$trat
 fviz_pca_biplot(PCA(data),col.ind = cluster, addEllipses = T) # default e padronizado
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-339-1.png" width="672" /><img src="index_files/figure-html/unnamed-chunk-339-2.png" width="672" /><img src="index_files/figure-html/unnamed-chunk-339-3.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-340-1.png" width="672" /><img src="index_files/figure-html/unnamed-chunk-340-2.png" width="672" /><img src="index_files/figure-html/unnamed-chunk-340-3.png" width="672" />
 
 ****
 
-# Dendograma
+# Dendrograma
 
 ****
 
@@ -6582,14 +6572,14 @@ R=hclust(d)
 
 <br>
 
-### Dendograma
+### Dendrograma
 
 
 ```r
 plot(R)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-342-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-343-1.png" width="672" />
 
 <br>
 
@@ -6600,7 +6590,7 @@ plot(R)
 plot(R, hang=-1)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-343-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-344-1.png" width="672" />
 
 <br>
 
@@ -6615,7 +6605,7 @@ plot(R,
      ylab="Dist?ncia") # Título do eixo Y
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-344-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-345-1.png" width="672" />
 
 <br>
 
@@ -6628,10 +6618,10 @@ Neste exemplo vamos considerar dois grupos
 # Chamando package dendextend
 library(dendextend)
 
-# Construindo o dendograma
+# Construindo o dendrograma
 dend=as.dendrogram(hclust(dist(USArrests), method='average'))
 
-# Definindo cores e grupos para o dendograma
+# Definindo cores e grupos para o dendrograma
 dend=set(dend,"branches_k_color", 
              value = c("red", "blue"), k = 2)
 
@@ -6642,7 +6632,7 @@ plot(dend,
      ylab="Distância")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-345-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-346-1.png" width="672" />
 
 <br>
 
@@ -6670,7 +6660,7 @@ rect.dendrogram(dend,
                 lwd = 2) # espessura da linha
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-346-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-347-1.png" width="672" />
 
 <br>
 
@@ -6686,7 +6676,7 @@ plot(as.phylo(R),
      type="fan")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-347-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-348-1.png" width="672" />
 
 <br>
 
@@ -6704,7 +6694,7 @@ plot(as.phylo(R),
      tip.color=colors[clus])
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-348-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-349-1.png" width="672" />
 
 <br>
 
@@ -6719,7 +6709,7 @@ plot(as.phylo(R),
      type="radial")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-349-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-350-1.png" width="672" />
 
 <br><br><br>
 
@@ -6747,7 +6737,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-350-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-351-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -6758,7 +6748,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-351-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-352-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -6769,7 +6759,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-352-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-353-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -6780,7 +6770,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-353-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-354-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -6791,7 +6781,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-354-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-355-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -6802,7 +6792,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-355-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-356-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -6813,7 +6803,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-356-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-357-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -6824,7 +6814,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-357-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-358-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -6835,7 +6825,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-358-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-359-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -6846,7 +6836,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-359-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-360-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -6857,7 +6847,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-360-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-361-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -6868,7 +6858,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-361-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-362-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -6879,7 +6869,7 @@ legend("center",legend=
        cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-362-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-363-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -6890,7 +6880,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-363-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-364-1.png" width="672" />
 
 <br>
 
@@ -6903,7 +6893,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-364-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-365-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -6914,7 +6904,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-365-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-366-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -6925,7 +6915,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-366-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-367-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -6936,7 +6926,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-367-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-368-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -6947,7 +6937,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-368-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-369-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -6958,7 +6948,7 @@ bty="n",
 cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-369-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-370-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -6969,17 +6959,18 @@ bty="n",
 cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-370-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-371-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
 plot(1,1,axes=F, col="white", ylab="",xlab="")
 legend("center",
 legend=expression(hat(Y)==ax^2+bx+c,R^2==0.99,italic(p-valor)==0.0001),
-bty="n", cex=2)
+bty="n", 
+cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-371-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-372-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -6990,7 +6981,7 @@ legend=expression(Produtividade~(kg~ha^-1)),
        cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-372-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-373-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -7001,7 +6992,7 @@ expression(H[2]*0[2]~(mu*"mol"~g^-1~MFPA)),
        cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-373-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-374-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -7012,7 +7003,7 @@ legend=expression(MSPA~(g~kg^-1)),
        cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-374-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-375-1.png" width="672" style="display: block; margin: auto;" />
 
 
 
@@ -7024,7 +7015,7 @@ expression(bold(italic(A)) == "bold(italic(A))"),
        cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-375-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-376-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -7035,7 +7026,7 @@ legend=expression(hat(Y)==ax^2+bx+c),
        cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-376-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-377-1.png" width="672" style="display: block; margin: auto;" />
 
 </div>
 
@@ -7072,7 +7063,7 @@ Não iremos trabalhar com um conjunto de dados neste exemplo, dessa forma, a lin
 plot(1,1, ylab="Eixo Y",xlab="Eixo X")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-377-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-378-1.png" width="672" />
 
 ****
 
@@ -7094,7 +7085,7 @@ par(mai=c(1,1,1,1))
 plot(1,1, ylab="Eixo Y",xlab="Eixo X")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-378-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-379-1.png" width="672" />
 
 ****
 
@@ -7112,7 +7103,7 @@ par(family="serif")
 plot(1,1, ylab="Eixo Y",xlab="Eixo X")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-379-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-380-1.png" width="672" />
 
 <br>
 
@@ -7130,7 +7121,7 @@ par(col="red")
 plot(1,1, ylab="Eixo Y",xlab="Eixo X")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-380-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-381-1.png" width="672" />
 
 Especificando a cor da escala dos eixos do gráfico
 
@@ -7140,7 +7131,7 @@ par(col.axis="red")
 plot(1,1, ylab="",xlab="")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-381-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-382-1.png" width="672" />
 
 Especificando cor do nome dos eixos
 
@@ -7150,7 +7141,7 @@ par(col.lab="red")
 plot(1,1, ylab="Eixo Y",xlab="Eixo X")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-382-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-383-1.png" width="672" />
 
 Especificando cor do título
 
@@ -7160,7 +7151,7 @@ par(col.main="red")
 plot(1,1, ylab="Eixo Y",xlab="Eixo X",main="title")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-383-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-384-1.png" width="672" />
 
 <br>
 
@@ -7176,11 +7167,40 @@ par(cex=1.3)
 plot(1,1, ylab="Eixo Y",xlab="Eixo X",main="title")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-384-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-385-1.png" width="672" />
 
  - `cex.axis` : Tamanho da fonte das escalas de Y e X
  - `cex.lab` : Tamaho da fonte do nome dos eixos
  - `cex.main` : Tamanho da fonte do título
+
+****
+
+### Alinhamento de titulo
+
+****
+
+
+```r
+plot(1,1, ylab="Eixo Y",xlab="Eixo X")
+title("title", adj=0)
+```
+
+<img src="index_files/figure-html/unnamed-chunk-386-1.png" width="672" />
+
+<br>
+
+****
+
+### Escala de Y na horizontal
+
+****
+
+
+```r
+plot(1,1, ylab="Eixo Y",xlab="Eixo X",las=1)
+```
+
+<img src="index_files/figure-html/unnamed-chunk-387-1.png" width="672" />
 
 <br>
 
@@ -7197,7 +7217,7 @@ par(new=T)
 plot(c(6,5,4,3,2,1), ylab="",xlab="",main="", type="o",col="blue")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-385-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-388-1.png" width="672" />
 
 <br>
 
@@ -7216,7 +7236,7 @@ plot(c(1,2,3,4,5,6), ylab="Eixo Y",xlab="Eixo X",main="title", type="o",col="red
 plot(c(6,5,4,3,2,1), ylab="Eixo Y",xlab="Eixo X",main="title", type="o",col="blue")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-386-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-389-1.png" width="672" />
 
 <br>
 
@@ -7251,7 +7271,7 @@ plot(c(6,5,4,3,2,1), ylab="Eixo Y",xlab="Eixo X",main="title", type="o",col="blu
 plot(c(1,6,1,6,1,6), ylab="Eixo Y",xlab="Eixo X",main="title", type="o",col="blue")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-388-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-391-1.png" width="672" />
 
 <br>
 
@@ -7322,7 +7342,7 @@ library(gridExtra)
 grid.arrange(a,b,c,ncol=3)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-391-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-394-1.png" width="672" />
 
 ### Gráficos um abaixo do outro
 
@@ -7332,7 +7352,7 @@ library(gridExtra)
 grid.arrange(a,b,c,ncol=1)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-392-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-395-1.png" width="672" />
 
 ### Dois na primeira linha e uma no lado esquerdo da segunda linha
 
@@ -7342,7 +7362,7 @@ library(gridExtra)
 grid.arrange(a,b,c,ncol=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-393-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-396-1.png" width="672" />
 
 ### Dois na primeira linha e uma centralizado na segunda linha
 
@@ -7353,7 +7373,7 @@ grid.arrange(a,b,c,
              layout_matrix = rbind(c(1,1,2,2), c(NA,3,3,NA)))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-394-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-397-1.png" width="672" />
 
 ### Dois na primeira linha e uma a direita na segunda linha
 
@@ -7366,5 +7386,98 @@ grid.arrange(a,b,c,
              layout_matrix = rbind(c(1,1,2,2), c(NA,NA,3,3)))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-395-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-398-1.png" width="672" />
+
+### Título em gráficos agrupados
+
+
+```r
+library(gridExtra)
+a1=grid.arrange(a,b,layout_matrix = rbind(c(1,1,2,2)),top="Titulo 1")
+```
+
+<img src="index_files/figure-html/unnamed-chunk-399-1.png" width="672" />
+
+```r
+a2=grid.arrange(a,b,layout_matrix = rbind(c(1,1,2,2)),top="Titulo 2")
+```
+
+<img src="index_files/figure-html/unnamed-chunk-399-2.png" width="672" />
+
+```r
+grid.arrange(a1,a2)
+```
+
+<img src="index_files/figure-html/unnamed-chunk-399-3.png" width="672" />
+
+
+****
+
+# plotly
+
+****
+
+## Conjunto de dados
+
+
+```r
+library(plotly)
+library(dplyr)
+tratamentos=rep(c(paste("T",1:5)),e=4)
+resposta=c(100,120,110,90,150,145,149,165,150,144,134,139,220,206,210,210,266,249,248,260)
+```
+
+## Gráfico de caixas
+
+
+```r
+dados=data.frame(tratamentos,resposta)
+dados %>% plot_ly(y=resposta,
+                  x=~tratamentos,
+                  type = "box",
+                  color = ~tratamentos)%>%
+  layout(yaxis = list(title="Resposta"),
+         xaxis = list(title=""))
+```
+
+<!--html_preserve--><div id="htmlwidget-f888dc62471906a988fd" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f888dc62471906a988fd">{"x":{"visdat":{"358c62ef7913":["function () ","plotlyVisDat"]},"cur_data":"358c62ef7913","attrs":{"358c62ef7913":{"y":[100,120,110,90,150,145,149,165,150,144,134,139,220,206,210,210,266,249,248,260],"x":{},"color":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"box"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"yaxis":{"domain":[0,1],"automargin":true,"title":"Resposta"},"xaxis":{"domain":[0,1],"automargin":true,"title":"","type":"category","categoryorder":"array","categoryarray":["T 1","T 2","T 3","T 4","T 5"]},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"fillcolor":"rgba(102,194,165,0,5)","y":[100,120,110,90],"x":["T 1","T 1","T 1","T 1"],"type":"box","name":"T 1","marker":{"color":"rgba(102,194,165,1)","line":{"color":"rgba(102,194,165,1)"}},"line":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(252,141,98,0,5)","y":[150,145,149,165],"x":["T 2","T 2","T 2","T 2"],"type":"box","name":"T 2","marker":{"color":"rgba(252,141,98,1)","line":{"color":"rgba(252,141,98,1)"}},"line":{"color":"rgba(252,141,98,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(141,160,203,0,5)","y":[150,144,134,139],"x":["T 3","T 3","T 3","T 3"],"type":"box","name":"T 3","marker":{"color":"rgba(141,160,203,1)","line":{"color":"rgba(141,160,203,1)"}},"line":{"color":"rgba(141,160,203,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(231,138,195,0,5)","y":[220,206,210,210],"x":["T 4","T 4","T 4","T 4"],"type":"box","name":"T 4","marker":{"color":"rgba(231,138,195,1)","line":{"color":"rgba(231,138,195,1)"}},"line":{"color":"rgba(231,138,195,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(166,216,84,0,5)","y":[266,249,248,260],"x":["T 5","T 5","T 5","T 5"],"type":"box","name":"T 5","marker":{"color":"rgba(166,216,84,1)","line":{"color":"rgba(166,216,84,1)"}},"line":{"color":"rgba(166,216,84,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+
+## Gráfico de colunas
+
+
+```r
+## Média e Desvio-padrão (Por Tratamento)
+media=tapply(resposta,tratamentos, mean)
+desvio=tapply(resposta,tratamentos,sd)
+dados=data.frame(trat=names(media),
+                     media,
+                 desvio=desvio)
+dados %>% plot_ly(y=media,
+                  x=~trat,
+                  type = "bar",
+                  color = ~trat,
+                  error_y=list(value=~desvio,color="blue"))%>%
+  layout(yaxis = list(title="Resposta"),
+         xaxis = list(title=""))
+```
+
+<!--html_preserve--><div id="htmlwidget-d2a34d502a66744b8e1f" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d2a34d502a66744b8e1f">{"x":{"visdat":{"358c68082dc2":["function () ","plotlyVisDat"]},"cur_data":"358c68082dc2","attrs":{"358c68082dc2":{"y":[105,152.25,141.75,211.5,255.75],"x":{},"error_y":{"value":{},"color":"blue"},"color":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"yaxis":{"domain":[0,1],"automargin":true,"title":"Resposta"},"xaxis":{"domain":[0,1],"automargin":true,"title":"","type":"category","categoryorder":"array","categoryarray":["T 1","T 2","T 3","T 4","T 5"]},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"y":[105],"x":["T 1"],"error_y":{"color":"blue","value":12.9099444873581},"type":"bar","name":"T 1","marker":{"color":"rgba(102,194,165,1)","line":{"color":"rgba(102,194,165,1)"}},"textfont":{"color":"rgba(102,194,165,1)"},"error_x":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"y":[152.25],"x":["T 2"],"error_y":{"color":"blue","value":8.77021474461525},"type":"bar","name":"T 2","marker":{"color":"rgba(252,141,98,1)","line":{"color":"rgba(252,141,98,1)"}},"textfont":{"color":"rgba(252,141,98,1)"},"error_x":{"color":"rgba(252,141,98,1)"},"xaxis":"x","yaxis":"y","frame":null},{"y":[141.75],"x":["T 3"],"error_y":{"color":"blue","value":6.84957419601151},"type":"bar","name":"T 3","marker":{"color":"rgba(141,160,203,1)","line":{"color":"rgba(141,160,203,1)"}},"textfont":{"color":"rgba(141,160,203,1)"},"error_x":{"color":"rgba(141,160,203,1)"},"xaxis":"x","yaxis":"y","frame":null},{"y":[211.5],"x":["T 4"],"error_y":{"color":"blue","value":5.97215762238964},"type":"bar","name":"T 4","marker":{"color":"rgba(231,138,195,1)","line":{"color":"rgba(231,138,195,1)"}},"textfont":{"color":"rgba(231,138,195,1)"},"error_x":{"color":"rgba(231,138,195,1)"},"xaxis":"x","yaxis":"y","frame":null},{"y":[255.75],"x":["T 5"],"error_y":{"color":"blue","value":8.73212459828649},"type":"bar","name":"T 5","marker":{"color":"rgba(166,216,84,1)","line":{"color":"rgba(166,216,84,1)"}},"textfont":{"color":"rgba(166,216,84,1)"},"error_x":{"color":"rgba(166,216,84,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+
+## Gráfico de dispersão
+
+
+```r
+dados %>% plot_ly(y=media,
+                  x=~trat,
+                  type = "scatter",
+                  color = ~trat,
+                  error_y=list(value=~desvio))%>%
+  layout(yaxis = list(title="Resposta"),
+         xaxis = list(title=""))
+```
+
+<!--html_preserve--><div id="htmlwidget-e96c0688a849169abb34" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e96c0688a849169abb34">{"x":{"visdat":{"358c7122834":["function () ","plotlyVisDat"]},"cur_data":"358c7122834","attrs":{"358c7122834":{"y":[105,152.25,141.75,211.5,255.75],"x":{},"error_y":{"value":{}},"color":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"yaxis":{"domain":[0,1],"automargin":true,"title":"Resposta"},"xaxis":{"domain":[0,1],"automargin":true,"title":"","type":"category","categoryorder":"array","categoryarray":["T 1","T 2","T 3","T 4","T 5"]},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"y":[105],"x":["T 1"],"error_y":{"color":"rgba(102,194,165,1)","value":12.9099444873581},"type":"scatter","mode":"markers","name":"T 1","marker":{"color":"rgba(102,194,165,1)","line":{"color":"rgba(102,194,165,1)"}},"textfont":{"color":"rgba(102,194,165,1)"},"error_x":{"color":"rgba(102,194,165,1)"},"line":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"y":[152.25],"x":["T 2"],"error_y":{"color":"rgba(252,141,98,1)","value":8.77021474461525},"type":"scatter","mode":"markers","name":"T 2","marker":{"color":"rgba(252,141,98,1)","line":{"color":"rgba(252,141,98,1)"}},"textfont":{"color":"rgba(252,141,98,1)"},"error_x":{"color":"rgba(252,141,98,1)"},"line":{"color":"rgba(252,141,98,1)"},"xaxis":"x","yaxis":"y","frame":null},{"y":[141.75],"x":["T 3"],"error_y":{"color":"rgba(141,160,203,1)","value":6.84957419601151},"type":"scatter","mode":"markers","name":"T 3","marker":{"color":"rgba(141,160,203,1)","line":{"color":"rgba(141,160,203,1)"}},"textfont":{"color":"rgba(141,160,203,1)"},"error_x":{"color":"rgba(141,160,203,1)"},"line":{"color":"rgba(141,160,203,1)"},"xaxis":"x","yaxis":"y","frame":null},{"y":[211.5],"x":["T 4"],"error_y":{"color":"rgba(231,138,195,1)","value":5.97215762238964},"type":"scatter","mode":"markers","name":"T 4","marker":{"color":"rgba(231,138,195,1)","line":{"color":"rgba(231,138,195,1)"}},"textfont":{"color":"rgba(231,138,195,1)"},"error_x":{"color":"rgba(231,138,195,1)"},"line":{"color":"rgba(231,138,195,1)"},"xaxis":"x","yaxis":"y","frame":null},{"y":[255.75],"x":["T 5"],"error_y":{"color":"rgba(166,216,84,1)","value":8.73212459828649},"type":"scatter","mode":"markers","name":"T 5","marker":{"color":"rgba(166,216,84,1)","line":{"color":"rgba(166,216,84,1)"}},"textfont":{"color":"rgba(166,216,84,1)"},"error_x":{"color":"rgba(166,216,84,1)"},"line":{"color":"rgba(166,216,84,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
