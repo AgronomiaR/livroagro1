@@ -19,6 +19,11 @@ options(OutDec = ".", knitr.kable.NA="")
 
 # Gráficos em R
 
+A elaboração de gráficos no R pode ser feita através do pacote *graphics*, que corresponde ao gráfico implementado na própria base do R. Além dele, existe outros pacotes, como o lattice, o plotly e ggplot2. Esse último, apresenta um universo bastante ampliado de opções de layout e tipos, o que fez aumentar sua utilização, principalmente por cientistas de dados.
+
+Existe muitas variantes desses pacotes citados, como por exemplo o ggpubr, o factoextra, etc...
+
+
 <br><br>
 
 ```{r, echo=F, results='hide'}
@@ -1500,8 +1505,8 @@ barplot(media,
         horiz = T, 
         las=1,
         col="lightyellow",
-        ylab="Resposta",
-        xlab="Tratamentos",
+        xlab="Resposta",
+        ylab="Tratamentos",
         xlim=c(0,300))
 abline(v=0)
 ```
@@ -1515,8 +1520,8 @@ bar=barplot(media,
         las=1,
         horiz = T,
         col="lightyellow",
-        ylab="Resposta",
-        xlab="Tratamentos",
+        xlab="Resposta",
+        ylab="Tratamentos",
         xlim=c(0,300))
 abline(v=0)
 arrows(media+desvio,bar,media-desvio,bar,length = 0.1,angle=90,code=3)
@@ -1533,8 +1538,8 @@ bar=barplot(media,
         las=1,
         horiz = T,
         col="lightyellow",
-        ylab=expression("Resposta"~(kg~ha^-1)),
-        xlab="Tratamentos",
+        xlab=expression("Resposta"~(kg~ha^-1)),
+        ylab="Tratamentos",
         xlim=c(0,300))
 abline(v=0)
 arrows(media+desvio,bar,media-desvio,bar,length = 0.1,angle=90,code=3)
@@ -1548,8 +1553,8 @@ arrows(media+desvio,bar,media-desvio,bar,length = 0.1,angle=90,code=3)
 bar=barplot(media, 
         las=1,horiz = T,
         col="lightyellow",
-        ylab=expression("Resposta"~(kg~ha^-1)),
-        xlab="Tratamentos",
+        xlab=expression("Resposta"~(kg~ha^-1)),
+        ylab="Tratamentos",
         xlim=c(0,300))
 abline(v=0)
 text(media+desvio+20,bar,media)
@@ -1566,8 +1571,8 @@ bar=barplot(media,
         las=1,
         horiz = T,
         col="lightyellow",
-        ylab=expression("Resposta"~(kg~ha^-1)),
-        xlab="Tratamentos",
+        xlab=expression("Resposta"~(kg~ha^-1)),
+        ylab="Tratamentos",
         xlim=c(0,300))
 abline(v=0)
 text(media+desvio+20,bar,media)
@@ -1585,8 +1590,8 @@ bar=barplot(media,
         las=1,
         horiz = T,
         col="lightyellow",
-        ylab=expression("Resposta"~(kg~ha^-1)),
-        xlab="Tratamentos",
+        xlab=expression("Resposta"~(kg~ha^-1)),
+        ylab="Tratamentos",
         xlim=c(0,300))
 abline(v=0)
 text(media+desvio+20,bar,paste(round(media,0),tukey))
