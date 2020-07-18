@@ -5865,12 +5865,12 @@ library(plotly)
 library(dplyr)
 tratamentos=rep(c(paste("T",1:5)),e=4)
 resposta=c(100,120,110,90,150,145,149,165,150,144,134,139,220,206,210,210,266,249,248,260)
+dados=data.frame(tratamentos,resposta)
 ```
 
 ## Gráfico de caixas
 
 ```{r}
-dados=data.frame(tratamentos,resposta)
 dados %>% plot_ly(y=resposta,
                   x=~tratamentos,
                   type = "box",
@@ -5893,6 +5893,20 @@ dados %>% plot_ly(y=media,
                   type = "bar",
                   color = ~trat,
                   error_y=list(value=~desvio,color="blue"))%>%
+  layout(yaxis = list(title="Resposta"),
+         xaxis = list(title=""))
+```
+
+## Gráfico de barras
+
+```{r}
+## Média e Desvio-padrão (Por Tratamento)
+dados %>% plot_ly(x=media,
+                  y=~trat,
+                  type = "bar",
+                  color = ~trat,
+                  horizontation="h",
+                error_x=list(value=~desvio,color="blue"))%>%
   layout(yaxis = list(title="Resposta"),
          xaxis = list(title=""))
 ```
