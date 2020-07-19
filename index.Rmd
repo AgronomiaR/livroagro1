@@ -1457,6 +1457,50 @@ title(ylab = expression(MS~(g)),outer=T, line = 3)
 arrows(b2,m2+sd2,b2,m2-sd2,angle = 90,code=3, length = 0.05)
 abline(h=0)
 ```
+****
+
+## Dois lados com escala positiva (ggplot2)
+
+****
+
+<br>
+
+### Conjunto de dados
+
+```{r}
+trat=rep(c("T1","T2","T3","T4","T5"),e=3)
+mspa=c(8,10,12,18,20,22,28,30,32,38,40,42,48,50,52)
+msr=c(14,15,16,19,20,21,24,25,26,29,30,31,34,35,36)
+```
+
+<br>
+
+### Média e desvio-padrão
+
+```{r}
+m1=tapply(mspa, trat, mean)
+m2=tapply(msr, trat, mean)
+d1=tapply(mspa, trat, sd)
+d2=tapply(msr, trat, sd)
+dados=data.frame(trat=rep(names(m1),2),
+                 resp=c(m1,-m2),
+                 pos=c(m1+d1,-m2-d2),
+                 comp=rep(c("MSPA","MSR"),e=5),
+                 letra=c("e","d","c","b","a",
+                         "e","d","c","b","a"))
+```
+
+```{r}
+library(ggplot2)
+ggplot(dados,aes(x=trat,y=resp,fill=comp))+
+  geom_col(color="black")+
+  scale_y_continuous(expand = c(0, 1),
+    breaks = pretty(dados$resp),
+    labels = abs(pretty(dados$resp)))+
+  theme_bw()+xlab("")+ylab("Massa seca (g)")+
+  geom_text(aes(y=pos+c(rep(c(0.3,-0.3),e=5)),
+                label=paste(abs(resp),letra)))
+```
 
 <br><br><br>
 
