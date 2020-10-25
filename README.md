@@ -1,10 +1,10 @@
 
 
-Aplicações práticas do software R para Agronomia
+# Aplicações práticas do software R para Agronomia
 
 ****
 
-*Gabriel Danilo Shimizu*
+Autor: *Gabriel Danilo Shimizu*
 
 O livro virtual "Aplicações práticas do software R para Agronomia" é um e-book com diversos tutoriais práticos de R para análise de dados, elaboração de gráficos, construção de pacotes e muito mais. Ele é subdividido em 4 arquivos:
 
