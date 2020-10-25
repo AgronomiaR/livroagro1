@@ -1,7 +1,7 @@
 --- 
 title: "Aplicações práticas do software R para Agronomia"
 author: "Gabriel Danilo Shimizu"
-date: "2020-07-18"
+date: "2020-10-24"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
@@ -354,9 +354,9 @@ ExpDes.pt::dic(Trat,exp1)
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
 ##            GL     SQ QM     Fc      Pr>Fc
-## Tratamento  3 719,58    130,83 3,8864e-07
-## Residuo     8  14,67                     
-## Total      11 734,25                     
+## Tratamento  3 719,58  3 130,83 3,8864e-07
+## Residuo     8  14,67  2                  
+## Total      11 734,25  1                  
 ## ------------------------------------------------------------------------
 ## CV = 8,88 %
 ## 
@@ -396,9 +396,9 @@ ExpDes.pt::dic(Trat,exp2)
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
 ##            GL     SQ QM     Fc      Pr>Fc
-## Tratamento  3 684,92    78,276 2,8606e-06
-## Residuo     8  23,33                     
-## Total      11 708,25                     
+## Tratamento  3 684,92  3 78,276 2,8606e-06
+## Residuo     8  23,33  2                  
+## Total      11 708,25  1                  
 ## ------------------------------------------------------------------------
 ## CV = 10,84 %
 ## 
@@ -438,9 +438,9 @@ ExpDes.pt::dic(Trat,exp3)
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
 ##            GL     SQ QM     Fc      Pr>Fc
-## Tratamento  3 894,25    47,066 1,9902e-05
-## Residuo     8  50,67                     
-## Total      11 944,92                     
+## Tratamento  3 894,25  2 47,066 1,9902e-05
+## Residuo     8  50,67  3                  
+## Total      11 944,92  1                  
 ## ------------------------------------------------------------------------
 ## CV = 16,32 %
 ## 
@@ -1782,7 +1782,7 @@ ggplot(dados,aes(x=trat,y=resp,fill=comp))+
   geom_col(color="black")+
   scale_y_continuous(expand = c(0, 1),
     breaks = pretty(dados$resp),
-    labels = abs(pretty(dados$resp)))+
+    labels = abs(pretty(dados$resp)))+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
   theme_bw()+xlab("")+ylab("Massa seca (g)")+
   geom_text(aes(y=pos+c(rep(c(0.3,-0.3),e=5)),
                 label=paste(abs(resp),letra)))
@@ -4483,6 +4483,31 @@ ggplot(data, aes(x = tempo))+geom_line(aes(y = Umidade, colour = "Umidade"), col
 
 <img src="index_files/figure-html/unnamed-chunk-229-1.png" width="672" />
 
+## Gráfico de linhas (facetado separando duas épocas)
+
+
+```r
+data=data.frame(tempo=TEMPO,
+                Umidade=UR,
+                Temperatura=TM,
+                Época=rep(c("Época 1","Época 2"),e=87))# criei um novo vetor separando duas épocas
+attach(data)
+library(ggplot2)
+```
+
+
+```r
+# O tempo pode usar datas, sugiro o formato Mes-Ano-Dia
+# tempo=as.POSIXct(tempo, format="%m-%Y-%d", tz="UTC")
+a=ggplot(data[data$Época=="Época 1",],aes(x=tempo,y=Temperatura))+
+  geom_line()+theme_bw()+xlab("Tempo (Dias)")+facet_wrap(~"Época 1")
+b=ggplot(data[data$Época=="Época 2",],aes(x=tempo,y=Temperatura))+
+  geom_line()+theme_bw()+xlab("Tempo (Dias)")+facet_wrap(~"Época 2")
+gridExtra::grid.arrange(a,b,ncol=1)
+```
+
+<img src="index_files/figure-html/unnamed-chunk-231-1.png" width="672" />
+
 <br><br><br>
 
 ****
@@ -4556,7 +4581,7 @@ library(corrplot)
 corrplot(M, method="circle")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-232-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-234-1.png" width="672" />
 
 <br>
 
@@ -4567,7 +4592,7 @@ corrplot(M, method="circle")
 corrplot(M, method="color")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-233-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-235-1.png" width="672" />
 
 <br>
 
@@ -4578,7 +4603,7 @@ corrplot(M, method="color")
 corrplot(M, method="number")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-234-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-236-1.png" width="672" />
 
 <br>
 
@@ -4589,7 +4614,7 @@ corrplot(M, method="number")
 corrplot(M, type="upper")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-235-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-237-1.png" width="672" />
 
 <br>
 
@@ -4600,7 +4625,7 @@ corrplot(M, type="upper")
 corrplot(M, type="lower")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-236-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-238-1.png" width="672" />
 
 <br>
 
@@ -4613,7 +4638,7 @@ corrplot(M, method="color",
          addCoef.col = "black", insig = "blank", diag=FALSE )
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-237-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-239-1.png" width="672" />
 
 <br>
 
@@ -4626,7 +4651,7 @@ corrplot(M, method="color",
          addCoef.col = "black", insig = "blank", diag=FALSE)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-238-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-240-1.png" width="672" />
 
 <br>
 
@@ -4639,7 +4664,7 @@ corrplot(M, method="color", tl.col="black",
          addCoef.col = "black", insig = "blank", diag=FALSE )
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-239-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-241-1.png" width="672" />
 
 <br>
 
@@ -4653,7 +4678,7 @@ corrplot(M, method="color", tl.col="black",
          addCoef.col = "black", insig = "blank", diag=FALSE )
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-240-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-242-1.png" width="672" />
 
 <br>
 
@@ -4668,7 +4693,7 @@ corrplot(M, method="color", tl.col="black",
          )
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-241-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-243-1.png" width="672" />
 
 <br><br><br>
 
@@ -4725,7 +4750,7 @@ library(PerformanceAnalytics)
 chart.Correlation(dados, pch=19)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-245-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-247-1.png" width="672" />
 
 ### Conjunto de dados
 
@@ -4751,7 +4776,7 @@ library(GGally)
 ggpairs(dados)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-247-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-249-1.png" width="672" />
 
 <br>
 
@@ -4763,7 +4788,7 @@ library(psych)
 pairs.panels(dados)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-248-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-250-1.png" width="672" />
 
 <br><br>
 
@@ -4826,7 +4851,7 @@ qgraph(corre, shape="circle",
        negCol="darkred", layout="groups", vsize=10)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-252-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-254-1.png" width="672" />
 
 <br>
 
@@ -4851,7 +4876,7 @@ qgraph(corre, shape="circle",
        negCol="darkred", layout="groups", vsize=10)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-254-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-256-1.png" width="672" />
 
 <br>
 
@@ -4876,7 +4901,7 @@ qgraph(corre, shape="circle",
        negCol="darkred", layout="groups", vsize=10)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-256-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-258-1.png" width="672" />
 
 <br><br><br>
 
@@ -5013,7 +5038,7 @@ library(plotly)
 ```
 
 <!--html_preserve--><div id="htmlwidget-7598595affc4f25ab85b" style="width:672px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-7598595affc4f25ab85b">{"x":{"visdat":{"3468390a5709":["function () ","plotlyVisDat"]},"cur_data":"3468390a5709","attrs":{"3468390a5709":{"fill":"toself","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar"},"3468390a5709.1":{"fill":"toself","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar","r":[6.5,6.16666666666667,5.66666666666667,5,5.83333333333333],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B100","inherit":true},"3468390a5709.2":{"fill":"toself","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar","r":[3.16666666666667,3.33333333333333,3,3.83333333333333,3],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"N100","inherit":true},"3468390a5709.3":{"fill":"toself","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar","r":[6.33333333333333,5.66666666666667,6,6,5.83333333333333],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B75N25","inherit":true},"3468390a5709.4":{"fill":"toself","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar","r":[5.33333333333333,4.66666666666667,4.83333333333333,4.83333333333333,5.5],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B50N50","inherit":true},"3468390a5709.5":{"fill":"toself","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar","r":[4,4.16666666666667,5.33333333333333,4,4.33333333333333],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B25N75","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"polar":{"radialaxis":{"visible":true}},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"fillcolor":"rgba(31,119,180,0,5)","fill":"toself","type":"scatterpolar","mode":"markers","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"line":{"color":"rgba(31,119,180,1)"},"frame":null},{"fillcolor":"rgba(255,127,14,0,5)","fill":"toself","type":"scatterpolar","r":[6.5,6.16666666666667,5.66666666666667,5,5.83333333333333],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B100","mode":"markers","marker":{"color":"rgba(255,127,14,1)","line":{"color":"rgba(255,127,14,1)"}},"line":{"color":"rgba(255,127,14,1)"},"frame":null},{"fillcolor":"rgba(44,160,44,0,5)","fill":"toself","type":"scatterpolar","r":[3.16666666666667,3.33333333333333,3,3.83333333333333,3],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"N100","mode":"markers","marker":{"color":"rgba(44,160,44,1)","line":{"color":"rgba(44,160,44,1)"}},"line":{"color":"rgba(44,160,44,1)"},"frame":null},{"fillcolor":"rgba(214,39,40,0,5)","fill":"toself","type":"scatterpolar","r":[6.33333333333333,5.66666666666667,6,6,5.83333333333333],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B75N25","mode":"markers","marker":{"color":"rgba(214,39,40,1)","line":{"color":"rgba(214,39,40,1)"}},"line":{"color":"rgba(214,39,40,1)"},"frame":null},{"fillcolor":"rgba(148,103,189,0,5)","fill":"toself","type":"scatterpolar","r":[5.33333333333333,4.66666666666667,4.83333333333333,4.83333333333333,5.5],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B50N50","mode":"markers","marker":{"color":"rgba(148,103,189,1)","line":{"color":"rgba(148,103,189,1)"}},"line":{"color":"rgba(148,103,189,1)"},"frame":null},{"fillcolor":"rgba(140,86,75,0,5)","fill":"toself","type":"scatterpolar","r":[4,4.16666666666667,5.33333333333333,4,4.33333333333333],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B25N75","mode":"markers","marker":{"color":"rgba(140,86,75,1)","line":{"color":"rgba(140,86,75,1)"}},"line":{"color":"rgba(140,86,75,1)"},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<script type="application/json" data-for="htmlwidget-7598595affc4f25ab85b">{"x":{"visdat":{"29e87d5c5abc":["function () ","plotlyVisDat"]},"cur_data":"29e87d5c5abc","attrs":{"29e87d5c5abc":{"fill":"toself","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar"},"29e87d5c5abc.1":{"fill":"toself","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar","r":[6.5,6.16666666666667,5.66666666666667,5,5.83333333333333],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B100","inherit":true},"29e87d5c5abc.2":{"fill":"toself","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar","r":[3.16666666666667,3.33333333333333,3,3.83333333333333,3],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"N100","inherit":true},"29e87d5c5abc.3":{"fill":"toself","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar","r":[6.33333333333333,5.66666666666667,6,6,5.83333333333333],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B75N25","inherit":true},"29e87d5c5abc.4":{"fill":"toself","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar","r":[5.33333333333333,4.66666666666667,4.83333333333333,4.83333333333333,5.5],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B50N50","inherit":true},"29e87d5c5abc.5":{"fill":"toself","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatterpolar","r":[4,4.16666666666667,5.33333333333333,4,4.33333333333333],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B25N75","inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"polar":{"radialaxis":{"visible":true}},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"fillcolor":"rgba(31,119,180,0,5)","fill":"toself","type":"scatterpolar","mode":"markers","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"line":{"color":"rgba(31,119,180,1)"},"frame":null},{"fillcolor":"rgba(255,127,14,0,5)","fill":"toself","type":"scatterpolar","r":[6.5,6.16666666666667,5.66666666666667,5,5.83333333333333],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B100","mode":"markers","marker":{"color":"rgba(255,127,14,1)","line":{"color":"rgba(255,127,14,1)"}},"line":{"color":"rgba(255,127,14,1)"},"frame":null},{"fillcolor":"rgba(44,160,44,0,5)","fill":"toself","type":"scatterpolar","r":[3.16666666666667,3.33333333333333,3,3.83333333333333,3],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"N100","mode":"markers","marker":{"color":"rgba(44,160,44,1)","line":{"color":"rgba(44,160,44,1)"}},"line":{"color":"rgba(44,160,44,1)"},"frame":null},{"fillcolor":"rgba(214,39,40,0,5)","fill":"toself","type":"scatterpolar","r":[6.33333333333333,5.66666666666667,6,6,5.83333333333333],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B75N25","mode":"markers","marker":{"color":"rgba(214,39,40,1)","line":{"color":"rgba(214,39,40,1)"}},"line":{"color":"rgba(214,39,40,1)"},"frame":null},{"fillcolor":"rgba(148,103,189,0,5)","fill":"toself","type":"scatterpolar","r":[5.33333333333333,4.66666666666667,4.83333333333333,4.83333333333333,5.5],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B50N50","mode":"markers","marker":{"color":"rgba(148,103,189,1)","line":{"color":"rgba(148,103,189,1)"}},"line":{"color":"rgba(148,103,189,1)"},"frame":null},{"fillcolor":"rgba(140,86,75,0,5)","fill":"toself","type":"scatterpolar","r":[4,4.16666666666667,5.33333333333333,4,4.33333333333333],"theta":["Cor","Aroma","Sabor","Corpo","Global"],"name":"B25N75","mode":"markers","marker":{"color":"rgba(140,86,75,1)","line":{"color":"rgba(140,86,75,1)"}},"line":{"color":"rgba(140,86,75,1)"},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 </center>
 
@@ -5089,7 +5114,7 @@ sciplot::lineplot.CI(Trat,msraiz,type="l",las=2,xlab="",ylim=c(0,5),
                      cex.lab=1.25,cex.names=1)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-265-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-267-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -5102,7 +5127,7 @@ sciplot::lineplot.CI(Trat,msraiz,type="p",las=2,xlab="",ylim=c(0,5),
                      cex.lab=1.25,cex.names=1)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-266-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-268-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -5115,7 +5140,7 @@ sciplot::lineplot.CI(Trat,msraiz,type="b",las=2,xlab="",ylim=c(0,5),
                      cex.lab=1.25,cex.names=1)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-267-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-269-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -5130,7 +5155,7 @@ sciplot::bargraph.CI(Trat,msraiz,las=2,xlab="",
 abline(h=0)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-268-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-270-1.png" width="672" style="display: block; margin: auto;" />
 
 <br><br><br>
 
@@ -5213,7 +5238,7 @@ hnp::hnp(mod,
          pch=16)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-271-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-273-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -5228,7 +5253,7 @@ hnp::hnp(mod,
          print.on=T)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-272-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-274-1.png" width="672" style="display: block; margin: auto;" />
 
 <br>
 
@@ -5245,7 +5270,7 @@ hnp::hnp(mod,
          col.paint.out="red")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-273-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-275-1.png" width="672" style="display: block; margin: auto;" />
 
 <br><br><br>
 
@@ -5303,7 +5328,7 @@ library(ggfortify)
 autoplot(pca,data=iris)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-276-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-278-1.png" width="672" />
 
 <br>
 
@@ -5313,11 +5338,10 @@ Obs. a coluna de "Species" está na dataset *iris*
 
 
 ```r
-library(ggfortify)
 autoplot(pca,data=iris,colour="Species")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-277-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-279-1.png" width="672" />
 
 <br>
 
@@ -5325,14 +5349,13 @@ autoplot(pca,data=iris,colour="Species")
 
 
 ```r
-library(ggfortify)
 autoplot(pca,
          data=iris,
          colour="Species",
          loadings=T)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-278-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-280-1.png" width="672" />
 
 <br>
 
@@ -5340,7 +5363,6 @@ autoplot(pca,
 
 
 ```r
-library(ggfortify)
 autoplot(pca,
          data=iris,
          colour="Species",
@@ -5348,7 +5370,7 @@ autoplot(pca,
          loadings.label=T)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-279-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-281-1.png" width="672" />
 
 <br>
 
@@ -5357,7 +5379,6 @@ autoplot(pca,
 
 
 ```r
-library(ggfortify)
 autoplot(pca,
          data=iris,
          colour="Species",
@@ -5366,7 +5387,7 @@ autoplot(pca,
          frame=T)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-280-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-282-1.png" width="672" />
 
 <br>
 
@@ -5375,7 +5396,6 @@ autoplot(pca,
 
 
 ```r
-library(ggfortify)
 autoplot(pca,
          data=iris,
          colour="Species",
@@ -5385,7 +5405,7 @@ autoplot(pca,
          frame.type="norm")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-281-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-283-1.png" width="672" />
 
 <br>
 
@@ -5394,7 +5414,6 @@ autoplot(pca,
 
 
 ```r
-library(ggfortify)
 autoplot(pca,
          data=iris,
          colour="Species",
@@ -5406,7 +5425,7 @@ autoplot(pca,
          loadings.label.colour="black")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-282-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-284-1.png" width="672" />
 
 <br>
 
@@ -5415,7 +5434,6 @@ autoplot(pca,
 
 
 ```r
-library(ggfortify)
 autoplot(pca,
          data=iris,
          colour="Species",
@@ -5429,7 +5447,7 @@ autoplot(pca,
   theme(text = element_text(family="serif"))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-283-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-285-1.png" width="672" />
 
 <br>
 
@@ -5437,7 +5455,6 @@ autoplot(pca,
 
 
 ```r
-library(ggfortify)
 autoplot(pca,
          data=iris,
          colour="Species",
@@ -5453,7 +5470,7 @@ autoplot(pca,
   geom_hline(,yintercept = 0,linetype=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-284-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-286-1.png" width="672" />
 
 <br><br>
 
@@ -5511,7 +5528,7 @@ require(factoextra)
 fviz_pca_biplot(pca,geom = c("point"))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-287-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-289-1.png" width="672" />
 
 <br>
 
@@ -5524,7 +5541,7 @@ fviz_pca_biplot(pca,geom = c("point"),
                 addEllipses = T)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-288-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-290-1.png" width="672" />
 
 <br>
 
@@ -5537,7 +5554,7 @@ fviz_pca_biplot(pca,geom = c("point"),
                 addEllipses = T, fill.ind = dados$Tratamento)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-289-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-291-1.png" width="672" />
 
 <br>
 
@@ -5552,7 +5569,7 @@ fviz_pca_biplot(pca,geom = c("point"),
                 title = "")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-290-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-292-1.png" width="672" />
 
 <br>
 
@@ -5568,7 +5585,7 @@ fviz_pca_biplot(pca,geom = c("point"),
                 repel=T)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-291-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-293-1.png" width="672" />
 
 <br>
 
@@ -5585,7 +5602,7 @@ fviz_pca_biplot(pca,geom = c("point"),
                 pointshape=21,pointsize=2,textsize=0.5, col.var="black")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-292-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-294-1.png" width="672" />
 
 <br>
 
@@ -5602,7 +5619,7 @@ fviz_pca_biplot(pca,geom = c("point"),
                 pointshape=21,pointsize=2,textsize=0.5, col.var="black",fill= "Cultivares")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-293-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-295-1.png" width="672" />
 
 <br>
 
@@ -5620,7 +5637,7 @@ fviz_pca_biplot(pca,geom = c("point"),
                 col.var="black",fill= "Cultivares")+ylab("CP2(20,2%)")+xlab("CP1(37,8%)")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-294-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-296-1.png" width="672" />
 
 <br><br>
 
@@ -5673,7 +5690,7 @@ plot(dend)
 abline(h=8, lty=2, col="red")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-297-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-299-1.png" width="672" />
 
 ```r
 ## Cluster 1: T8, T10, T6,T9,T2,T4
@@ -5712,7 +5729,7 @@ library(factoextra)
 fviz_pca_var(pca)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-299-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-301-1.png" width="672" />
 
 <br>
 
@@ -5723,7 +5740,7 @@ fviz_pca_var(pca)
 fviz_pca_var(pca)+ylab("CP2 (14,9)")+xlab("CP1 (72,3%)")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-300-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-302-1.png" width="672" />
 
 <br>
 
@@ -5734,7 +5751,7 @@ fviz_pca_var(pca)+ylab("CP2 (14,9)")+xlab("CP1 (72,3%)")
 fviz_pca_var(pca, title="")+ylab("CP2 (14,9)")+xlab("CP1 (72,3%)")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-301-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-303-1.png" width="672" />
 
 <br>
 
@@ -5746,7 +5763,7 @@ rownames(pca$var$coord)=c("pH","H+AL","K","P","Ca","Mg","V")
 fviz_pca_var(pca, title="")+ylab("CP2 (14,9)")+xlab("CP1 (72,3%)")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-302-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-304-1.png" width="672" />
 
 <br>
 
@@ -5760,7 +5777,7 @@ fviz_pca_var(pca,
              repel=T)+ylab("CP2 (14,9)")+xlab("CP1 (72,3%)")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-303-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-305-1.png" width="672" />
 
 <br>
 
@@ -5777,7 +5794,7 @@ fviz_pca_var(pca,
   theme_classic()
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-304-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-306-1.png" width="672" />
 
 <br>
 
@@ -5788,7 +5805,7 @@ fviz_pca_var(pca,
 fviz_pca_ind(pca)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-305-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-307-1.png" width="672" />
 
 <br>
 
@@ -5799,7 +5816,7 @@ fviz_pca_ind(pca)
 fviz_pca_ind(pca, title="")+ylab("CP2 (14,9)")+xlab("CP1 (72,3%)")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-306-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-308-1.png" width="672" />
 
 <br>
 
@@ -5819,7 +5836,7 @@ fviz_pca_ind(pca,
   xlab("CP1 (72,3%)")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-307-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-309-1.png" width="672" />
 
 <br>
 
@@ -5840,7 +5857,7 @@ fviz_pca_ind(pca,
   xlab("CP1 (72,3%)")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-308-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-310-1.png" width="672" />
 
 <br>
 
@@ -5859,7 +5876,7 @@ fviz_pca_ind(pca,
   xlab("CP1 (72,3%)")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-309-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-311-1.png" width="672" />
 
 <br>
 
@@ -5878,7 +5895,7 @@ fviz_pca_ind(pca,
   xlab("CP1 (72,3%)")+theme_classic()
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-310-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-312-1.png" width="672" />
 
 
 ```r
@@ -5888,7 +5905,7 @@ library(gridExtra)
 grid.arrange(a,b, ncol=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-311-1.png" width="960" />
+<img src="index_files/figure-html/unnamed-chunk-313-1.png" width="960" />
 
 <br><br>
 
@@ -5929,7 +5946,7 @@ plot(dend)
 abline(h=8, lty=2, col="red")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-313-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-315-1.png" width="672" />
 
 ```r
 ## Cluster 1: T8, T10, T6,T9,T2,T4
@@ -5949,7 +5966,7 @@ par(cex=0.8)
 rect.dendrogram(dend, k=2,border = 8, lty = 5, lwd = 2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-314-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-316-1.png" width="672" />
 
 <br>
 
@@ -5982,7 +5999,7 @@ round(pca$eig,3)
 plot(pca$eig[,2], type="b",ylab="Porcentagem de variância",xlab="CP")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-316-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-318-1.png" width="672" />
 
 <br>
 
@@ -5997,7 +6014,7 @@ plot(pca$ind$coord, # Extraindo da pca os valores das coordenadas em x e CP1 e y
 abline(h=0,v=0, lty=2) # traçando linha em x e y = 0; lty=2 é linha tracejada 
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-317-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-319-1.png" width="672" />
 
 <br>
 
@@ -6015,7 +6032,7 @@ text(pca$ind$coord[,1],
      rownames(pca$ind$coord))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-318-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-320-1.png" width="672" />
 
 <br>
 
@@ -6034,7 +6051,7 @@ text(pca$ind$coord[,1],
      rownames(pca$ind$coord))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-319-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-321-1.png" width="672" />
 
 <br>
 
@@ -6051,7 +6068,7 @@ plot(pca$var$coord, # Extraindo da pca os valores da coordenadas em x e y dos ve
 abline(h=0,v=0, lty=2) # traçando linha em x e y = 0; lty=2 é linha tracejada 
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-320-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-322-1.png" width="672" />
 
 <br>
 
@@ -6083,7 +6100,7 @@ arrows(0,0,pca$var$coord[7,1],pca$var$coord[7,2], length = 0.1) # vetor 7 - V
 text(pca$var$coord-0.01,rownames(pca$var$coord)) # Estou colocando os nomes dos vetores (-0.01 significa abaixo da coordenada a 0.01)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-321-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-323-1.png" width="672" />
 
 <br>
 
@@ -6112,7 +6129,7 @@ text(pca$var$coord[,1]+
      pca$var$coord[,2],rownames(pca$var$coord))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-322-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-324-1.png" width="672" />
 
 `ifelse(pca$var$coord[,1]<0,-0.2,+0.2)`: estamos definindo que se `pca$var$coord[,1]` for menor que 0, irá adicionar -0.2, do contrário irá somar 0.2
 
@@ -6146,7 +6163,7 @@ draw.circle(0,0,max(ifelse(c(pca$var$coord[,1],pca$var$coord[,2])<0,
                            c(pca$var$coord[,1],pca$var$coord[,2]))))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-323-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-325-1.png" width="672" />
 
 <br>
 
@@ -6178,7 +6195,7 @@ draw.circle(0,0,max(ifelse(c(pca$var$coord[,1],pca$var$coord[,2])<0,
                            c(pca$var$coord[,1],pca$var$coord[,2]))))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-324-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-326-1.png" width="672" />
 
 <br><br>
 
@@ -6224,7 +6241,7 @@ library(FactoMineR)
 pca=PCA(dadosm)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-327-1.png" width="672" /><img src="index_files/figure-html/unnamed-chunk-327-2.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-329-1.png" width="672" /><img src="index_files/figure-html/unnamed-chunk-329-2.png" width="672" />
 
 <br>
 
@@ -6236,7 +6253,7 @@ library(factoextra)
 fviz_screeplot(pca)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-328-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-330-1.png" width="672" />
 
 
 ```r
@@ -6250,7 +6267,7 @@ fviz_screeplot(pca,
   ylab("Porcentagem de explicação da variância") # nomeando eixo y
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-329-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-331-1.png" width="672" />
 
 <br>
 
@@ -6271,7 +6288,7 @@ bar=barplot(pca$eig[,2],
         ylim=c(0,100))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-330-1.png" width="768" />
+<img src="index_files/figure-html/unnamed-chunk-332-1.png" width="768" />
 
 <br>
 
@@ -6287,7 +6304,7 @@ points(bar,
        type = "o")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-331-1.png" width="768" />
+<img src="index_files/figure-html/unnamed-chunk-333-1.png" width="768" />
 
 <br>
 
@@ -6306,7 +6323,7 @@ text(bar,
      round(pca$eig[,2],2))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-332-1.png" width="768" />
+<img src="index_files/figure-html/unnamed-chunk-334-1.png" width="768" />
 
 <br>
 
@@ -6331,7 +6348,7 @@ text(bar,
      round(pca$eig[,2],2))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-333-1.png" width="768" />
+<img src="index_files/figure-html/unnamed-chunk-335-1.png" width="768" />
 
 <br><br>
 
@@ -6446,7 +6463,7 @@ sorted.loadings1 <- load[order(load[,1]),1]
                  pch=16))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-337-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-339-1.png" width="672" />
 
 <br>
 
@@ -6463,7 +6480,7 @@ sorted.loadings2 <- load[order(load[,2]),2]
                  pch=16))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-338-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-340-1.png" width="672" />
 
 <br>
 
@@ -6480,7 +6497,7 @@ sorted.loadings3 <- load[order(load[,3]),3]
                  pch=16))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-339-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-341-1.png" width="672" />
 
 <br><br><br>
 
@@ -6535,7 +6552,7 @@ rownames(data)=dados$trat
 fviz_pca_biplot(PCA(data),col.ind = cluster, addEllipses = T) # default e padronizado
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-343-1.png" width="672" /><img src="index_files/figure-html/unnamed-chunk-343-2.png" width="672" /><img src="index_files/figure-html/unnamed-chunk-343-3.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-345-1.png" width="672" /><img src="index_files/figure-html/unnamed-chunk-345-2.png" width="672" /><img src="index_files/figure-html/unnamed-chunk-345-3.png" width="672" />
 
 ****
 
@@ -6633,7 +6650,7 @@ R=hclust(d)
 plot(R)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-346-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-348-1.png" width="672" />
 
 <br>
 
@@ -6644,7 +6661,7 @@ plot(R)
 plot(R, hang=-1)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-347-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-349-1.png" width="672" />
 
 <br>
 
@@ -6659,7 +6676,7 @@ plot(R,
      ylab="Dist?ncia") # Título do eixo Y
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-348-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-350-1.png" width="672" />
 
 <br>
 
@@ -6686,7 +6703,7 @@ plot(dend,
      ylab="Distância")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-349-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-351-1.png" width="672" />
 
 <br>
 
@@ -6714,7 +6731,7 @@ rect.dendrogram(dend,
                 lwd = 2) # espessura da linha
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-350-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-352-1.png" width="672" />
 
 <br>
 
@@ -6730,7 +6747,7 @@ plot(as.phylo(R),
      type="fan")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-351-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-353-1.png" width="672" />
 
 <br>
 
@@ -6748,7 +6765,7 @@ plot(as.phylo(R),
      tip.color=colors[clus])
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-352-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-354-1.png" width="672" />
 
 <br>
 
@@ -6763,7 +6780,7 @@ plot(as.phylo(R),
      type="radial")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-353-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-355-1.png" width="672" />
 
 <br><br><br>
 
@@ -6791,7 +6808,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-354-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-356-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -6802,7 +6819,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-355-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-357-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -6813,7 +6830,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-356-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-358-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -6824,7 +6841,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-357-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-359-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -6835,7 +6852,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-358-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-360-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -6846,7 +6863,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-359-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-361-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -6857,7 +6874,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-360-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-362-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -6868,7 +6885,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-361-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-363-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -6879,7 +6896,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-362-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-364-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -6890,7 +6907,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-363-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-365-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -6901,7 +6918,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-364-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-366-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -6912,7 +6929,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-365-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-367-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -6923,7 +6940,7 @@ legend("center",legend=
        cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-366-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-368-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -6934,7 +6951,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-367-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-369-1.png" width="672" />
 
 <br>
 
@@ -6947,7 +6964,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-368-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-370-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -6958,7 +6975,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-369-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-371-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -6969,7 +6986,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-370-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-372-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -6980,7 +6997,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-371-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-373-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -6991,7 +7008,7 @@ legend("center",
        cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-372-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-374-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -7002,7 +7019,7 @@ bty="n",
 cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-373-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-375-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -7013,7 +7030,7 @@ bty="n",
 cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-374-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-376-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -7024,7 +7041,7 @@ bty="n",
 cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-375-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-377-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -7035,7 +7052,7 @@ legend=expression(Produtividade~(kg~ha^-1)),
        cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-376-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-378-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -7046,7 +7063,7 @@ expression(H[2]*0[2]~(mu*"mol"~g^-1~MFPA)),
        cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-377-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-379-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -7057,7 +7074,7 @@ legend=expression(MSPA~(g~kg^-1)),
        cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-378-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-380-1.png" width="672" style="display: block; margin: auto;" />
 
 
 
@@ -7069,7 +7086,7 @@ expression(bold(italic(A)) == "bold(italic(A))"),
        cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-379-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-381-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ```r
@@ -7080,7 +7097,7 @@ legend=expression(hat(Y)==ax^2+bx+c),
        cex=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-380-1.png" width="672" style="display: block; margin: auto;" />
+<img src="index_files/figure-html/unnamed-chunk-382-1.png" width="672" style="display: block; margin: auto;" />
 
 </div>
 
@@ -7117,7 +7134,7 @@ Não iremos trabalhar com um conjunto de dados neste exemplo, dessa forma, a lin
 plot(1,1, ylab="Eixo Y",xlab="Eixo X")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-381-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-383-1.png" width="672" />
 
 ****
 
@@ -7139,7 +7156,7 @@ par(mai=c(1,1,1,1))
 plot(1,1, ylab="Eixo Y",xlab="Eixo X")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-382-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-384-1.png" width="672" />
 
 ****
 
@@ -7157,7 +7174,7 @@ par(family="serif")
 plot(1,1, ylab="Eixo Y",xlab="Eixo X")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-383-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-385-1.png" width="672" />
 
 <br>
 
@@ -7175,7 +7192,7 @@ par(col="red")
 plot(1,1, ylab="Eixo Y",xlab="Eixo X")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-384-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-386-1.png" width="672" />
 
 Especificando a cor da escala dos eixos do gráfico
 
@@ -7185,7 +7202,7 @@ par(col.axis="red")
 plot(1,1, ylab="",xlab="")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-385-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-387-1.png" width="672" />
 
 Especificando cor do nome dos eixos
 
@@ -7195,7 +7212,7 @@ par(col.lab="red")
 plot(1,1, ylab="Eixo Y",xlab="Eixo X")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-386-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-388-1.png" width="672" />
 
 Especificando cor do título
 
@@ -7205,7 +7222,7 @@ par(col.main="red")
 plot(1,1, ylab="Eixo Y",xlab="Eixo X",main="title")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-387-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-389-1.png" width="672" />
 
 <br>
 
@@ -7221,7 +7238,7 @@ par(cex=1.3)
 plot(1,1, ylab="Eixo Y",xlab="Eixo X",main="title")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-388-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-390-1.png" width="672" />
 
  - `cex.axis` : Tamanho da fonte das escalas de Y e X
  - `cex.lab` : Tamaho da fonte do nome dos eixos
@@ -7239,7 +7256,7 @@ plot(1,1, ylab="Eixo Y",xlab="Eixo X")
 title("title", adj=0)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-389-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-391-1.png" width="672" />
 
 <br>
 
@@ -7254,7 +7271,7 @@ title("title", adj=0)
 plot(1,1, ylab="Eixo Y",xlab="Eixo X",las=1)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-390-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-392-1.png" width="672" />
 
 <br>
 
@@ -7271,7 +7288,7 @@ par(new=T)
 plot(c(6,5,4,3,2,1), ylab="",xlab="",main="", type="o",col="blue")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-391-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-393-1.png" width="672" />
 
 <br>
 
@@ -7290,7 +7307,7 @@ plot(c(1,2,3,4,5,6), ylab="Eixo Y",xlab="Eixo X",main="title", type="o",col="red
 plot(c(6,5,4,3,2,1), ylab="Eixo Y",xlab="Eixo X",main="title", type="o",col="blue")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-392-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-394-1.png" width="672" />
 
 <br>
 
@@ -7325,7 +7342,7 @@ plot(c(6,5,4,3,2,1), ylab="Eixo Y",xlab="Eixo X",main="title", type="o",col="blu
 plot(c(1,6,1,6,1,6), ylab="Eixo Y",xlab="Eixo X",main="title", type="o",col="blue")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-394-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-396-1.png" width="672" />
 
 <br>
 
@@ -7396,38 +7413,35 @@ library(gridExtra)
 grid.arrange(a,b,c,ncol=3)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-397-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-399-1.png" width="672" />
 
 ### Gráficos um abaixo do outro
 
 
 ```r
-library(gridExtra)
 grid.arrange(a,b,c,ncol=1)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-398-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-400-1.png" width="672" />
 
 ### Dois na primeira linha e uma no lado esquerdo da segunda linha
 
 
 ```r
-library(gridExtra)
 grid.arrange(a,b,c,ncol=2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-399-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-401-1.png" width="672" />
 
 ### Dois na primeira linha e uma centralizado na segunda linha
 
 
 ```r
-library(gridExtra)
 grid.arrange(a,b,c,
              layout_matrix = rbind(c(1,1,2,2), c(NA,3,3,NA)))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-400-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-402-1.png" width="672" />
 
 ### Dois na primeira linha e uma a direita na segunda linha
 
@@ -7435,34 +7449,73 @@ grid.arrange(a,b,c,
 
 
 ```r
-library(gridExtra)
 grid.arrange(a,b,c,
              layout_matrix = rbind(c(1,1,2,2), c(NA,NA,3,3)))
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-401-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-403-1.png" width="672" />
 
 ### Título em gráficos agrupados
 
 
 ```r
-library(gridExtra)
 a1=grid.arrange(a,b,layout_matrix = rbind(c(1,1,2,2)),top="Titulo 1")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-402-1.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-404-1.png" width="672" />
 
 ```r
 a2=grid.arrange(a,b,layout_matrix = rbind(c(1,1,2,2)),top="Titulo 2")
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-402-2.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-404-2.png" width="672" />
 
 ```r
 grid.arrange(a1,a2)
 ```
 
-<img src="index_files/figure-html/unnamed-chunk-402-3.png" width="672" />
+<img src="index_files/figure-html/unnamed-chunk-404-3.png" width="672" />
+
+
+****
+
+# Como salvar um gráfico?
+
+****
+
+Existe várias formas de salvar o gráfico:
+
+ - Gerando o relatório pelo Rmd (ctrl + shift + k)
+ - Pela janela Plots -> Export -> escolher a extensão e dimensões
+ - Comando tiff
+ - Comando ggsave, no caso do ggplot2
+ - etc...
+
+Nesse tutorial, ou ensinar pelo comando tiff.
+
+
+```r
+dados=rnorm(100,10,1) # estou simulando dados de uma normal com 100 observações de média 10 e desvio-padrão 1.
+plot(dados)
+```
+
+<img src="index_files/figure-html/unnamed-chunk-405-1.png" width="672" />
+
+Para usar o comando tiff, devemos colocar ele antes da plotagem e um dev.off() após a plotagem. Devemos definir a largura, altura, resolução e unidade das dimensões. Veja esse exemplo:
+
+
+```r
+tiff("exemplo.tif", res=100, width = 8,height = 5, units = "in")
+dados=rnorm(100,10,1) # estou simulando dados de uma normal com 100 observações de média 10 e desvio-padrão 1.
+plot(dados)
+dev.off()
+```
+
+**Obs.** Cuidado!!! Uma vez ativado o tiff, o R está mudando o local da plotagem. Assim, caso execute ele e não finalize com o dev.off() ele ficará soltando outro lugar, ao invés da janela plots. Quando perceber que não está liberando um gráfico no plots, tente executar várias vezes o dev.off() até dar erro.
+
+Podemos definir também a extensão da imagem, no anterior, usamos tif. 
+
+**Obs.** Por experiência, a extensão tif é a melhor em termos de resolução gráfica, pois o mesmo parece não perder muita qualidade no word. Entretanto, cuidado!!!, pois seu word pode estar configurado para reduzir qualidade de imagem.
 
 
 ****
@@ -7495,7 +7548,7 @@ dados %>% plot_ly(y=resposta,
 ```
 
 <!--html_preserve--><div id="htmlwidget-f888dc62471906a988fd" style="width:672px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f888dc62471906a988fd">{"x":{"visdat":{"3468191e432e":["function () ","plotlyVisDat"]},"cur_data":"3468191e432e","attrs":{"3468191e432e":{"y":[100,120,110,90,150,145,149,165,150,144,134,139,220,206,210,210,266,249,248,260],"x":{},"color":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"box"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"yaxis":{"domain":[0,1],"automargin":true,"title":"Resposta"},"xaxis":{"domain":[0,1],"automargin":true,"title":"","type":"category","categoryorder":"array","categoryarray":["T 1","T 2","T 3","T 4","T 5"]},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"fillcolor":"rgba(102,194,165,0,5)","y":[100,120,110,90],"x":["T 1","T 1","T 1","T 1"],"type":"box","name":"T 1","marker":{"color":"rgba(102,194,165,1)","line":{"color":"rgba(102,194,165,1)"}},"line":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(252,141,98,0,5)","y":[150,145,149,165],"x":["T 2","T 2","T 2","T 2"],"type":"box","name":"T 2","marker":{"color":"rgba(252,141,98,1)","line":{"color":"rgba(252,141,98,1)"}},"line":{"color":"rgba(252,141,98,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(141,160,203,0,5)","y":[150,144,134,139],"x":["T 3","T 3","T 3","T 3"],"type":"box","name":"T 3","marker":{"color":"rgba(141,160,203,1)","line":{"color":"rgba(141,160,203,1)"}},"line":{"color":"rgba(141,160,203,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(231,138,195,0,5)","y":[220,206,210,210],"x":["T 4","T 4","T 4","T 4"],"type":"box","name":"T 4","marker":{"color":"rgba(231,138,195,1)","line":{"color":"rgba(231,138,195,1)"}},"line":{"color":"rgba(231,138,195,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(166,216,84,0,5)","y":[266,249,248,260],"x":["T 5","T 5","T 5","T 5"],"type":"box","name":"T 5","marker":{"color":"rgba(166,216,84,1)","line":{"color":"rgba(166,216,84,1)"}},"line":{"color":"rgba(166,216,84,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<script type="application/json" data-for="htmlwidget-f888dc62471906a988fd">{"x":{"visdat":{"29e84d67758f":["function () ","plotlyVisDat"]},"cur_data":"29e84d67758f","attrs":{"29e84d67758f":{"y":[100,120,110,90,150,145,149,165,150,144,134,139,220,206,210,210,266,249,248,260],"x":{},"color":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"box"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"yaxis":{"domain":[0,1],"automargin":true,"title":"Resposta"},"xaxis":{"domain":[0,1],"automargin":true,"title":"","type":"category","categoryorder":"array","categoryarray":["T 1","T 2","T 3","T 4","T 5"]},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"fillcolor":"rgba(102,194,165,0,5)","y":[100,120,110,90],"x":["T 1","T 1","T 1","T 1"],"type":"box","name":"T 1","marker":{"color":"rgba(102,194,165,1)","line":{"color":"rgba(102,194,165,1)"}},"line":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(252,141,98,0,5)","y":[150,145,149,165],"x":["T 2","T 2","T 2","T 2"],"type":"box","name":"T 2","marker":{"color":"rgba(252,141,98,1)","line":{"color":"rgba(252,141,98,1)"}},"line":{"color":"rgba(252,141,98,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(141,160,203,0,5)","y":[150,144,134,139],"x":["T 3","T 3","T 3","T 3"],"type":"box","name":"T 3","marker":{"color":"rgba(141,160,203,1)","line":{"color":"rgba(141,160,203,1)"}},"line":{"color":"rgba(141,160,203,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(231,138,195,0,5)","y":[220,206,210,210],"x":["T 4","T 4","T 4","T 4"],"type":"box","name":"T 4","marker":{"color":"rgba(231,138,195,1)","line":{"color":"rgba(231,138,195,1)"}},"line":{"color":"rgba(231,138,195,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(166,216,84,0,5)","y":[266,249,248,260],"x":["T 5","T 5","T 5","T 5"],"type":"box","name":"T 5","marker":{"color":"rgba(166,216,84,1)","line":{"color":"rgba(166,216,84,1)"}},"line":{"color":"rgba(166,216,84,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 ## Gráfico de colunas
 
@@ -7517,7 +7570,7 @@ dados %>% plot_ly(y=media,
 ```
 
 <!--html_preserve--><div id="htmlwidget-d2a34d502a66744b8e1f" style="width:672px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d2a34d502a66744b8e1f">{"x":{"visdat":{"34687ec97a57":["function () ","plotlyVisDat"]},"cur_data":"34687ec97a57","attrs":{"34687ec97a57":{"y":[105,152.25,141.75,211.5,255.75],"x":{},"error_y":{"value":{},"color":"blue"},"color":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"yaxis":{"domain":[0,1],"automargin":true,"title":"Resposta"},"xaxis":{"domain":[0,1],"automargin":true,"title":"","type":"category","categoryorder":"array","categoryarray":["T 1","T 2","T 3","T 4","T 5"]},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"y":[105],"x":["T 1"],"error_y":{"color":"blue","value":12.9099444873581},"type":"bar","name":"T 1","marker":{"color":"rgba(102,194,165,1)","line":{"color":"rgba(102,194,165,1)"}},"textfont":{"color":"rgba(102,194,165,1)"},"error_x":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"y":[152.25],"x":["T 2"],"error_y":{"color":"blue","value":8.77021474461525},"type":"bar","name":"T 2","marker":{"color":"rgba(252,141,98,1)","line":{"color":"rgba(252,141,98,1)"}},"textfont":{"color":"rgba(252,141,98,1)"},"error_x":{"color":"rgba(252,141,98,1)"},"xaxis":"x","yaxis":"y","frame":null},{"y":[141.75],"x":["T 3"],"error_y":{"color":"blue","value":6.84957419601151},"type":"bar","name":"T 3","marker":{"color":"rgba(141,160,203,1)","line":{"color":"rgba(141,160,203,1)"}},"textfont":{"color":"rgba(141,160,203,1)"},"error_x":{"color":"rgba(141,160,203,1)"},"xaxis":"x","yaxis":"y","frame":null},{"y":[211.5],"x":["T 4"],"error_y":{"color":"blue","value":5.97215762238964},"type":"bar","name":"T 4","marker":{"color":"rgba(231,138,195,1)","line":{"color":"rgba(231,138,195,1)"}},"textfont":{"color":"rgba(231,138,195,1)"},"error_x":{"color":"rgba(231,138,195,1)"},"xaxis":"x","yaxis":"y","frame":null},{"y":[255.75],"x":["T 5"],"error_y":{"color":"blue","value":8.73212459828649},"type":"bar","name":"T 5","marker":{"color":"rgba(166,216,84,1)","line":{"color":"rgba(166,216,84,1)"}},"textfont":{"color":"rgba(166,216,84,1)"},"error_x":{"color":"rgba(166,216,84,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<script type="application/json" data-for="htmlwidget-d2a34d502a66744b8e1f">{"x":{"visdat":{"29e83c06d46":["function () ","plotlyVisDat"]},"cur_data":"29e83c06d46","attrs":{"29e83c06d46":{"y":[105,152.25,141.75,211.5,255.75],"x":{},"error_y":{"value":{},"color":"blue"},"color":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"yaxis":{"domain":[0,1],"automargin":true,"title":"Resposta"},"xaxis":{"domain":[0,1],"automargin":true,"title":"","type":"category","categoryorder":"array","categoryarray":["T 1","T 2","T 3","T 4","T 5"]},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"y":[105],"x":["T 1"],"error_y":{"color":"blue","value":12.9099444873581},"type":"bar","name":"T 1","marker":{"color":"rgba(102,194,165,1)","line":{"color":"rgba(102,194,165,1)"}},"textfont":{"color":"rgba(102,194,165,1)"},"error_x":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"y":[152.25],"x":["T 2"],"error_y":{"color":"blue","value":8.77021474461525},"type":"bar","name":"T 2","marker":{"color":"rgba(252,141,98,1)","line":{"color":"rgba(252,141,98,1)"}},"textfont":{"color":"rgba(252,141,98,1)"},"error_x":{"color":"rgba(252,141,98,1)"},"xaxis":"x","yaxis":"y","frame":null},{"y":[141.75],"x":["T 3"],"error_y":{"color":"blue","value":6.84957419601151},"type":"bar","name":"T 3","marker":{"color":"rgba(141,160,203,1)","line":{"color":"rgba(141,160,203,1)"}},"textfont":{"color":"rgba(141,160,203,1)"},"error_x":{"color":"rgba(141,160,203,1)"},"xaxis":"x","yaxis":"y","frame":null},{"y":[211.5],"x":["T 4"],"error_y":{"color":"blue","value":5.97215762238964},"type":"bar","name":"T 4","marker":{"color":"rgba(231,138,195,1)","line":{"color":"rgba(231,138,195,1)"}},"textfont":{"color":"rgba(231,138,195,1)"},"error_x":{"color":"rgba(231,138,195,1)"},"xaxis":"x","yaxis":"y","frame":null},{"y":[255.75],"x":["T 5"],"error_y":{"color":"blue","value":8.73212459828649},"type":"bar","name":"T 5","marker":{"color":"rgba(166,216,84,1)","line":{"color":"rgba(166,216,84,1)"}},"textfont":{"color":"rgba(166,216,84,1)"},"error_x":{"color":"rgba(166,216,84,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 ## Gráfico de barras
 
@@ -7535,7 +7588,7 @@ dados %>% plot_ly(x=media,
 ```
 
 <!--html_preserve--><div id="htmlwidget-e96c0688a849169abb34" style="width:672px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-e96c0688a849169abb34">{"x":{"visdat":{"346836143d64":["function () ","plotlyVisDat"]},"cur_data":"346836143d64","attrs":{"346836143d64":{"x":[105,152.25,141.75,211.5,255.75],"y":{},"horizontation":"h","error_x":{"value":{},"color":"blue"},"color":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"yaxis":{"domain":[0,1],"automargin":true,"title":"Resposta","type":"category","categoryorder":"array","categoryarray":["T 1","T 2","T 3","T 4","T 5"]},"xaxis":{"domain":[0,1],"automargin":true,"title":""},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"x":[105],"y":["T 1"],"horizontation":"h","error_x":{"color":"blue","value":12.9099444873581},"type":"bar","orientation":"h","name":"T 1","marker":{"color":"rgba(102,194,165,1)","line":{"color":"rgba(102,194,165,1)"}},"textfont":{"color":"rgba(102,194,165,1)"},"error_y":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[152.25],"y":["T 2"],"horizontation":"h","error_x":{"color":"blue","value":8.77021474461525},"type":"bar","orientation":"h","name":"T 2","marker":{"color":"rgba(252,141,98,1)","line":{"color":"rgba(252,141,98,1)"}},"textfont":{"color":"rgba(252,141,98,1)"},"error_y":{"color":"rgba(252,141,98,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[141.75],"y":["T 3"],"horizontation":"h","error_x":{"color":"blue","value":6.84957419601151},"type":"bar","orientation":"h","name":"T 3","marker":{"color":"rgba(141,160,203,1)","line":{"color":"rgba(141,160,203,1)"}},"textfont":{"color":"rgba(141,160,203,1)"},"error_y":{"color":"rgba(141,160,203,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[211.5],"y":["T 4"],"horizontation":"h","error_x":{"color":"blue","value":5.97215762238964},"type":"bar","orientation":"h","name":"T 4","marker":{"color":"rgba(231,138,195,1)","line":{"color":"rgba(231,138,195,1)"}},"textfont":{"color":"rgba(231,138,195,1)"},"error_y":{"color":"rgba(231,138,195,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[255.75],"y":["T 5"],"horizontation":"h","error_x":{"color":"blue","value":8.73212459828649},"type":"bar","orientation":"h","name":"T 5","marker":{"color":"rgba(166,216,84,1)","line":{"color":"rgba(166,216,84,1)"}},"textfont":{"color":"rgba(166,216,84,1)"},"error_y":{"color":"rgba(166,216,84,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<script type="application/json" data-for="htmlwidget-e96c0688a849169abb34">{"x":{"visdat":{"29e871c170c2":["function () ","plotlyVisDat"]},"cur_data":"29e871c170c2","attrs":{"29e871c170c2":{"x":[105,152.25,141.75,211.5,255.75],"y":{},"horizontation":"h","error_x":{"value":{},"color":"blue"},"color":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"yaxis":{"domain":[0,1],"automargin":true,"title":"Resposta","type":"category","categoryorder":"array","categoryarray":["T 1","T 2","T 3","T 4","T 5"]},"xaxis":{"domain":[0,1],"automargin":true,"title":""},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"x":[105],"y":["T 1"],"horizontation":"h","error_x":{"color":"blue","value":12.9099444873581},"type":"bar","orientation":"h","name":"T 1","marker":{"color":"rgba(102,194,165,1)","line":{"color":"rgba(102,194,165,1)"}},"textfont":{"color":"rgba(102,194,165,1)"},"error_y":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[152.25],"y":["T 2"],"horizontation":"h","error_x":{"color":"blue","value":8.77021474461525},"type":"bar","orientation":"h","name":"T 2","marker":{"color":"rgba(252,141,98,1)","line":{"color":"rgba(252,141,98,1)"}},"textfont":{"color":"rgba(252,141,98,1)"},"error_y":{"color":"rgba(252,141,98,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[141.75],"y":["T 3"],"horizontation":"h","error_x":{"color":"blue","value":6.84957419601151},"type":"bar","orientation":"h","name":"T 3","marker":{"color":"rgba(141,160,203,1)","line":{"color":"rgba(141,160,203,1)"}},"textfont":{"color":"rgba(141,160,203,1)"},"error_y":{"color":"rgba(141,160,203,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[211.5],"y":["T 4"],"horizontation":"h","error_x":{"color":"blue","value":5.97215762238964},"type":"bar","orientation":"h","name":"T 4","marker":{"color":"rgba(231,138,195,1)","line":{"color":"rgba(231,138,195,1)"}},"textfont":{"color":"rgba(231,138,195,1)"},"error_y":{"color":"rgba(231,138,195,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[255.75],"y":["T 5"],"horizontation":"h","error_x":{"color":"blue","value":8.73212459828649},"type":"bar","orientation":"h","name":"T 5","marker":{"color":"rgba(166,216,84,1)","line":{"color":"rgba(166,216,84,1)"}},"textfont":{"color":"rgba(166,216,84,1)"},"error_y":{"color":"rgba(166,216,84,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 ## Gráfico de dispersão
 
@@ -7551,5 +7604,5 @@ dados %>% plot_ly(y=media,
 ```
 
 <!--html_preserve--><div id="htmlwidget-86349adfa5d821dc4447" style="width:672px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-86349adfa5d821dc4447">{"x":{"visdat":{"346839a26062":["function () ","plotlyVisDat"]},"cur_data":"346839a26062","attrs":{"346839a26062":{"y":[105,152.25,141.75,211.5,255.75],"x":{},"error_y":{"value":{}},"color":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"yaxis":{"domain":[0,1],"automargin":true,"title":"Resposta"},"xaxis":{"domain":[0,1],"automargin":true,"title":"","type":"category","categoryorder":"array","categoryarray":["T 1","T 2","T 3","T 4","T 5"]},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"y":[105],"x":["T 1"],"error_y":{"color":"rgba(102,194,165,1)","value":12.9099444873581},"type":"scatter","mode":"markers","name":"T 1","marker":{"color":"rgba(102,194,165,1)","line":{"color":"rgba(102,194,165,1)"}},"textfont":{"color":"rgba(102,194,165,1)"},"error_x":{"color":"rgba(102,194,165,1)"},"line":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"y":[152.25],"x":["T 2"],"error_y":{"color":"rgba(252,141,98,1)","value":8.77021474461525},"type":"scatter","mode":"markers","name":"T 2","marker":{"color":"rgba(252,141,98,1)","line":{"color":"rgba(252,141,98,1)"}},"textfont":{"color":"rgba(252,141,98,1)"},"error_x":{"color":"rgba(252,141,98,1)"},"line":{"color":"rgba(252,141,98,1)"},"xaxis":"x","yaxis":"y","frame":null},{"y":[141.75],"x":["T 3"],"error_y":{"color":"rgba(141,160,203,1)","value":6.84957419601151},"type":"scatter","mode":"markers","name":"T 3","marker":{"color":"rgba(141,160,203,1)","line":{"color":"rgba(141,160,203,1)"}},"textfont":{"color":"rgba(141,160,203,1)"},"error_x":{"color":"rgba(141,160,203,1)"},"line":{"color":"rgba(141,160,203,1)"},"xaxis":"x","yaxis":"y","frame":null},{"y":[211.5],"x":["T 4"],"error_y":{"color":"rgba(231,138,195,1)","value":5.97215762238964},"type":"scatter","mode":"markers","name":"T 4","marker":{"color":"rgba(231,138,195,1)","line":{"color":"rgba(231,138,195,1)"}},"textfont":{"color":"rgba(231,138,195,1)"},"error_x":{"color":"rgba(231,138,195,1)"},"line":{"color":"rgba(231,138,195,1)"},"xaxis":"x","yaxis":"y","frame":null},{"y":[255.75],"x":["T 5"],"error_y":{"color":"rgba(166,216,84,1)","value":8.73212459828649},"type":"scatter","mode":"markers","name":"T 5","marker":{"color":"rgba(166,216,84,1)","line":{"color":"rgba(166,216,84,1)"}},"textfont":{"color":"rgba(166,216,84,1)"},"error_x":{"color":"rgba(166,216,84,1)"},"line":{"color":"rgba(166,216,84,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<script type="application/json" data-for="htmlwidget-86349adfa5d821dc4447">{"x":{"visdat":{"29e81415fd2":["function () ","plotlyVisDat"]},"cur_data":"29e81415fd2","attrs":{"29e81415fd2":{"y":[105,152.25,141.75,211.5,255.75],"x":{},"error_y":{"value":{}},"color":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"yaxis":{"domain":[0,1],"automargin":true,"title":"Resposta"},"xaxis":{"domain":[0,1],"automargin":true,"title":"","type":"category","categoryorder":"array","categoryarray":["T 1","T 2","T 3","T 4","T 5"]},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"y":[105],"x":["T 1"],"error_y":{"color":"rgba(102,194,165,1)","value":12.9099444873581},"type":"scatter","mode":"markers","name":"T 1","marker":{"color":"rgba(102,194,165,1)","line":{"color":"rgba(102,194,165,1)"}},"textfont":{"color":"rgba(102,194,165,1)"},"error_x":{"color":"rgba(102,194,165,1)"},"line":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"y":[152.25],"x":["T 2"],"error_y":{"color":"rgba(252,141,98,1)","value":8.77021474461525},"type":"scatter","mode":"markers","name":"T 2","marker":{"color":"rgba(252,141,98,1)","line":{"color":"rgba(252,141,98,1)"}},"textfont":{"color":"rgba(252,141,98,1)"},"error_x":{"color":"rgba(252,141,98,1)"},"line":{"color":"rgba(252,141,98,1)"},"xaxis":"x","yaxis":"y","frame":null},{"y":[141.75],"x":["T 3"],"error_y":{"color":"rgba(141,160,203,1)","value":6.84957419601151},"type":"scatter","mode":"markers","name":"T 3","marker":{"color":"rgba(141,160,203,1)","line":{"color":"rgba(141,160,203,1)"}},"textfont":{"color":"rgba(141,160,203,1)"},"error_x":{"color":"rgba(141,160,203,1)"},"line":{"color":"rgba(141,160,203,1)"},"xaxis":"x","yaxis":"y","frame":null},{"y":[211.5],"x":["T 4"],"error_y":{"color":"rgba(231,138,195,1)","value":5.97215762238964},"type":"scatter","mode":"markers","name":"T 4","marker":{"color":"rgba(231,138,195,1)","line":{"color":"rgba(231,138,195,1)"}},"textfont":{"color":"rgba(231,138,195,1)"},"error_x":{"color":"rgba(231,138,195,1)"},"line":{"color":"rgba(231,138,195,1)"},"xaxis":"x","yaxis":"y","frame":null},{"y":[255.75],"x":["T 5"],"error_y":{"color":"rgba(166,216,84,1)","value":8.73212459828649},"type":"scatter","mode":"markers","name":"T 5","marker":{"color":"rgba(166,216,84,1)","line":{"color":"rgba(166,216,84,1)"}},"textfont":{"color":"rgba(166,216,84,1)"},"error_x":{"color":"rgba(166,216,84,1)"},"line":{"color":"rgba(166,216,84,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 

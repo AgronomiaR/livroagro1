@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title> 20 plotly | Aplicações práticas do software R para Agronomia</title>
+  <title> 21 plotly | Aplicações práticas do software R para Agronomia</title>
   <meta name="description" content="Este é um livro virtual desenvolvido com a finalidade de fornecer tutoriais práticos das principais análises estatísticas e apresentação de dados utilizando o software R" />
-  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content=" 20 plotly | Aplicações práticas do software R para Agronomia" />
+  <meta property="og:title" content=" 21 plotly | Aplicações práticas do software R para Agronomia" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content=" 20 plotly | Aplicações práticas do software R para Agronomia" />
+  <meta name="twitter:title" content=" 21 plotly | Aplicações práticas do software R para Agronomia" />
   
   <meta name="twitter:description" content="Este é um livro virtual desenvolvido com a finalidade de fornecer tutoriais práticos das principais análises estatísticas e apresentação de dados utilizando o software R" />
   
@@ -24,15 +24,16 @@
 <meta name="author" content="Gabriel Danilo Shimizu" />
 
 
-<meta name="date" content="2020-07-18" />
+<meta name="date" content="2020-10-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="ggplot2.html"/>
+<link rel="prev" href="como-salvar-um-gráfico.html"/>
 
+<script src="libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -50,30 +51,32 @@
 
 
 
-<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
 <script src="libs/chart.js-2.4.0/./dist/Chart.min.js"></script>
 <script src="libs/chartJSRadar-binding-0.3.1/chartJSRadar.js"></script>
-<script src="libs/plotly-binding-4.9.2/plotly.js"></script>
+<script src="libs/plotly-binding-4.9.2.1/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -93,7 +96,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -146,7 +149,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Gráficos em R</a></li>
-<li class="chapter" data-level="2" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html"><i class="fa fa-check"></i><b>2</b> Gráfico de Colunas</a><ul>
+<li class="chapter" data-level="2" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html"><i class="fa fa-check"></i><b>2</b> Gráfico de Colunas</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#conjunto-de-dados"><i class="fa fa-check"></i><b>2.1</b> Conjunto de dados</a></li>
 <li class="chapter" data-level="2.2" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#adicionando-melhorias"><i class="fa fa-check"></i><b>2.2</b> Adicionando melhorias</a></li>
 <li class="chapter" data-level="2.3" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#barras-de-desvio-padrão"><i class="fa fa-check"></i><b>2.3</b> Barras de desvio-padrão</a></li>
@@ -154,7 +158,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#média-dos-tratamentos"><i class="fa fa-check"></i><b>2.5</b> Média dos tratamentos</a></li>
 <li class="chapter" data-level="2.6" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#separação-de-casa-decimal"><i class="fa fa-check"></i><b>2.6</b> Separação de casa decimal</a></li>
 <li class="chapter" data-level="2.7" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#letras-do-teste-de-comparação"><i class="fa fa-check"></i><b>2.7</b> Letras do teste de comparação</a></li>
-<li class="chapter" data-level="2.8" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#pacote-agricolae"><i class="fa fa-check"></i><b>2.8</b> Pacote Agricolae</a><ul>
+<li class="chapter" data-level="2.8" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#pacote-agricolae"><i class="fa fa-check"></i><b>2.8</b> Pacote Agricolae</a>
+<ul>
 <li class="chapter" data-level="2.8.1" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#conjunto-de-dados-1"><i class="fa fa-check"></i><b>2.8.1</b> Conjunto de dados</a></li>
 <li class="chapter" data-level="2.8.2" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#modelo-de-anova"><i class="fa fa-check"></i><b>2.8.2</b> Modelo de Anova</a></li>
 <li class="chapter" data-level="2.8.3" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#gráfico-com-média"><i class="fa fa-check"></i><b>2.8.3</b> Gráfico com média</a></li>
@@ -164,13 +169,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.8.7" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#barras-de-máximo-mínimo"><i class="fa fa-check"></i><b>2.8.7</b> Barras de máximo-mínimo</a></li>
 <li class="chapter" data-level="2.8.8" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#barras-da-distância-interquartil"><i class="fa fa-check"></i><b>2.8.8</b> Barras da distância interquartil</a></li>
 </ul></li>
-<li class="chapter" data-level="2.9" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#pacote-ggplot2-e-ggpubr"><i class="fa fa-check"></i><b>2.9</b> Pacote ggplot2 e ggpubr</a><ul>
+<li class="chapter" data-level="2.9" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#pacote-ggplot2-e-ggpubr"><i class="fa fa-check"></i><b>2.9</b> Pacote ggplot2 e ggpubr</a>
+<ul>
 <li class="chapter" data-level="2.9.1" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#conjunto-de-dados-2"><i class="fa fa-check"></i><b>2.9.1</b> Conjunto de dados</a></li>
 <li class="chapter" data-level="2.9.2" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#análise-de-exp1"><i class="fa fa-check"></i><b>2.9.2</b> Análise de exp1</a></li>
 <li class="chapter" data-level="2.9.3" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#análise-de-exp2"><i class="fa fa-check"></i><b>2.9.3</b> Análise de exp2</a></li>
 <li class="chapter" data-level="2.9.4" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#análise-de-exp3"><i class="fa fa-check"></i><b>2.9.4</b> Análise de exp3</a></li>
 </ul></li>
-<li class="chapter" data-level="2.10" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#utilizando-o-ggplot2"><i class="fa fa-check"></i><b>2.10</b> Utilizando o <em>ggplot2</em></a><ul>
+<li class="chapter" data-level="2.10" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#utilizando-o-ggplot2"><i class="fa fa-check"></i><b>2.10</b> Utilizando o <em>ggplot2</em></a>
+<ul>
 <li class="chapter" data-level="2.10.1" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#média-e-desvio-padrão"><i class="fa fa-check"></i><b>2.10.1</b> Média e desvio-padrão</a></li>
 <li class="chapter" data-level="2.10.2" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#gráfico-básico"><i class="fa fa-check"></i><b>2.10.2</b> Gráfico básico</a></li>
 <li class="chapter" data-level="2.10.3" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#média-no-gráfico"><i class="fa fa-check"></i><b>2.10.3</b> Média no gráfico</a></li>
@@ -188,7 +195,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.10.15" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#variável-exp3"><i class="fa fa-check"></i><b>2.10.15</b> Variável exp3</a></li>
 <li class="chapter" data-level="2.10.16" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#outra-forma-de-fazer-no-ggplot2"><i class="fa fa-check"></i><b>2.10.16</b> Outra forma de fazer no ggplot2</a></li>
 </ul></li>
-<li class="chapter" data-level="2.11" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#pacote-ggpubr"><i class="fa fa-check"></i><b>2.11</b> Pacote ggpubr</a><ul>
+<li class="chapter" data-level="2.11" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#pacote-ggpubr"><i class="fa fa-check"></i><b>2.11</b> Pacote ggpubr</a>
+<ul>
 <li class="chapter" data-level="2.11.1" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#comando-base"><i class="fa fa-check"></i><b>2.11.1</b> Comando base</a></li>
 <li class="chapter" data-level="2.11.2" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#barras-de-desvio-padrão-3"><i class="fa fa-check"></i><b>2.11.2</b> Barras de desvio-padrão</a></li>
 <li class="chapter" data-level="2.11.3" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#cor-da-coluna"><i class="fa fa-check"></i><b>2.11.3</b> Cor da coluna</a></li>
@@ -201,7 +209,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.11.10" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#variável-exp2-1"><i class="fa fa-check"></i><b>2.11.10</b> Variável exp2</a></li>
 <li class="chapter" data-level="2.11.11" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#variável-exp3-1"><i class="fa fa-check"></i><b>2.11.11</b> Variável exp3</a></li>
 </ul></li>
-<li class="chapter" data-level="2.12" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#duas-variáveis-categóricas"><i class="fa fa-check"></i><b>2.12</b> Duas variáveis categóricas</a><ul>
+<li class="chapter" data-level="2.12" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#duas-variáveis-categóricas"><i class="fa fa-check"></i><b>2.12</b> Duas variáveis categóricas</a>
+<ul>
 <li class="chapter" data-level="2.12.1" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#conjunto-de-dados-3"><i class="fa fa-check"></i><b>2.12.1</b> Conjunto de dados</a></li>
 <li class="chapter" data-level="2.12.2" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#gráfico-simples"><i class="fa fa-check"></i><b>2.12.2</b> Gráfico simples</a></li>
 <li class="chapter" data-level="2.12.3" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#melhorias"><i class="fa fa-check"></i><b>2.12.3</b> Melhorias</a></li>
@@ -212,7 +221,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.12.8" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#letras-do-teste-de-comparação-2"><i class="fa fa-check"></i><b>2.12.8</b> Letras do teste de comparação</a></li>
 <li class="chapter" data-level="2.12.9" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#adicionando-legenda"><i class="fa fa-check"></i><b>2.12.9</b> Adicionando legenda</a></li>
 </ul></li>
-<li class="chapter" data-level="2.13" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#colunas-empilhadas"><i class="fa fa-check"></i><b>2.13</b> Colunas empilhadas</a><ul>
+<li class="chapter" data-level="2.13" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#colunas-empilhadas"><i class="fa fa-check"></i><b>2.13</b> Colunas empilhadas</a>
+<ul>
 <li class="chapter" data-level="2.13.1" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#conjunto-de-dados-4"><i class="fa fa-check"></i><b>2.13.1</b> Conjunto de dados</a></li>
 <li class="chapter" data-level="2.13.2" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#gráfico-básico-1"><i class="fa fa-check"></i><b>2.13.2</b> Gráfico básico</a></li>
 <li class="chapter" data-level="2.13.3" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#melhorias-1"><i class="fa fa-check"></i><b>2.13.3</b> Melhorias</a></li>
@@ -223,7 +233,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.13.8" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#letras-do-teste-de-comparação-3"><i class="fa fa-check"></i><b>2.13.8</b> Letras do teste de comparação</a></li>
 <li class="chapter" data-level="2.13.9" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#adicionando-legenda-1"><i class="fa fa-check"></i><b>2.13.9</b> Adicionando legenda</a></li>
 </ul></li>
-<li class="chapter" data-level="2.14" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#dois-lados-com-escala-positiva"><i class="fa fa-check"></i><b>2.14</b> Dois lados com escala positiva</a><ul>
+<li class="chapter" data-level="2.14" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#dois-lados-com-escala-positiva"><i class="fa fa-check"></i><b>2.14</b> Dois lados com escala positiva</a>
+<ul>
 <li class="chapter" data-level="2.14.1" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#conjunto-de-dados-5"><i class="fa fa-check"></i><b>2.14.1</b> Conjunto de dados</a></li>
 <li class="chapter" data-level="2.14.2" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#média-e-desvio-padrão-1"><i class="fa fa-check"></i><b>2.14.2</b> Média e desvio-padrão</a></li>
 <li class="chapter" data-level="2.14.3" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#somente-colunas"><i class="fa fa-check"></i><b>2.14.3</b> Somente colunas</a></li>
@@ -236,12 +247,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.14.10" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#teste-de-comparação"><i class="fa fa-check"></i><b>2.14.10</b> Teste de comparação</a></li>
 <li class="chapter" data-level="2.14.11" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#mudando-fonte"><i class="fa fa-check"></i><b>2.14.11</b> Mudando fonte</a></li>
 </ul></li>
-<li class="chapter" data-level="2.15" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#dois-lados-com-escala-positiva-ggplot2"><i class="fa fa-check"></i><b>2.15</b> Dois lados com escala positiva (ggplot2)</a><ul>
+<li class="chapter" data-level="2.15" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#dois-lados-com-escala-positiva-ggplot2"><i class="fa fa-check"></i><b>2.15</b> Dois lados com escala positiva (ggplot2)</a>
+<ul>
 <li class="chapter" data-level="2.15.1" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#conjunto-de-dados-6"><i class="fa fa-check"></i><b>2.15.1</b> Conjunto de dados</a></li>
 <li class="chapter" data-level="2.15.2" data-path="gráfico-de-colunas.html"><a href="gráfico-de-colunas.html#média-e-desvio-padrão-2"><i class="fa fa-check"></i><b>2.15.2</b> Média e desvio-padrão</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="gráfico-de-barras-1.html"><a href="gráfico-de-barras-1.html"><i class="fa fa-check"></i><b>3</b> Gráfico de Barras</a><ul>
+<li class="chapter" data-level="3" data-path="gráfico-de-barras-1.html"><a href="gráfico-de-barras-1.html"><i class="fa fa-check"></i><b>3</b> Gráfico de Barras</a>
+<ul>
 <li class="chapter" data-level="3.0.1" data-path="gráfico-de-barras-1.html"><a href="gráfico-de-barras-1.html#conjunto-de-dados-7"><i class="fa fa-check"></i><b>3.0.1</b> Conjunto de dados</a></li>
 <li class="chapter" data-level="3.0.2" data-path="gráfico-de-barras-1.html"><a href="gráfico-de-barras-1.html#gráfico-básico-2"><i class="fa fa-check"></i><b>3.0.2</b> Gráfico básico</a></li>
 <li class="chapter" data-level="3.0.3" data-path="gráfico-de-barras-1.html"><a href="gráfico-de-barras-1.html#melhorias-2"><i class="fa fa-check"></i><b>3.0.3</b> Melhorias</a></li>
@@ -251,7 +264,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.0.7" data-path="gráfico-de-barras-1.html"><a href="gráfico-de-barras-1.html#separação-de-casa-decimal-3"><i class="fa fa-check"></i><b>3.0.7</b> Separação de casa decimal</a></li>
 <li class="chapter" data-level="3.0.8" data-path="gráfico-de-barras-1.html"><a href="gráfico-de-barras-1.html#letras-do-teste-de-comparação-4"><i class="fa fa-check"></i><b>3.0.8</b> Letras do teste de comparação</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="caixas-boxplot.html"><a href="caixas-boxplot.html"><i class="fa fa-check"></i><b>4</b> Caixas (Boxplot)</a><ul>
+<li class="chapter" data-level="4" data-path="caixas-boxplot.html"><a href="caixas-boxplot.html"><i class="fa fa-check"></i><b>4</b> Caixas (Boxplot)</a>
+<ul>
 <li class="chapter" data-level="4.0.1" data-path="caixas-boxplot.html"><a href="caixas-boxplot.html#melhorias-3"><i class="fa fa-check"></i><b>4.0.1</b> Melhorias</a></li>
 <li class="chapter" data-level="4.0.2" data-path="caixas-boxplot.html"><a href="caixas-boxplot.html#plotando-médias"><i class="fa fa-check"></i><b>4.0.2</b> Plotando médias</a></li>
 <li class="chapter" data-level="4.0.3" data-path="caixas-boxplot.html"><a href="caixas-boxplot.html#unidade-do-eixo-y-4"><i class="fa fa-check"></i><b>4.0.3</b> Unidade do eixo Y</a></li>
@@ -259,10 +273,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.0.5" data-path="caixas-boxplot.html"><a href="caixas-boxplot.html#média-acima-das-barras-3"><i class="fa fa-check"></i><b>4.0.5</b> Média acima das barras</a></li>
 <li class="chapter" data-level="4.0.6" data-path="caixas-boxplot.html"><a href="caixas-boxplot.html#separação-de-casa-decimal-4"><i class="fa fa-check"></i><b>4.0.6</b> Separação de casa decimal</a></li>
 <li class="chapter" data-level="4.0.7" data-path="caixas-boxplot.html"><a href="caixas-boxplot.html#letras-do-teste-de-comparação-5"><i class="fa fa-check"></i><b>4.0.7</b> Letras do teste de comparação</a></li>
-<li class="chapter" data-level="4.1" data-path="caixas-boxplot.html"><a href="caixas-boxplot.html#pacote-ggplot2"><i class="fa fa-check"></i><b>4.1</b> Pacote ggplot2</a><ul>
+<li class="chapter" data-level="4.1" data-path="caixas-boxplot.html"><a href="caixas-boxplot.html#pacote-ggplot2"><i class="fa fa-check"></i><b>4.1</b> Pacote ggplot2</a>
+<ul>
 <li class="chapter" data-level="4.1.1" data-path="caixas-boxplot.html"><a href="caixas-boxplot.html#análise-de-variância"><i class="fa fa-check"></i><b>4.1.1</b> Análise de variância</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="caixas-boxplot.html"><a href="caixas-boxplot.html#utilizando-o-ggplot2-1"><i class="fa fa-check"></i><b>4.2</b> Utilizando o <em>ggplot2</em></a><ul>
+<li class="chapter" data-level="4.2" data-path="caixas-boxplot.html"><a href="caixas-boxplot.html#utilizando-o-ggplot2-1"><i class="fa fa-check"></i><b>4.2</b> Utilizando o <em>ggplot2</em></a>
+<ul>
 <li class="chapter" data-level="4.2.1" data-path="caixas-boxplot.html"><a href="caixas-boxplot.html#gráfico-básico-3"><i class="fa fa-check"></i><b>4.2.1</b> Gráfico básico</a></li>
 <li class="chapter" data-level="4.2.2" data-path="caixas-boxplot.html"><a href="caixas-boxplot.html#modificando-cores"><i class="fa fa-check"></i><b>4.2.2</b> Modificando cores</a></li>
 <li class="chapter" data-level="4.2.3" data-path="caixas-boxplot.html"><a href="caixas-boxplot.html#cor-por-tratamento"><i class="fa fa-check"></i><b>4.2.3</b> Cor por tratamento</a></li>
@@ -270,7 +286,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.2.5" data-path="caixas-boxplot.html"><a href="caixas-boxplot.html#linha-de-grade-e-cor-de-fundo"><i class="fa fa-check"></i><b>4.2.5</b> linha de grade e cor de fundo</a></li>
 <li class="chapter" data-level="4.2.6" data-path="caixas-boxplot.html"><a href="caixas-boxplot.html#letras-do-teste-de-tukey"><i class="fa fa-check"></i><b>4.2.6</b> Letras do teste de Tukey</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="caixas-boxplot.html"><a href="caixas-boxplot.html#package-ggpubr"><i class="fa fa-check"></i><b>4.3</b> <em>Package</em> ggpubr</a><ul>
+<li class="chapter" data-level="4.3" data-path="caixas-boxplot.html"><a href="caixas-boxplot.html#package-ggpubr"><i class="fa fa-check"></i><b>4.3</b> <em>Package</em> ggpubr</a>
+<ul>
 <li class="chapter" data-level="4.3.1" data-path="caixas-boxplot.html"><a href="caixas-boxplot.html#cor-da-caixa"><i class="fa fa-check"></i><b>4.3.1</b> Cor da caixa</a></li>
 <li class="chapter" data-level="4.3.2" data-path="caixas-boxplot.html"><a href="caixas-boxplot.html#cor-de-contorno"><i class="fa fa-check"></i><b>4.3.2</b> Cor de contorno</a></li>
 <li class="chapter" data-level="4.3.3" data-path="caixas-boxplot.html"><a href="caixas-boxplot.html#inserindo-título"><i class="fa fa-check"></i><b>4.3.3</b> Inserindo título</a></li>
@@ -279,7 +296,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3.6" data-path="caixas-boxplot.html"><a href="caixas-boxplot.html#letras-do-teste-de-tukey-1"><i class="fa fa-check"></i><b>4.3.6</b> Letras do teste de Tukey</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="regressão.html"><a href="regressão.html"><i class="fa fa-check"></i><b>5</b> Regressão</a><ul>
+<li class="chapter" data-level="5" data-path="regressão.html"><a href="regressão.html"><i class="fa fa-check"></i><b>5</b> Regressão</a>
+<ul>
 <li class="chapter" data-level="5.0.1" data-path="regressão.html"><a href="regressão.html#conjunto-de-dados-8"><i class="fa fa-check"></i><b>5.0.1</b> Conjunto de dados</a></li>
 <li class="chapter" data-level="5.0.2" data-path="regressão.html"><a href="regressão.html#gráfico-básico-4"><i class="fa fa-check"></i><b>5.0.2</b> Gráfico básico</a></li>
 <li class="chapter" data-level="5.0.3" data-path="regressão.html"><a href="regressão.html#melhorias-4"><i class="fa fa-check"></i><b>5.0.3</b> Melhorias</a></li>
@@ -289,7 +307,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.0.7" data-path="regressão.html"><a href="regressão.html#curva-de-tendência"><i class="fa fa-check"></i><b>5.0.7</b> Curva de Tendência</a></li>
 <li class="chapter" data-level="5.0.8" data-path="regressão.html"><a href="regressão.html#pontos-de-máximomínimo"><i class="fa fa-check"></i><b>5.0.8</b> Pontos de máximo/mínimo</a></li>
 <li class="chapter" data-level="5.0.9" data-path="regressão.html"><a href="regressão.html#equação-e-r2"><i class="fa fa-check"></i><b>5.0.9</b> Equação e R^2</a></li>
-<li class="chapter" data-level="5.1" data-path="regressão.html"><a href="regressão.html#usando-o-pacote-ggplot2"><i class="fa fa-check"></i><b>5.1</b> Usando o pacote ggplot2</a><ul>
+<li class="chapter" data-level="5.1" data-path="regressão.html"><a href="regressão.html#usando-o-pacote-ggplot2"><i class="fa fa-check"></i><b>5.1</b> Usando o pacote ggplot2</a>
+<ul>
 <li class="chapter" data-level="5.1.1" data-path="regressão.html"><a href="regressão.html#gráfico-básico-5"><i class="fa fa-check"></i><b>5.1.1</b> Gráfico básico</a></li>
 <li class="chapter" data-level="5.1.2" data-path="regressão.html"><a href="regressão.html#editando-gráfico"><i class="fa fa-check"></i><b>5.1.2</b> Editando gráfico</a></li>
 <li class="chapter" data-level="5.1.3" data-path="regressão.html"><a href="regressão.html#plotando-equação"><i class="fa fa-check"></i><b>5.1.3</b> Plotando equação</a></li>
@@ -298,7 +317,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.1.6" data-path="regressão.html"><a href="regressão.html#removendo-grade"><i class="fa fa-check"></i><b>5.1.6</b> Removendo grade</a></li>
 <li class="chapter" data-level="5.1.7" data-path="regressão.html"><a href="regressão.html#ponto-de-máximomínimo"><i class="fa fa-check"></i><b>5.1.7</b> Ponto de máximo/mínimo</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="regressão.html"><a href="regressão.html#duas-curvas"><i class="fa fa-check"></i><b>5.2</b> Duas curvas</a><ul>
+<li class="chapter" data-level="5.2" data-path="regressão.html"><a href="regressão.html#duas-curvas"><i class="fa fa-check"></i><b>5.2</b> Duas curvas</a>
+<ul>
 <li class="chapter" data-level="5.2.1" data-path="regressão.html"><a href="regressão.html#conjunto-de-dados-9"><i class="fa fa-check"></i><b>5.2.1</b> Conjunto de dados</a></li>
 <li class="chapter" data-level="5.2.2" data-path="regressão.html"><a href="regressão.html#média-e-desvio-padrão-3"><i class="fa fa-check"></i><b>5.2.2</b> Média e Desvio-padrão</a></li>
 <li class="chapter" data-level="5.2.3" data-path="regressão.html"><a href="regressão.html#tratamento-a"><i class="fa fa-check"></i><b>5.2.3</b> Tratamento A</a></li>
@@ -308,13 +328,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.2.7" data-path="regressão.html"><a href="regressão.html#inserindo-legenda"><i class="fa fa-check"></i><b>5.2.7</b> Inserindo legenda</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="histograma.html"><a href="histograma.html"><i class="fa fa-check"></i><b>6</b> Histograma</a><ul>
+<li class="chapter" data-level="6" data-path="histograma.html"><a href="histograma.html"><i class="fa fa-check"></i><b>6</b> Histograma</a>
+<ul>
 <li class="chapter" data-level="6.0.1" data-path="histograma.html"><a href="histograma.html#conjunto-de-dados-10"><i class="fa fa-check"></i><b>6.0.1</b> Conjunto de dados</a></li>
 <li class="chapter" data-level="6.0.2" data-path="histograma.html"><a href="histograma.html#gráfico-básico-6"><i class="fa fa-check"></i><b>6.0.2</b> Gráfico básico</a></li>
 <li class="chapter" data-level="6.0.3" data-path="histograma.html"><a href="histograma.html#melhorias-5"><i class="fa fa-check"></i><b>6.0.3</b> Melhorias</a></li>
 <li class="chapter" data-level="6.0.4" data-path="histograma.html"><a href="histograma.html#plotando-curva-normal"><i class="fa fa-check"></i><b>6.0.4</b> Plotando curva normal</a></li>
 <li class="chapter" data-level="6.1" data-path="histograma.html"><a href="histograma.html#pacote-ggplot2-1"><i class="fa fa-check"></i><b>6.1</b> Pacote ggplot2</a></li>
-<li class="chapter" data-level="6.2" data-path="histograma.html"><a href="histograma.html#distribuição-normal-padrão-z"><i class="fa fa-check"></i><b>6.2</b> Distribuição normal padrão (Z)</a><ul>
+<li class="chapter" data-level="6.2" data-path="histograma.html"><a href="histograma.html#distribuição-normal-padrão-z"><i class="fa fa-check"></i><b>6.2</b> Distribuição normal padrão (Z)</a>
+<ul>
 <li class="chapter" data-level="6.2.1" data-path="histograma.html"><a href="histograma.html#simulando-dados"><i class="fa fa-check"></i><b>6.2.1</b> Simulando dados</a></li>
 <li class="chapter" data-level="6.2.2" data-path="histograma.html"><a href="histograma.html#gráfico-simples-1"><i class="fa fa-check"></i><b>6.2.2</b> gráfico simples</a></li>
 <li class="chapter" data-level="6.2.3" data-path="histograma.html"><a href="histograma.html#removendo-marca-da-escala"><i class="fa fa-check"></i><b>6.2.3</b> Removendo marca da escala</a></li>
@@ -325,26 +347,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.2.8" data-path="histograma.html"><a href="histograma.html#adicionando-legendas"><i class="fa fa-check"></i><b>6.2.8</b> Adicionando legendas</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="setores-circulares.html"><a href="setores-circulares.html"><i class="fa fa-check"></i><b>7</b> Setores circulares</a><ul>
+<li class="chapter" data-level="7" data-path="setores-circulares.html"><a href="setores-circulares.html"><i class="fa fa-check"></i><b>7</b> Setores circulares</a>
+<ul>
 <li class="chapter" data-level="7.0.1" data-path="setores-circulares.html"><a href="setores-circulares.html#conjunto-de-dados-11"><i class="fa fa-check"></i><b>7.0.1</b> Conjunto de dados</a></li>
 <li class="chapter" data-level="7.0.2" data-path="setores-circulares.html"><a href="setores-circulares.html#frequências"><i class="fa fa-check"></i><b>7.0.2</b> Frequências</a></li>
 <li class="chapter" data-level="7.0.3" data-path="setores-circulares.html"><a href="setores-circulares.html#gráfico-básico-7"><i class="fa fa-check"></i><b>7.0.3</b> Gráfico básico</a></li>
 <li class="chapter" data-level="7.0.4" data-path="setores-circulares.html"><a href="setores-circulares.html#melhorias-6"><i class="fa fa-check"></i><b>7.0.4</b> Melhorias</a></li>
 <li class="chapter" data-level="7.0.5" data-path="setores-circulares.html"><a href="setores-circulares.html#plotando-valores"><i class="fa fa-check"></i><b>7.0.5</b> Plotando valores</a></li>
-<li class="chapter" data-level="7.1" data-path="setores-circulares.html"><a href="setores-circulares.html#gráfico-de-setores-circulares-3d"><i class="fa fa-check"></i><b>7.1</b> Gráfico de Setores Circulares 3D</a><ul>
+<li class="chapter" data-level="7.1" data-path="setores-circulares.html"><a href="setores-circulares.html#gráfico-de-setores-circulares-3d"><i class="fa fa-check"></i><b>7.1</b> Gráfico de Setores Circulares 3D</a>
+<ul>
 <li class="chapter" data-level="7.1.1" data-path="setores-circulares.html"><a href="setores-circulares.html#descobrindo-as-frequências"><i class="fa fa-check"></i><b>7.1.1</b> Descobrindo as frequências</a></li>
 <li class="chapter" data-level="7.1.2" data-path="setores-circulares.html"><a href="setores-circulares.html#gráfico-em-3d"><i class="fa fa-check"></i><b>7.1.2</b> Gráfico em 3D</a></li>
 <li class="chapter" data-level="7.1.3" data-path="setores-circulares.html"><a href="setores-circulares.html#separando-os-setores"><i class="fa fa-check"></i><b>7.1.3</b> Separando os setores</a></li>
 <li class="chapter" data-level="7.1.4" data-path="setores-circulares.html"><a href="setores-circulares.html#adicionando-nomes-e-frequências"><i class="fa fa-check"></i><b>7.1.4</b> Adicionando nomes e frequências</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="interação.html"><a href="interação.html"><i class="fa fa-check"></i><b>8</b> Interação</a><ul>
+<li class="chapter" data-level="8" data-path="interação.html"><a href="interação.html"><i class="fa fa-check"></i><b>8</b> Interação</a>
+<ul>
 <li class="chapter" data-level="8.0.1" data-path="interação.html"><a href="interação.html#conjunto-de-dados-12"><i class="fa fa-check"></i><b>8.0.1</b> Conjunto de dados</a></li>
 <li class="chapter" data-level="8.0.2" data-path="interação.html"><a href="interação.html#fator1-x-fator-2"><i class="fa fa-check"></i><b>8.0.2</b> Fator1 x Fator 2</a></li>
 <li class="chapter" data-level="8.0.3" data-path="interação.html"><a href="interação.html#editando-o-gráfico"><i class="fa fa-check"></i><b>8.0.3</b> Editando o gráfico</a></li>
 <li class="chapter" data-level="8.0.4" data-path="interação.html"><a href="interação.html#fator2-x-fator-1"><i class="fa fa-check"></i><b>8.0.4</b> Fator2 x Fator 1</a></li>
 <li class="chapter" data-level="8.0.5" data-path="interação.html"><a href="interação.html#editando-o-gráfico-1"><i class="fa fa-check"></i><b>8.0.5</b> Editando o gráfico</a></li>
-<li class="chapter" data-level="8.1" data-path="interação.html"><a href="interação.html#usando-o-interactions"><i class="fa fa-check"></i><b>8.1</b> Usando o interaction(s)</a><ul>
+<li class="chapter" data-level="8.1" data-path="interação.html"><a href="interação.html#usando-o-interactions"><i class="fa fa-check"></i><b>8.1</b> Usando o interaction(s)</a>
+<ul>
 <li class="chapter" data-level="8.1.1" data-path="interação.html"><a href="interação.html#conjunto-de-dados-13"><i class="fa fa-check"></i><b>8.1.1</b> Conjunto de dados</a></li>
 <li class="chapter" data-level="8.1.2" data-path="interação.html"><a href="interação.html#separado-por-fator-a"><i class="fa fa-check"></i><b>8.1.2</b> Separado por Fator A</a></li>
 <li class="chapter" data-level="8.1.3" data-path="interação.html"><a href="interação.html#alterando-escala-do-eixo-y"><i class="fa fa-check"></i><b>8.1.3</b> Alterando escala do eixo Y</a></li>
@@ -356,7 +382,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.1.9" data-path="interação.html"><a href="interação.html#pontos-da-média"><i class="fa fa-check"></i><b>8.1.9</b> Pontos da média</a></li>
 <li class="chapter" data-level="8.1.10" data-path="interação.html"><a href="interação.html#barras-de-desvio-padrão-9"><i class="fa fa-check"></i><b>8.1.10</b> Barras de desvio-padrão</a></li>
 </ul></li>
-<li class="chapter" data-level="8.2" data-path="interação.html"><a href="interação.html#pacote-dae"><i class="fa fa-check"></i><b>8.2</b> Pacote dae</a><ul>
+<li class="chapter" data-level="8.2" data-path="interação.html"><a href="interação.html#pacote-dae"><i class="fa fa-check"></i><b>8.2</b> Pacote dae</a>
+<ul>
 <li class="chapter" data-level="8.2.1" data-path="interação.html"><a href="interação.html#conjunto-de-dados-14"><i class="fa fa-check"></i><b>8.2.1</b> Conjunto de dados</a></li>
 <li class="chapter" data-level="8.2.2" data-path="interação.html"><a href="interação.html#gráfico-com-a-média"><i class="fa fa-check"></i><b>8.2.2</b> Gráfico com a média</a></li>
 <li class="chapter" data-level="8.2.3" data-path="interação.html"><a href="interação.html#média-e-desvio-padrão-4"><i class="fa fa-check"></i><b>8.2.3</b> Média e desvio-padrão</a></li>
@@ -364,12 +391,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.2.5" data-path="interação.html"><a href="interação.html#construindo-o-gráfico"><i class="fa fa-check"></i><b>8.2.5</b> Construindo o gráfico</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="perfil-individual.html"><a href="perfil-individual.html"><i class="fa fa-check"></i><b>9</b> Perfil Individual</a><ul>
+<li class="chapter" data-level="9" data-path="perfil-individual.html"><a href="perfil-individual.html"><i class="fa fa-check"></i><b>9</b> Perfil Individual</a>
+<ul>
 <li class="chapter" data-level="9.0.1" data-path="perfil-individual.html"><a href="perfil-individual.html#conjunto-de-dados-15"><i class="fa fa-check"></i><b>9.0.1</b> Conjunto de dados</a></li>
 <li class="chapter" data-level="9.0.2" data-path="perfil-individual.html"><a href="perfil-individual.html#fator-2-x-fator-1"><i class="fa fa-check"></i><b>9.0.2</b> Fator 2 x Fator 1</a></li>
 <li class="chapter" data-level="9.0.3" data-path="perfil-individual.html"><a href="perfil-individual.html#fator-1-x-fator-2"><i class="fa fa-check"></i><b>9.0.3</b> Fator 1 x Fator 2</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="linhas.html"><a href="linhas.html"><i class="fa fa-check"></i><b>10</b> Linhas</a><ul>
+<li class="chapter" data-level="10" data-path="linhas.html"><a href="linhas.html"><i class="fa fa-check"></i><b>10</b> Linhas</a>
+<ul>
 <li class="chapter" data-level="10.0.1" data-path="linhas.html"><a href="linhas.html#conjunto-de-dados-16"><i class="fa fa-check"></i><b>10.0.1</b> Conjunto de dados</a></li>
 <li class="chapter" data-level="10.0.2" data-path="linhas.html"><a href="linhas.html#gráfico-de-dispersão-1"><i class="fa fa-check"></i><b>10.0.2</b> Gráfico de dispersão</a></li>
 <li class="chapter" data-level="10.0.3" data-path="linhas.html"><a href="linhas.html#gráfico-com-as-linhas"><i class="fa fa-check"></i><b>10.0.3</b> Gráfico com as linhas</a></li>
@@ -377,7 +406,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.0.5" data-path="linhas.html"><a href="linhas.html#linhas-verticais"><i class="fa fa-check"></i><b>10.0.5</b> Linhas verticais</a></li>
 <li class="chapter" data-level="10.0.6" data-path="linhas.html"><a href="linhas.html#formato-em-escada"><i class="fa fa-check"></i><b>10.0.6</b> Formato em escada</a></li>
 <li class="chapter" data-level="10.0.7" data-path="linhas.html"><a href="linhas.html#juntando-os-6-gráficos"><i class="fa fa-check"></i><b>10.0.7</b> Juntando os 6 gráficos</a></li>
-<li class="chapter" data-level="10.1" data-path="linhas.html"><a href="linhas.html#eixo-secundário"><i class="fa fa-check"></i><b>10.1</b> Eixo secundário</a><ul>
+<li class="chapter" data-level="10.1" data-path="linhas.html"><a href="linhas.html#eixo-secundário"><i class="fa fa-check"></i><b>10.1</b> Eixo secundário</a>
+<ul>
 <li class="chapter" data-level="10.1.1" data-path="linhas.html"><a href="linhas.html#conjunto-de-dados-17"><i class="fa fa-check"></i><b>10.1.1</b> Conjunto de dados</a></li>
 <li class="chapter" data-level="10.1.2" data-path="linhas.html"><a href="linhas.html#linhas-individuais"><i class="fa fa-check"></i><b>10.1.2</b> Linhas individuais</a></li>
 <li class="chapter" data-level="10.1.3" data-path="linhas.html"><a href="linhas.html#editando-gráficos"><i class="fa fa-check"></i><b>10.1.3</b> Editando gráficos</a></li>
@@ -388,7 +418,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.1.8" data-path="linhas.html"><a href="linhas.html#conjunto-de-dados-18"><i class="fa fa-check"></i><b>10.1.8</b> Conjunto de dados</a></li>
 <li class="chapter" data-level="10.1.9" data-path="linhas.html"><a href="linhas.html#linhas-individuais-1"><i class="fa fa-check"></i><b>10.1.9</b> Linhas individuais</a></li>
 </ul></li>
-<li class="chapter" data-level="10.2" data-path="linhas.html"><a href="linhas.html#usando-o-pacote-ggplot2-1"><i class="fa fa-check"></i><b>10.2</b> Usando o pacote ggplot2</a><ul>
+<li class="chapter" data-level="10.2" data-path="linhas.html"><a href="linhas.html#usando-o-pacote-ggplot2-1"><i class="fa fa-check"></i><b>10.2</b> Usando o pacote ggplot2</a>
+<ul>
 <li class="chapter" data-level="10.2.1" data-path="linhas.html"><a href="linhas.html#criando-a-data.frame"><i class="fa fa-check"></i><b>10.2.1</b> Criando a data.frame</a></li>
 <li class="chapter" data-level="10.2.2" data-path="linhas.html"><a href="linhas.html#gráficos-individuais"><i class="fa fa-check"></i><b>10.2.2</b> Gráficos individuais</a></li>
 <li class="chapter" data-level="10.2.3" data-path="linhas.html"><a href="linhas.html#juntandos-os-gráficos"><i class="fa fa-check"></i><b>10.2.3</b> Juntandos os gráficos</a></li>
@@ -397,8 +428,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.2.6" data-path="linhas.html"><a href="linhas.html#organizando-a-legenda"><i class="fa fa-check"></i><b>10.2.6</b> Organizando a legenda</a></li>
 <li class="chapter" data-level="10.2.7" data-path="linhas.html"><a href="linhas.html#linha-de-grade-e-cor-de-fundo-1"><i class="fa fa-check"></i><b>10.2.7</b> Linha de grade e cor de fundo</a></li>
 </ul></li>
+<li class="chapter" data-level="10.3" data-path="linhas.html"><a href="linhas.html#gráfico-de-linhas-facetado-separando-duas-épocas"><i class="fa fa-check"></i><b>10.3</b> Gráfico de linhas (facetado separando duas épocas)</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="correlação.html"><a href="correlação.html"><i class="fa fa-check"></i><b>11</b> Correlação</a><ul>
+<li class="chapter" data-level="11" data-path="correlação.html"><a href="correlação.html"><i class="fa fa-check"></i><b>11</b> Correlação</a>
+<ul>
 <li class="chapter" data-level="11.0.1" data-path="correlação.html"><a href="correlação.html#conjunto-de-dados-19"><i class="fa fa-check"></i><b>11.0.1</b> Conjunto de dados</a></li>
 <li class="chapter" data-level="11.0.2" data-path="correlação.html"><a href="correlação.html#matriz-de-correlação"><i class="fa fa-check"></i><b>11.0.2</b> Matriz de correlação</a></li>
 <li class="chapter" data-level="11.0.3" data-path="correlação.html"><a href="correlação.html#formato-de-círculo"><i class="fa fa-check"></i><b>11.0.3</b> Formato de Círculo</a></li>
@@ -411,7 +444,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.0.10" data-path="correlação.html"><a href="correlação.html#cor-da-legenda"><i class="fa fa-check"></i><b>11.0.10</b> Cor da legenda</a></li>
 <li class="chapter" data-level="11.0.11" data-path="correlação.html"><a href="correlação.html#modificando-a-fonte"><i class="fa fa-check"></i><b>11.0.11</b> Modificando a fonte</a></li>
 <li class="chapter" data-level="11.0.12" data-path="correlação.html"><a href="correlação.html#cor-do-valor-da-correlação"><i class="fa fa-check"></i><b>11.0.12</b> Cor do valor da correlação</a></li>
-<li class="chapter" data-level="11.1" data-path="correlação.html"><a href="correlação.html#matriz-de-correlação-1"><i class="fa fa-check"></i><b>11.1</b> Matriz de Correlação</a><ul>
+<li class="chapter" data-level="11.1" data-path="correlação.html"><a href="correlação.html#matriz-de-correlação-1"><i class="fa fa-check"></i><b>11.1</b> Matriz de Correlação</a>
+<ul>
 <li class="chapter" data-level="11.1.1" data-path="correlação.html"><a href="correlação.html#conjunto-de-dados-20"><i class="fa fa-check"></i><b>11.1.1</b> Conjunto de dados</a></li>
 <li class="chapter" data-level="11.1.2" data-path="correlação.html"><a href="correlação.html#criando-uma-data.frame-1"><i class="fa fa-check"></i><b>11.1.2</b> Criando uma data.frame</a></li>
 <li class="chapter" data-level="11.1.3" data-path="correlação.html"><a href="correlação.html#matriz-de-correlação-2"><i class="fa fa-check"></i><b>11.1.3</b> Matriz de correlação</a></li>
@@ -420,7 +454,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.1.6" data-path="correlação.html"><a href="correlação.html#usando-o-ggally"><i class="fa fa-check"></i><b>11.1.6</b> Usando o GGally</a></li>
 <li class="chapter" data-level="11.1.7" data-path="correlação.html"><a href="correlação.html#usando-a-package-psych"><i class="fa fa-check"></i><b>11.1.7</b> Usando a package psych</a></li>
 </ul></li>
-<li class="chapter" data-level="11.2" data-path="correlação.html"><a href="correlação.html#rede-de-correlação"><i class="fa fa-check"></i><b>11.2</b> Rede de correlação</a><ul>
+<li class="chapter" data-level="11.2" data-path="correlação.html"><a href="correlação.html#rede-de-correlação"><i class="fa fa-check"></i><b>11.2</b> Rede de correlação</a>
+<ul>
 <li class="chapter" data-level="11.2.1" data-path="correlação.html"><a href="correlação.html#conjunto-de-dados-22"><i class="fa fa-check"></i><b>11.2.1</b> Conjunto de dados</a></li>
 <li class="chapter" data-level="11.2.2" data-path="correlação.html"><a href="correlação.html#criando-uma-data.frame-2"><i class="fa fa-check"></i><b>11.2.2</b> Criando uma data.frame</a></li>
 <li class="chapter" data-level="11.2.3" data-path="correlação.html"><a href="correlação.html#matriz-de-correlação-pearson"><i class="fa fa-check"></i><b>11.2.3</b> Matriz de correlação (Pearson)</a></li>
@@ -431,7 +466,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.2.8" data-path="correlação.html"><a href="correlação.html#construindo-o-gráfico-4"><i class="fa fa-check"></i><b>11.2.8</b> Construindo o Gráfico</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="radar.html"><a href="radar.html"><i class="fa fa-check"></i><b>12</b> Radar</a><ul>
+<li class="chapter" data-level="12" data-path="radar.html"><a href="radar.html"><i class="fa fa-check"></i><b>12</b> Radar</a>
+<ul>
 <li class="chapter" data-level="12.0.1" data-path="radar.html"><a href="radar.html#conjunto-de-dados-23"><i class="fa fa-check"></i><b>12.0.1</b> Conjunto de dados</a></li>
 <li class="chapter" data-level="12.0.2" data-path="radar.html"><a href="radar.html#média-por-variável"><i class="fa fa-check"></i><b>12.0.2</b> Média por variável</a></li>
 <li class="chapter" data-level="12.0.3" data-path="radar.html"><a href="radar.html#pacote-radarchart"><i class="fa fa-check"></i><b>12.0.3</b> Pacote radarchart</a></li>
@@ -440,22 +476,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.0.6" data-path="radar.html"><a href="radar.html#médias-por-tratamento"><i class="fa fa-check"></i><b>12.0.6</b> Médias por tratamento</a></li>
 <li class="chapter" data-level="12.0.7" data-path="radar.html"><a href="radar.html#pacote-plotly-1"><i class="fa fa-check"></i><b>12.0.7</b> Pacote plotly</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="intervalo-de-confiança.html"><a href="intervalo-de-confiança.html"><i class="fa fa-check"></i><b>13</b> Intervalo de confiança</a><ul>
+<li class="chapter" data-level="13" data-path="intervalo-de-confiança.html"><a href="intervalo-de-confiança.html"><i class="fa fa-check"></i><b>13</b> Intervalo de confiança</a>
+<ul>
 <li class="chapter" data-level="13.0.1" data-path="intervalo-de-confiança.html"><a href="intervalo-de-confiança.html#conjunto-de-dados-24"><i class="fa fa-check"></i><b>13.0.1</b> Conjunto de dados</a></li>
 <li class="chapter" data-level="13.0.2" data-path="intervalo-de-confiança.html"><a href="intervalo-de-confiança.html#gráfico-de-linhas"><i class="fa fa-check"></i><b>13.0.2</b> Gráfico de linhas</a></li>
 <li class="chapter" data-level="13.0.3" data-path="intervalo-de-confiança.html"><a href="intervalo-de-confiança.html#gráfico-de-pontos"><i class="fa fa-check"></i><b>13.0.3</b> Gráfico de pontos</a></li>
 <li class="chapter" data-level="13.0.4" data-path="intervalo-de-confiança.html"><a href="intervalo-de-confiança.html#gráfico-de-linhas-e-pontos"><i class="fa fa-check"></i><b>13.0.4</b> Gráfico de linhas e pontos</a></li>
 <li class="chapter" data-level="13.0.5" data-path="intervalo-de-confiança.html"><a href="intervalo-de-confiança.html#gráfico-de-barras-e-linhas"><i class="fa fa-check"></i><b>13.0.5</b> Gráfico de barras e linhas</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="quantis-teóricos.html"><a href="quantis-teóricos.html"><i class="fa fa-check"></i><b>14</b> Quantis Teóricos</a><ul>
+<li class="chapter" data-level="14" data-path="quantis-teóricos.html"><a href="quantis-teóricos.html"><i class="fa fa-check"></i><b>14</b> Quantis Teóricos</a>
+<ul>
 <li class="chapter" data-level="14.0.1" data-path="quantis-teóricos.html"><a href="quantis-teóricos.html#conjunto-de-dados-25"><i class="fa fa-check"></i><b>14.0.1</b> Conjunto de dados</a></li>
 <li class="chapter" data-level="14.0.2" data-path="quantis-teóricos.html"><a href="quantis-teóricos.html#análise-de-variância-1"><i class="fa fa-check"></i><b>14.0.2</b> Análise de variância</a></li>
 <li class="chapter" data-level="14.0.3" data-path="quantis-teóricos.html"><a href="quantis-teóricos.html#envelope-simulado"><i class="fa fa-check"></i><b>14.0.3</b> Envelope simulado</a></li>
 <li class="chapter" data-level="14.0.4" data-path="quantis-teóricos.html"><a href="quantis-teóricos.html#porcentagem-de-pontos-fora"><i class="fa fa-check"></i><b>14.0.4</b> Porcentagem de pontos fora</a></li>
 <li class="chapter" data-level="14.0.5" data-path="quantis-teóricos.html"><a href="quantis-teóricos.html#colorir-pontos-fora"><i class="fa fa-check"></i><b>14.0.5</b> Colorir pontos fora</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="componentes-principais.html"><a href="componentes-principais.html"><i class="fa fa-check"></i><b>15</b> Componentes principais</a><ul>
-<li class="chapter" data-level="15.1" data-path="componentes-principais.html"><a href="componentes-principais.html#pacote-ggforfity"><i class="fa fa-check"></i><b>15.1</b> Pacote ggforfity</a><ul>
+<li class="chapter" data-level="15" data-path="componentes-principais.html"><a href="componentes-principais.html"><i class="fa fa-check"></i><b>15</b> Componentes principais</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="componentes-principais.html"><a href="componentes-principais.html#pacote-ggforfity"><i class="fa fa-check"></i><b>15.1</b> Pacote ggforfity</a>
+<ul>
 <li class="chapter" data-level="15.1.1" data-path="componentes-principais.html"><a href="componentes-principais.html#conjunto-de-dados-26"><i class="fa fa-check"></i><b>15.1.1</b> Conjunto de dados</a></li>
 <li class="chapter" data-level="15.1.2" data-path="componentes-principais.html"><a href="componentes-principais.html#calculando-a-pca"><i class="fa fa-check"></i><b>15.1.2</b> Calculando a PCA</a></li>
 <li class="chapter" data-level="15.1.3" data-path="componentes-principais.html"><a href="componentes-principais.html#dispersão-com-os-autovalores"><i class="fa fa-check"></i><b>15.1.3</b> Dispersão com os autovalores</a></li>
@@ -468,7 +508,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.1.10" data-path="componentes-principais.html"><a href="componentes-principais.html#fonte-linha-de-grade-e-cor-de-fundo"><i class="fa fa-check"></i><b>15.1.10</b> fonte; linha de grade e cor de fundo</a></li>
 <li class="chapter" data-level="15.1.11" data-path="componentes-principais.html"><a href="componentes-principais.html#linha-em-y0-e-x0"><i class="fa fa-check"></i><b>15.1.11</b> Linha em Y=0 e X=0</a></li>
 </ul></li>
-<li class="chapter" data-level="15.2" data-path="componentes-principais.html"><a href="componentes-principais.html#factoextra-e-factominer-biplot"><i class="fa fa-check"></i><b>15.2</b> factoextra e factomineR (Biplot)</a><ul>
+<li class="chapter" data-level="15.2" data-path="componentes-principais.html"><a href="componentes-principais.html#factoextra-e-factominer-biplot"><i class="fa fa-check"></i><b>15.2</b> factoextra e factomineR (Biplot)</a>
+<ul>
 <li class="chapter" data-level="15.2.1" data-path="componentes-principais.html"><a href="componentes-principais.html#valores-dos-cp"><i class="fa fa-check"></i><b>15.2.1</b> Valores dos CP</a></li>
 <li class="chapter" data-level="15.2.2" data-path="componentes-principais.html"><a href="componentes-principais.html#gráfico-básico-8"><i class="fa fa-check"></i><b>15.2.2</b> Gráfico básico</a></li>
 <li class="chapter" data-level="15.2.3" data-path="componentes-principais.html"><a href="componentes-principais.html#elipse-geral"><i class="fa fa-check"></i><b>15.2.3</b> Elipse geral</a></li>
@@ -479,7 +520,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.2.8" data-path="componentes-principais.html"><a href="componentes-principais.html#título-das-ellipses"><i class="fa fa-check"></i><b>15.2.8</b> Título das ellipses</a></li>
 <li class="chapter" data-level="15.2.9" data-path="componentes-principais.html"><a href="componentes-principais.html#título-do-1-e-2-cp"><i class="fa fa-check"></i><b>15.2.9</b> Título do 1 e 2 CP</a></li>
 </ul></li>
-<li class="chapter" data-level="15.3" data-path="componentes-principais.html"><a href="componentes-principais.html#factoextra-gráficos-separados"><i class="fa fa-check"></i><b>15.3</b> factoextra (Gráficos separados)</a><ul>
+<li class="chapter" data-level="15.3" data-path="componentes-principais.html"><a href="componentes-principais.html#factoextra-gráficos-separados"><i class="fa fa-check"></i><b>15.3</b> factoextra (Gráficos separados)</a>
+<ul>
 <li class="chapter" data-level="15.3.1" data-path="componentes-principais.html"><a href="componentes-principais.html#conjunto-de-dados-27"><i class="fa fa-check"></i><b>15.3.1</b> Conjunto de dados</a></li>
 <li class="chapter" data-level="15.3.2" data-path="componentes-principais.html"><a href="componentes-principais.html#calculando-as-médias"><i class="fa fa-check"></i><b>15.3.2</b> Calculando as médias</a></li>
 <li class="chapter" data-level="15.3.3" data-path="componentes-principais.html"><a href="componentes-principais.html#dendrograma-definir-clusters"><i class="fa fa-check"></i><b>15.3.3</b> Dendrograma (Definir Clusters)</a></li>
@@ -497,7 +539,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.3.15" data-path="componentes-principais.html"><a href="componentes-principais.html#marcando-os-clusters-por-coloração-e-formato-de-ponto"><i class="fa fa-check"></i><b>15.3.15</b> Marcando os clusters (Por coloração e formato de ponto)</a></li>
 <li class="chapter" data-level="15.3.16" data-path="componentes-principais.html"><a href="componentes-principais.html#removendo-linhas-de-grade-2"><i class="fa fa-check"></i><b>15.3.16</b> Removendo linhas de grade</a></li>
 </ul></li>
-<li class="chapter" data-level="15.4" data-path="componentes-principais.html"><a href="componentes-principais.html#gráfico-de-cp-manualmente"><i class="fa fa-check"></i><b>15.4</b> Gráfico de CP (Manualmente)</a><ul>
+<li class="chapter" data-level="15.4" data-path="componentes-principais.html"><a href="componentes-principais.html#gráfico-de-cp-manualmente"><i class="fa fa-check"></i><b>15.4</b> Gráfico de CP (Manualmente)</a>
+<ul>
 <li class="chapter" data-level="15.4.1" data-path="componentes-principais.html"><a href="componentes-principais.html#calculando-as-médias-1"><i class="fa fa-check"></i><b>15.4.1</b> Calculando as médias</a></li>
 <li class="chapter" data-level="15.4.2" data-path="componentes-principais.html"><a href="componentes-principais.html#dendrograma-definir-clusters-1"><i class="fa fa-check"></i><b>15.4.2</b> Dendrograma (Definir Clusters)</a></li>
 <li class="chapter" data-level="15.4.3" data-path="componentes-principais.html"><a href="componentes-principais.html#valores-dos-cp-2"><i class="fa fa-check"></i><b>15.4.3</b> Valores dos CP</a></li>
@@ -511,35 +554,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.4.11" data-path="componentes-principais.html"><a href="componentes-principais.html#adicionando-círculo-com-raio-do-maior-vetor-resposta"><i class="fa fa-check"></i><b>15.4.11</b> Adicionando círculo com raio do maior vetor resposta</a></li>
 <li class="chapter" data-level="15.4.12" data-path="componentes-principais.html"><a href="componentes-principais.html#renomeando-vetores"><i class="fa fa-check"></i><b>15.4.12</b> Renomeando vetores</a></li>
 </ul></li>
-<li class="chapter" data-level="15.5" data-path="componentes-principais.html"><a href="componentes-principais.html#screeplot"><i class="fa fa-check"></i><b>15.5</b> Screeplot</a><ul>
+<li class="chapter" data-level="15.5" data-path="componentes-principais.html"><a href="componentes-principais.html#screeplot"><i class="fa fa-check"></i><b>15.5</b> Screeplot</a>
+<ul>
 <li class="chapter" data-level="15.5.1" data-path="componentes-principais.html"><a href="componentes-principais.html#conjunto-de-dados-28"><i class="fa fa-check"></i><b>15.5.1</b> Conjunto de dados</a></li>
 <li class="chapter" data-level="15.5.2" data-path="componentes-principais.html"><a href="componentes-principais.html#calculando-as-médias-2"><i class="fa fa-check"></i><b>15.5.2</b> Calculando as médias</a></li>
 <li class="chapter" data-level="15.5.3" data-path="componentes-principais.html"><a href="componentes-principais.html#pacote-factominer"><i class="fa fa-check"></i><b>15.5.3</b> Pacote FactomineR</a></li>
 <li class="chapter" data-level="15.5.4" data-path="componentes-principais.html"><a href="componentes-principais.html#screeplot-do-factoextra"><i class="fa fa-check"></i><b>15.5.4</b> Screeplot do factoextra</a></li>
 </ul></li>
-<li class="chapter" data-level="15.6" data-path="componentes-principais.html"><a href="componentes-principais.html#manualmente-pelo-stats"><i class="fa fa-check"></i><b>15.6</b> Manualmente pelo stats</a><ul>
+<li class="chapter" data-level="15.6" data-path="componentes-principais.html"><a href="componentes-principais.html#manualmente-pelo-stats"><i class="fa fa-check"></i><b>15.6</b> Manualmente pelo stats</a>
+<ul>
 <li class="chapter" data-level="15.6.1" data-path="componentes-principais.html"><a href="componentes-principais.html#somente-colunas-1"><i class="fa fa-check"></i><b>15.6.1</b> Somente colunas</a></li>
 <li class="chapter" data-level="15.6.2" data-path="componentes-principais.html"><a href="componentes-principais.html#com-colunas-pontos-e-linhas"><i class="fa fa-check"></i><b>15.6.2</b> Com colunas, pontos e linhas</a></li>
 <li class="chapter" data-level="15.6.3" data-path="componentes-principais.html"><a href="componentes-principais.html#com-colunas-pontos-linhas-e-legenda"><i class="fa fa-check"></i><b>15.6.3</b> Com colunas, pontos, linhas e legenda</a></li>
 <li class="chapter" data-level="15.6.4" data-path="componentes-principais.html"><a href="componentes-principais.html#editando"><i class="fa fa-check"></i><b>15.6.4</b> Editando</a></li>
 </ul></li>
-<li class="chapter" data-level="15.7" data-path="componentes-principais.html"><a href="componentes-principais.html#correlação-com-variável-latente"><i class="fa fa-check"></i><b>15.7</b> Correlação com variável latente</a><ul>
+<li class="chapter" data-level="15.7" data-path="componentes-principais.html"><a href="componentes-principais.html#correlação-com-variável-latente"><i class="fa fa-check"></i><b>15.7</b> Correlação com variável latente</a>
+<ul>
 <li class="chapter" data-level="15.7.1" data-path="componentes-principais.html"><a href="componentes-principais.html#calculando-as-médias-3"><i class="fa fa-check"></i><b>15.7.1</b> Calculando as médias</a></li>
 </ul></li>
-<li class="chapter" data-level="15.8" data-path="componentes-principais.html"><a href="componentes-principais.html#pacote-psych"><i class="fa fa-check"></i><b>15.8</b> Pacote psych</a><ul>
+<li class="chapter" data-level="15.8" data-path="componentes-principais.html"><a href="componentes-principais.html#pacote-psych"><i class="fa fa-check"></i><b>15.8</b> Pacote psych</a>
+<ul>
 <li class="chapter" data-level="15.8.1" data-path="componentes-principais.html"><a href="componentes-principais.html#extraindo-correlações"><i class="fa fa-check"></i><b>15.8.1</b> Extraindo correlações</a></li>
 <li class="chapter" data-level="15.8.2" data-path="componentes-principais.html"><a href="componentes-principais.html#correlação-com-a-variável-latente-cp1"><i class="fa fa-check"></i><b>15.8.2</b> Correlação com a variável latente CP1</a></li>
 <li class="chapter" data-level="15.8.3" data-path="componentes-principais.html"><a href="componentes-principais.html#correlação-com-a-variável-latente-cp2"><i class="fa fa-check"></i><b>15.8.3</b> Correlação com a variável latente CP2</a></li>
 <li class="chapter" data-level="15.8.4" data-path="componentes-principais.html"><a href="componentes-principais.html#correlação-com-a-variável-latente-cp3"><i class="fa fa-check"></i><b>15.8.4</b> Correlação com a variável latente CP3</a></li>
 </ul></li>
-<li class="chapter" data-level="15.9" data-path="componentes-principais.html"><a href="componentes-principais.html#extraindo-cluster-de-forma-automática"><i class="fa fa-check"></i><b>15.9</b> Extraindo cluster de forma automática</a><ul>
+<li class="chapter" data-level="15.9" data-path="componentes-principais.html"><a href="componentes-principais.html#extraindo-cluster-de-forma-automática"><i class="fa fa-check"></i><b>15.9</b> Extraindo cluster de forma automática</a>
+<ul>
 <li class="chapter" data-level="15.9.1" data-path="componentes-principais.html"><a href="componentes-principais.html#conjunto-de-dados-29"><i class="fa fa-check"></i><b>15.9.1</b> Conjunto de dados</a></li>
 <li class="chapter" data-level="15.9.2" data-path="componentes-principais.html"><a href="componentes-principais.html#construindo-dendrograma"><i class="fa fa-check"></i><b>15.9.2</b> Construindo Dendrograma</a></li>
 <li class="chapter" data-level="15.9.3" data-path="componentes-principais.html"><a href="componentes-principais.html#extraindo-cluster"><i class="fa fa-check"></i><b>15.9.3</b> Extraindo cluster</a></li>
 <li class="chapter" data-level="15.9.4" data-path="componentes-principais.html"><a href="componentes-principais.html#pca"><i class="fa fa-check"></i><b>15.9.4</b> PCA</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="dendrograma.html"><a href="dendrograma.html"><i class="fa fa-check"></i><b>16</b> Dendrograma</a><ul>
+<li class="chapter" data-level="16" data-path="dendrograma.html"><a href="dendrograma.html"><i class="fa fa-check"></i><b>16</b> Dendrograma</a>
+<ul>
 <li class="chapter" data-level="16.0.1" data-path="dendrograma.html"><a href="dendrograma.html#conjunto-de-dados-30"><i class="fa fa-check"></i><b>16.0.1</b> Conjunto de dados</a></li>
 <li class="chapter" data-level="16.0.2" data-path="dendrograma.html"><a href="dendrograma.html#calculando-as-distâncias"><i class="fa fa-check"></i><b>16.0.2</b> Calculando as distâncias</a></li>
 <li class="chapter" data-level="16.0.3" data-path="dendrograma.html"><a href="dendrograma.html#dendrograma-1"><i class="fa fa-check"></i><b>16.0.3</b> Dendrograma</a></li>
@@ -552,10 +601,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="16.0.10" data-path="dendrograma.html"><a href="dendrograma.html#formato-radial"><i class="fa fa-check"></i><b>16.0.10</b> Formato radial</a></li>
 </ul></li>
 <li class="chapter" data-level="17" data-path="expression.html"><a href="expression.html"><i class="fa fa-check"></i><b>17</b> Expression()</a></li>
-<li class="chapter" data-level="18" data-path="layout-graphics.html"><a href="layout-graphics.html"><i class="fa fa-check"></i><b>18</b> layout (graphics)</a><ul>
+<li class="chapter" data-level="18" data-path="layout-graphics.html"><a href="layout-graphics.html"><i class="fa fa-check"></i><b>18</b> layout (graphics)</a>
+<ul>
 <li class="chapter" data-level="18.0.1" data-path="layout-graphics.html"><a href="layout-graphics.html#como-modificar-o-layout-do-r-graphics"><i class="fa fa-check"></i><b>18.0.1</b> Como modificar o layout do R graphics</a></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>19</b> ggplot2</a><ul>
+<li class="chapter" data-level="19" data-path="ggplot2.html"><a href="ggplot2.html"><i class="fa fa-check"></i><b>19</b> ggplot2</a>
+<ul>
 <li class="chapter" data-level="19.0.1" data-path="ggplot2.html"><a href="ggplot2.html#como-juntar-vários-gráficos-do-ggplot2"><i class="fa fa-check"></i><b>19.0.1</b> Como juntar vários gráficos do ggplot2</a></li>
 <li class="chapter" data-level="19.0.2" data-path="ggplot2.html"><a href="ggplot2.html#juntando-três-gráficos-do-ggplot2"><i class="fa fa-check"></i><b>19.0.2</b> Juntando três gráficos do ggplot2</a></li>
 <li class="chapter" data-level="19.0.3" data-path="ggplot2.html"><a href="ggplot2.html#gráficos-lado-a-lado"><i class="fa fa-check"></i><b>19.0.3</b> Gráficos lado a lado</a></li>
@@ -565,12 +616,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19.0.7" data-path="ggplot2.html"><a href="ggplot2.html#dois-na-primeira-linha-e-uma-a-direita-na-segunda-linha"><i class="fa fa-check"></i><b>19.0.7</b> Dois na primeira linha e uma a direita na segunda linha</a></li>
 <li class="chapter" data-level="19.0.8" data-path="ggplot2.html"><a href="ggplot2.html#título-em-gráficos-agrupados"><i class="fa fa-check"></i><b>19.0.8</b> Título em gráficos agrupados</a></li>
 </ul></li>
-<li class="chapter" data-level="20" data-path="plotly.html"><a href="plotly.html"><i class="fa fa-check"></i><b>20</b> plotly</a><ul>
-<li class="chapter" data-level="20.1" data-path="plotly.html"><a href="plotly.html#conjunto-de-dados-32"><i class="fa fa-check"></i><b>20.1</b> Conjunto de dados</a></li>
-<li class="chapter" data-level="20.2" data-path="plotly.html"><a href="plotly.html#gráfico-de-caixas"><i class="fa fa-check"></i><b>20.2</b> Gráfico de caixas</a></li>
-<li class="chapter" data-level="20.3" data-path="plotly.html"><a href="plotly.html#gráfico-de-colunas-1"><i class="fa fa-check"></i><b>20.3</b> Gráfico de colunas</a></li>
-<li class="chapter" data-level="20.4" data-path="plotly.html"><a href="plotly.html#gráfico-de-barras-2"><i class="fa fa-check"></i><b>20.4</b> Gráfico de barras</a></li>
-<li class="chapter" data-level="20.5" data-path="plotly.html"><a href="plotly.html#gráfico-de-dispersão-2"><i class="fa fa-check"></i><b>20.5</b> Gráfico de dispersão</a></li>
+<li class="chapter" data-level="20" data-path="como-salvar-um-gráfico.html"><a href="como-salvar-um-gráfico.html"><i class="fa fa-check"></i><b>20</b> Como salvar um gráfico?</a></li>
+<li class="chapter" data-level="21" data-path="plotly.html"><a href="plotly.html"><i class="fa fa-check"></i><b>21</b> plotly</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="plotly.html"><a href="plotly.html#conjunto-de-dados-32"><i class="fa fa-check"></i><b>21.1</b> Conjunto de dados</a></li>
+<li class="chapter" data-level="21.2" data-path="plotly.html"><a href="plotly.html#gráfico-de-caixas"><i class="fa fa-check"></i><b>21.2</b> Gráfico de caixas</a></li>
+<li class="chapter" data-level="21.3" data-path="plotly.html"><a href="plotly.html#gráfico-de-colunas-1"><i class="fa fa-check"></i><b>21.3</b> Gráfico de colunas</a></li>
+<li class="chapter" data-level="21.4" data-path="plotly.html"><a href="plotly.html#gráfico-de-barras-2"><i class="fa fa-check"></i><b>21.4</b> Gráfico de barras</a></li>
+<li class="chapter" data-level="21.5" data-path="plotly.html"><a href="plotly.html#gráfico-de-dispersão-2"><i class="fa fa-check"></i><b>21.5</b> Gráfico de dispersão</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://agronomiar.github.io/livroagro/" target="blank">Anterior</a></li>
@@ -593,71 +646,71 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="plotly" class="section level1">
-<h1><span class="header-section-number"> 20</span> plotly</h1>
+<div id="plotly" class="section level1" number="21">
+<h1><span class="header-section-number"> 21</span> plotly</h1>
 <hr />
-<div id="conjunto-de-dados-32" class="section level2">
-<h2><span class="header-section-number">20.1</span> Conjunto de dados</h2>
-<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="plotly.html#cb466-1"></a><span class="kw">library</span>(plotly)</span>
-<span id="cb466-2"><a href="plotly.html#cb466-2"></a><span class="kw">library</span>(dplyr)</span>
-<span id="cb466-3"><a href="plotly.html#cb466-3"></a>tratamentos=<span class="kw">rep</span>(<span class="kw">c</span>(<span class="kw">paste</span>(<span class="st">&quot;T&quot;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)),<span class="dt">e=</span><span class="dv">4</span>)</span>
-<span id="cb466-4"><a href="plotly.html#cb466-4"></a>resposta=<span class="kw">c</span>(<span class="dv">100</span>,<span class="dv">120</span>,<span class="dv">110</span>,<span class="dv">90</span>,<span class="dv">150</span>,<span class="dv">145</span>,<span class="dv">149</span>,<span class="dv">165</span>,<span class="dv">150</span>,<span class="dv">144</span>,<span class="dv">134</span>,<span class="dv">139</span>,<span class="dv">220</span>,<span class="dv">206</span>,<span class="dv">210</span>,<span class="dv">210</span>,<span class="dv">266</span>,<span class="dv">249</span>,<span class="dv">248</span>,<span class="dv">260</span>)</span>
-<span id="cb466-5"><a href="plotly.html#cb466-5"></a>dados=<span class="kw">data.frame</span>(tratamentos,resposta)</span></code></pre></div>
+<div id="conjunto-de-dados-32" class="section level2" number="21.1">
+<h2><span class="header-section-number">21.1</span> Conjunto de dados</h2>
+<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="plotly.html#cb470-1"></a><span class="kw">library</span>(plotly)</span>
+<span id="cb470-2"><a href="plotly.html#cb470-2"></a><span class="kw">library</span>(dplyr)</span>
+<span id="cb470-3"><a href="plotly.html#cb470-3"></a>tratamentos=<span class="kw">rep</span>(<span class="kw">c</span>(<span class="kw">paste</span>(<span class="st">&quot;T&quot;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)),<span class="dt">e=</span><span class="dv">4</span>)</span>
+<span id="cb470-4"><a href="plotly.html#cb470-4"></a>resposta=<span class="kw">c</span>(<span class="dv">100</span>,<span class="dv">120</span>,<span class="dv">110</span>,<span class="dv">90</span>,<span class="dv">150</span>,<span class="dv">145</span>,<span class="dv">149</span>,<span class="dv">165</span>,<span class="dv">150</span>,<span class="dv">144</span>,<span class="dv">134</span>,<span class="dv">139</span>,<span class="dv">220</span>,<span class="dv">206</span>,<span class="dv">210</span>,<span class="dv">210</span>,<span class="dv">266</span>,<span class="dv">249</span>,<span class="dv">248</span>,<span class="dv">260</span>)</span>
+<span id="cb470-5"><a href="plotly.html#cb470-5"></a>dados=<span class="kw">data.frame</span>(tratamentos,resposta)</span></code></pre></div>
 </div>
-<div id="gráfico-de-caixas" class="section level2">
-<h2><span class="header-section-number">20.2</span> Gráfico de caixas</h2>
-<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb467-1"><a href="plotly.html#cb467-1"></a>dados <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">plot_ly</span>(<span class="dt">y=</span>resposta,</span>
-<span id="cb467-2"><a href="plotly.html#cb467-2"></a>                  <span class="dt">x=</span><span class="op">~</span>tratamentos,</span>
-<span id="cb467-3"><a href="plotly.html#cb467-3"></a>                  <span class="dt">type =</span> <span class="st">&quot;box&quot;</span>,</span>
-<span id="cb467-4"><a href="plotly.html#cb467-4"></a>                  <span class="dt">color =</span> <span class="op">~</span>tratamentos)<span class="op">%&gt;%</span></span>
-<span id="cb467-5"><a href="plotly.html#cb467-5"></a><span class="st">  </span><span class="kw">layout</span>(<span class="dt">yaxis =</span> <span class="kw">list</span>(<span class="dt">title=</span><span class="st">&quot;Resposta&quot;</span>),</span>
-<span id="cb467-6"><a href="plotly.html#cb467-6"></a>         <span class="dt">xaxis =</span> <span class="kw">list</span>(<span class="dt">title=</span><span class="st">&quot;&quot;</span>))</span></code></pre></div>
+<div id="gráfico-de-caixas" class="section level2" number="21.2">
+<h2><span class="header-section-number">21.2</span> Gráfico de caixas</h2>
+<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb471-1"><a href="plotly.html#cb471-1"></a>dados <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">plot_ly</span>(<span class="dt">y=</span>resposta,</span>
+<span id="cb471-2"><a href="plotly.html#cb471-2"></a>                  <span class="dt">x=</span><span class="op">~</span>tratamentos,</span>
+<span id="cb471-3"><a href="plotly.html#cb471-3"></a>                  <span class="dt">type =</span> <span class="st">&quot;box&quot;</span>,</span>
+<span id="cb471-4"><a href="plotly.html#cb471-4"></a>                  <span class="dt">color =</span> <span class="op">~</span>tratamentos)<span class="op">%&gt;%</span></span>
+<span id="cb471-5"><a href="plotly.html#cb471-5"></a><span class="st">  </span><span class="kw">layout</span>(<span class="dt">yaxis =</span> <span class="kw">list</span>(<span class="dt">title=</span><span class="st">&quot;Resposta&quot;</span>),</span>
+<span id="cb471-6"><a href="plotly.html#cb471-6"></a>         <span class="dt">xaxis =</span> <span class="kw">list</span>(<span class="dt">title=</span><span class="st">&quot;&quot;</span>))</span></code></pre></div>
 <div id="htmlwidget-f888dc62471906a988fd" style="width:672px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f888dc62471906a988fd">{"x":{"visdat":{"3468191e432e":["function () ","plotlyVisDat"]},"cur_data":"3468191e432e","attrs":{"3468191e432e":{"y":[100,120,110,90,150,145,149,165,150,144,134,139,220,206,210,210,266,249,248,260],"x":{},"color":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"box"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"yaxis":{"domain":[0,1],"automargin":true,"title":"Resposta"},"xaxis":{"domain":[0,1],"automargin":true,"title":"","type":"category","categoryorder":"array","categoryarray":["T 1","T 2","T 3","T 4","T 5"]},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"fillcolor":"rgba(102,194,165,0,5)","y":[100,120,110,90],"x":["T 1","T 1","T 1","T 1"],"type":"box","name":"T 1","marker":{"color":"rgba(102,194,165,1)","line":{"color":"rgba(102,194,165,1)"}},"line":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(252,141,98,0,5)","y":[150,145,149,165],"x":["T 2","T 2","T 2","T 2"],"type":"box","name":"T 2","marker":{"color":"rgba(252,141,98,1)","line":{"color":"rgba(252,141,98,1)"}},"line":{"color":"rgba(252,141,98,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(141,160,203,0,5)","y":[150,144,134,139],"x":["T 3","T 3","T 3","T 3"],"type":"box","name":"T 3","marker":{"color":"rgba(141,160,203,1)","line":{"color":"rgba(141,160,203,1)"}},"line":{"color":"rgba(141,160,203,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(231,138,195,0,5)","y":[220,206,210,210],"x":["T 4","T 4","T 4","T 4"],"type":"box","name":"T 4","marker":{"color":"rgba(231,138,195,1)","line":{"color":"rgba(231,138,195,1)"}},"line":{"color":"rgba(231,138,195,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(166,216,84,0,5)","y":[266,249,248,260],"x":["T 5","T 5","T 5","T 5"],"type":"box","name":"T 5","marker":{"color":"rgba(166,216,84,1)","line":{"color":"rgba(166,216,84,1)"}},"line":{"color":"rgba(166,216,84,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-f888dc62471906a988fd">{"x":{"visdat":{"29e84d67758f":["function () ","plotlyVisDat"]},"cur_data":"29e84d67758f","attrs":{"29e84d67758f":{"y":[100,120,110,90,150,145,149,165,150,144,134,139,220,206,210,210,266,249,248,260],"x":{},"color":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"box"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"yaxis":{"domain":[0,1],"automargin":true,"title":"Resposta"},"xaxis":{"domain":[0,1],"automargin":true,"title":"","type":"category","categoryorder":"array","categoryarray":["T 1","T 2","T 3","T 4","T 5"]},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"fillcolor":"rgba(102,194,165,0,5)","y":[100,120,110,90],"x":["T 1","T 1","T 1","T 1"],"type":"box","name":"T 1","marker":{"color":"rgba(102,194,165,1)","line":{"color":"rgba(102,194,165,1)"}},"line":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(252,141,98,0,5)","y":[150,145,149,165],"x":["T 2","T 2","T 2","T 2"],"type":"box","name":"T 2","marker":{"color":"rgba(252,141,98,1)","line":{"color":"rgba(252,141,98,1)"}},"line":{"color":"rgba(252,141,98,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(141,160,203,0,5)","y":[150,144,134,139],"x":["T 3","T 3","T 3","T 3"],"type":"box","name":"T 3","marker":{"color":"rgba(141,160,203,1)","line":{"color":"rgba(141,160,203,1)"}},"line":{"color":"rgba(141,160,203,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(231,138,195,0,5)","y":[220,206,210,210],"x":["T 4","T 4","T 4","T 4"],"type":"box","name":"T 4","marker":{"color":"rgba(231,138,195,1)","line":{"color":"rgba(231,138,195,1)"}},"line":{"color":"rgba(231,138,195,1)"},"xaxis":"x","yaxis":"y","frame":null},{"fillcolor":"rgba(166,216,84,0,5)","y":[266,249,248,260],"x":["T 5","T 5","T 5","T 5"],"type":"box","name":"T 5","marker":{"color":"rgba(166,216,84,1)","line":{"color":"rgba(166,216,84,1)"}},"line":{"color":"rgba(166,216,84,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
-<div id="gráfico-de-colunas-1" class="section level2">
-<h2><span class="header-section-number">20.3</span> Gráfico de colunas</h2>
-<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="plotly.html#cb468-1"></a><span class="co">## Média e Desvio-padrão (Por Tratamento)</span></span>
-<span id="cb468-2"><a href="plotly.html#cb468-2"></a>media=<span class="kw">tapply</span>(resposta,tratamentos, mean)</span>
-<span id="cb468-3"><a href="plotly.html#cb468-3"></a>desvio=<span class="kw">tapply</span>(resposta,tratamentos,sd)</span>
-<span id="cb468-4"><a href="plotly.html#cb468-4"></a>dados=<span class="kw">data.frame</span>(<span class="dt">trat=</span><span class="kw">names</span>(media),</span>
-<span id="cb468-5"><a href="plotly.html#cb468-5"></a>                     media,</span>
-<span id="cb468-6"><a href="plotly.html#cb468-6"></a>                 <span class="dt">desvio=</span>desvio)</span>
-<span id="cb468-7"><a href="plotly.html#cb468-7"></a>dados <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">plot_ly</span>(<span class="dt">y=</span>media,</span>
-<span id="cb468-8"><a href="plotly.html#cb468-8"></a>                  <span class="dt">x=</span><span class="op">~</span>trat,</span>
-<span id="cb468-9"><a href="plotly.html#cb468-9"></a>                  <span class="dt">type =</span> <span class="st">&quot;bar&quot;</span>,</span>
-<span id="cb468-10"><a href="plotly.html#cb468-10"></a>                  <span class="dt">color =</span> <span class="op">~</span>trat,</span>
-<span id="cb468-11"><a href="plotly.html#cb468-11"></a>                  <span class="dt">error_y=</span><span class="kw">list</span>(<span class="dt">value=</span><span class="op">~</span>desvio,<span class="dt">color=</span><span class="st">&quot;blue&quot;</span>))<span class="op">%&gt;%</span></span>
-<span id="cb468-12"><a href="plotly.html#cb468-12"></a><span class="st">  </span><span class="kw">layout</span>(<span class="dt">yaxis =</span> <span class="kw">list</span>(<span class="dt">title=</span><span class="st">&quot;Resposta&quot;</span>),</span>
-<span id="cb468-13"><a href="plotly.html#cb468-13"></a>         <span class="dt">xaxis =</span> <span class="kw">list</span>(<span class="dt">title=</span><span class="st">&quot;&quot;</span>))</span></code></pre></div>
+<div id="gráfico-de-colunas-1" class="section level2" number="21.3">
+<h2><span class="header-section-number">21.3</span> Gráfico de colunas</h2>
+<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="plotly.html#cb472-1"></a><span class="co">## Média e Desvio-padrão (Por Tratamento)</span></span>
+<span id="cb472-2"><a href="plotly.html#cb472-2"></a>media=<span class="kw">tapply</span>(resposta,tratamentos, mean)</span>
+<span id="cb472-3"><a href="plotly.html#cb472-3"></a>desvio=<span class="kw">tapply</span>(resposta,tratamentos,sd)</span>
+<span id="cb472-4"><a href="plotly.html#cb472-4"></a>dados=<span class="kw">data.frame</span>(<span class="dt">trat=</span><span class="kw">names</span>(media),</span>
+<span id="cb472-5"><a href="plotly.html#cb472-5"></a>                     media,</span>
+<span id="cb472-6"><a href="plotly.html#cb472-6"></a>                 <span class="dt">desvio=</span>desvio)</span>
+<span id="cb472-7"><a href="plotly.html#cb472-7"></a>dados <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">plot_ly</span>(<span class="dt">y=</span>media,</span>
+<span id="cb472-8"><a href="plotly.html#cb472-8"></a>                  <span class="dt">x=</span><span class="op">~</span>trat,</span>
+<span id="cb472-9"><a href="plotly.html#cb472-9"></a>                  <span class="dt">type =</span> <span class="st">&quot;bar&quot;</span>,</span>
+<span id="cb472-10"><a href="plotly.html#cb472-10"></a>                  <span class="dt">color =</span> <span class="op">~</span>trat,</span>
+<span id="cb472-11"><a href="plotly.html#cb472-11"></a>                  <span class="dt">error_y=</span><span class="kw">list</span>(<span class="dt">value=</span><span class="op">~</span>desvio,<span class="dt">color=</span><span class="st">&quot;blue&quot;</span>))<span class="op">%&gt;%</span></span>
+<span id="cb472-12"><a href="plotly.html#cb472-12"></a><span class="st">  </span><span class="kw">layout</span>(<span class="dt">yaxis =</span> <span class="kw">list</span>(<span class="dt">title=</span><span class="st">&quot;Resposta&quot;</span>),</span>
+<span id="cb472-13"><a href="plotly.html#cb472-13"></a>         <span class="dt">xaxis =</span> <span class="kw">list</span>(<span class="dt">title=</span><span class="st">&quot;&quot;</span>))</span></code></pre></div>
 <div id="htmlwidget-d2a34d502a66744b8e1f" style="width:672px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d2a34d502a66744b8e1f">{"x":{"visdat":{"34687ec97a57":["function () ","plotlyVisDat"]},"cur_data":"34687ec97a57","attrs":{"34687ec97a57":{"y":[105,152.25,141.75,211.5,255.75],"x":{},"error_y":{"value":{},"color":"blue"},"color":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"yaxis":{"domain":[0,1],"automargin":true,"title":"Resposta"},"xaxis":{"domain":[0,1],"automargin":true,"title":"","type":"category","categoryorder":"array","categoryarray":["T 1","T 2","T 3","T 4","T 5"]},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"y":[105],"x":["T 1"],"error_y":{"color":"blue","value":12.9099444873581},"type":"bar","name":"T 1","marker":{"color":"rgba(102,194,165,1)","line":{"color":"rgba(102,194,165,1)"}},"textfont":{"color":"rgba(102,194,165,1)"},"error_x":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"y":[152.25],"x":["T 2"],"error_y":{"color":"blue","value":8.77021474461525},"type":"bar","name":"T 2","marker":{"color":"rgba(252,141,98,1)","line":{"color":"rgba(252,141,98,1)"}},"textfont":{"color":"rgba(252,141,98,1)"},"error_x":{"color":"rgba(252,141,98,1)"},"xaxis":"x","yaxis":"y","frame":null},{"y":[141.75],"x":["T 3"],"error_y":{"color":"blue","value":6.84957419601151},"type":"bar","name":"T 3","marker":{"color":"rgba(141,160,203,1)","line":{"color":"rgba(141,160,203,1)"}},"textfont":{"color":"rgba(141,160,203,1)"},"error_x":{"color":"rgba(141,160,203,1)"},"xaxis":"x","yaxis":"y","frame":null},{"y":[211.5],"x":["T 4"],"error_y":{"color":"blue","value":5.97215762238964},"type":"bar","name":"T 4","marker":{"color":"rgba(231,138,195,1)","line":{"color":"rgba(231,138,195,1)"}},"textfont":{"color":"rgba(231,138,195,1)"},"error_x":{"color":"rgba(231,138,195,1)"},"xaxis":"x","yaxis":"y","frame":null},{"y":[255.75],"x":["T 5"],"error_y":{"color":"blue","value":8.73212459828649},"type":"bar","name":"T 5","marker":{"color":"rgba(166,216,84,1)","line":{"color":"rgba(166,216,84,1)"}},"textfont":{"color":"rgba(166,216,84,1)"},"error_x":{"color":"rgba(166,216,84,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-d2a34d502a66744b8e1f">{"x":{"visdat":{"29e83c06d46":["function () ","plotlyVisDat"]},"cur_data":"29e83c06d46","attrs":{"29e83c06d46":{"y":[105,152.25,141.75,211.5,255.75],"x":{},"error_y":{"value":{},"color":"blue"},"color":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"yaxis":{"domain":[0,1],"automargin":true,"title":"Resposta"},"xaxis":{"domain":[0,1],"automargin":true,"title":"","type":"category","categoryorder":"array","categoryarray":["T 1","T 2","T 3","T 4","T 5"]},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"y":[105],"x":["T 1"],"error_y":{"color":"blue","value":12.9099444873581},"type":"bar","name":"T 1","marker":{"color":"rgba(102,194,165,1)","line":{"color":"rgba(102,194,165,1)"}},"textfont":{"color":"rgba(102,194,165,1)"},"error_x":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"y":[152.25],"x":["T 2"],"error_y":{"color":"blue","value":8.77021474461525},"type":"bar","name":"T 2","marker":{"color":"rgba(252,141,98,1)","line":{"color":"rgba(252,141,98,1)"}},"textfont":{"color":"rgba(252,141,98,1)"},"error_x":{"color":"rgba(252,141,98,1)"},"xaxis":"x","yaxis":"y","frame":null},{"y":[141.75],"x":["T 3"],"error_y":{"color":"blue","value":6.84957419601151},"type":"bar","name":"T 3","marker":{"color":"rgba(141,160,203,1)","line":{"color":"rgba(141,160,203,1)"}},"textfont":{"color":"rgba(141,160,203,1)"},"error_x":{"color":"rgba(141,160,203,1)"},"xaxis":"x","yaxis":"y","frame":null},{"y":[211.5],"x":["T 4"],"error_y":{"color":"blue","value":5.97215762238964},"type":"bar","name":"T 4","marker":{"color":"rgba(231,138,195,1)","line":{"color":"rgba(231,138,195,1)"}},"textfont":{"color":"rgba(231,138,195,1)"},"error_x":{"color":"rgba(231,138,195,1)"},"xaxis":"x","yaxis":"y","frame":null},{"y":[255.75],"x":["T 5"],"error_y":{"color":"blue","value":8.73212459828649},"type":"bar","name":"T 5","marker":{"color":"rgba(166,216,84,1)","line":{"color":"rgba(166,216,84,1)"}},"textfont":{"color":"rgba(166,216,84,1)"},"error_x":{"color":"rgba(166,216,84,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
-<div id="gráfico-de-barras-2" class="section level2">
-<h2><span class="header-section-number">20.4</span> Gráfico de barras</h2>
-<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="plotly.html#cb469-1"></a><span class="co">## Média e Desvio-padrão (Por Tratamento)</span></span>
-<span id="cb469-2"><a href="plotly.html#cb469-2"></a>dados <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">plot_ly</span>(<span class="dt">x=</span>media,</span>
-<span id="cb469-3"><a href="plotly.html#cb469-3"></a>                  <span class="dt">y=</span><span class="op">~</span>trat,</span>
-<span id="cb469-4"><a href="plotly.html#cb469-4"></a>                  <span class="dt">type =</span> <span class="st">&quot;bar&quot;</span>,</span>
-<span id="cb469-5"><a href="plotly.html#cb469-5"></a>                  <span class="dt">color =</span> <span class="op">~</span>trat,</span>
-<span id="cb469-6"><a href="plotly.html#cb469-6"></a>                  <span class="dt">horizontation=</span><span class="st">&quot;h&quot;</span>,</span>
-<span id="cb469-7"><a href="plotly.html#cb469-7"></a>                <span class="dt">error_x=</span><span class="kw">list</span>(<span class="dt">value=</span><span class="op">~</span>desvio,<span class="dt">color=</span><span class="st">&quot;blue&quot;</span>))<span class="op">%&gt;%</span></span>
-<span id="cb469-8"><a href="plotly.html#cb469-8"></a><span class="st">  </span><span class="kw">layout</span>(<span class="dt">yaxis =</span> <span class="kw">list</span>(<span class="dt">title=</span><span class="st">&quot;Resposta&quot;</span>),</span>
-<span id="cb469-9"><a href="plotly.html#cb469-9"></a>         <span class="dt">xaxis =</span> <span class="kw">list</span>(<span class="dt">title=</span><span class="st">&quot;&quot;</span>))</span></code></pre></div>
+<div id="gráfico-de-barras-2" class="section level2" number="21.4">
+<h2><span class="header-section-number">21.4</span> Gráfico de barras</h2>
+<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb473-1"><a href="plotly.html#cb473-1"></a><span class="co">## Média e Desvio-padrão (Por Tratamento)</span></span>
+<span id="cb473-2"><a href="plotly.html#cb473-2"></a>dados <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">plot_ly</span>(<span class="dt">x=</span>media,</span>
+<span id="cb473-3"><a href="plotly.html#cb473-3"></a>                  <span class="dt">y=</span><span class="op">~</span>trat,</span>
+<span id="cb473-4"><a href="plotly.html#cb473-4"></a>                  <span class="dt">type =</span> <span class="st">&quot;bar&quot;</span>,</span>
+<span id="cb473-5"><a href="plotly.html#cb473-5"></a>                  <span class="dt">color =</span> <span class="op">~</span>trat,</span>
+<span id="cb473-6"><a href="plotly.html#cb473-6"></a>                  <span class="dt">horizontation=</span><span class="st">&quot;h&quot;</span>,</span>
+<span id="cb473-7"><a href="plotly.html#cb473-7"></a>                <span class="dt">error_x=</span><span class="kw">list</span>(<span class="dt">value=</span><span class="op">~</span>desvio,<span class="dt">color=</span><span class="st">&quot;blue&quot;</span>))<span class="op">%&gt;%</span></span>
+<span id="cb473-8"><a href="plotly.html#cb473-8"></a><span class="st">  </span><span class="kw">layout</span>(<span class="dt">yaxis =</span> <span class="kw">list</span>(<span class="dt">title=</span><span class="st">&quot;Resposta&quot;</span>),</span>
+<span id="cb473-9"><a href="plotly.html#cb473-9"></a>         <span class="dt">xaxis =</span> <span class="kw">list</span>(<span class="dt">title=</span><span class="st">&quot;&quot;</span>))</span></code></pre></div>
 <div id="htmlwidget-e96c0688a849169abb34" style="width:672px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-e96c0688a849169abb34">{"x":{"visdat":{"346836143d64":["function () ","plotlyVisDat"]},"cur_data":"346836143d64","attrs":{"346836143d64":{"x":[105,152.25,141.75,211.5,255.75],"y":{},"horizontation":"h","error_x":{"value":{},"color":"blue"},"color":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"yaxis":{"domain":[0,1],"automargin":true,"title":"Resposta","type":"category","categoryorder":"array","categoryarray":["T 1","T 2","T 3","T 4","T 5"]},"xaxis":{"domain":[0,1],"automargin":true,"title":""},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"x":[105],"y":["T 1"],"horizontation":"h","error_x":{"color":"blue","value":12.9099444873581},"type":"bar","orientation":"h","name":"T 1","marker":{"color":"rgba(102,194,165,1)","line":{"color":"rgba(102,194,165,1)"}},"textfont":{"color":"rgba(102,194,165,1)"},"error_y":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[152.25],"y":["T 2"],"horizontation":"h","error_x":{"color":"blue","value":8.77021474461525},"type":"bar","orientation":"h","name":"T 2","marker":{"color":"rgba(252,141,98,1)","line":{"color":"rgba(252,141,98,1)"}},"textfont":{"color":"rgba(252,141,98,1)"},"error_y":{"color":"rgba(252,141,98,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[141.75],"y":["T 3"],"horizontation":"h","error_x":{"color":"blue","value":6.84957419601151},"type":"bar","orientation":"h","name":"T 3","marker":{"color":"rgba(141,160,203,1)","line":{"color":"rgba(141,160,203,1)"}},"textfont":{"color":"rgba(141,160,203,1)"},"error_y":{"color":"rgba(141,160,203,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[211.5],"y":["T 4"],"horizontation":"h","error_x":{"color":"blue","value":5.97215762238964},"type":"bar","orientation":"h","name":"T 4","marker":{"color":"rgba(231,138,195,1)","line":{"color":"rgba(231,138,195,1)"}},"textfont":{"color":"rgba(231,138,195,1)"},"error_y":{"color":"rgba(231,138,195,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[255.75],"y":["T 5"],"horizontation":"h","error_x":{"color":"blue","value":8.73212459828649},"type":"bar","orientation":"h","name":"T 5","marker":{"color":"rgba(166,216,84,1)","line":{"color":"rgba(166,216,84,1)"}},"textfont":{"color":"rgba(166,216,84,1)"},"error_y":{"color":"rgba(166,216,84,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-e96c0688a849169abb34">{"x":{"visdat":{"29e871c170c2":["function () ","plotlyVisDat"]},"cur_data":"29e871c170c2","attrs":{"29e871c170c2":{"x":[105,152.25,141.75,211.5,255.75],"y":{},"horizontation":"h","error_x":{"value":{},"color":"blue"},"color":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"yaxis":{"domain":[0,1],"automargin":true,"title":"Resposta","type":"category","categoryorder":"array","categoryarray":["T 1","T 2","T 3","T 4","T 5"]},"xaxis":{"domain":[0,1],"automargin":true,"title":""},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"x":[105],"y":["T 1"],"horizontation":"h","error_x":{"color":"blue","value":12.9099444873581},"type":"bar","orientation":"h","name":"T 1","marker":{"color":"rgba(102,194,165,1)","line":{"color":"rgba(102,194,165,1)"}},"textfont":{"color":"rgba(102,194,165,1)"},"error_y":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[152.25],"y":["T 2"],"horizontation":"h","error_x":{"color":"blue","value":8.77021474461525},"type":"bar","orientation":"h","name":"T 2","marker":{"color":"rgba(252,141,98,1)","line":{"color":"rgba(252,141,98,1)"}},"textfont":{"color":"rgba(252,141,98,1)"},"error_y":{"color":"rgba(252,141,98,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[141.75],"y":["T 3"],"horizontation":"h","error_x":{"color":"blue","value":6.84957419601151},"type":"bar","orientation":"h","name":"T 3","marker":{"color":"rgba(141,160,203,1)","line":{"color":"rgba(141,160,203,1)"}},"textfont":{"color":"rgba(141,160,203,1)"},"error_y":{"color":"rgba(141,160,203,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[211.5],"y":["T 4"],"horizontation":"h","error_x":{"color":"blue","value":5.97215762238964},"type":"bar","orientation":"h","name":"T 4","marker":{"color":"rgba(231,138,195,1)","line":{"color":"rgba(231,138,195,1)"}},"textfont":{"color":"rgba(231,138,195,1)"},"error_y":{"color":"rgba(231,138,195,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[255.75],"y":["T 5"],"horizontation":"h","error_x":{"color":"blue","value":8.73212459828649},"type":"bar","orientation":"h","name":"T 5","marker":{"color":"rgba(166,216,84,1)","line":{"color":"rgba(166,216,84,1)"}},"textfont":{"color":"rgba(166,216,84,1)"},"error_y":{"color":"rgba(166,216,84,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
-<div id="gráfico-de-dispersão-2" class="section level2">
-<h2><span class="header-section-number">20.5</span> Gráfico de dispersão</h2>
-<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="plotly.html#cb470-1"></a>dados <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">plot_ly</span>(<span class="dt">y=</span>media,</span>
-<span id="cb470-2"><a href="plotly.html#cb470-2"></a>                  <span class="dt">x=</span><span class="op">~</span>trat,</span>
-<span id="cb470-3"><a href="plotly.html#cb470-3"></a>                  <span class="dt">type =</span> <span class="st">&quot;scatter&quot;</span>,</span>
-<span id="cb470-4"><a href="plotly.html#cb470-4"></a>                  <span class="dt">color =</span> <span class="op">~</span>trat,</span>
-<span id="cb470-5"><a href="plotly.html#cb470-5"></a>                  <span class="dt">error_y=</span><span class="kw">list</span>(<span class="dt">value=</span><span class="op">~</span>desvio))<span class="op">%&gt;%</span></span>
-<span id="cb470-6"><a href="plotly.html#cb470-6"></a><span class="st">  </span><span class="kw">layout</span>(<span class="dt">yaxis =</span> <span class="kw">list</span>(<span class="dt">title=</span><span class="st">&quot;Resposta&quot;</span>),</span>
-<span id="cb470-7"><a href="plotly.html#cb470-7"></a>         <span class="dt">xaxis =</span> <span class="kw">list</span>(<span class="dt">title=</span><span class="st">&quot;&quot;</span>))</span></code></pre></div>
+<div id="gráfico-de-dispersão-2" class="section level2" number="21.5">
+<h2><span class="header-section-number">21.5</span> Gráfico de dispersão</h2>
+<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb474-1"><a href="plotly.html#cb474-1"></a>dados <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">plot_ly</span>(<span class="dt">y=</span>media,</span>
+<span id="cb474-2"><a href="plotly.html#cb474-2"></a>                  <span class="dt">x=</span><span class="op">~</span>trat,</span>
+<span id="cb474-3"><a href="plotly.html#cb474-3"></a>                  <span class="dt">type =</span> <span class="st">&quot;scatter&quot;</span>,</span>
+<span id="cb474-4"><a href="plotly.html#cb474-4"></a>                  <span class="dt">color =</span> <span class="op">~</span>trat,</span>
+<span id="cb474-5"><a href="plotly.html#cb474-5"></a>                  <span class="dt">error_y=</span><span class="kw">list</span>(<span class="dt">value=</span><span class="op">~</span>desvio))<span class="op">%&gt;%</span></span>
+<span id="cb474-6"><a href="plotly.html#cb474-6"></a><span class="st">  </span><span class="kw">layout</span>(<span class="dt">yaxis =</span> <span class="kw">list</span>(<span class="dt">title=</span><span class="st">&quot;Resposta&quot;</span>),</span>
+<span id="cb474-7"><a href="plotly.html#cb474-7"></a>         <span class="dt">xaxis =</span> <span class="kw">list</span>(<span class="dt">title=</span><span class="st">&quot;&quot;</span>))</span></code></pre></div>
 <div id="htmlwidget-86349adfa5d821dc4447" style="width:672px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-86349adfa5d821dc4447">{"x":{"visdat":{"346839a26062":["function () ","plotlyVisDat"]},"cur_data":"346839a26062","attrs":{"346839a26062":{"y":[105,152.25,141.75,211.5,255.75],"x":{},"error_y":{"value":{}},"color":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"yaxis":{"domain":[0,1],"automargin":true,"title":"Resposta"},"xaxis":{"domain":[0,1],"automargin":true,"title":"","type":"category","categoryorder":"array","categoryarray":["T 1","T 2","T 3","T 4","T 5"]},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"y":[105],"x":["T 1"],"error_y":{"color":"rgba(102,194,165,1)","value":12.9099444873581},"type":"scatter","mode":"markers","name":"T 1","marker":{"color":"rgba(102,194,165,1)","line":{"color":"rgba(102,194,165,1)"}},"textfont":{"color":"rgba(102,194,165,1)"},"error_x":{"color":"rgba(102,194,165,1)"},"line":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"y":[152.25],"x":["T 2"],"error_y":{"color":"rgba(252,141,98,1)","value":8.77021474461525},"type":"scatter","mode":"markers","name":"T 2","marker":{"color":"rgba(252,141,98,1)","line":{"color":"rgba(252,141,98,1)"}},"textfont":{"color":"rgba(252,141,98,1)"},"error_x":{"color":"rgba(252,141,98,1)"},"line":{"color":"rgba(252,141,98,1)"},"xaxis":"x","yaxis":"y","frame":null},{"y":[141.75],"x":["T 3"],"error_y":{"color":"rgba(141,160,203,1)","value":6.84957419601151},"type":"scatter","mode":"markers","name":"T 3","marker":{"color":"rgba(141,160,203,1)","line":{"color":"rgba(141,160,203,1)"}},"textfont":{"color":"rgba(141,160,203,1)"},"error_x":{"color":"rgba(141,160,203,1)"},"line":{"color":"rgba(141,160,203,1)"},"xaxis":"x","yaxis":"y","frame":null},{"y":[211.5],"x":["T 4"],"error_y":{"color":"rgba(231,138,195,1)","value":5.97215762238964},"type":"scatter","mode":"markers","name":"T 4","marker":{"color":"rgba(231,138,195,1)","line":{"color":"rgba(231,138,195,1)"}},"textfont":{"color":"rgba(231,138,195,1)"},"error_x":{"color":"rgba(231,138,195,1)"},"line":{"color":"rgba(231,138,195,1)"},"xaxis":"x","yaxis":"y","frame":null},{"y":[255.75],"x":["T 5"],"error_y":{"color":"rgba(166,216,84,1)","value":8.73212459828649},"type":"scatter","mode":"markers","name":"T 5","marker":{"color":"rgba(166,216,84,1)","line":{"color":"rgba(166,216,84,1)"}},"textfont":{"color":"rgba(166,216,84,1)"},"error_x":{"color":"rgba(166,216,84,1)"},"line":{"color":"rgba(166,216,84,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<script type="application/json" data-for="htmlwidget-86349adfa5d821dc4447">{"x":{"visdat":{"29e81415fd2":["function () ","plotlyVisDat"]},"cur_data":"29e81415fd2","attrs":{"29e81415fd2":{"y":[105,152.25,141.75,211.5,255.75],"x":{},"error_y":{"value":{}},"color":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"yaxis":{"domain":[0,1],"automargin":true,"title":"Resposta"},"xaxis":{"domain":[0,1],"automargin":true,"title":"","type":"category","categoryorder":"array","categoryarray":["T 1","T 2","T 3","T 4","T 5"]},"hovermode":"closest","showlegend":true},"source":"A","config":{"showSendToCloud":false},"data":[{"y":[105],"x":["T 1"],"error_y":{"color":"rgba(102,194,165,1)","value":12.9099444873581},"type":"scatter","mode":"markers","name":"T 1","marker":{"color":"rgba(102,194,165,1)","line":{"color":"rgba(102,194,165,1)"}},"textfont":{"color":"rgba(102,194,165,1)"},"error_x":{"color":"rgba(102,194,165,1)"},"line":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"y":[152.25],"x":["T 2"],"error_y":{"color":"rgba(252,141,98,1)","value":8.77021474461525},"type":"scatter","mode":"markers","name":"T 2","marker":{"color":"rgba(252,141,98,1)","line":{"color":"rgba(252,141,98,1)"}},"textfont":{"color":"rgba(252,141,98,1)"},"error_x":{"color":"rgba(252,141,98,1)"},"line":{"color":"rgba(252,141,98,1)"},"xaxis":"x","yaxis":"y","frame":null},{"y":[141.75],"x":["T 3"],"error_y":{"color":"rgba(141,160,203,1)","value":6.84957419601151},"type":"scatter","mode":"markers","name":"T 3","marker":{"color":"rgba(141,160,203,1)","line":{"color":"rgba(141,160,203,1)"}},"textfont":{"color":"rgba(141,160,203,1)"},"error_x":{"color":"rgba(141,160,203,1)"},"line":{"color":"rgba(141,160,203,1)"},"xaxis":"x","yaxis":"y","frame":null},{"y":[211.5],"x":["T 4"],"error_y":{"color":"rgba(231,138,195,1)","value":5.97215762238964},"type":"scatter","mode":"markers","name":"T 4","marker":{"color":"rgba(231,138,195,1)","line":{"color":"rgba(231,138,195,1)"}},"textfont":{"color":"rgba(231,138,195,1)"},"error_x":{"color":"rgba(231,138,195,1)"},"line":{"color":"rgba(231,138,195,1)"},"xaxis":"x","yaxis":"y","frame":null},{"y":[255.75],"x":["T 5"],"error_y":{"color":"rgba(166,216,84,1)","value":8.73212459828649},"type":"scatter","mode":"markers","name":"T 5","marker":{"color":"rgba(166,216,84,1)","line":{"color":"rgba(166,216,84,1)"}},"textfont":{"color":"rgba(166,216,84,1)"},"error_x":{"color":"rgba(166,216,84,1)"},"line":{"color":"rgba(166,216,84,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 
 </div>
 </div>
@@ -666,7 +719,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="ggplot2.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="como-salvar-um-gráfico.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>

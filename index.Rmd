@@ -1496,7 +1496,7 @@ ggplot(dados,aes(x=trat,y=resp,fill=comp))+
   geom_col(color="black")+
   scale_y_continuous(expand = c(0, 1),
     breaks = pretty(dados$resp),
-    labels = abs(pretty(dados$resp)))+
+    labels = abs(pretty(dados$resp)))+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
   theme_bw()+xlab("")+ylab("Massa seca (g)")+
   geom_text(aes(y=pos+c(rep(c(0.3,-0.3),e=5)),
                 label=paste(abs(resp),letra)))
@@ -3603,6 +3603,27 @@ ggplot(data, aes(x = tempo))+geom_line(aes(y = Umidade, colour = "Umidade"), col
          panel.grid.minor = element_blank()))
 ```
 
+## Gráfico de linhas (facetado separando duas épocas)
+
+```{r}
+data=data.frame(tempo=TEMPO,
+                Umidade=UR,
+                Temperatura=TM,
+                Época=rep(c("Época 1","Época 2"),e=87))# criei um novo vetor separando duas épocas
+attach(data)
+library(ggplot2)
+```
+
+```{r}
+# O tempo pode usar datas, sugiro o formato Mes-Ano-Dia
+# tempo=as.POSIXct(tempo, format="%m-%Y-%d", tz="UTC")
+a=ggplot(data[data$Época=="Época 1",],aes(x=tempo,y=Temperatura))+
+  geom_line()+theme_bw()+xlab("Tempo (Dias)")+facet_wrap(~"Época 1")
+b=ggplot(data[data$Época=="Época 2",],aes(x=tempo,y=Temperatura))+
+  geom_line()+theme_bw()+xlab("Tempo (Dias)")+facet_wrap(~"Época 2")
+gridExtra::grid.arrange(a,b,ncol=1)
+```
+
 <br><br><br>
 
 ****
@@ -4238,7 +4259,6 @@ autoplot(pca,data=iris)
 Obs. a coluna de "Species" está na dataset *iris*
 
 ```{r}
-library(ggfortify)
 autoplot(pca,data=iris,colour="Species")
 ```
 
@@ -4247,7 +4267,6 @@ autoplot(pca,data=iris,colour="Species")
 ### Vetor das respostas
 
 ```{r}
-library(ggfortify)
 autoplot(pca,
          data=iris,
          colour="Species",
@@ -4259,7 +4278,6 @@ autoplot(pca,
 ### Nome dos vetores
 
 ```{r}
-library(ggfortify)
 autoplot(pca,
          data=iris,
          colour="Species",
@@ -4273,7 +4291,6 @@ autoplot(pca,
 ### Polígono de agrupamento
 
 ```{r}
-library(ggfortify)
 autoplot(pca,
          data=iris,
          colour="Species",
@@ -4288,7 +4305,6 @@ autoplot(pca,
 ### Modificando para elipse
 
 ```{r}
-library(ggfortify)
 autoplot(pca,
          data=iris,
          colour="Species",
@@ -4304,7 +4320,6 @@ autoplot(pca,
 ### Cor do vetor e do nome
 
 ```{r}
-library(ggfortify)
 autoplot(pca,
          data=iris,
          colour="Species",
@@ -4322,7 +4337,6 @@ autoplot(pca,
 ### fonte; linha de grade e cor de fundo
 
 ```{r}
-library(ggfortify)
 autoplot(pca,
          data=iris,
          colour="Species",
@@ -4341,7 +4355,6 @@ autoplot(pca,
 ### Linha em Y=0 e X=0
 
 ```{r}
-library(ggfortify)
 autoplot(pca,
          data=iris,
          colour="Species",
@@ -5857,21 +5870,18 @@ grid.arrange(a,b,c,ncol=3)
 ### Gráficos um abaixo do outro
 
 ```{r}
-library(gridExtra)
 grid.arrange(a,b,c,ncol=1)
 ```
 
 ### Dois na primeira linha e uma no lado esquerdo da segunda linha
 
 ```{r}
-library(gridExtra)
 grid.arrange(a,b,c,ncol=2)
 ```
 
 ### Dois na primeira linha e uma centralizado na segunda linha
 
 ```{r}
-library(gridExtra)
 grid.arrange(a,b,c,
              layout_matrix = rbind(c(1,1,2,2), c(NA,3,3,NA)))
 ```
@@ -5881,7 +5891,6 @@ grid.arrange(a,b,c,
 <br>
 
 ```{r}
-library(gridExtra)
 grid.arrange(a,b,c,
              layout_matrix = rbind(c(1,1,2,2), c(NA,NA,3,3)))
 ```
@@ -5889,11 +5898,47 @@ grid.arrange(a,b,c,
 ### Título em gráficos agrupados
 
 ```{r}
-library(gridExtra)
 a1=grid.arrange(a,b,layout_matrix = rbind(c(1,1,2,2)),top="Titulo 1")
 a2=grid.arrange(a,b,layout_matrix = rbind(c(1,1,2,2)),top="Titulo 2")
 grid.arrange(a1,a2)
 ```
+
+
+****
+
+# Como salvar um gráfico?
+
+****
+
+Existe várias formas de salvar o gráfico:
+
+ - Gerando o relatório pelo Rmd (ctrl + shift + k)
+ - Pela janela Plots -> Export -> escolher a extensão e dimensões
+ - Comando tiff
+ - Comando ggsave, no caso do ggplot2
+ - etc...
+
+Nesse tutorial, ou ensinar pelo comando tiff.
+
+```{r}
+dados=rnorm(100,10,1) # estou simulando dados de uma normal com 100 observações de média 10 e desvio-padrão 1.
+plot(dados)
+```
+
+Para usar o comando tiff, devemos colocar ele antes da plotagem e um dev.off() após a plotagem. Devemos definir a largura, altura, resolução e unidade das dimensões. Veja esse exemplo:
+
+```{r, eval=F}
+tiff("exemplo.tif", res=100, width = 8,height = 5, units = "in")
+dados=rnorm(100,10,1) # estou simulando dados de uma normal com 100 observações de média 10 e desvio-padrão 1.
+plot(dados)
+dev.off()
+```
+
+**Obs.** Cuidado!!! Uma vez ativado o tiff, o R está mudando o local da plotagem. Assim, caso execute ele e não finalize com o dev.off() ele ficará soltando outro lugar, ao invés da janela plots. Quando perceber que não está liberando um gráfico no plots, tente executar várias vezes o dev.off() até dar erro.
+
+Podemos definir também a extensão da imagem, no anterior, usamos tif. 
+
+**Obs.** Por experiência, a extensão tif é a melhor em termos de resolução gráfica, pois o mesmo parece não perder muita qualidade no word. Entretanto, cuidado!!!, pois seu word pode estar configurado para reduzir qualidade de imagem.
 
 
 ****
