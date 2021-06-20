@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title> 20 Como salvar um gráfico? | Aplicações práticas do software R para Agronomia</title>
   <meta name="description" content="Este é um livro virtual desenvolvido com a finalidade de fornecer tutoriais práticos das principais análises estatísticas e apresentação de dados utilizando o software R" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content=" 20 Como salvar um gráfico? | Aplicações práticas do software R para Agronomia" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Gabriel Danilo Shimizu" />
 
 
-<meta name="date" content="2020-10-24" />
+<meta name="date" content="2021-06-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +33,8 @@
   
 <link rel="prev" href="ggplot2.html"/>
 <link rel="next" href="plotly.html"/>
-<script src="libs/header-attrs-2.5/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -51,18 +51,17 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
 <script src="libs/chart.js-2.4.0/./dist/Chart.min.js"></script>
 <script src="libs/chartJSRadar-binding-0.3.1/chartJSRadar.js"></script>
-<script src="libs/plotly-binding-4.9.2.1/plotly.js"></script>
+<script src="libs/plotly-binding-4.9.4.1/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -128,6 +127,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -658,14 +658,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>etc…</li>
 </ul>
 <p>Nesse tutorial, ou ensinar pelo comando tiff.</p>
-<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="como-salvar-um-gráfico.html#cb468-1"></a>dados=<span class="kw">rnorm</span>(<span class="dv">100</span>,<span class="dv">10</span>,<span class="dv">1</span>) <span class="co"># estou simulando dados de uma normal com 100 observações de média 10 e desvio-padrão 1.</span></span>
-<span id="cb468-2"><a href="como-salvar-um-gráfico.html#cb468-2"></a><span class="kw">plot</span>(dados)</span></code></pre></div>
+<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="como-salvar-um-gráfico.html#cb468-1" aria-hidden="true" tabindex="-1"></a>dados<span class="ot">=</span><span class="fu">rnorm</span>(<span class="dv">100</span>,<span class="dv">10</span>,<span class="dv">1</span>) <span class="co"># estou simulando dados de uma normal com 100 observações de média 10 e desvio-padrão 1.</span></span>
+<span id="cb468-2"><a href="como-salvar-um-gráfico.html#cb468-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dados)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-405-1.png" width="672" /></p>
 <p>Para usar o comando tiff, devemos colocar ele antes da plotagem e um dev.off() após a plotagem. Devemos definir a largura, altura, resolução e unidade das dimensões. Veja esse exemplo:</p>
-<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="como-salvar-um-gráfico.html#cb469-1"></a><span class="kw">tiff</span>(<span class="st">&quot;exemplo.tif&quot;</span>, <span class="dt">res=</span><span class="dv">100</span>, <span class="dt">width =</span> <span class="dv">8</span>,<span class="dt">height =</span> <span class="dv">5</span>, <span class="dt">units =</span> <span class="st">&quot;in&quot;</span>)</span>
-<span id="cb469-2"><a href="como-salvar-um-gráfico.html#cb469-2"></a>dados=<span class="kw">rnorm</span>(<span class="dv">100</span>,<span class="dv">10</span>,<span class="dv">1</span>) <span class="co"># estou simulando dados de uma normal com 100 observações de média 10 e desvio-padrão 1.</span></span>
-<span id="cb469-3"><a href="como-salvar-um-gráfico.html#cb469-3"></a><span class="kw">plot</span>(dados)</span>
-<span id="cb469-4"><a href="como-salvar-um-gráfico.html#cb469-4"></a><span class="kw">dev.off</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="como-salvar-um-gráfico.html#cb469-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tiff</span>(<span class="st">&quot;exemplo.tif&quot;</span>, <span class="at">res=</span><span class="dv">100</span>, <span class="at">width =</span> <span class="dv">8</span>,<span class="at">height =</span> <span class="dv">5</span>, <span class="at">units =</span> <span class="st">&quot;in&quot;</span>)</span>
+<span id="cb469-2"><a href="como-salvar-um-gráfico.html#cb469-2" aria-hidden="true" tabindex="-1"></a>dados<span class="ot">=</span><span class="fu">rnorm</span>(<span class="dv">100</span>,<span class="dv">10</span>,<span class="dv">1</span>) <span class="co"># estou simulando dados de uma normal com 100 observações de média 10 e desvio-padrão 1.</span></span>
+<span id="cb469-3"><a href="como-salvar-um-gráfico.html#cb469-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dados)</span>
+<span id="cb469-4"><a href="como-salvar-um-gráfico.html#cb469-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
 <p><strong>Obs.</strong> Cuidado!!! Uma vez ativado o tiff, o R está mudando o local da plotagem. Assim, caso execute ele e não finalize com o dev.off() ele ficará soltando outro lugar, ao invés da janela plots. Quando perceber que não está liberando um gráfico no plots, tente executar várias vezes o dev.off() até dar erro.</p>
 <p>Podemos definir também a extensão da imagem, no anterior, usamos tif.</p>
 <p><strong>Obs.</strong> Por experiência, a extensão tif é a melhor em termos de resolução gráfica, pois o mesmo parece não perder muita qualidade no word. Entretanto, cuidado!!!, pois seu word pode estar configurado para reduzir qualidade de imagem.</p>
@@ -700,10 +700,11 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
-"theme": "white",
+"theme": "sepia",
 "family": "sans",
 "size": 2
 },

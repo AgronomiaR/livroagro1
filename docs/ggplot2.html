@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title> 19 ggplot2 | Aplicações práticas do software R para Agronomia</title>
   <meta name="description" content="Este é um livro virtual desenvolvido com a finalidade de fornecer tutoriais práticos das principais análises estatísticas e apresentação de dados utilizando o software R" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content=" 19 ggplot2 | Aplicações práticas do software R para Agronomia" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Gabriel Danilo Shimizu" />
 
 
-<meta name="date" content="2020-10-24" />
+<meta name="date" content="2021-06-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +33,8 @@
   
 <link rel="prev" href="layout-graphics.html"/>
 <link rel="next" href="como-salvar-um-gráfico.html"/>
-<script src="libs/header-attrs-2.5/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -51,18 +51,17 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
 <script src="libs/chart.js-2.4.0/./dist/Chart.min.js"></script>
 <script src="libs/chartJSRadar-binding-0.3.1/chartJSRadar.js"></script>
-<script src="libs/plotly-binding-4.9.2.1/plotly.js"></script>
+<script src="libs/plotly-binding-4.9.4.1/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -128,6 +127,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -660,67 +660,67 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="conjunto-de-dados-31" class="section level4" number="19.0.1.1">
 <h4><span class="header-section-number">19.0.1.1</span> Conjunto de dados</h4>
 <p>Vamos trabalhar com três experimentos em DIC com quatro tratamentos e três repetições cada.</p>
-<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb458-1"><a href="ggplot2.html#cb458-1"></a>exp1=<span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">18</span>,<span class="dv">19</span>,<span class="dv">16</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">25</span>,<span class="dv">26</span>,<span class="dv">28</span>)</span>
-<span id="cb458-2"><a href="ggplot2.html#cb458-2"></a>exp2=<span class="kw">c</span>(<span class="dv">9</span>,<span class="dv">12</span>,<span class="dv">11</span>,<span class="dv">18</span>,<span class="dv">20</span>,<span class="dv">16</span>,<span class="dv">7</span>,<span class="dv">6</span>,<span class="dv">9</span>,<span class="dv">25</span>,<span class="dv">28</span>,<span class="dv">28</span>)</span>
-<span id="cb458-3"><a href="ggplot2.html#cb458-3"></a>exp3=<span class="kw">c</span>(<span class="dv">9</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">18</span>,<span class="dv">22</span>,<span class="dv">15</span>,<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">4</span>,<span class="dv">25</span>,<span class="dv">30</span>,<span class="dv">28</span>)  </span>
-<span id="cb458-4"><a href="ggplot2.html#cb458-4"></a>Trat=<span class="kw">rep</span>(<span class="kw">c</span>(<span class="kw">paste</span>(<span class="st">&quot;T&quot;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>)),<span class="dt">e=</span><span class="dv">3</span>)</span>
-<span id="cb458-5"><a href="ggplot2.html#cb458-5"></a>dados=<span class="kw">data.frame</span>(Trat,exp1,exp2,exp3)</span>
-<span id="cb458-6"><a href="ggplot2.html#cb458-6"></a>dados<span class="op">$</span>Trat=<span class="kw">as.factor</span>(Trat)</span></code></pre></div>
+<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb458-1"><a href="ggplot2.html#cb458-1" aria-hidden="true" tabindex="-1"></a>exp1<span class="ot">=</span><span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">18</span>,<span class="dv">19</span>,<span class="dv">16</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">25</span>,<span class="dv">26</span>,<span class="dv">28</span>)</span>
+<span id="cb458-2"><a href="ggplot2.html#cb458-2" aria-hidden="true" tabindex="-1"></a>exp2<span class="ot">=</span><span class="fu">c</span>(<span class="dv">9</span>,<span class="dv">12</span>,<span class="dv">11</span>,<span class="dv">18</span>,<span class="dv">20</span>,<span class="dv">16</span>,<span class="dv">7</span>,<span class="dv">6</span>,<span class="dv">9</span>,<span class="dv">25</span>,<span class="dv">28</span>,<span class="dv">28</span>)</span>
+<span id="cb458-3"><a href="ggplot2.html#cb458-3" aria-hidden="true" tabindex="-1"></a>exp3<span class="ot">=</span><span class="fu">c</span>(<span class="dv">9</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">18</span>,<span class="dv">22</span>,<span class="dv">15</span>,<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">4</span>,<span class="dv">25</span>,<span class="dv">30</span>,<span class="dv">28</span>)  </span>
+<span id="cb458-4"><a href="ggplot2.html#cb458-4" aria-hidden="true" tabindex="-1"></a>Trat<span class="ot">=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="fu">paste</span>(<span class="st">&quot;T&quot;</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)),<span class="at">e=</span><span class="dv">3</span>)</span>
+<span id="cb458-5"><a href="ggplot2.html#cb458-5" aria-hidden="true" tabindex="-1"></a>dados<span class="ot">=</span><span class="fu">data.frame</span>(Trat,exp1,exp2,exp3)</span>
+<span id="cb458-6"><a href="ggplot2.html#cb458-6" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>Trat<span class="ot">=</span><span class="fu">as.factor</span>(Trat)</span></code></pre></div>
 </div>
 </div>
 <div id="juntando-três-gráficos-do-ggplot2" class="section level3" number="19.0.2">
 <h3><span class="header-section-number">19.0.2</span> Juntando três gráficos do ggplot2</h3>
 <p><em>Obs</em> Para edição do gráfico ver tutorial sobre gráfico de colunas usando o ggplot2</p>
-<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb459-1"><a href="ggplot2.html#cb459-1"></a><span class="kw">library</span>(ggplot2)</span>
-<span id="cb459-2"><a href="ggplot2.html#cb459-2"></a>m1=<span class="kw">tapply</span>(exp1, Trat, mean);d1=<span class="kw">tapply</span>(exp1, Trat, sd)</span>
-<span id="cb459-3"><a href="ggplot2.html#cb459-3"></a>dados1=<span class="kw">data.frame</span>(<span class="dt">Trat=</span><span class="kw">rownames</span>(m1),m1,d1)</span>
-<span id="cb459-4"><a href="ggplot2.html#cb459-4"></a>a=<span class="kw">ggplot</span>(dados1, <span class="kw">aes</span>(<span class="dt">x=</span>Trat,<span class="dt">y=</span>m1))<span class="op">+</span><span class="kw">geom_col</span>()<span class="op">+</span><span class="kw">theme_bw</span>()<span class="op">+</span></span>
-<span id="cb459-5"><a href="ggplot2.html#cb459-5"></a><span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymax=</span>m1<span class="op">+</span>d1, <span class="dt">ymin=</span>m1<span class="op">-</span>d1), <span class="dt">width=</span><span class="fl">0.25</span>)</span>
-<span id="cb459-6"><a href="ggplot2.html#cb459-6"></a>m2=<span class="kw">tapply</span>(exp2, Trat, mean);d2=<span class="kw">tapply</span>(exp2, Trat, sd)</span>
-<span id="cb459-7"><a href="ggplot2.html#cb459-7"></a>dados2=<span class="kw">data.frame</span>(<span class="dt">Trat=</span><span class="kw">rownames</span>(m2),m2,d2)</span>
-<span id="cb459-8"><a href="ggplot2.html#cb459-8"></a>b=<span class="kw">ggplot</span>(dados2, <span class="kw">aes</span>(<span class="dt">x=</span>Trat,<span class="dt">y=</span>m2))<span class="op">+</span><span class="kw">geom_col</span>()<span class="op">+</span><span class="kw">theme_bw</span>()<span class="op">+</span></span>
-<span id="cb459-9"><a href="ggplot2.html#cb459-9"></a><span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymax=</span>m2<span class="op">+</span>d2,<span class="dt">ymin=</span>m2<span class="op">-</span>d2), <span class="dt">width=</span><span class="fl">0.25</span>)</span>
-<span id="cb459-10"><a href="ggplot2.html#cb459-10"></a>m3=<span class="kw">tapply</span>(exp3, Trat, mean);d3=<span class="kw">tapply</span>(exp3, Trat, sd)</span>
-<span id="cb459-11"><a href="ggplot2.html#cb459-11"></a>dados3=<span class="kw">data.frame</span>(<span class="dt">Trat=</span><span class="kw">rownames</span>(m3),m3,d3)</span>
-<span id="cb459-12"><a href="ggplot2.html#cb459-12"></a>c=<span class="kw">ggplot</span>(dados3, <span class="kw">aes</span>(<span class="dt">x=</span>Trat,<span class="dt">y=</span>m3))<span class="op">+</span><span class="kw">geom_col</span>()<span class="op">+</span><span class="kw">theme_bw</span>()<span class="op">+</span></span>
-<span id="cb459-13"><a href="ggplot2.html#cb459-13"></a><span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymax=</span>m3<span class="op">+</span>d3,<span class="dt">ymin=</span>m3<span class="op">-</span>d3),<span class="dt">width=</span><span class="fl">0.25</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb459-1"><a href="ggplot2.html#cb459-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb459-2"><a href="ggplot2.html#cb459-2" aria-hidden="true" tabindex="-1"></a>m1<span class="ot">=</span><span class="fu">tapply</span>(exp1, Trat, mean);d1<span class="ot">=</span><span class="fu">tapply</span>(exp1, Trat, sd)</span>
+<span id="cb459-3"><a href="ggplot2.html#cb459-3" aria-hidden="true" tabindex="-1"></a>dados1<span class="ot">=</span><span class="fu">data.frame</span>(<span class="at">Trat=</span><span class="fu">rownames</span>(m1),m1,d1)</span>
+<span id="cb459-4"><a href="ggplot2.html#cb459-4" aria-hidden="true" tabindex="-1"></a>a<span class="ot">=</span><span class="fu">ggplot</span>(dados1, <span class="fu">aes</span>(<span class="at">x=</span>Trat,<span class="at">y=</span>m1))<span class="sc">+</span><span class="fu">geom_col</span>()<span class="sc">+</span><span class="fu">theme_bw</span>()<span class="sc">+</span></span>
+<span id="cb459-5"><a href="ggplot2.html#cb459-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymax=</span>m1<span class="sc">+</span>d1, <span class="at">ymin=</span>m1<span class="sc">-</span>d1), <span class="at">width=</span><span class="fl">0.25</span>)</span>
+<span id="cb459-6"><a href="ggplot2.html#cb459-6" aria-hidden="true" tabindex="-1"></a>m2<span class="ot">=</span><span class="fu">tapply</span>(exp2, Trat, mean);d2<span class="ot">=</span><span class="fu">tapply</span>(exp2, Trat, sd)</span>
+<span id="cb459-7"><a href="ggplot2.html#cb459-7" aria-hidden="true" tabindex="-1"></a>dados2<span class="ot">=</span><span class="fu">data.frame</span>(<span class="at">Trat=</span><span class="fu">rownames</span>(m2),m2,d2)</span>
+<span id="cb459-8"><a href="ggplot2.html#cb459-8" aria-hidden="true" tabindex="-1"></a>b<span class="ot">=</span><span class="fu">ggplot</span>(dados2, <span class="fu">aes</span>(<span class="at">x=</span>Trat,<span class="at">y=</span>m2))<span class="sc">+</span><span class="fu">geom_col</span>()<span class="sc">+</span><span class="fu">theme_bw</span>()<span class="sc">+</span></span>
+<span id="cb459-9"><a href="ggplot2.html#cb459-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymax=</span>m2<span class="sc">+</span>d2,<span class="at">ymin=</span>m2<span class="sc">-</span>d2), <span class="at">width=</span><span class="fl">0.25</span>)</span>
+<span id="cb459-10"><a href="ggplot2.html#cb459-10" aria-hidden="true" tabindex="-1"></a>m3<span class="ot">=</span><span class="fu">tapply</span>(exp3, Trat, mean);d3<span class="ot">=</span><span class="fu">tapply</span>(exp3, Trat, sd)</span>
+<span id="cb459-11"><a href="ggplot2.html#cb459-11" aria-hidden="true" tabindex="-1"></a>dados3<span class="ot">=</span><span class="fu">data.frame</span>(<span class="at">Trat=</span><span class="fu">rownames</span>(m3),m3,d3)</span>
+<span id="cb459-12"><a href="ggplot2.html#cb459-12" aria-hidden="true" tabindex="-1"></a>c<span class="ot">=</span><span class="fu">ggplot</span>(dados3, <span class="fu">aes</span>(<span class="at">x=</span>Trat,<span class="at">y=</span>m3))<span class="sc">+</span><span class="fu">geom_col</span>()<span class="sc">+</span><span class="fu">theme_bw</span>()<span class="sc">+</span></span>
+<span id="cb459-13"><a href="ggplot2.html#cb459-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymax=</span>m3<span class="sc">+</span>d3,<span class="at">ymin=</span>m3<span class="sc">-</span>d3),<span class="at">width=</span><span class="fl">0.25</span>)</span></code></pre></div>
 </div>
 <div id="gráficos-lado-a-lado" class="section level3" number="19.0.3">
 <h3><span class="header-section-number">19.0.3</span> Gráficos lado a lado</h3>
-<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="ggplot2.html#cb460-1"></a><span class="kw">library</span>(gridExtra)</span>
-<span id="cb460-2"><a href="ggplot2.html#cb460-2"></a><span class="kw">grid.arrange</span>(a,b,c,<span class="dt">ncol=</span><span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="ggplot2.html#cb460-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
+<span id="cb460-2"><a href="ggplot2.html#cb460-2" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(a,b,c,<span class="at">ncol=</span><span class="dv">3</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-399-1.png" width="672" /></p>
 </div>
 <div id="gráficos-um-abaixo-do-outro" class="section level3" number="19.0.4">
 <h3><span class="header-section-number">19.0.4</span> Gráficos um abaixo do outro</h3>
-<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb461-1"><a href="ggplot2.html#cb461-1"></a><span class="kw">grid.arrange</span>(a,b,c,<span class="dt">ncol=</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb461-1"><a href="ggplot2.html#cb461-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(a,b,c,<span class="at">ncol=</span><span class="dv">1</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-400-1.png" width="672" /></p>
 </div>
 <div id="dois-na-primeira-linha-e-uma-no-lado-esquerdo-da-segunda-linha" class="section level3" number="19.0.5">
 <h3><span class="header-section-number">19.0.5</span> Dois na primeira linha e uma no lado esquerdo da segunda linha</h3>
-<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="ggplot2.html#cb462-1"></a><span class="kw">grid.arrange</span>(a,b,c,<span class="dt">ncol=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="ggplot2.html#cb462-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(a,b,c,<span class="at">ncol=</span><span class="dv">2</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-401-1.png" width="672" /></p>
 </div>
 <div id="dois-na-primeira-linha-e-uma-centralizado-na-segunda-linha" class="section level3" number="19.0.6">
 <h3><span class="header-section-number">19.0.6</span> Dois na primeira linha e uma centralizado na segunda linha</h3>
-<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb463-1"><a href="ggplot2.html#cb463-1"></a><span class="kw">grid.arrange</span>(a,b,c,</span>
-<span id="cb463-2"><a href="ggplot2.html#cb463-2"></a>             <span class="dt">layout_matrix =</span> <span class="kw">rbind</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>), <span class="kw">c</span>(<span class="ot">NA</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="ot">NA</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb463-1"><a href="ggplot2.html#cb463-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(a,b,c,</span>
+<span id="cb463-2"><a href="ggplot2.html#cb463-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">layout_matrix =</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>), <span class="fu">c</span>(<span class="cn">NA</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="cn">NA</span>)))</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-402-1.png" width="672" /></p>
 </div>
 <div id="dois-na-primeira-linha-e-uma-a-direita-na-segunda-linha" class="section level3" number="19.0.7">
 <h3><span class="header-section-number">19.0.7</span> Dois na primeira linha e uma a direita na segunda linha</h3>
 <p><br></p>
-<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb464-1"><a href="ggplot2.html#cb464-1"></a><span class="kw">grid.arrange</span>(a,b,c,</span>
-<span id="cb464-2"><a href="ggplot2.html#cb464-2"></a>             <span class="dt">layout_matrix =</span> <span class="kw">rbind</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>), <span class="kw">c</span>(<span class="ot">NA</span>,<span class="ot">NA</span>,<span class="dv">3</span>,<span class="dv">3</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb464-1"><a href="ggplot2.html#cb464-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(a,b,c,</span>
+<span id="cb464-2"><a href="ggplot2.html#cb464-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">layout_matrix =</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>), <span class="fu">c</span>(<span class="cn">NA</span>,<span class="cn">NA</span>,<span class="dv">3</span>,<span class="dv">3</span>)))</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-403-1.png" width="672" /></p>
 </div>
 <div id="título-em-gráficos-agrupados" class="section level3" number="19.0.8">
 <h3><span class="header-section-number">19.0.8</span> Título em gráficos agrupados</h3>
-<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb465-1"><a href="ggplot2.html#cb465-1"></a>a1=<span class="kw">grid.arrange</span>(a,b,<span class="dt">layout_matrix =</span> <span class="kw">rbind</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>)),<span class="dt">top=</span><span class="st">&quot;Titulo 1&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb465-1"><a href="ggplot2.html#cb465-1" aria-hidden="true" tabindex="-1"></a>a1<span class="ot">=</span><span class="fu">grid.arrange</span>(a,b,<span class="at">layout_matrix =</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>)),<span class="at">top=</span><span class="st">&quot;Titulo 1&quot;</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-404-1.png" width="672" /></p>
-<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="ggplot2.html#cb466-1"></a>a2=<span class="kw">grid.arrange</span>(a,b,<span class="dt">layout_matrix =</span> <span class="kw">rbind</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>)),<span class="dt">top=</span><span class="st">&quot;Titulo 2&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="ggplot2.html#cb466-1" aria-hidden="true" tabindex="-1"></a>a2<span class="ot">=</span><span class="fu">grid.arrange</span>(a,b,<span class="at">layout_matrix =</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>)),<span class="at">top=</span><span class="st">&quot;Titulo 2&quot;</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-404-2.png" width="672" /></p>
-<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb467-1"><a href="ggplot2.html#cb467-1"></a><span class="kw">grid.arrange</span>(a1,a2)</span></code></pre></div>
+<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb467-1"><a href="ggplot2.html#cb467-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grid.arrange</span>(a1,a2)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-404-3.png" width="672" /></p>
 <hr />
 </div>
@@ -754,10 +754,11 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
-"theme": "white",
+"theme": "sepia",
 "family": "sans",
 "size": 2
 },

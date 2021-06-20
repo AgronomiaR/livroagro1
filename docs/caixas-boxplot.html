@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title> 4 Caixas (Boxplot) | Aplicações práticas do software R para Agronomia</title>
   <meta name="description" content="Este é um livro virtual desenvolvido com a finalidade de fornecer tutoriais práticos das principais análises estatísticas e apresentação de dados utilizando o software R" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content=" 4 Caixas (Boxplot) | Aplicações práticas do software R para Agronomia" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Gabriel Danilo Shimizu" />
 
 
-<meta name="date" content="2020-10-24" />
+<meta name="date" content="2021-06-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +33,8 @@
   
 <link rel="prev" href="gráfico-de-barras-1.html"/>
 <link rel="next" href="regressão.html"/>
-<script src="libs/header-attrs-2.5/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -51,18 +51,17 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
 <script src="libs/chart.js-2.4.0/./dist/Chart.min.js"></script>
 <script src="libs/chartJSRadar-binding-0.3.1/chartJSRadar.js"></script>
-<script src="libs/plotly-binding-4.9.2.1/plotly.js"></script>
+<script src="libs/plotly-binding-4.9.4.1/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -128,6 +127,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -659,38 +659,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </center>
 <p>Existem várias formas de entrada ou leitura de dados no R. Para um conjunto de dados pequeno, pode-se entrar com as informações diretamente no console do programa. Considere um delineamento inteiramente ao acaso com 5 tratamentos e 4 repetições. A entrada dos dados, entre outras, poderia ser da forma:</p>
 <p><br></p>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="caixas-boxplot.html#cb105-1"></a>tratamentos=<span class="kw">rep</span>(<span class="kw">c</span>(<span class="kw">paste</span>(<span class="st">&quot;T&quot;</span>, <span class="dt">sep=</span><span class="st">&#39;&#39;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)), <span class="dt">each=</span><span class="dv">4</span>)</span>
-<span id="cb105-2"><a href="caixas-boxplot.html#cb105-2"></a>resposta =<span class="st"> </span><span class="kw">c</span>(<span class="dv">100</span>, <span class="dv">120</span>, <span class="dv">110</span>,  <span class="dv">90</span>, <span class="dv">150</span>, <span class="dv">145</span>, <span class="dv">149</span>, <span class="dv">165</span>, <span class="dv">150</span>, <span class="dv">144</span>, <span class="dv">134</span>, <span class="dv">139</span>, <span class="dv">220</span>, <span class="dv">206</span>, <span class="dv">210</span>, <span class="dv">210</span>, <span class="dv">266</span>, <span class="dv">249</span>, <span class="dv">248</span>, <span class="dv">260</span>)</span>
-<span id="cb105-3"><a href="caixas-boxplot.html#cb105-3"></a><span class="co">## Médias e Desvioss-padrão (por Tratamento)</span></span>
-<span id="cb105-4"><a href="caixas-boxplot.html#cb105-4"></a>(Médias =<span class="st"> </span><span class="kw">tapply</span>(resposta, tratamentos, mean))</span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="caixas-boxplot.html#cb105-1" aria-hidden="true" tabindex="-1"></a>tratamentos<span class="ot">=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="fu">paste</span>(<span class="st">&quot;T&quot;</span>, <span class="at">sep=</span><span class="st">&#39;&#39;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)), <span class="at">each=</span><span class="dv">4</span>)</span>
+<span id="cb105-2"><a href="caixas-boxplot.html#cb105-2" aria-hidden="true" tabindex="-1"></a>resposta <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">120</span>, <span class="dv">110</span>,  <span class="dv">90</span>, <span class="dv">150</span>, <span class="dv">145</span>, <span class="dv">149</span>, <span class="dv">165</span>, <span class="dv">150</span>, <span class="dv">144</span>, <span class="dv">134</span>, <span class="dv">139</span>, <span class="dv">220</span>, <span class="dv">206</span>, <span class="dv">210</span>, <span class="dv">210</span>, <span class="dv">266</span>, <span class="dv">249</span>, <span class="dv">248</span>, <span class="dv">260</span>)</span>
+<span id="cb105-3"><a href="caixas-boxplot.html#cb105-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Médias e Desvioss-padrão (por Tratamento)</span></span>
+<span id="cb105-4"><a href="caixas-boxplot.html#cb105-4" aria-hidden="true" tabindex="-1"></a>(Médias <span class="ot">=</span> <span class="fu">tapply</span>(resposta, tratamentos, mean))</span></code></pre></div>
 <pre><code>##     T1     T2     T3     T4     T5 
 ## 105,00 152,25 141,75 211,50 255,75</code></pre>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="caixas-boxplot.html#cb107-1"></a>(<span class="dt">Desvios =</span> <span class="kw">tapply</span>(resposta, tratamentos, sd))</span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="caixas-boxplot.html#cb107-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">Desvios =</span> <span class="fu">tapply</span>(resposta, tratamentos, sd))</span></code></pre></div>
 <pre><code>##        T1        T2        T3        T4        T5 
 ## 12,909944  8,770215  6,849574  5,972158  8,732125</code></pre>
 <p><br></p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="caixas-boxplot.html#cb109-1"></a><span class="kw">boxplot</span>(resposta <span class="op">~</span><span class="st"> </span>tratamentos)</span>
-<span id="cb109-2"><a href="caixas-boxplot.html#cb109-2"></a><span class="co"># Ou, pode-se usar o comando ``Boxplot`` do pacote ``car``</span></span>
-<span id="cb109-3"><a href="caixas-boxplot.html#cb109-3"></a><span class="kw">require</span>(car)</span>
-<span id="cb109-4"><a href="caixas-boxplot.html#cb109-4"></a><span class="kw">Boxplot</span>(resposta <span class="op">~</span><span class="st"> </span>tratamentos)</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="caixas-boxplot.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(resposta <span class="sc">~</span> tratamentos)</span>
+<span id="cb109-2"><a href="caixas-boxplot.html#cb109-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Ou, pode-se usar o comando ``Boxplot`` do pacote ``car``</span></span>
+<span id="cb109-3"><a href="caixas-boxplot.html#cb109-3" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(car)</span>
+<span id="cb109-4"><a href="caixas-boxplot.html#cb109-4" aria-hidden="true" tabindex="-1"></a><span class="fu">Boxplot</span>(resposta <span class="sc">~</span> tratamentos)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-103-1.png" width="672" /></p>
 <p><br></p>
 <p>Uma vantagem do comando <code>Boxplot</code> é que se houver <em>outlier</em>, ele já identifica a pposição do elemento discrepante.</p>
 <p><br></p>
 <div id="melhorias-3" class="section level3" number="4.0.1">
 <h3><span class="header-section-number">4.0.1</span> Melhorias</h3>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="caixas-boxplot.html#cb110-1"></a><span class="kw">boxplot</span>(resposta <span class="op">~</span><span class="st"> </span>tratamentos, </span>
-<span id="cb110-2"><a href="caixas-boxplot.html#cb110-2"></a>        <span class="dt">las=</span><span class="dv">1</span>,</span>
-<span id="cb110-3"><a href="caixas-boxplot.html#cb110-3"></a>        <span class="dt">col=</span><span class="st">&quot;lightyellow&quot;</span>,</span>
-<span id="cb110-4"><a href="caixas-boxplot.html#cb110-4"></a>        <span class="dt">xlab=</span><span class="st">&quot;Tratamentos&quot;</span>,</span>
-<span id="cb110-5"><a href="caixas-boxplot.html#cb110-5"></a>        <span class="dt">ylab=</span><span class="st">&quot;Resposta&quot;</span>,</span>
-<span id="cb110-6"><a href="caixas-boxplot.html#cb110-6"></a>        <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">300</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="caixas-boxplot.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(resposta <span class="sc">~</span> tratamentos, </span>
+<span id="cb110-2"><a href="caixas-boxplot.html#cb110-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">las=</span><span class="dv">1</span>,</span>
+<span id="cb110-3"><a href="caixas-boxplot.html#cb110-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">col=</span><span class="st">&quot;lightyellow&quot;</span>,</span>
+<span id="cb110-4"><a href="caixas-boxplot.html#cb110-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab=</span><span class="st">&quot;Tratamentos&quot;</span>,</span>
+<span id="cb110-5"><a href="caixas-boxplot.html#cb110-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab=</span><span class="st">&quot;Resposta&quot;</span>,</span>
+<span id="cb110-6"><a href="caixas-boxplot.html#cb110-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">300</span>))</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-104-1.png" width="672" /></p>
 <p><br></p>
 <p><strong>Comandos usados</strong>:</p>
 <ul>
 <li><p><code>las=1</code>: mostrar a escala do eixo no sentido horizontal;</p></li>
-<li><p><code>col="cor"</code>: mudar a cor das colunas (Ex. “red”, “blue”, “green” ou <code>gray.colors</code>(quantidade de tonalidades) para escala cinza ou <code>rainbow</code>(quantidade de cores) para escala colorida. Também é possível especificar a cor de cada coluna (<code>col</code>=c(“red”, “green”, “yellow”, “gray”, “blue”)));</p></li>
+<li><p><code>col="cor"</code>: mudar a cor das colunas (Ex. “red,” “blue,” “green” ou <code>gray.colors</code>(quantidade de tonalidades) para escala cinza ou <code>rainbow</code>(quantidade de cores) para escala colorida. Também é possível especificar a cor de cada coluna (<code>col</code>=c(“red,” “green,” “yellow,” “gray,” “blue”)));</p></li>
 <li><p><code>xlab</code> e <code>ylab</code>: nomear os eixos <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>;</p></li>
 <li><p><code>xlim</code> e <code>xlim</code>: mudar as escalas dos eixox <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>;</p></li>
 </ul>
@@ -698,243 +698,243 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="plotando-médias" class="section level3" number="4.0.2">
 <h3><span class="header-section-number">4.0.2</span> Plotando médias</h3>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="caixas-boxplot.html#cb111-1"></a><span class="kw">boxplot</span>(resposta <span class="op">~</span><span class="st"> </span>tratamentos, </span>
-<span id="cb111-2"><a href="caixas-boxplot.html#cb111-2"></a>        <span class="dt">las=</span><span class="dv">1</span>,</span>
-<span id="cb111-3"><a href="caixas-boxplot.html#cb111-3"></a>        <span class="dt">col=</span><span class="st">&quot;lightyellow&quot;</span>,</span>
-<span id="cb111-4"><a href="caixas-boxplot.html#cb111-4"></a>        <span class="dt">xlab=</span><span class="st">&quot;Tratamentos&quot;</span>,</span>
-<span id="cb111-5"><a href="caixas-boxplot.html#cb111-5"></a>        <span class="dt">ylab=</span><span class="st">&quot;Resposta&quot;</span>,</span>
-<span id="cb111-6"><a href="caixas-boxplot.html#cb111-6"></a>        <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">50</span>,<span class="dv">300</span>))</span>
-<span id="cb111-7"><a href="caixas-boxplot.html#cb111-7"></a></span>
-<span id="cb111-8"><a href="caixas-boxplot.html#cb111-8"></a><span class="kw">points</span>(Médias, <span class="dt">pch=</span><span class="st">&#39;+&#39;</span>, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="caixas-boxplot.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(resposta <span class="sc">~</span> tratamentos, </span>
+<span id="cb111-2"><a href="caixas-boxplot.html#cb111-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">las=</span><span class="dv">1</span>,</span>
+<span id="cb111-3"><a href="caixas-boxplot.html#cb111-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">col=</span><span class="st">&quot;lightyellow&quot;</span>,</span>
+<span id="cb111-4"><a href="caixas-boxplot.html#cb111-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab=</span><span class="st">&quot;Tratamentos&quot;</span>,</span>
+<span id="cb111-5"><a href="caixas-boxplot.html#cb111-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab=</span><span class="st">&quot;Resposta&quot;</span>,</span>
+<span id="cb111-6"><a href="caixas-boxplot.html#cb111-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">50</span>,<span class="dv">300</span>))</span>
+<span id="cb111-7"><a href="caixas-boxplot.html#cb111-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb111-8"><a href="caixas-boxplot.html#cb111-8" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(Médias, <span class="at">pch=</span><span class="st">&#39;+&#39;</span>, <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-105-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="unidade-do-eixo-y-4" class="section level3" number="4.0.3">
 <h3><span class="header-section-number">4.0.3</span> Unidade do eixo Y</h3>
 <p>Caso a variável resposta seja Produção (<span class="math inline">\(kg/ha\)</span>), inclui-se tal informação usando-se o comando <code>expression</code>.</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="caixas-boxplot.html#cb112-1"></a><span class="kw">boxplot</span>(resposta <span class="op">~</span><span class="st"> </span>tratamentos,</span>
-<span id="cb112-2"><a href="caixas-boxplot.html#cb112-2"></a>        <span class="dt">las=</span><span class="dv">1</span>,</span>
-<span id="cb112-3"><a href="caixas-boxplot.html#cb112-3"></a>        <span class="dt">col=</span><span class="st">&quot;lightyellow&quot;</span>,</span>
-<span id="cb112-4"><a href="caixas-boxplot.html#cb112-4"></a>        <span class="dt">xlab=</span><span class="st">&quot;Tratamentos&quot;</span>,</span>
-<span id="cb112-5"><a href="caixas-boxplot.html#cb112-5"></a>        <span class="dt">ylab=</span><span class="kw">expression</span>(<span class="st">&quot;Produção&quot;</span><span class="op">~</span><span class="er">~</span>(kg<span class="op">~</span>ha<span class="op">^-</span><span class="dv">1</span>)),</span>
-<span id="cb112-6"><a href="caixas-boxplot.html#cb112-6"></a>        <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">50</span>,<span class="dv">300</span>))</span>
-<span id="cb112-7"><a href="caixas-boxplot.html#cb112-7"></a><span class="kw">points</span>(Médias, <span class="dt">pch=</span><span class="st">&#39;+&#39;</span>, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="caixas-boxplot.html#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(resposta <span class="sc">~</span> tratamentos,</span>
+<span id="cb112-2"><a href="caixas-boxplot.html#cb112-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">las=</span><span class="dv">1</span>,</span>
+<span id="cb112-3"><a href="caixas-boxplot.html#cb112-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">col=</span><span class="st">&quot;lightyellow&quot;</span>,</span>
+<span id="cb112-4"><a href="caixas-boxplot.html#cb112-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab=</span><span class="st">&quot;Tratamentos&quot;</span>,</span>
+<span id="cb112-5"><a href="caixas-boxplot.html#cb112-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab=</span><span class="fu">expression</span>(<span class="st">&quot;Produção&quot;</span><span class="sc">~</span><span class="er">~</span>(kg<span class="sc">~</span>ha<span class="sc">^-</span><span class="dv">1</span>)),</span>
+<span id="cb112-6"><a href="caixas-boxplot.html#cb112-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">50</span>,<span class="dv">300</span>))</span>
+<span id="cb112-7"><a href="caixas-boxplot.html#cb112-7" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(Médias, <span class="at">pch=</span><span class="st">&#39;+&#39;</span>, <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-106-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="limites-superior-e-inferior" class="section level3" number="4.0.4">
 <h3><span class="header-section-number">4.0.4</span> Limites superior e inferior</h3>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="caixas-boxplot.html#cb113-1"></a>limites =<span class="st"> </span><span class="kw">tapply</span>(resposta, tratamentos, boxplot.stats)</span>
-<span id="cb113-2"><a href="caixas-boxplot.html#cb113-2"></a>superior=<span class="kw">c</span>(limites<span class="op">$</span><span class="st">`</span><span class="dt">T1</span><span class="st">`</span><span class="op">$</span>stats[<span class="dv">5</span>],</span>
-<span id="cb113-3"><a href="caixas-boxplot.html#cb113-3"></a>           limites<span class="op">$</span><span class="st">`</span><span class="dt">T2</span><span class="st">`</span><span class="op">$</span>stats[<span class="dv">5</span>],</span>
-<span id="cb113-4"><a href="caixas-boxplot.html#cb113-4"></a>           limites<span class="op">$</span><span class="st">`</span><span class="dt">T3</span><span class="st">`</span><span class="op">$</span>stats[<span class="dv">5</span>],</span>
-<span id="cb113-5"><a href="caixas-boxplot.html#cb113-5"></a>           limites<span class="op">$</span><span class="st">`</span><span class="dt">T4</span><span class="st">`</span><span class="op">$</span>stats[<span class="dv">5</span>],</span>
-<span id="cb113-6"><a href="caixas-boxplot.html#cb113-6"></a>           limites<span class="op">$</span><span class="st">`</span><span class="dt">T5</span><span class="st">`</span><span class="op">$</span>stats[<span class="dv">5</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="caixas-boxplot.html#cb113-1" aria-hidden="true" tabindex="-1"></a>limites <span class="ot">=</span> <span class="fu">tapply</span>(resposta, tratamentos, boxplot.stats)</span>
+<span id="cb113-2"><a href="caixas-boxplot.html#cb113-2" aria-hidden="true" tabindex="-1"></a>superior<span class="ot">=</span><span class="fu">c</span>(limites<span class="sc">$</span><span class="st">`</span><span class="at">T1</span><span class="st">`</span><span class="sc">$</span>stats[<span class="dv">5</span>],</span>
+<span id="cb113-3"><a href="caixas-boxplot.html#cb113-3" aria-hidden="true" tabindex="-1"></a>           limites<span class="sc">$</span><span class="st">`</span><span class="at">T2</span><span class="st">`</span><span class="sc">$</span>stats[<span class="dv">5</span>],</span>
+<span id="cb113-4"><a href="caixas-boxplot.html#cb113-4" aria-hidden="true" tabindex="-1"></a>           limites<span class="sc">$</span><span class="st">`</span><span class="at">T3</span><span class="st">`</span><span class="sc">$</span>stats[<span class="dv">5</span>],</span>
+<span id="cb113-5"><a href="caixas-boxplot.html#cb113-5" aria-hidden="true" tabindex="-1"></a>           limites<span class="sc">$</span><span class="st">`</span><span class="at">T4</span><span class="st">`</span><span class="sc">$</span>stats[<span class="dv">5</span>],</span>
+<span id="cb113-6"><a href="caixas-boxplot.html#cb113-6" aria-hidden="true" tabindex="-1"></a>           limites<span class="sc">$</span><span class="st">`</span><span class="at">T5</span><span class="st">`</span><span class="sc">$</span>stats[<span class="dv">5</span>])</span></code></pre></div>
 <p><br></p>
 </div>
 <div id="média-acima-das-barras-3" class="section level3" number="4.0.5">
 <h3><span class="header-section-number">4.0.5</span> Média acima das barras</h3>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="caixas-boxplot.html#cb114-1"></a><span class="kw">boxplot</span>(resposta <span class="op">~</span><span class="st"> </span>tratamentos,</span>
-<span id="cb114-2"><a href="caixas-boxplot.html#cb114-2"></a>        <span class="dt">las=</span><span class="dv">1</span>,</span>
-<span id="cb114-3"><a href="caixas-boxplot.html#cb114-3"></a>        <span class="dt">col=</span><span class="st">&quot;lightyellow&quot;</span>,</span>
-<span id="cb114-4"><a href="caixas-boxplot.html#cb114-4"></a>        <span class="dt">xlab=</span><span class="st">&quot;Tratamentos&quot;</span>,</span>
-<span id="cb114-5"><a href="caixas-boxplot.html#cb114-5"></a>        <span class="dt">ylab=</span><span class="kw">expression</span>(<span class="st">&quot;Produção&quot;</span><span class="op">~</span><span class="er">~</span>(kg<span class="op">~</span>ha<span class="op">^-</span><span class="dv">1</span>)),</span>
-<span id="cb114-6"><a href="caixas-boxplot.html#cb114-6"></a>        <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">50</span>,<span class="dv">300</span>))</span>
-<span id="cb114-7"><a href="caixas-boxplot.html#cb114-7"></a><span class="kw">points</span>(Médias, <span class="dt">pch=</span><span class="st">&#39;+&#39;</span>, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</span>
-<span id="cb114-8"><a href="caixas-boxplot.html#cb114-8"></a><span class="kw">text</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>), superior <span class="op">+</span><span class="st"> </span><span class="dv">10</span>, Médias)</span></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="caixas-boxplot.html#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(resposta <span class="sc">~</span> tratamentos,</span>
+<span id="cb114-2"><a href="caixas-boxplot.html#cb114-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">las=</span><span class="dv">1</span>,</span>
+<span id="cb114-3"><a href="caixas-boxplot.html#cb114-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">col=</span><span class="st">&quot;lightyellow&quot;</span>,</span>
+<span id="cb114-4"><a href="caixas-boxplot.html#cb114-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab=</span><span class="st">&quot;Tratamentos&quot;</span>,</span>
+<span id="cb114-5"><a href="caixas-boxplot.html#cb114-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab=</span><span class="fu">expression</span>(<span class="st">&quot;Produção&quot;</span><span class="sc">~</span><span class="er">~</span>(kg<span class="sc">~</span>ha<span class="sc">^-</span><span class="dv">1</span>)),</span>
+<span id="cb114-6"><a href="caixas-boxplot.html#cb114-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">50</span>,<span class="dv">300</span>))</span>
+<span id="cb114-7"><a href="caixas-boxplot.html#cb114-7" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(Médias, <span class="at">pch=</span><span class="st">&#39;+&#39;</span>, <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span>
+<span id="cb114-8"><a href="caixas-boxplot.html#cb114-8" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>), superior <span class="sc">+</span> <span class="dv">10</span>, Médias)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-108-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="separação-de-casa-decimal-4" class="section level3" number="4.0.6">
 <h3><span class="header-section-number">4.0.6</span> Separação de casa decimal</h3>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="caixas-boxplot.html#cb115-1"></a><span class="kw">options</span>(<span class="dt">OutDec=</span><span class="st">&quot;,&quot;</span>)</span>
-<span id="cb115-2"><a href="caixas-boxplot.html#cb115-2"></a><span class="kw">boxplot</span>(resposta <span class="op">~</span><span class="st"> </span>tratamentos,</span>
-<span id="cb115-3"><a href="caixas-boxplot.html#cb115-3"></a>        <span class="dt">las=</span><span class="dv">1</span>,</span>
-<span id="cb115-4"><a href="caixas-boxplot.html#cb115-4"></a>        <span class="dt">col=</span><span class="st">&quot;lightyellow&quot;</span>,</span>
-<span id="cb115-5"><a href="caixas-boxplot.html#cb115-5"></a>        <span class="dt">xlab=</span><span class="st">&quot;Tratamentos&quot;</span>,</span>
-<span id="cb115-6"><a href="caixas-boxplot.html#cb115-6"></a>        <span class="dt">ylab=</span><span class="kw">expression</span>(<span class="st">&quot;Produção&quot;</span><span class="op">~</span><span class="er">~</span>(kg<span class="op">~</span>ha<span class="op">^-</span><span class="dv">1</span>)),</span>
-<span id="cb115-7"><a href="caixas-boxplot.html#cb115-7"></a>        <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">50</span>,<span class="dv">300</span>))</span>
-<span id="cb115-8"><a href="caixas-boxplot.html#cb115-8"></a><span class="kw">points</span>(Médias, <span class="dt">pch=</span><span class="st">&#39;+&#39;</span>, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</span>
-<span id="cb115-9"><a href="caixas-boxplot.html#cb115-9"></a><span class="kw">text</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>), superior <span class="op">+</span><span class="st"> </span><span class="dv">20</span>, Médias)</span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="caixas-boxplot.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">OutDec=</span><span class="st">&quot;,&quot;</span>)</span>
+<span id="cb115-2"><a href="caixas-boxplot.html#cb115-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(resposta <span class="sc">~</span> tratamentos,</span>
+<span id="cb115-3"><a href="caixas-boxplot.html#cb115-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">las=</span><span class="dv">1</span>,</span>
+<span id="cb115-4"><a href="caixas-boxplot.html#cb115-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">col=</span><span class="st">&quot;lightyellow&quot;</span>,</span>
+<span id="cb115-5"><a href="caixas-boxplot.html#cb115-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab=</span><span class="st">&quot;Tratamentos&quot;</span>,</span>
+<span id="cb115-6"><a href="caixas-boxplot.html#cb115-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab=</span><span class="fu">expression</span>(<span class="st">&quot;Produção&quot;</span><span class="sc">~</span><span class="er">~</span>(kg<span class="sc">~</span>ha<span class="sc">^-</span><span class="dv">1</span>)),</span>
+<span id="cb115-7"><a href="caixas-boxplot.html#cb115-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">50</span>,<span class="dv">300</span>))</span>
+<span id="cb115-8"><a href="caixas-boxplot.html#cb115-8" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(Médias, <span class="at">pch=</span><span class="st">&#39;+&#39;</span>, <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span>
+<span id="cb115-9"><a href="caixas-boxplot.html#cb115-9" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>), superior <span class="sc">+</span> <span class="dv">20</span>, Médias)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-109-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="letras-do-teste-de-comparação-5" class="section level3" number="4.0.7">
 <h3><span class="header-section-number">4.0.7</span> Letras do teste de comparação</h3>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="caixas-boxplot.html#cb116-1"></a>tukey=<span class="kw">c</span>(<span class="st">&quot;d&quot;</span>,<span class="st">&quot;c&quot;</span>,<span class="st">&quot;c&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;a&quot;</span>)</span>
-<span id="cb116-2"><a href="caixas-boxplot.html#cb116-2"></a><span class="kw">options</span>(<span class="dt">OutDec=</span><span class="st">&quot;,&quot;</span>)</span>
-<span id="cb116-3"><a href="caixas-boxplot.html#cb116-3"></a><span class="kw">boxplot</span>(resposta <span class="op">~</span><span class="st"> </span>tratamentos,</span>
-<span id="cb116-4"><a href="caixas-boxplot.html#cb116-4"></a>        <span class="dt">las=</span><span class="dv">1</span>,</span>
-<span id="cb116-5"><a href="caixas-boxplot.html#cb116-5"></a>        <span class="dt">col=</span><span class="st">&quot;lightyellow&quot;</span>,</span>
-<span id="cb116-6"><a href="caixas-boxplot.html#cb116-6"></a>        <span class="dt">xlab=</span><span class="st">&quot;Tratamentos&quot;</span>,</span>
-<span id="cb116-7"><a href="caixas-boxplot.html#cb116-7"></a>        <span class="dt">ylab=</span><span class="kw">expression</span>(<span class="st">&quot;Produção&quot;</span><span class="op">~</span>(kg<span class="op">~</span>ha<span class="op">^-</span><span class="dv">1</span>)),</span>
-<span id="cb116-8"><a href="caixas-boxplot.html#cb116-8"></a>        <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">50</span>,<span class="dv">300</span>))</span>
-<span id="cb116-9"><a href="caixas-boxplot.html#cb116-9"></a><span class="kw">points</span>(Médias, <span class="dt">pch=</span><span class="st">&#39;+&#39;</span>, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</span>
-<span id="cb116-10"><a href="caixas-boxplot.html#cb116-10"></a><span class="kw">text</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>), superior <span class="op">+</span><span class="st"> </span><span class="dv">20</span>, <span class="kw">paste</span>(<span class="kw">round</span>(Médias, <span class="dv">0</span>), tukey))</span></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="caixas-boxplot.html#cb116-1" aria-hidden="true" tabindex="-1"></a>tukey<span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;d&quot;</span>,<span class="st">&quot;c&quot;</span>,<span class="st">&quot;c&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;a&quot;</span>)</span>
+<span id="cb116-2"><a href="caixas-boxplot.html#cb116-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">OutDec=</span><span class="st">&quot;,&quot;</span>)</span>
+<span id="cb116-3"><a href="caixas-boxplot.html#cb116-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(resposta <span class="sc">~</span> tratamentos,</span>
+<span id="cb116-4"><a href="caixas-boxplot.html#cb116-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">las=</span><span class="dv">1</span>,</span>
+<span id="cb116-5"><a href="caixas-boxplot.html#cb116-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">col=</span><span class="st">&quot;lightyellow&quot;</span>,</span>
+<span id="cb116-6"><a href="caixas-boxplot.html#cb116-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab=</span><span class="st">&quot;Tratamentos&quot;</span>,</span>
+<span id="cb116-7"><a href="caixas-boxplot.html#cb116-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab=</span><span class="fu">expression</span>(<span class="st">&quot;Produção&quot;</span><span class="sc">~</span>(kg<span class="sc">~</span>ha<span class="sc">^-</span><span class="dv">1</span>)),</span>
+<span id="cb116-8"><a href="caixas-boxplot.html#cb116-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">50</span>,<span class="dv">300</span>))</span>
+<span id="cb116-9"><a href="caixas-boxplot.html#cb116-9" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(Médias, <span class="at">pch=</span><span class="st">&#39;+&#39;</span>, <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span>
+<span id="cb116-10"><a href="caixas-boxplot.html#cb116-10" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>), superior <span class="sc">+</span> <span class="dv">20</span>, <span class="fu">paste</span>(<span class="fu">round</span>(Médias, <span class="dv">0</span>), tukey))</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-110-1.png" width="672" /></p>
 <p><br><br></p>
 </div>
 <div id="pacote-ggplot2" class="section level2" number="4.1">
 <h2><span class="header-section-number">4.1</span> Pacote ggplot2</h2>
 <p>Vamos trabalhar com um experimento em DIC com quatro tratamentos e quatro repetições cada.</p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="caixas-boxplot.html#cb117-1"></a>exp1=<span class="kw">c</span>(<span class="dv">17</span>,<span class="dv">22</span>,<span class="dv">13</span>,<span class="dv">14</span>,<span class="dv">18</span>,<span class="dv">19</span>,<span class="dv">16</span>,<span class="dv">21</span>,<span class="dv">9</span>,<span class="dv">16</span>,<span class="dv">15</span>,<span class="dv">8</span>,<span class="dv">25</span>,<span class="dv">26</span>,<span class="dv">23</span>,<span class="dv">40</span>)</span>
-<span id="cb117-2"><a href="caixas-boxplot.html#cb117-2"></a>Trat=<span class="kw">rep</span>(<span class="kw">c</span>(<span class="kw">paste</span>(<span class="st">&quot;T&quot;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>)),<span class="dt">e=</span><span class="dv">4</span>)</span>
-<span id="cb117-3"><a href="caixas-boxplot.html#cb117-3"></a>dados=<span class="kw">data.frame</span>(Trat,exp1)</span>
-<span id="cb117-4"><a href="caixas-boxplot.html#cb117-4"></a>dados<span class="op">$</span>Trat=<span class="kw">as.factor</span>(Trat)</span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="caixas-boxplot.html#cb117-1" aria-hidden="true" tabindex="-1"></a>exp1<span class="ot">=</span><span class="fu">c</span>(<span class="dv">17</span>,<span class="dv">22</span>,<span class="dv">13</span>,<span class="dv">14</span>,<span class="dv">18</span>,<span class="dv">19</span>,<span class="dv">16</span>,<span class="dv">21</span>,<span class="dv">9</span>,<span class="dv">16</span>,<span class="dv">15</span>,<span class="dv">8</span>,<span class="dv">25</span>,<span class="dv">26</span>,<span class="dv">23</span>,<span class="dv">40</span>)</span>
+<span id="cb117-2"><a href="caixas-boxplot.html#cb117-2" aria-hidden="true" tabindex="-1"></a>Trat<span class="ot">=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="fu">paste</span>(<span class="st">&quot;T&quot;</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)),<span class="at">e=</span><span class="dv">4</span>)</span>
+<span id="cb117-3"><a href="caixas-boxplot.html#cb117-3" aria-hidden="true" tabindex="-1"></a>dados<span class="ot">=</span><span class="fu">data.frame</span>(Trat,exp1)</span>
+<span id="cb117-4"><a href="caixas-boxplot.html#cb117-4" aria-hidden="true" tabindex="-1"></a>dados<span class="sc">$</span>Trat<span class="ot">=</span><span class="fu">as.factor</span>(Trat)</span></code></pre></div>
 <p><strong>Obs.</strong> Para facilitar, vamos realizar a análise direto pelo pacote ExpDes.pt (é necessário instalar o pacote)</p>
 <p><br></p>
 <div id="análise-de-variância" class="section level3" number="4.1.1">
 <h3><span class="header-section-number">4.1.1</span> Análise de variância</h3>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="caixas-boxplot.html#cb118-1"></a>ExpDes.pt<span class="op">::</span><span class="kw">dic</span>(Trat,exp1)</span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="caixas-boxplot.html#cb118-1" aria-hidden="true" tabindex="-1"></a>ExpDes.pt<span class="sc">::</span><span class="fu">dic</span>(Trat,exp1)</span></code></pre></div>
 <p><br></p>
 </div>
 </div>
 <div id="utilizando-o-ggplot2-1" class="section level2" number="4.2">
 <h2><span class="header-section-number">4.2</span> Utilizando o <em>ggplot2</em></h2>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="caixas-boxplot.html#cb119-1"></a><span class="kw">library</span>(ggplot2)</span></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="caixas-boxplot.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
 <p><br></p>
 <div id="gráfico-básico-3" class="section level3" number="4.2.1">
 <h3><span class="header-section-number">4.2.1</span> Gráfico básico</h3>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="caixas-boxplot.html#cb120-1"></a><span class="kw">ggplot</span>(dados, </span>
-<span id="cb120-2"><a href="caixas-boxplot.html#cb120-2"></a>       <span class="kw">aes</span>(<span class="dt">x=</span>Trat,<span class="dt">y=</span>exp1))<span class="op">+</span></span>
-<span id="cb120-3"><a href="caixas-boxplot.html#cb120-3"></a><span class="st">  </span><span class="kw">geom_boxplot</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="caixas-boxplot.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dados, </span>
+<span id="cb120-2"><a href="caixas-boxplot.html#cb120-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>Trat,<span class="at">y=</span>exp1))<span class="sc">+</span></span>
+<span id="cb120-3"><a href="caixas-boxplot.html#cb120-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-114-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="modificando-cores" class="section level3" number="4.2.2">
 <h3><span class="header-section-number">4.2.2</span> Modificando cores</h3>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="caixas-boxplot.html#cb121-1"></a><span class="kw">ggplot</span>(dados, </span>
-<span id="cb121-2"><a href="caixas-boxplot.html#cb121-2"></a>       <span class="kw">aes</span>(<span class="dt">x=</span>Trat,<span class="dt">y=</span>exp1))<span class="op">+</span></span>
-<span id="cb121-3"><a href="caixas-boxplot.html#cb121-3"></a><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">fill=</span><span class="st">&quot;lightgreen&quot;</span>,          <span class="co"># Cor da caixa</span></span>
-<span id="cb121-4"><a href="caixas-boxplot.html#cb121-4"></a>               <span class="dt">colour=</span><span class="st">&quot;red&quot;</span>,               <span class="co"># cor do contorno</span></span>
-<span id="cb121-5"><a href="caixas-boxplot.html#cb121-5"></a>               <span class="dt">outlier.colour =</span> <span class="st">&quot;blue&quot;</span>,    <span class="co"># Cor do contorno do outlier</span></span>
-<span id="cb121-6"><a href="caixas-boxplot.html#cb121-6"></a>               <span class="dt">outlier.shape =</span> <span class="dv">10</span>,          <span class="co"># Formato do ponto do outlier</span></span>
-<span id="cb121-7"><a href="caixas-boxplot.html#cb121-7"></a>               <span class="dt">outlier.size =</span> <span class="dv">2</span>)           <span class="co"># Tamanho do outlier</span></span></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="caixas-boxplot.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dados, </span>
+<span id="cb121-2"><a href="caixas-boxplot.html#cb121-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>Trat,<span class="at">y=</span>exp1))<span class="sc">+</span></span>
+<span id="cb121-3"><a href="caixas-boxplot.html#cb121-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill=</span><span class="st">&quot;lightgreen&quot;</span>,          <span class="co"># Cor da caixa</span></span>
+<span id="cb121-4"><a href="caixas-boxplot.html#cb121-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">colour=</span><span class="st">&quot;red&quot;</span>,               <span class="co"># cor do contorno</span></span>
+<span id="cb121-5"><a href="caixas-boxplot.html#cb121-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">outlier.colour =</span> <span class="st">&quot;blue&quot;</span>,    <span class="co"># Cor do contorno do outlier</span></span>
+<span id="cb121-6"><a href="caixas-boxplot.html#cb121-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">outlier.shape =</span> <span class="dv">10</span>,          <span class="co"># Formato do ponto do outlier</span></span>
+<span id="cb121-7"><a href="caixas-boxplot.html#cb121-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">outlier.size =</span> <span class="dv">2</span>)           <span class="co"># Tamanho do outlier</span></span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-115-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="cor-por-tratamento" class="section level3" number="4.2.3">
 <h3><span class="header-section-number">4.2.3</span> Cor por tratamento</h3>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="caixas-boxplot.html#cb122-1"></a><span class="kw">ggplot</span>(dados, </span>
-<span id="cb122-2"><a href="caixas-boxplot.html#cb122-2"></a>       <span class="kw">aes</span>(<span class="dt">x=</span>Trat,<span class="dt">y=</span>exp1))<span class="op">+</span></span>
-<span id="cb122-3"><a href="caixas-boxplot.html#cb122-3"></a><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="kw">aes</span>(<span class="dt">fill=</span>dados<span class="op">$</span>Trat))</span></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="caixas-boxplot.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dados, </span>
+<span id="cb122-2"><a href="caixas-boxplot.html#cb122-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>Trat,<span class="at">y=</span>exp1))<span class="sc">+</span></span>
+<span id="cb122-3"><a href="caixas-boxplot.html#cb122-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">fill=</span>dados<span class="sc">$</span>Trat))</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-116-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="nome-dos-eixos" class="section level3" number="4.2.4">
 <h3><span class="header-section-number">4.2.4</span> Nome dos eixos</h3>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="caixas-boxplot.html#cb123-1"></a><span class="kw">ggplot</span>(dados, </span>
-<span id="cb123-2"><a href="caixas-boxplot.html#cb123-2"></a>       <span class="kw">aes</span>(<span class="dt">x=</span>Trat,<span class="dt">y=</span>exp1))<span class="op">+</span></span>
-<span id="cb123-3"><a href="caixas-boxplot.html#cb123-3"></a><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">fill=</span><span class="st">&quot;lightgreen&quot;</span>,          </span>
-<span id="cb123-4"><a href="caixas-boxplot.html#cb123-4"></a>               <span class="dt">colour=</span><span class="st">&quot;red&quot;</span>,               </span>
-<span id="cb123-5"><a href="caixas-boxplot.html#cb123-5"></a>               <span class="dt">outlier.colour =</span> <span class="st">&quot;blue&quot;</span>,    </span>
-<span id="cb123-6"><a href="caixas-boxplot.html#cb123-6"></a>               <span class="dt">outlier.shape =</span> <span class="dv">10</span>,          </span>
-<span id="cb123-7"><a href="caixas-boxplot.html#cb123-7"></a>               <span class="dt">outlier.size =</span> <span class="dv">2</span>)<span class="op">+</span><span class="st">      </span></span>
-<span id="cb123-8"><a href="caixas-boxplot.html#cb123-8"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Resposta&quot;</span>)<span class="op">+</span></span>
-<span id="cb123-9"><a href="caixas-boxplot.html#cb123-9"></a><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Tratamentos&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="caixas-boxplot.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dados, </span>
+<span id="cb123-2"><a href="caixas-boxplot.html#cb123-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>Trat,<span class="at">y=</span>exp1))<span class="sc">+</span></span>
+<span id="cb123-3"><a href="caixas-boxplot.html#cb123-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill=</span><span class="st">&quot;lightgreen&quot;</span>,          </span>
+<span id="cb123-4"><a href="caixas-boxplot.html#cb123-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">colour=</span><span class="st">&quot;red&quot;</span>,               </span>
+<span id="cb123-5"><a href="caixas-boxplot.html#cb123-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">outlier.colour =</span> <span class="st">&quot;blue&quot;</span>,    </span>
+<span id="cb123-6"><a href="caixas-boxplot.html#cb123-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">outlier.shape =</span> <span class="dv">10</span>,          </span>
+<span id="cb123-7"><a href="caixas-boxplot.html#cb123-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">outlier.size =</span> <span class="dv">2</span>)<span class="sc">+</span>      </span>
+<span id="cb123-8"><a href="caixas-boxplot.html#cb123-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Resposta&quot;</span>)<span class="sc">+</span></span>
+<span id="cb123-9"><a href="caixas-boxplot.html#cb123-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Tratamentos&quot;</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-117-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="linha-de-grade-e-cor-de-fundo" class="section level3" number="4.2.5">
 <h3><span class="header-section-number">4.2.5</span> linha de grade e cor de fundo</h3>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="caixas-boxplot.html#cb124-1"></a><span class="kw">ggplot</span>(dados, </span>
-<span id="cb124-2"><a href="caixas-boxplot.html#cb124-2"></a>       <span class="kw">aes</span>(<span class="dt">x=</span>Trat,<span class="dt">y=</span>exp1))<span class="op">+</span></span>
-<span id="cb124-3"><a href="caixas-boxplot.html#cb124-3"></a><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">fill=</span><span class="st">&quot;lightgreen&quot;</span>, </span>
-<span id="cb124-4"><a href="caixas-boxplot.html#cb124-4"></a>               <span class="dt">colour=</span><span class="st">&quot;black&quot;</span>,    </span>
-<span id="cb124-5"><a href="caixas-boxplot.html#cb124-5"></a>               <span class="dt">outlier.colour =</span> <span class="st">&quot;blue&quot;</span>,</span>
-<span id="cb124-6"><a href="caixas-boxplot.html#cb124-6"></a>               <span class="dt">outlier.shape =</span> <span class="dv">10</span>,     </span>
-<span id="cb124-7"><a href="caixas-boxplot.html#cb124-7"></a>               <span class="dt">outlier.size =</span> <span class="dv">2</span>)<span class="op">+</span><span class="st">      </span></span>
-<span id="cb124-8"><a href="caixas-boxplot.html#cb124-8"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Resposta&quot;</span>)<span class="op">+</span></span>
-<span id="cb124-9"><a href="caixas-boxplot.html#cb124-9"></a><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Tratamentos&quot;</span>)<span class="op">+</span></span>
-<span id="cb124-10"><a href="caixas-boxplot.html#cb124-10"></a><span class="st">  </span><span class="kw">theme_bw</span>()<span class="op">+</span></span>
-<span id="cb124-11"><a href="caixas-boxplot.html#cb124-11"></a><span class="st">  </span><span class="kw">theme_classic</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="caixas-boxplot.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dados, </span>
+<span id="cb124-2"><a href="caixas-boxplot.html#cb124-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>Trat,<span class="at">y=</span>exp1))<span class="sc">+</span></span>
+<span id="cb124-3"><a href="caixas-boxplot.html#cb124-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill=</span><span class="st">&quot;lightgreen&quot;</span>, </span>
+<span id="cb124-4"><a href="caixas-boxplot.html#cb124-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">colour=</span><span class="st">&quot;black&quot;</span>,    </span>
+<span id="cb124-5"><a href="caixas-boxplot.html#cb124-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">outlier.colour =</span> <span class="st">&quot;blue&quot;</span>,</span>
+<span id="cb124-6"><a href="caixas-boxplot.html#cb124-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">outlier.shape =</span> <span class="dv">10</span>,     </span>
+<span id="cb124-7"><a href="caixas-boxplot.html#cb124-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">outlier.size =</span> <span class="dv">2</span>)<span class="sc">+</span>      </span>
+<span id="cb124-8"><a href="caixas-boxplot.html#cb124-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Resposta&quot;</span>)<span class="sc">+</span></span>
+<span id="cb124-9"><a href="caixas-boxplot.html#cb124-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Tratamentos&quot;</span>)<span class="sc">+</span></span>
+<span id="cb124-10"><a href="caixas-boxplot.html#cb124-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="sc">+</span></span>
+<span id="cb124-11"><a href="caixas-boxplot.html#cb124-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-118-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="letras-do-teste-de-tukey" class="section level3" number="4.2.6">
 <h3><span class="header-section-number">4.2.6</span> Letras do teste de Tukey</h3>
 <p><strong>Obs.</strong> Neste exemplo vamos adicionar as letras abaixo das caixas e alinhado em y=1</p>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="caixas-boxplot.html#cb125-1"></a>a=<span class="kw">data.frame</span>(<span class="dt">Trat=</span><span class="kw">levels</span>(<span class="kw">as.factor</span>(Trat)), <span class="co"># Deve ter o mesmo da variável</span></span>
-<span id="cb125-2"><a href="caixas-boxplot.html#cb125-2"></a>             <span class="dt">exp1=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>),              <span class="co"># esse 1 é para Y=1</span></span>
-<span id="cb125-3"><a href="caixas-boxplot.html#cb125-3"></a>             <span class="dt">letra=</span><span class="kw">c</span>(<span class="st">&quot;b&quot;</span>,<span class="st">&quot;ab&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;a&quot;</span>))</span>
-<span id="cb125-4"><a href="caixas-boxplot.html#cb125-4"></a><span class="kw">ggplot</span>(dados, </span>
-<span id="cb125-5"><a href="caixas-boxplot.html#cb125-5"></a>       <span class="kw">aes</span>(<span class="dt">x=</span>Trat,<span class="dt">y=</span>exp1))<span class="op">+</span></span>
-<span id="cb125-6"><a href="caixas-boxplot.html#cb125-6"></a><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">fill=</span><span class="st">&quot;lightgreen&quot;</span>, </span>
-<span id="cb125-7"><a href="caixas-boxplot.html#cb125-7"></a>               <span class="dt">colour=</span><span class="st">&quot;black&quot;</span>,    </span>
-<span id="cb125-8"><a href="caixas-boxplot.html#cb125-8"></a>               <span class="dt">outlier.colour =</span> <span class="st">&quot;blue&quot;</span>,</span>
-<span id="cb125-9"><a href="caixas-boxplot.html#cb125-9"></a>               <span class="dt">outlier.shape =</span> <span class="dv">10</span>,     </span>
-<span id="cb125-10"><a href="caixas-boxplot.html#cb125-10"></a>               <span class="dt">outlier.size =</span> <span class="dv">2</span>)<span class="op">+</span><span class="st">      </span></span>
-<span id="cb125-11"><a href="caixas-boxplot.html#cb125-11"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Resposta&quot;</span>)<span class="op">+</span></span>
-<span id="cb125-12"><a href="caixas-boxplot.html#cb125-12"></a><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Tratamentos&quot;</span>)<span class="op">+</span></span>
-<span id="cb125-13"><a href="caixas-boxplot.html#cb125-13"></a><span class="st">  </span><span class="kw">theme_bw</span>()<span class="op">+</span></span>
-<span id="cb125-14"><a href="caixas-boxplot.html#cb125-14"></a><span class="st">  </span><span class="kw">theme_classic</span>()<span class="op">+</span></span>
-<span id="cb125-15"><a href="caixas-boxplot.html#cb125-15"></a><span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">data =</span> a, <span class="kw">aes</span>(<span class="dt">label =</span> letra))</span></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="caixas-boxplot.html#cb125-1" aria-hidden="true" tabindex="-1"></a>a<span class="ot">=</span><span class="fu">data.frame</span>(<span class="at">Trat=</span><span class="fu">levels</span>(<span class="fu">as.factor</span>(Trat)), <span class="co"># Deve ter o mesmo da variável</span></span>
+<span id="cb125-2"><a href="caixas-boxplot.html#cb125-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">exp1=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>),              <span class="co"># esse 1 é para Y=1</span></span>
+<span id="cb125-3"><a href="caixas-boxplot.html#cb125-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">letra=</span><span class="fu">c</span>(<span class="st">&quot;b&quot;</span>,<span class="st">&quot;ab&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;a&quot;</span>))</span>
+<span id="cb125-4"><a href="caixas-boxplot.html#cb125-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dados, </span>
+<span id="cb125-5"><a href="caixas-boxplot.html#cb125-5" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x=</span>Trat,<span class="at">y=</span>exp1))<span class="sc">+</span></span>
+<span id="cb125-6"><a href="caixas-boxplot.html#cb125-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill=</span><span class="st">&quot;lightgreen&quot;</span>, </span>
+<span id="cb125-7"><a href="caixas-boxplot.html#cb125-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">colour=</span><span class="st">&quot;black&quot;</span>,    </span>
+<span id="cb125-8"><a href="caixas-boxplot.html#cb125-8" aria-hidden="true" tabindex="-1"></a>               <span class="at">outlier.colour =</span> <span class="st">&quot;blue&quot;</span>,</span>
+<span id="cb125-9"><a href="caixas-boxplot.html#cb125-9" aria-hidden="true" tabindex="-1"></a>               <span class="at">outlier.shape =</span> <span class="dv">10</span>,     </span>
+<span id="cb125-10"><a href="caixas-boxplot.html#cb125-10" aria-hidden="true" tabindex="-1"></a>               <span class="at">outlier.size =</span> <span class="dv">2</span>)<span class="sc">+</span>      </span>
+<span id="cb125-11"><a href="caixas-boxplot.html#cb125-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Resposta&quot;</span>)<span class="sc">+</span></span>
+<span id="cb125-12"><a href="caixas-boxplot.html#cb125-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Tratamentos&quot;</span>)<span class="sc">+</span></span>
+<span id="cb125-13"><a href="caixas-boxplot.html#cb125-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="sc">+</span></span>
+<span id="cb125-14"><a href="caixas-boxplot.html#cb125-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
+<span id="cb125-15"><a href="caixas-boxplot.html#cb125-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">data =</span> a, <span class="fu">aes</span>(<span class="at">label =</span> letra))</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-119-1.png" width="672" /></p>
 <p><br></p>
 </div>
 </div>
 <div id="package-ggpubr" class="section level2" number="4.3">
 <h2><span class="header-section-number">4.3</span> <em>Package</em> ggpubr</h2>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="caixas-boxplot.html#cb126-1"></a><span class="kw">library</span>(ggpubr)</span>
-<span id="cb126-2"><a href="caixas-boxplot.html#cb126-2"></a><span class="kw">ggboxplot</span>(dados,            <span class="co"># data.frame com os dados e tratamentos</span></span>
-<span id="cb126-3"><a href="caixas-boxplot.html#cb126-3"></a>          <span class="st">&#39;Trat&#39;</span>,           <span class="co"># Nome do tratamento entre aspas</span></span>
-<span id="cb126-4"><a href="caixas-boxplot.html#cb126-4"></a>          <span class="st">&#39;exp1&#39;</span>)           <span class="co"># Nome da resposta</span></span></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="caixas-boxplot.html#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
+<span id="cb126-2"><a href="caixas-boxplot.html#cb126-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggboxplot</span>(dados,            <span class="co"># data.frame com os dados e tratamentos</span></span>
+<span id="cb126-3"><a href="caixas-boxplot.html#cb126-3" aria-hidden="true" tabindex="-1"></a>          <span class="st">&#39;Trat&#39;</span>,           <span class="co"># Nome do tratamento entre aspas</span></span>
+<span id="cb126-4"><a href="caixas-boxplot.html#cb126-4" aria-hidden="true" tabindex="-1"></a>          <span class="st">&#39;exp1&#39;</span>)           <span class="co"># Nome da resposta</span></span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-120-1.png" width="672" /></p>
 <p><br></p>
 <div id="cor-da-caixa" class="section level3" number="4.3.1">
 <h3><span class="header-section-number">4.3.1</span> Cor da caixa</h3>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="caixas-boxplot.html#cb127-1"></a><span class="kw">ggboxplot</span>(dados,</span>
-<span id="cb127-2"><a href="caixas-boxplot.html#cb127-2"></a>          <span class="st">&#39;Trat&#39;</span>,</span>
-<span id="cb127-3"><a href="caixas-boxplot.html#cb127-3"></a>          <span class="st">&#39;exp1&#39;</span>, </span>
-<span id="cb127-4"><a href="caixas-boxplot.html#cb127-4"></a>          <span class="dt">fill=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="caixas-boxplot.html#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggboxplot</span>(dados,</span>
+<span id="cb127-2"><a href="caixas-boxplot.html#cb127-2" aria-hidden="true" tabindex="-1"></a>          <span class="st">&#39;Trat&#39;</span>,</span>
+<span id="cb127-3"><a href="caixas-boxplot.html#cb127-3" aria-hidden="true" tabindex="-1"></a>          <span class="st">&#39;exp1&#39;</span>, </span>
+<span id="cb127-4"><a href="caixas-boxplot.html#cb127-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">fill=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-121-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="cor-de-contorno" class="section level3" number="4.3.2">
 <h3><span class="header-section-number">4.3.2</span> Cor de contorno</h3>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="caixas-boxplot.html#cb128-1"></a><span class="kw">ggboxplot</span>(dados,</span>
-<span id="cb128-2"><a href="caixas-boxplot.html#cb128-2"></a>          <span class="st">&#39;Trat&#39;</span>,</span>
-<span id="cb128-3"><a href="caixas-boxplot.html#cb128-3"></a>          <span class="st">&#39;exp1&#39;</span>, </span>
-<span id="cb128-4"><a href="caixas-boxplot.html#cb128-4"></a>          <span class="dt">fill=</span><span class="st">&quot;red&quot;</span>,</span>
-<span id="cb128-5"><a href="caixas-boxplot.html#cb128-5"></a>          <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="caixas-boxplot.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggboxplot</span>(dados,</span>
+<span id="cb128-2"><a href="caixas-boxplot.html#cb128-2" aria-hidden="true" tabindex="-1"></a>          <span class="st">&#39;Trat&#39;</span>,</span>
+<span id="cb128-3"><a href="caixas-boxplot.html#cb128-3" aria-hidden="true" tabindex="-1"></a>          <span class="st">&#39;exp1&#39;</span>, </span>
+<span id="cb128-4"><a href="caixas-boxplot.html#cb128-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">fill=</span><span class="st">&quot;red&quot;</span>,</span>
+<span id="cb128-5"><a href="caixas-boxplot.html#cb128-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-122-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="inserindo-título" class="section level3" number="4.3.3">
 <h3><span class="header-section-number">4.3.3</span> Inserindo título</h3>
-<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="caixas-boxplot.html#cb129-1"></a><span class="kw">ggboxplot</span>(dados,</span>
-<span id="cb129-2"><a href="caixas-boxplot.html#cb129-2"></a>          <span class="st">&#39;Trat&#39;</span>,</span>
-<span id="cb129-3"><a href="caixas-boxplot.html#cb129-3"></a>          <span class="st">&#39;exp1&#39;</span>, </span>
-<span id="cb129-4"><a href="caixas-boxplot.html#cb129-4"></a>          <span class="dt">fill=</span><span class="st">&quot;red&quot;</span>,</span>
-<span id="cb129-5"><a href="caixas-boxplot.html#cb129-5"></a>          <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>,</span>
-<span id="cb129-6"><a href="caixas-boxplot.html#cb129-6"></a>          <span class="dt">title=</span><span class="st">&quot;(A)&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="caixas-boxplot.html#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggboxplot</span>(dados,</span>
+<span id="cb129-2"><a href="caixas-boxplot.html#cb129-2" aria-hidden="true" tabindex="-1"></a>          <span class="st">&#39;Trat&#39;</span>,</span>
+<span id="cb129-3"><a href="caixas-boxplot.html#cb129-3" aria-hidden="true" tabindex="-1"></a>          <span class="st">&#39;exp1&#39;</span>, </span>
+<span id="cb129-4"><a href="caixas-boxplot.html#cb129-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">fill=</span><span class="st">&quot;red&quot;</span>,</span>
+<span id="cb129-5"><a href="caixas-boxplot.html#cb129-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>,</span>
+<span id="cb129-6"><a href="caixas-boxplot.html#cb129-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">title=</span><span class="st">&quot;(A)&quot;</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-123-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="nome-dos-eixos-x-e-y-1" class="section level3" number="4.3.4">
 <h3><span class="header-section-number">4.3.4</span> Nome dos eixos X e Y</h3>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="caixas-boxplot.html#cb130-1"></a><span class="kw">ggboxplot</span>(dados,</span>
-<span id="cb130-2"><a href="caixas-boxplot.html#cb130-2"></a>          <span class="st">&#39;Trat&#39;</span>,</span>
-<span id="cb130-3"><a href="caixas-boxplot.html#cb130-3"></a>          <span class="st">&#39;exp1&#39;</span>, </span>
-<span id="cb130-4"><a href="caixas-boxplot.html#cb130-4"></a>          <span class="dt">fill=</span><span class="st">&quot;red&quot;</span>,</span>
-<span id="cb130-5"><a href="caixas-boxplot.html#cb130-5"></a>          <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>,</span>
-<span id="cb130-6"><a href="caixas-boxplot.html#cb130-6"></a>          <span class="dt">title=</span><span class="st">&quot;(A)&quot;</span>,</span>
-<span id="cb130-7"><a href="caixas-boxplot.html#cb130-7"></a>          <span class="dt">xlab=</span><span class="st">&quot;Tratamentos&quot;</span>,</span>
-<span id="cb130-8"><a href="caixas-boxplot.html#cb130-8"></a>          <span class="dt">ylab=</span><span class="st">&quot;Resposta&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="caixas-boxplot.html#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggboxplot</span>(dados,</span>
+<span id="cb130-2"><a href="caixas-boxplot.html#cb130-2" aria-hidden="true" tabindex="-1"></a>          <span class="st">&#39;Trat&#39;</span>,</span>
+<span id="cb130-3"><a href="caixas-boxplot.html#cb130-3" aria-hidden="true" tabindex="-1"></a>          <span class="st">&#39;exp1&#39;</span>, </span>
+<span id="cb130-4"><a href="caixas-boxplot.html#cb130-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">fill=</span><span class="st">&quot;red&quot;</span>,</span>
+<span id="cb130-5"><a href="caixas-boxplot.html#cb130-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">color =</span> <span class="st">&quot;black&quot;</span>,</span>
+<span id="cb130-6"><a href="caixas-boxplot.html#cb130-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">title=</span><span class="st">&quot;(A)&quot;</span>,</span>
+<span id="cb130-7"><a href="caixas-boxplot.html#cb130-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">xlab=</span><span class="st">&quot;Tratamentos&quot;</span>,</span>
+<span id="cb130-8"><a href="caixas-boxplot.html#cb130-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">ylab=</span><span class="st">&quot;Resposta&quot;</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-124-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="ponto-da-média" class="section level3" number="4.3.5">
 <h3><span class="header-section-number">4.3.5</span> Ponto da média</h3>
-<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="caixas-boxplot.html#cb131-1"></a><span class="kw">ggboxplot</span>(dados,</span>
-<span id="cb131-2"><a href="caixas-boxplot.html#cb131-2"></a>          <span class="st">&#39;Trat&#39;</span>,</span>
-<span id="cb131-3"><a href="caixas-boxplot.html#cb131-3"></a>          <span class="st">&#39;exp1&#39;</span>, </span>
-<span id="cb131-4"><a href="caixas-boxplot.html#cb131-4"></a>          <span class="dt">fill=</span><span class="st">&quot;red&quot;</span>,</span>
-<span id="cb131-5"><a href="caixas-boxplot.html#cb131-5"></a>          <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>,</span>
-<span id="cb131-6"><a href="caixas-boxplot.html#cb131-6"></a>          <span class="dt">title=</span><span class="st">&quot;(A)&quot;</span>,</span>
-<span id="cb131-7"><a href="caixas-boxplot.html#cb131-7"></a>          <span class="dt">xlab=</span><span class="st">&quot;Tratamentos&quot;</span>,</span>
-<span id="cb131-8"><a href="caixas-boxplot.html#cb131-8"></a>          <span class="dt">ylab=</span><span class="st">&quot;Resposta&quot;</span>,</span>
-<span id="cb131-9"><a href="caixas-boxplot.html#cb131-9"></a>          <span class="dt">add=</span><span class="st">&quot;mean&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="caixas-boxplot.html#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggboxplot</span>(dados,</span>
+<span id="cb131-2"><a href="caixas-boxplot.html#cb131-2" aria-hidden="true" tabindex="-1"></a>          <span class="st">&#39;Trat&#39;</span>,</span>
+<span id="cb131-3"><a href="caixas-boxplot.html#cb131-3" aria-hidden="true" tabindex="-1"></a>          <span class="st">&#39;exp1&#39;</span>, </span>
+<span id="cb131-4"><a href="caixas-boxplot.html#cb131-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">fill=</span><span class="st">&quot;red&quot;</span>,</span>
+<span id="cb131-5"><a href="caixas-boxplot.html#cb131-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">color =</span> <span class="st">&quot;black&quot;</span>,</span>
+<span id="cb131-6"><a href="caixas-boxplot.html#cb131-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">title=</span><span class="st">&quot;(A)&quot;</span>,</span>
+<span id="cb131-7"><a href="caixas-boxplot.html#cb131-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">xlab=</span><span class="st">&quot;Tratamentos&quot;</span>,</span>
+<span id="cb131-8"><a href="caixas-boxplot.html#cb131-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">ylab=</span><span class="st">&quot;Resposta&quot;</span>,</span>
+<span id="cb131-9"><a href="caixas-boxplot.html#cb131-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">add=</span><span class="st">&quot;mean&quot;</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-125-1.png" width="672" /></p>
 <p><br></p>
 <p><strong>Obs.</strong> Podemos usar ao invés de <code>"mean"</code>, os seguintes argumentos:</p>
@@ -950,21 +950,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="letras-do-teste-de-tukey-1" class="section level3" number="4.3.6">
 <h3><span class="header-section-number">4.3.6</span> Letras do teste de Tukey</h3>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="caixas-boxplot.html#cb132-1"></a>a=<span class="kw">data.frame</span>(<span class="dt">Trat=</span><span class="kw">levels</span>(<span class="kw">as.factor</span>(Trat)),</span>
-<span id="cb132-2"><a href="caixas-boxplot.html#cb132-2"></a>             <span class="dt">exp1=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>),                <span class="co"># Deve ter o mesmo da variável</span></span>
-<span id="cb132-3"><a href="caixas-boxplot.html#cb132-3"></a>                                             <span class="co"># esse 1 é para Y=1</span></span>
-<span id="cb132-4"><a href="caixas-boxplot.html#cb132-4"></a>             <span class="dt">letra=</span><span class="kw">c</span>(<span class="st">&quot;b&quot;</span>,<span class="st">&quot;ab&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;a&quot;</span>))</span>
-<span id="cb132-5"><a href="caixas-boxplot.html#cb132-5"></a><span class="kw">ggboxplot</span>(dados,</span>
-<span id="cb132-6"><a href="caixas-boxplot.html#cb132-6"></a>          <span class="st">&#39;Trat&#39;</span>,</span>
-<span id="cb132-7"><a href="caixas-boxplot.html#cb132-7"></a>          <span class="st">&#39;exp1&#39;</span>, </span>
-<span id="cb132-8"><a href="caixas-boxplot.html#cb132-8"></a>          <span class="dt">fill=</span><span class="st">&quot;red&quot;</span>,</span>
-<span id="cb132-9"><a href="caixas-boxplot.html#cb132-9"></a>          <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>,</span>
-<span id="cb132-10"><a href="caixas-boxplot.html#cb132-10"></a>          <span class="dt">title=</span><span class="st">&quot;(A)&quot;</span>,</span>
-<span id="cb132-11"><a href="caixas-boxplot.html#cb132-11"></a>          <span class="dt">xlab=</span><span class="st">&quot;Tratamentos&quot;</span>,</span>
-<span id="cb132-12"><a href="caixas-boxplot.html#cb132-12"></a>          <span class="dt">ylab=</span><span class="st">&quot;Resposta&quot;</span>,</span>
-<span id="cb132-13"><a href="caixas-boxplot.html#cb132-13"></a>          <span class="dt">add=</span><span class="st">&quot;mean&quot;</span>,</span>
-<span id="cb132-14"><a href="caixas-boxplot.html#cb132-14"></a>          <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">40</span>))<span class="op">+</span></span>
-<span id="cb132-15"><a href="caixas-boxplot.html#cb132-15"></a><span class="st">  </span><span class="kw">geom_text</span>(<span class="dt">data =</span> a, <span class="kw">aes</span>(<span class="dt">label =</span> letra))</span></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="caixas-boxplot.html#cb132-1" aria-hidden="true" tabindex="-1"></a>a<span class="ot">=</span><span class="fu">data.frame</span>(<span class="at">Trat=</span><span class="fu">levels</span>(<span class="fu">as.factor</span>(Trat)),</span>
+<span id="cb132-2"><a href="caixas-boxplot.html#cb132-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">exp1=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>),                <span class="co"># Deve ter o mesmo da variável</span></span>
+<span id="cb132-3"><a href="caixas-boxplot.html#cb132-3" aria-hidden="true" tabindex="-1"></a>                                             <span class="co"># esse 1 é para Y=1</span></span>
+<span id="cb132-4"><a href="caixas-boxplot.html#cb132-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">letra=</span><span class="fu">c</span>(<span class="st">&quot;b&quot;</span>,<span class="st">&quot;ab&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;a&quot;</span>))</span>
+<span id="cb132-5"><a href="caixas-boxplot.html#cb132-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggboxplot</span>(dados,</span>
+<span id="cb132-6"><a href="caixas-boxplot.html#cb132-6" aria-hidden="true" tabindex="-1"></a>          <span class="st">&#39;Trat&#39;</span>,</span>
+<span id="cb132-7"><a href="caixas-boxplot.html#cb132-7" aria-hidden="true" tabindex="-1"></a>          <span class="st">&#39;exp1&#39;</span>, </span>
+<span id="cb132-8"><a href="caixas-boxplot.html#cb132-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">fill=</span><span class="st">&quot;red&quot;</span>,</span>
+<span id="cb132-9"><a href="caixas-boxplot.html#cb132-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">color =</span> <span class="st">&quot;black&quot;</span>,</span>
+<span id="cb132-10"><a href="caixas-boxplot.html#cb132-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">title=</span><span class="st">&quot;(A)&quot;</span>,</span>
+<span id="cb132-11"><a href="caixas-boxplot.html#cb132-11" aria-hidden="true" tabindex="-1"></a>          <span class="at">xlab=</span><span class="st">&quot;Tratamentos&quot;</span>,</span>
+<span id="cb132-12"><a href="caixas-boxplot.html#cb132-12" aria-hidden="true" tabindex="-1"></a>          <span class="at">ylab=</span><span class="st">&quot;Resposta&quot;</span>,</span>
+<span id="cb132-13"><a href="caixas-boxplot.html#cb132-13" aria-hidden="true" tabindex="-1"></a>          <span class="at">add=</span><span class="st">&quot;mean&quot;</span>,</span>
+<span id="cb132-14"><a href="caixas-boxplot.html#cb132-14" aria-hidden="true" tabindex="-1"></a>          <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">40</span>))<span class="sc">+</span></span>
+<span id="cb132-15"><a href="caixas-boxplot.html#cb132-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">data =</span> a, <span class="fu">aes</span>(<span class="at">label =</span> letra))</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-126-1.png" width="672" /></p>
 <p><br><br><br></p>
 <hr />
@@ -1000,10 +1000,11 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
-"theme": "white",
+"theme": "sepia",
 "family": "sans",
 "size": 2
 },

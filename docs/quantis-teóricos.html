@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title> 14 Quantis Teóricos | Aplicações práticas do software R para Agronomia</title>
   <meta name="description" content="Este é um livro virtual desenvolvido com a finalidade de fornecer tutoriais práticos das principais análises estatísticas e apresentação de dados utilizando o software R" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content=" 14 Quantis Teóricos | Aplicações práticas do software R para Agronomia" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Gabriel Danilo Shimizu" />
 
 
-<meta name="date" content="2020-10-24" />
+<meta name="date" content="2021-06-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +33,8 @@
   
 <link rel="prev" href="intervalo-de-confiança.html"/>
 <link rel="next" href="componentes-principais.html"/>
-<script src="libs/header-attrs-2.5/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -51,18 +51,17 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
 <script src="libs/chart.js-2.4.0/./dist/Chart.min.js"></script>
 <script src="libs/chartJSRadar-binding-0.3.1/chartJSRadar.js"></script>
-<script src="libs/plotly-binding-4.9.2.1/plotly.js"></script>
+<script src="libs/plotly-binding-4.9.4.1/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -128,6 +127,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -653,28 +653,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="conjunto-de-dados-25" class="section level3" number="14.0.1">
 <h3><span class="header-section-number">14.0.1</span> Conjunto de dados</h3>
 <p>Um experimento foi realizado com o intuito de avaliar a massa seca da raiz de soja no munícipio de Londrina-PR. O experimento foi instalado em delineamento inteiramente casualizado (DIC), 5 repetições, no esquema fatorial 4 x 2 (4 aplicações de dicloroisocianurato de sódio (DUP) e 2 inoculações de <em>Rhizobium</em>).</p>
-<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="quantis-teóricos.html#cb317-1"></a>msraiz=<span class="kw">c</span>(<span class="fl">4.87</span>, <span class="fl">4.64</span>, <span class="fl">3.71</span>, <span class="fl">3.04</span>, <span class="fl">4.57</span>, <span class="fl">4.13</span>,  <span class="fl">3.8</span>, <span class="fl">1.17</span>, <span class="fl">3.28</span>, <span class="fl">1.73</span>, <span class="fl">1.87</span>, <span class="fl">2.85</span>, <span class="fl">3.32</span>, <span class="fl">2.19</span>, <span class="fl">2.33</span>, <span class="fl">4.09</span>, <span class="fl">2.85</span>, <span class="fl">1.86</span>, <span class="fl">2.17</span>, <span class="fl">2.12</span>, <span class="fl">3.03</span>, <span class="fl">3.52</span>, <span class="fl">3.72</span>, <span class="fl">3.09</span>,  <span class="fl">5.11</span>,  <span class="fl">3.6</span>, <span class="fl">2.14</span>, <span class="fl">2.25</span>, <span class="fl">1.93</span>, <span class="fl">3.35</span>, <span class="fl">2.03</span>, <span class="fl">4.72</span>, <span class="fl">3.39</span>, <span class="fl">3.05</span>, <span class="fl">2.98</span>, <span class="fl">2.53</span>, <span class="fl">5.61</span>, <span class="fl">3.74</span>, <span class="fl">2.89</span>, <span class="fl">4.8</span>)</span>
-<span id="cb317-2"><a href="quantis-teóricos.html#cb317-2"></a>(Inoculação=<span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;IN&quot;</span>,<span class="st">&quot;NI&quot;</span>),<span class="dt">e=</span><span class="dv">20</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="quantis-teóricos.html#cb317-1" aria-hidden="true" tabindex="-1"></a>msraiz<span class="ot">=</span><span class="fu">c</span>(<span class="fl">4.87</span>, <span class="fl">4.64</span>, <span class="fl">3.71</span>, <span class="fl">3.04</span>, <span class="fl">4.57</span>, <span class="fl">4.13</span>,  <span class="fl">3.8</span>, <span class="fl">1.17</span>, <span class="fl">3.28</span>, <span class="fl">1.73</span>, <span class="fl">1.87</span>, <span class="fl">2.85</span>, <span class="fl">3.32</span>, <span class="fl">2.19</span>, <span class="fl">2.33</span>, <span class="fl">4.09</span>, <span class="fl">2.85</span>, <span class="fl">1.86</span>, <span class="fl">2.17</span>, <span class="fl">2.12</span>, <span class="fl">3.03</span>, <span class="fl">3.52</span>, <span class="fl">3.72</span>, <span class="fl">3.09</span>,  <span class="fl">5.11</span>,  <span class="fl">3.6</span>, <span class="fl">2.14</span>, <span class="fl">2.25</span>, <span class="fl">1.93</span>, <span class="fl">3.35</span>, <span class="fl">2.03</span>, <span class="fl">4.72</span>, <span class="fl">3.39</span>, <span class="fl">3.05</span>, <span class="fl">2.98</span>, <span class="fl">2.53</span>, <span class="fl">5.61</span>, <span class="fl">3.74</span>, <span class="fl">2.89</span>, <span class="fl">4.8</span>)</span>
+<span id="cb317-2"><a href="quantis-teóricos.html#cb317-2" aria-hidden="true" tabindex="-1"></a>(Inoculação<span class="ot">=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;IN&quot;</span>,<span class="st">&quot;NI&quot;</span>),<span class="at">e=</span><span class="dv">20</span>))</span></code></pre></div>
 <pre><code>##  [1] &quot;IN&quot; &quot;IN&quot; &quot;IN&quot; &quot;IN&quot; &quot;IN&quot; &quot;IN&quot; &quot;IN&quot; &quot;IN&quot; &quot;IN&quot; &quot;IN&quot; &quot;IN&quot; &quot;IN&quot; &quot;IN&quot; &quot;IN&quot; &quot;IN&quot;
 ## [16] &quot;IN&quot; &quot;IN&quot; &quot;IN&quot; &quot;IN&quot; &quot;IN&quot; &quot;NI&quot; &quot;NI&quot; &quot;NI&quot; &quot;NI&quot; &quot;NI&quot; &quot;NI&quot; &quot;NI&quot; &quot;NI&quot; &quot;NI&quot; &quot;NI&quot;
 ## [31] &quot;NI&quot; &quot;NI&quot; &quot;NI&quot; &quot;NI&quot; &quot;NI&quot; &quot;NI&quot; &quot;NI&quot; &quot;NI&quot; &quot;NI&quot; &quot;NI&quot;</code></pre>
-<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="quantis-teóricos.html#cb319-1"></a>(É<span class="dt">poca=</span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;Plantio&quot;</span>,<span class="st">&quot;V1+15&quot;</span>,<span class="st">&quot;V3+15&quot;</span>,<span class="st">&quot;R1+15&quot;</span>),<span class="dt">e=</span><span class="dv">5</span>,<span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="quantis-teóricos.html#cb319-1" aria-hidden="true" tabindex="-1"></a>(É<span class="at">poca=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;Plantio&quot;</span>,<span class="st">&quot;V1+15&quot;</span>,<span class="st">&quot;V3+15&quot;</span>,<span class="st">&quot;R1+15&quot;</span>),<span class="at">e=</span><span class="dv">5</span>,<span class="dv">2</span>))</span></code></pre></div>
 <pre><code>##  [1] &quot;Plantio&quot; &quot;Plantio&quot; &quot;Plantio&quot; &quot;Plantio&quot; &quot;Plantio&quot; &quot;V1+15&quot;   &quot;V1+15&quot;  
 ##  [8] &quot;V1+15&quot;   &quot;V1+15&quot;   &quot;V1+15&quot;   &quot;V3+15&quot;   &quot;V3+15&quot;   &quot;V3+15&quot;   &quot;V3+15&quot;  
 ## [15] &quot;V3+15&quot;   &quot;R1+15&quot;   &quot;R1+15&quot;   &quot;R1+15&quot;   &quot;R1+15&quot;   &quot;R1+15&quot;   &quot;Plantio&quot;
 ## [22] &quot;Plantio&quot; &quot;Plantio&quot; &quot;Plantio&quot; &quot;Plantio&quot; &quot;V1+15&quot;   &quot;V1+15&quot;   &quot;V1+15&quot;  
 ## [29] &quot;V1+15&quot;   &quot;V1+15&quot;   &quot;V3+15&quot;   &quot;V3+15&quot;   &quot;V3+15&quot;   &quot;V3+15&quot;   &quot;V3+15&quot;  
 ## [36] &quot;R1+15&quot;   &quot;R1+15&quot;   &quot;R1+15&quot;   &quot;R1+15&quot;   &quot;R1+15&quot;</code></pre>
-<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="quantis-teóricos.html#cb321-1"></a>F1=<span class="kw">as.factor</span>(Inoculação)</span>
-<span id="cb321-2"><a href="quantis-teóricos.html#cb321-2"></a>F2=<span class="kw">as.factor</span>(Época)</span>
-<span id="cb321-3"><a href="quantis-teóricos.html#cb321-3"></a>Trat=<span class="kw">paste</span>(F1,F2)</span>
-<span id="cb321-4"><a href="quantis-teóricos.html#cb321-4"></a>dados=<span class="kw">data.frame</span>(Trat,<span class="dt">resp=</span>msraiz)</span></code></pre></div>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="quantis-teóricos.html#cb321-1" aria-hidden="true" tabindex="-1"></a>F1<span class="ot">=</span><span class="fu">as.factor</span>(Inoculação)</span>
+<span id="cb321-2"><a href="quantis-teóricos.html#cb321-2" aria-hidden="true" tabindex="-1"></a>F2<span class="ot">=</span><span class="fu">as.factor</span>(Época)</span>
+<span id="cb321-3"><a href="quantis-teóricos.html#cb321-3" aria-hidden="true" tabindex="-1"></a>Trat<span class="ot">=</span><span class="fu">paste</span>(F1,F2)</span>
+<span id="cb321-4"><a href="quantis-teóricos.html#cb321-4" aria-hidden="true" tabindex="-1"></a>dados<span class="ot">=</span><span class="fu">data.frame</span>(Trat,<span class="at">resp=</span>msraiz)</span></code></pre></div>
 <p><br></p>
 </div>
 <div id="análise-de-variância-1" class="section level3" number="14.0.2">
 <h3><span class="header-section-number">14.0.2</span> Análise de variância</h3>
-<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="quantis-teóricos.html#cb322-1"></a>mod =<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">aov</span>(msraiz<span class="op">~</span>F1<span class="op">*</span>F2))</span>
-<span id="cb322-2"><a href="quantis-teóricos.html#cb322-2"></a><span class="kw">anova</span>(mod)</span></code></pre></div>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="quantis-teóricos.html#cb322-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">=</span> <span class="fu">with</span>(dados, <span class="fu">aov</span>(msraiz<span class="sc">~</span>F1<span class="sc">*</span>F2))</span>
+<span id="cb322-2"><a href="quantis-teóricos.html#cb322-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mod)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: msraiz
@@ -689,32 +689,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="envelope-simulado" class="section level3" number="14.0.3">
 <h3><span class="header-section-number">14.0.3</span> Envelope simulado</h3>
-<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="quantis-teóricos.html#cb324-1"></a>hnp<span class="op">::</span><span class="kw">hnp</span>(mod,</span>
-<span id="cb324-2"><a href="quantis-teóricos.html#cb324-2"></a>         <span class="dt">las=</span><span class="dv">1</span>,</span>
-<span id="cb324-3"><a href="quantis-teóricos.html#cb324-3"></a>         <span class="dt">seed=</span><span class="dv">1</span>,</span>
-<span id="cb324-4"><a href="quantis-teóricos.html#cb324-4"></a>         <span class="dt">pch=</span><span class="dv">16</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="quantis-teóricos.html#cb324-1" aria-hidden="true" tabindex="-1"></a>hnp<span class="sc">::</span><span class="fu">hnp</span>(mod,</span>
+<span id="cb324-2"><a href="quantis-teóricos.html#cb324-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">las=</span><span class="dv">1</span>,</span>
+<span id="cb324-3"><a href="quantis-teóricos.html#cb324-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">seed=</span><span class="dv">1</span>,</span>
+<span id="cb324-4"><a href="quantis-teóricos.html#cb324-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">pch=</span><span class="dv">16</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-273-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><br></p>
 </div>
 <div id="porcentagem-de-pontos-fora" class="section level3" number="14.0.4">
 <h3><span class="header-section-number">14.0.4</span> Porcentagem de pontos fora</h3>
-<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="quantis-teóricos.html#cb325-1"></a>hnp<span class="op">::</span><span class="kw">hnp</span>(mod,</span>
-<span id="cb325-2"><a href="quantis-teóricos.html#cb325-2"></a>         <span class="dt">seed=</span><span class="dv">1</span>,</span>
-<span id="cb325-3"><a href="quantis-teóricos.html#cb325-3"></a>         <span class="dt">las=</span><span class="dv">1</span>, </span>
-<span id="cb325-4"><a href="quantis-teóricos.html#cb325-4"></a>         <span class="dt">pch=</span><span class="dv">16</span>,</span>
-<span id="cb325-5"><a href="quantis-teóricos.html#cb325-5"></a>         <span class="dt">print.on=</span>T)</span></code></pre></div>
+<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="quantis-teóricos.html#cb325-1" aria-hidden="true" tabindex="-1"></a>hnp<span class="sc">::</span><span class="fu">hnp</span>(mod,</span>
+<span id="cb325-2"><a href="quantis-teóricos.html#cb325-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">seed=</span><span class="dv">1</span>,</span>
+<span id="cb325-3"><a href="quantis-teóricos.html#cb325-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">las=</span><span class="dv">1</span>, </span>
+<span id="cb325-4"><a href="quantis-teóricos.html#cb325-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">pch=</span><span class="dv">16</span>,</span>
+<span id="cb325-5"><a href="quantis-teóricos.html#cb325-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">print.on=</span>T)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-274-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><br></p>
 </div>
 <div id="colorir-pontos-fora" class="section level3" number="14.0.5">
 <h3><span class="header-section-number">14.0.5</span> Colorir pontos fora</h3>
-<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="quantis-teóricos.html#cb326-1"></a>hnp<span class="op">::</span><span class="kw">hnp</span>(mod, </span>
-<span id="cb326-2"><a href="quantis-teóricos.html#cb326-2"></a>         <span class="dt">seed=</span><span class="dv">1</span>,</span>
-<span id="cb326-3"><a href="quantis-teóricos.html#cb326-3"></a>         <span class="dt">las=</span><span class="dv">1</span>, </span>
-<span id="cb326-4"><a href="quantis-teóricos.html#cb326-4"></a>         <span class="dt">pch=</span><span class="dv">16</span>,</span>
-<span id="cb326-5"><a href="quantis-teóricos.html#cb326-5"></a>         <span class="dt">print.on=</span>T,</span>
-<span id="cb326-6"><a href="quantis-teóricos.html#cb326-6"></a>         <span class="dt">paint.out=</span>T, </span>
-<span id="cb326-7"><a href="quantis-teóricos.html#cb326-7"></a>         <span class="dt">col.paint.out=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="quantis-teóricos.html#cb326-1" aria-hidden="true" tabindex="-1"></a>hnp<span class="sc">::</span><span class="fu">hnp</span>(mod, </span>
+<span id="cb326-2"><a href="quantis-teóricos.html#cb326-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">seed=</span><span class="dv">1</span>,</span>
+<span id="cb326-3"><a href="quantis-teóricos.html#cb326-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">las=</span><span class="dv">1</span>, </span>
+<span id="cb326-4"><a href="quantis-teóricos.html#cb326-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">pch=</span><span class="dv">16</span>,</span>
+<span id="cb326-5"><a href="quantis-teóricos.html#cb326-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">print.on=</span>T,</span>
+<span id="cb326-6"><a href="quantis-teóricos.html#cb326-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">paint.out=</span>T, </span>
+<span id="cb326-7"><a href="quantis-teóricos.html#cb326-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">col.paint.out=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-275-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p><br><br><br></p>
 <hr />
@@ -749,10 +749,11 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
-"theme": "white",
+"theme": "sepia",
 "family": "sans",
 "size": 2
 },

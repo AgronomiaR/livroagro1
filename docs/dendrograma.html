@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title> 16 Dendrograma | Aplicações práticas do software R para Agronomia</title>
   <meta name="description" content="Este é um livro virtual desenvolvido com a finalidade de fornecer tutoriais práticos das principais análises estatísticas e apresentação de dados utilizando o software R" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content=" 16 Dendrograma | Aplicações práticas do software R para Agronomia" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Gabriel Danilo Shimizu" />
 
 
-<meta name="date" content="2020-10-24" />
+<meta name="date" content="2021-06-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +33,8 @@
   
 <link rel="prev" href="componentes-principais.html"/>
 <link rel="next" href="expression.html"/>
-<script src="libs/header-attrs-2.5/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -51,18 +51,17 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
 <script src="libs/chart.js-2.4.0/./dist/Chart.min.js"></script>
 <script src="libs/chartJSRadar-binding-0.3.1/chartJSRadar.js"></script>
-<script src="libs/plotly-binding-4.9.2.1/plotly.js"></script>
+<script src="libs/plotly-binding-4.9.4.1/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -128,6 +127,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -655,8 +655,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Description</p>
 <p>This data set contains statistics, in arrests per 100,000 residents for assault, murder, and rape in each of the 50 US states in 1973. Also given is the percent of the population living in urban areas.</p>
 <p>McNeil, D. R. (1977) Interactive Data Analysis. New York: Wiley.</p>
-<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="dendrograma.html#cb405-1"></a><span class="kw">data</span>(<span class="st">&quot;USArrests&quot;</span>)</span>
-<span id="cb405-2"><a href="dendrograma.html#cb405-2"></a>USArrests</span></code></pre></div>
+<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="dendrograma.html#cb405-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;USArrests&quot;</span>)</span>
+<span id="cb405-2"><a href="dendrograma.html#cb405-2" aria-hidden="true" tabindex="-1"></a>USArrests</span></code></pre></div>
 <pre><code>##                Murder Assault UrbanPop Rape
 ## Alabama          13,2     236       58 21,2
 ## Alaska           10,0     263       48 44,5
@@ -712,107 +712,107 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="calculando-as-distâncias" class="section level3" number="16.0.2">
 <h3><span class="header-section-number">16.0.2</span> Calculando as distâncias</h3>
-<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="dendrograma.html#cb407-1"></a>d=<span class="kw">dist</span>(USArrests)</span>
-<span id="cb407-2"><a href="dendrograma.html#cb407-2"></a>R=<span class="kw">hclust</span>(d)</span></code></pre></div>
+<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="dendrograma.html#cb407-1" aria-hidden="true" tabindex="-1"></a>d<span class="ot">=</span><span class="fu">dist</span>(USArrests)</span>
+<span id="cb407-2"><a href="dendrograma.html#cb407-2" aria-hidden="true" tabindex="-1"></a>R<span class="ot">=</span><span class="fu">hclust</span>(d)</span></code></pre></div>
 <p><br></p>
 </div>
 <div id="dendrograma-1" class="section level3" number="16.0.3">
 <h3><span class="header-section-number">16.0.3</span> Dendrograma</h3>
-<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="dendrograma.html#cb408-1"></a><span class="kw">plot</span>(R)</span></code></pre></div>
+<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="dendrograma.html#cb408-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(R)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-348-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="altura-dos-rótulos" class="section level3" number="16.0.4">
 <h3><span class="header-section-number">16.0.4</span> Altura dos rótulos</h3>
-<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="dendrograma.html#cb409-1"></a><span class="kw">plot</span>(R, <span class="dt">hang=</span><span class="op">-</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="dendrograma.html#cb409-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(R, <span class="at">hang=</span><span class="sc">-</span><span class="dv">1</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-349-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="editando-argumentos" class="section level3" number="16.0.5">
 <h3><span class="header-section-number">16.0.5</span> Editando argumentos</h3>
-<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="dendrograma.html#cb410-1"></a><span class="kw">plot</span>(R, </span>
-<span id="cb410-2"><a href="dendrograma.html#cb410-2"></a>     <span class="dt">las=</span><span class="dv">1</span>, <span class="co"># Escala do eixo na horizontal</span></span>
-<span id="cb410-3"><a href="dendrograma.html#cb410-3"></a>     <span class="dt">hang=</span><span class="op">-</span><span class="dv">1</span>, <span class="co"># alinhas altura dos rótulos</span></span>
-<span id="cb410-4"><a href="dendrograma.html#cb410-4"></a>     <span class="dt">main=</span><span class="st">&quot;&quot;</span>, <span class="co"># Título vazio</span></span>
-<span id="cb410-5"><a href="dendrograma.html#cb410-5"></a>     <span class="dt">ylab=</span><span class="st">&quot;Dist?ncia&quot;</span>) <span class="co"># Título do eixo Y</span></span></code></pre></div>
+<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="dendrograma.html#cb410-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(R, </span>
+<span id="cb410-2"><a href="dendrograma.html#cb410-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">las=</span><span class="dv">1</span>, <span class="co"># Escala do eixo na horizontal</span></span>
+<span id="cb410-3"><a href="dendrograma.html#cb410-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">hang=</span><span class="sc">-</span><span class="dv">1</span>, <span class="co"># alinhas altura dos rótulos</span></span>
+<span id="cb410-4"><a href="dendrograma.html#cb410-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">&quot;&quot;</span>, <span class="co"># Título vazio</span></span>
+<span id="cb410-5"><a href="dendrograma.html#cb410-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Dist?ncia&quot;</span>) <span class="co"># Título do eixo Y</span></span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-350-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="separando-em-grupos" class="section level3" number="16.0.6">
 <h3><span class="header-section-number">16.0.6</span> Separando em grupos</h3>
 <p>Neste exemplo vamos considerar dois grupos</p>
-<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="dendrograma.html#cb411-1"></a><span class="co"># Chamando package dendextend</span></span>
-<span id="cb411-2"><a href="dendrograma.html#cb411-2"></a><span class="kw">library</span>(dendextend)</span>
-<span id="cb411-3"><a href="dendrograma.html#cb411-3"></a></span>
-<span id="cb411-4"><a href="dendrograma.html#cb411-4"></a><span class="co"># Construindo o dendrograma</span></span>
-<span id="cb411-5"><a href="dendrograma.html#cb411-5"></a>dend=<span class="kw">as.dendrogram</span>(<span class="kw">hclust</span>(<span class="kw">dist</span>(USArrests), <span class="dt">method=</span><span class="st">&#39;average&#39;</span>))</span>
-<span id="cb411-6"><a href="dendrograma.html#cb411-6"></a></span>
-<span id="cb411-7"><a href="dendrograma.html#cb411-7"></a><span class="co"># Definindo cores e grupos para o dendrograma</span></span>
-<span id="cb411-8"><a href="dendrograma.html#cb411-8"></a>dend=<span class="kw">set</span>(dend,<span class="st">&quot;branches_k_color&quot;</span>, </span>
-<span id="cb411-9"><a href="dendrograma.html#cb411-9"></a>             <span class="dt">value =</span> <span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>), <span class="dt">k =</span> <span class="dv">2</span>)</span>
-<span id="cb411-10"><a href="dendrograma.html#cb411-10"></a></span>
-<span id="cb411-11"><a href="dendrograma.html#cb411-11"></a><span class="co"># Plotando o gráfico</span></span>
-<span id="cb411-12"><a href="dendrograma.html#cb411-12"></a><span class="kw">par</span>(<span class="dt">cex=</span><span class="fl">0.7</span>)</span>
-<span id="cb411-13"><a href="dendrograma.html#cb411-13"></a><span class="kw">plot</span>(dend, </span>
-<span id="cb411-14"><a href="dendrograma.html#cb411-14"></a>     <span class="dt">las=</span><span class="dv">1</span>, </span>
-<span id="cb411-15"><a href="dendrograma.html#cb411-15"></a>     <span class="dt">ylab=</span><span class="st">&quot;Distância&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="dendrograma.html#cb411-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Chamando package dendextend</span></span>
+<span id="cb411-2"><a href="dendrograma.html#cb411-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dendextend)</span>
+<span id="cb411-3"><a href="dendrograma.html#cb411-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb411-4"><a href="dendrograma.html#cb411-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Construindo o dendrograma</span></span>
+<span id="cb411-5"><a href="dendrograma.html#cb411-5" aria-hidden="true" tabindex="-1"></a>dend<span class="ot">=</span><span class="fu">as.dendrogram</span>(<span class="fu">hclust</span>(<span class="fu">dist</span>(USArrests), <span class="at">method=</span><span class="st">&#39;average&#39;</span>))</span>
+<span id="cb411-6"><a href="dendrograma.html#cb411-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb411-7"><a href="dendrograma.html#cb411-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Definindo cores e grupos para o dendrograma</span></span>
+<span id="cb411-8"><a href="dendrograma.html#cb411-8" aria-hidden="true" tabindex="-1"></a>dend<span class="ot">=</span><span class="fu">set</span>(dend,<span class="st">&quot;branches_k_color&quot;</span>, </span>
+<span id="cb411-9"><a href="dendrograma.html#cb411-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">value =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>), <span class="at">k =</span> <span class="dv">2</span>)</span>
+<span id="cb411-10"><a href="dendrograma.html#cb411-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb411-11"><a href="dendrograma.html#cb411-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotando o gráfico</span></span>
+<span id="cb411-12"><a href="dendrograma.html#cb411-12" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">cex=</span><span class="fl">0.7</span>)</span>
+<span id="cb411-13"><a href="dendrograma.html#cb411-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dend, </span>
+<span id="cb411-14"><a href="dendrograma.html#cb411-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">las=</span><span class="dv">1</span>, </span>
+<span id="cb411-15"><a href="dendrograma.html#cb411-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Distância&quot;</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-351-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="caixas-separando-grupos" class="section level3" number="16.0.7">
 <h3><span class="header-section-number">16.0.7</span> Caixas separando grupos</h3>
-<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="dendrograma.html#cb412-1"></a><span class="kw">library</span>(dendextend)</span>
-<span id="cb412-2"><a href="dendrograma.html#cb412-2"></a>dend=<span class="kw">as.dendrogram</span>(<span class="kw">hclust</span>(<span class="kw">dist</span>(USArrests), </span>
-<span id="cb412-3"><a href="dendrograma.html#cb412-3"></a>                          <span class="dt">method=</span><span class="st">&#39;average&#39;</span>))</span>
-<span id="cb412-4"><a href="dendrograma.html#cb412-4"></a>dend=<span class="kw">set</span>(dend,</span>
-<span id="cb412-5"><a href="dendrograma.html#cb412-5"></a>         <span class="st">&quot;branches_k_color&quot;</span>, </span>
-<span id="cb412-6"><a href="dendrograma.html#cb412-6"></a>             <span class="dt">value =</span> <span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>), </span>
-<span id="cb412-7"><a href="dendrograma.html#cb412-7"></a>         <span class="dt">k =</span> <span class="dv">2</span>)</span>
-<span id="cb412-8"><a href="dendrograma.html#cb412-8"></a><span class="kw">par</span>(<span class="dt">cex=</span><span class="fl">0.7</span>, <span class="dt">mai=</span><span class="kw">c</span>(<span class="fl">1.2</span>,<span class="fl">0.8</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
-<span id="cb412-9"><a href="dendrograma.html#cb412-9"></a><span class="kw">plot</span>(dend, </span>
-<span id="cb412-10"><a href="dendrograma.html#cb412-10"></a>     <span class="dt">las=</span><span class="dv">1</span>,</span>
-<span id="cb412-11"><a href="dendrograma.html#cb412-11"></a>     <span class="dt">ylab=</span><span class="st">&quot;Distância&quot;</span>)</span>
-<span id="cb412-12"><a href="dendrograma.html#cb412-12"></a><span class="kw">par</span>(<span class="dt">cex=</span><span class="fl">0.8</span>)</span>
-<span id="cb412-13"><a href="dendrograma.html#cb412-13"></a><span class="co"># Construindo caixa de separação entre os grupos</span></span>
-<span id="cb412-14"><a href="dendrograma.html#cb412-14"></a><span class="kw">rect.dendrogram</span>(dend,</span>
-<span id="cb412-15"><a href="dendrograma.html#cb412-15"></a>                <span class="dt">k=</span><span class="dv">2</span>, <span class="co"># Dois grupos</span></span>
-<span id="cb412-16"><a href="dendrograma.html#cb412-16"></a>                <span class="dt">border =</span> <span class="dv">8</span>, <span class="co"># cor da borda (8: cinza)</span></span>
-<span id="cb412-17"><a href="dendrograma.html#cb412-17"></a>                <span class="dt">lty =</span> <span class="dv">5</span>, <span class="co"># formato da linha</span></span>
-<span id="cb412-18"><a href="dendrograma.html#cb412-18"></a>                <span class="dt">lwd =</span> <span class="dv">2</span>) <span class="co"># espessura da linha</span></span></code></pre></div>
+<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="dendrograma.html#cb412-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dendextend)</span>
+<span id="cb412-2"><a href="dendrograma.html#cb412-2" aria-hidden="true" tabindex="-1"></a>dend<span class="ot">=</span><span class="fu">as.dendrogram</span>(<span class="fu">hclust</span>(<span class="fu">dist</span>(USArrests), </span>
+<span id="cb412-3"><a href="dendrograma.html#cb412-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">method=</span><span class="st">&#39;average&#39;</span>))</span>
+<span id="cb412-4"><a href="dendrograma.html#cb412-4" aria-hidden="true" tabindex="-1"></a>dend<span class="ot">=</span><span class="fu">set</span>(dend,</span>
+<span id="cb412-5"><a href="dendrograma.html#cb412-5" aria-hidden="true" tabindex="-1"></a>         <span class="st">&quot;branches_k_color&quot;</span>, </span>
+<span id="cb412-6"><a href="dendrograma.html#cb412-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">value =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>), </span>
+<span id="cb412-7"><a href="dendrograma.html#cb412-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">k =</span> <span class="dv">2</span>)</span>
+<span id="cb412-8"><a href="dendrograma.html#cb412-8" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">cex=</span><span class="fl">0.7</span>, <span class="at">mai=</span><span class="fu">c</span>(<span class="fl">1.2</span>,<span class="fl">0.8</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb412-9"><a href="dendrograma.html#cb412-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dend, </span>
+<span id="cb412-10"><a href="dendrograma.html#cb412-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">las=</span><span class="dv">1</span>,</span>
+<span id="cb412-11"><a href="dendrograma.html#cb412-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Distância&quot;</span>)</span>
+<span id="cb412-12"><a href="dendrograma.html#cb412-12" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">cex=</span><span class="fl">0.8</span>)</span>
+<span id="cb412-13"><a href="dendrograma.html#cb412-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Construindo caixa de separação entre os grupos</span></span>
+<span id="cb412-14"><a href="dendrograma.html#cb412-14" aria-hidden="true" tabindex="-1"></a><span class="fu">rect.dendrogram</span>(dend,</span>
+<span id="cb412-15"><a href="dendrograma.html#cb412-15" aria-hidden="true" tabindex="-1"></a>                <span class="at">k=</span><span class="dv">2</span>, <span class="co"># Dois grupos</span></span>
+<span id="cb412-16"><a href="dendrograma.html#cb412-16" aria-hidden="true" tabindex="-1"></a>                <span class="at">border =</span> <span class="dv">8</span>, <span class="co"># cor da borda (8: cinza)</span></span>
+<span id="cb412-17"><a href="dendrograma.html#cb412-17" aria-hidden="true" tabindex="-1"></a>                <span class="at">lty =</span> <span class="dv">5</span>, <span class="co"># formato da linha</span></span>
+<span id="cb412-18"><a href="dendrograma.html#cb412-18" aria-hidden="true" tabindex="-1"></a>                <span class="at">lwd =</span> <span class="dv">2</span>) <span class="co"># espessura da linha</span></span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-352-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="árvore-filogenética-em-círculo" class="section level3" number="16.0.8">
 <h3><span class="header-section-number">16.0.8</span> Árvore filogenética (Em círculo)</h3>
-<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="dendrograma.html#cb413-1"></a><span class="kw">library</span>(ape)</span>
-<span id="cb413-2"><a href="dendrograma.html#cb413-2"></a><span class="kw">par</span>(<span class="dt">mar=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>))</span>
-<span id="cb413-3"><a href="dendrograma.html#cb413-3"></a><span class="kw">plot</span>(<span class="kw">as.phylo</span>(R),</span>
-<span id="cb413-4"><a href="dendrograma.html#cb413-4"></a>     <span class="dt">cex=</span><span class="fl">0.7</span>, </span>
-<span id="cb413-5"><a href="dendrograma.html#cb413-5"></a>     <span class="dt">hang=</span><span class="op">-</span><span class="dv">1</span>, </span>
-<span id="cb413-6"><a href="dendrograma.html#cb413-6"></a>     <span class="dt">type=</span><span class="st">&quot;fan&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="dendrograma.html#cb413-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ape)</span>
+<span id="cb413-2"><a href="dendrograma.html#cb413-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>))</span>
+<span id="cb413-3"><a href="dendrograma.html#cb413-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">as.phylo</span>(R),</span>
+<span id="cb413-4"><a href="dendrograma.html#cb413-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex=</span><span class="fl">0.7</span>, </span>
+<span id="cb413-5"><a href="dendrograma.html#cb413-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">hang=</span><span class="sc">-</span><span class="dv">1</span>, </span>
+<span id="cb413-6"><a href="dendrograma.html#cb413-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">type=</span><span class="st">&quot;fan&quot;</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-353-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="cor-e-separando-por-grupo" class="section level3" number="16.0.9">
 <h3><span class="header-section-number">16.0.9</span> Cor e separando por grupo</h3>
-<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="dendrograma.html#cb414-1"></a><span class="kw">par</span>(<span class="dt">mar=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>))</span>
-<span id="cb414-2"><a href="dendrograma.html#cb414-2"></a>clus=<span class="kw">cutree</span>(R,<span class="dv">2</span>)</span>
-<span id="cb414-3"><a href="dendrograma.html#cb414-3"></a>colors=<span class="kw">c</span>(<span class="st">&quot;red&quot;</span>,<span class="st">&quot;blue&quot;</span>)</span>
-<span id="cb414-4"><a href="dendrograma.html#cb414-4"></a><span class="kw">plot</span>(<span class="kw">as.phylo</span>(R), </span>
-<span id="cb414-5"><a href="dendrograma.html#cb414-5"></a>     <span class="dt">cex=</span><span class="fl">0.7</span>,</span>
-<span id="cb414-6"><a href="dendrograma.html#cb414-6"></a>     <span class="dt">hang=</span><span class="op">-</span><span class="dv">1</span>, </span>
-<span id="cb414-7"><a href="dendrograma.html#cb414-7"></a>     <span class="dt">type=</span><span class="st">&quot;fan&quot;</span>, </span>
-<span id="cb414-8"><a href="dendrograma.html#cb414-8"></a>     <span class="dt">tip.color=</span>colors[clus])</span></code></pre></div>
+<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="dendrograma.html#cb414-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>))</span>
+<span id="cb414-2"><a href="dendrograma.html#cb414-2" aria-hidden="true" tabindex="-1"></a>clus<span class="ot">=</span><span class="fu">cutree</span>(R,<span class="dv">2</span>)</span>
+<span id="cb414-3"><a href="dendrograma.html#cb414-3" aria-hidden="true" tabindex="-1"></a>colors<span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;red&quot;</span>,<span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb414-4"><a href="dendrograma.html#cb414-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">as.phylo</span>(R), </span>
+<span id="cb414-5"><a href="dendrograma.html#cb414-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex=</span><span class="fl">0.7</span>,</span>
+<span id="cb414-6"><a href="dendrograma.html#cb414-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">hang=</span><span class="sc">-</span><span class="dv">1</span>, </span>
+<span id="cb414-7"><a href="dendrograma.html#cb414-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">type=</span><span class="st">&quot;fan&quot;</span>, </span>
+<span id="cb414-8"><a href="dendrograma.html#cb414-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">tip.color=</span>colors[clus])</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-354-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="formato-radial" class="section level3" number="16.0.10">
 <h3><span class="header-section-number">16.0.10</span> Formato radial</h3>
-<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="dendrograma.html#cb415-1"></a><span class="kw">par</span>(<span class="dt">mar=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>))</span>
-<span id="cb415-2"><a href="dendrograma.html#cb415-2"></a><span class="kw">plot</span>(<span class="kw">as.phylo</span>(R),</span>
-<span id="cb415-3"><a href="dendrograma.html#cb415-3"></a>     <span class="dt">cex=</span><span class="fl">0.7</span>, </span>
-<span id="cb415-4"><a href="dendrograma.html#cb415-4"></a>     <span class="dt">hang=</span><span class="op">-</span><span class="dv">1</span>, </span>
-<span id="cb415-5"><a href="dendrograma.html#cb415-5"></a>     <span class="dt">type=</span><span class="st">&quot;radial&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="dendrograma.html#cb415-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>))</span>
+<span id="cb415-2"><a href="dendrograma.html#cb415-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">as.phylo</span>(R),</span>
+<span id="cb415-3"><a href="dendrograma.html#cb415-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex=</span><span class="fl">0.7</span>, </span>
+<span id="cb415-4"><a href="dendrograma.html#cb415-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">hang=</span><span class="sc">-</span><span class="dv">1</span>, </span>
+<span id="cb415-5"><a href="dendrograma.html#cb415-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">type=</span><span class="st">&quot;radial&quot;</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-355-1.png" width="672" /></p>
 <p><br><br><br></p>
 <hr />
@@ -847,10 +847,11 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
-"theme": "white",
+"theme": "sepia",
 "family": "sans",
 "size": 2
 },

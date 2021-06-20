@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title> 6 Histograma | Aplicações práticas do software R para Agronomia</title>
   <meta name="description" content="Este é um livro virtual desenvolvido com a finalidade de fornecer tutoriais práticos das principais análises estatísticas e apresentação de dados utilizando o software R" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content=" 6 Histograma | Aplicações práticas do software R para Agronomia" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Gabriel Danilo Shimizu" />
 
 
-<meta name="date" content="2020-10-24" />
+<meta name="date" content="2021-06-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +33,8 @@
   
 <link rel="prev" href="regressão.html"/>
 <link rel="next" href="setores-circulares.html"/>
-<script src="libs/header-attrs-2.5/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -51,18 +51,17 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
 <script src="libs/chart.js-2.4.0/./dist/Chart.min.js"></script>
 <script src="libs/chartJSRadar-binding-0.3.1/chartJSRadar.js"></script>
-<script src="libs/plotly-binding-4.9.2.1/plotly.js"></script>
+<script src="libs/plotly-binding-4.9.4.1/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -128,6 +127,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -653,30 +653,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><br></p>
 <div id="conjunto-de-dados-10" class="section level3" number="6.0.1">
 <h3><span class="header-section-number">6.0.1</span> Conjunto de dados</h3>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="histograma.html#cb167-1"></a>tratamentos=<span class="kw">rep</span>(<span class="kw">c</span>(<span class="kw">paste</span>(<span class="st">&quot;T&quot;</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)),<span class="dt">e=</span><span class="dv">8</span>)</span>
-<span id="cb167-2"><a href="histograma.html#cb167-2"></a>resposta=<span class="kw">c</span>(<span class="dv">100</span>,<span class="dv">170</span>,<span class="dv">160</span>,<span class="dv">90</span>,<span class="dv">150</span>,<span class="dv">145</span>,<span class="dv">179</span>,<span class="dv">165</span>,<span class="dv">180</span>,<span class="dv">144</span>,<span class="dv">184</span>,<span class="dv">139</span>,<span class="dv">220</span>,<span class="dv">206</span>,<span class="dv">187</span>,<span class="dv">210</span>,<span class="dv">166</span>,<span class="dv">235</span>,<span class="dv">220</span>,<span class="dv">190</span>,<span class="dv">100</span>,<span class="dv">120</span>,<span class="dv">110</span>,<span class="dv">190</span>,<span class="dv">140</span>,<span class="dv">145</span>,<span class="dv">149</span>,<span class="dv">165</span>,<span class="dv">150</span>,<span class="dv">144</span>,<span class="dv">134</span>,<span class="dv">139</span>,<span class="dv">188</span>,<span class="dv">206</span>,<span class="dv">190</span>,<span class="dv">140</span>,<span class="dv">166</span>,<span class="dv">224</span>,<span class="dv">148</span>,<span class="dv">160</span>)</span>
-<span id="cb167-3"><a href="histograma.html#cb167-3"></a>data=<span class="kw">data.frame</span>(tratamentos, resposta)</span></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="histograma.html#cb167-1" aria-hidden="true" tabindex="-1"></a>tratamentos<span class="ot">=</span><span class="fu">rep</span>(<span class="fu">c</span>(<span class="fu">paste</span>(<span class="st">&quot;T&quot;</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)),<span class="at">e=</span><span class="dv">8</span>)</span>
+<span id="cb167-2"><a href="histograma.html#cb167-2" aria-hidden="true" tabindex="-1"></a>resposta<span class="ot">=</span><span class="fu">c</span>(<span class="dv">100</span>,<span class="dv">170</span>,<span class="dv">160</span>,<span class="dv">90</span>,<span class="dv">150</span>,<span class="dv">145</span>,<span class="dv">179</span>,<span class="dv">165</span>,<span class="dv">180</span>,<span class="dv">144</span>,<span class="dv">184</span>,<span class="dv">139</span>,<span class="dv">220</span>,<span class="dv">206</span>,<span class="dv">187</span>,<span class="dv">210</span>,<span class="dv">166</span>,<span class="dv">235</span>,<span class="dv">220</span>,<span class="dv">190</span>,<span class="dv">100</span>,<span class="dv">120</span>,<span class="dv">110</span>,<span class="dv">190</span>,<span class="dv">140</span>,<span class="dv">145</span>,<span class="dv">149</span>,<span class="dv">165</span>,<span class="dv">150</span>,<span class="dv">144</span>,<span class="dv">134</span>,<span class="dv">139</span>,<span class="dv">188</span>,<span class="dv">206</span>,<span class="dv">190</span>,<span class="dv">140</span>,<span class="dv">166</span>,<span class="dv">224</span>,<span class="dv">148</span>,<span class="dv">160</span>)</span>
+<span id="cb167-3"><a href="histograma.html#cb167-3" aria-hidden="true" tabindex="-1"></a>data<span class="ot">=</span><span class="fu">data.frame</span>(tratamentos, resposta)</span></code></pre></div>
 </div>
 <div id="gráfico-básico-6" class="section level3" number="6.0.2">
 <h3><span class="header-section-number">6.0.2</span> Gráfico básico</h3>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="histograma.html#cb168-1"></a><span class="kw">hist</span>(resposta)</span></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="histograma.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(resposta)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-153-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="melhorias-5" class="section level3" number="6.0.3">
 <h3><span class="header-section-number">6.0.3</span> Melhorias</h3>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="histograma.html#cb169-1"></a><span class="kw">hist</span>(resposta, </span>
-<span id="cb169-2"><a href="histograma.html#cb169-2"></a>        <span class="dt">las=</span><span class="dv">1</span>,</span>
-<span id="cb169-3"><a href="histograma.html#cb169-3"></a>        <span class="dt">col=</span><span class="st">&quot;lightyellow&quot;</span>,</span>
-<span id="cb169-4"><a href="histograma.html#cb169-4"></a>        <span class="dt">ylab=</span><span class="st">&quot;Frequência&quot;</span>,</span>
-<span id="cb169-5"><a href="histograma.html#cb169-5"></a>        <span class="dt">xlab=</span><span class="st">&quot;Resposta&quot;</span>,</span>
-<span id="cb169-6"><a href="histograma.html#cb169-6"></a>        <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>),</span>
-<span id="cb169-7"><a href="histograma.html#cb169-7"></a>        <span class="dt">main=</span><span class="st">&quot;Histograma&quot;</span>)</span>
-<span id="cb169-8"><a href="histograma.html#cb169-8"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="histograma.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(resposta, </span>
+<span id="cb169-2"><a href="histograma.html#cb169-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">las=</span><span class="dv">1</span>,</span>
+<span id="cb169-3"><a href="histograma.html#cb169-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">col=</span><span class="st">&quot;lightyellow&quot;</span>,</span>
+<span id="cb169-4"><a href="histograma.html#cb169-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab=</span><span class="st">&quot;Frequência&quot;</span>,</span>
+<span id="cb169-5"><a href="histograma.html#cb169-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab=</span><span class="st">&quot;Resposta&quot;</span>,</span>
+<span id="cb169-6"><a href="histograma.html#cb169-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">10</span>),</span>
+<span id="cb169-7"><a href="histograma.html#cb169-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">main=</span><span class="st">&quot;Histograma&quot;</span>)</span>
+<span id="cb169-8"><a href="histograma.html#cb169-8" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-154-1.png" width="672" /></p>
 <p><strong>Comandos</strong>:</p>
 <p>las=1: deixar escala do eixo Y na vertical</p>
-<p>col=“cor”: mudar cor das barras (Ex. “red”,“blue”,“green” ou gray.colors(quantidade de tonalidades) para escala cinza ou rainbow(quantidade de cores) para escala colorida. Também é possível específicar a cor de cada barra (col=c(“red”,“green”,“yellow”,“gray”,“blue”))).</p>
+<p>col=“cor”: mudar cor das barras (Ex. “red,”“blue,”“green” ou gray.colors(quantidade de tonalidades) para escala cinza ou rainbow(quantidade de cores) para escala colorida. Também é possível específicar a cor de cada barra (col=c(“red,”“green,”“yellow,”“gray,”“blue”))).</p>
 <p>xlab e ylab: nomear eixo X e Y</p>
 <p>xlim e ylim: escala do eixo X e Y</p>
 <p>main: Título</p>
@@ -685,26 +685,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="plotando-curva-normal" class="section level3" number="6.0.4">
 <h3><span class="header-section-number">6.0.4</span> Plotando curva normal</h3>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="histograma.html#cb170-1"></a>histograma=<span class="kw">hist</span>(resposta, </span>
-<span id="cb170-2"><a href="histograma.html#cb170-2"></a>        <span class="dt">las=</span><span class="dv">1</span>,</span>
-<span id="cb170-3"><a href="histograma.html#cb170-3"></a>        <span class="dt">col=</span><span class="st">&quot;lightyellow&quot;</span>,</span>
-<span id="cb170-4"><a href="histograma.html#cb170-4"></a>        <span class="dt">ylab=</span><span class="st">&quot;Frequência&quot;</span>,</span>
-<span id="cb170-5"><a href="histograma.html#cb170-5"></a>        <span class="dt">xlab=</span><span class="st">&quot;Resposta&quot;</span>,</span>
-<span id="cb170-6"><a href="histograma.html#cb170-6"></a>        <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>),</span>
-<span id="cb170-7"><a href="histograma.html#cb170-7"></a>        <span class="dt">main=</span><span class="st">&quot;Histograma&quot;</span>)</span>
-<span id="cb170-8"><a href="histograma.html#cb170-8"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>)</span>
-<span id="cb170-9"><a href="histograma.html#cb170-9"></a></span>
-<span id="cb170-10"><a href="histograma.html#cb170-10"></a><span class="co">## Criando sequência de dados quantitativos discretos entre o mínimo e o máximo da resposta</span></span>
-<span id="cb170-11"><a href="histograma.html#cb170-11"></a>xfit&lt;-<span class="kw">seq</span>(<span class="kw">min</span>(resposta),<span class="kw">max</span>(resposta))</span>
-<span id="cb170-12"><a href="histograma.html#cb170-12"></a></span>
-<span id="cb170-13"><a href="histograma.html#cb170-13"></a><span class="co">## dnorm (Função para encontrar os possíveis valores para Y e suas densidade de probabilidade)</span></span>
-<span id="cb170-14"><a href="histograma.html#cb170-14"></a>yfit&lt;-<span class="kw">dnorm</span>(xfit,<span class="dt">mean=</span><span class="kw">mean</span>(resposta),<span class="dt">sd=</span><span class="kw">sd</span>(resposta))</span>
-<span id="cb170-15"><a href="histograma.html#cb170-15"></a></span>
-<span id="cb170-16"><a href="histograma.html#cb170-16"></a><span class="co">## diff é o comando para diferença e length para comprimento</span></span>
-<span id="cb170-17"><a href="histograma.html#cb170-17"></a>yfit &lt;-<span class="st"> </span>yfit<span class="op">*</span><span class="kw">diff</span>(histograma<span class="op">$</span>mids[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>])<span class="op">*</span><span class="kw">length</span>(resposta)</span>
-<span id="cb170-18"><a href="histograma.html#cb170-18"></a></span>
-<span id="cb170-19"><a href="histograma.html#cb170-19"></a><span class="co">## Plotando linha da curva normal</span></span>
-<span id="cb170-20"><a href="histograma.html#cb170-20"></a><span class="kw">lines</span>(xfit, yfit, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>, <span class="dt">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="histograma.html#cb170-1" aria-hidden="true" tabindex="-1"></a>histograma<span class="ot">=</span><span class="fu">hist</span>(resposta, </span>
+<span id="cb170-2"><a href="histograma.html#cb170-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">las=</span><span class="dv">1</span>,</span>
+<span id="cb170-3"><a href="histograma.html#cb170-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">col=</span><span class="st">&quot;lightyellow&quot;</span>,</span>
+<span id="cb170-4"><a href="histograma.html#cb170-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab=</span><span class="st">&quot;Frequência&quot;</span>,</span>
+<span id="cb170-5"><a href="histograma.html#cb170-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab=</span><span class="st">&quot;Resposta&quot;</span>,</span>
+<span id="cb170-6"><a href="histograma.html#cb170-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">10</span>),</span>
+<span id="cb170-7"><a href="histograma.html#cb170-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">main=</span><span class="st">&quot;Histograma&quot;</span>)</span>
+<span id="cb170-8"><a href="histograma.html#cb170-8" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>)</span>
+<span id="cb170-9"><a href="histograma.html#cb170-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb170-10"><a href="histograma.html#cb170-10" aria-hidden="true" tabindex="-1"></a><span class="do">## Criando sequência de dados quantitativos discretos entre o mínimo e o máximo da resposta</span></span>
+<span id="cb170-11"><a href="histograma.html#cb170-11" aria-hidden="true" tabindex="-1"></a>xfit<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="fu">min</span>(resposta),<span class="fu">max</span>(resposta))</span>
+<span id="cb170-12"><a href="histograma.html#cb170-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb170-13"><a href="histograma.html#cb170-13" aria-hidden="true" tabindex="-1"></a><span class="do">## dnorm (Função para encontrar os possíveis valores para Y e suas densidade de probabilidade)</span></span>
+<span id="cb170-14"><a href="histograma.html#cb170-14" aria-hidden="true" tabindex="-1"></a>yfit<span class="ot">&lt;-</span><span class="fu">dnorm</span>(xfit,<span class="at">mean=</span><span class="fu">mean</span>(resposta),<span class="at">sd=</span><span class="fu">sd</span>(resposta))</span>
+<span id="cb170-15"><a href="histograma.html#cb170-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb170-16"><a href="histograma.html#cb170-16" aria-hidden="true" tabindex="-1"></a><span class="do">## diff é o comando para diferença e length para comprimento</span></span>
+<span id="cb170-17"><a href="histograma.html#cb170-17" aria-hidden="true" tabindex="-1"></a>yfit <span class="ot">&lt;-</span> yfit<span class="sc">*</span><span class="fu">diff</span>(histograma<span class="sc">$</span>mids[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>])<span class="sc">*</span><span class="fu">length</span>(resposta)</span>
+<span id="cb170-18"><a href="histograma.html#cb170-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb170-19"><a href="histograma.html#cb170-19" aria-hidden="true" tabindex="-1"></a><span class="do">## Plotando linha da curva normal</span></span>
+<span id="cb170-20"><a href="histograma.html#cb170-20" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(xfit, yfit, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-155-1.png" width="672" /></p>
 <p><br></p>
 <hr />
@@ -715,25 +715,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><br></p>
 <p>instalar pacote ggplot2:</p>
 <p><code>install.packages("ggplot2")</code></p>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="histograma.html#cb171-1"></a><span class="co"># Carregar pacote</span></span>
-<span id="cb171-2"><a href="histograma.html#cb171-2"></a><span class="kw">library</span>(ggplot2)</span>
-<span id="cb171-3"><a href="histograma.html#cb171-3"></a></span>
-<span id="cb171-4"><a href="histograma.html#cb171-4"></a><span class="co"># Obs. Não esquecer de criar uma data.frame (Ex. chamei de data no início do material)</span></span>
-<span id="cb171-5"><a href="histograma.html#cb171-5"></a></span>
-<span id="cb171-6"><a href="histograma.html#cb171-6"></a><span class="co"># Criar histograma</span></span>
-<span id="cb171-7"><a href="histograma.html#cb171-7"></a>mean=<span class="kw">mean</span>(resposta);sd=<span class="st"> </span><span class="kw">sd</span>(resposta);n=<span class="kw">length</span>(resposta); largura=<span class="dv">20</span></span>
-<span id="cb171-8"><a href="histograma.html#cb171-8"></a><span class="kw">ggplot</span>(data, <span class="kw">aes</span>(data<span class="op">$</span>resposta))<span class="op">+</span></span>
-<span id="cb171-9"><a href="histograma.html#cb171-9"></a><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">20</span>, <span class="dt">col=</span><span class="st">&quot;red&quot;</span>, <span class="dt">fill=</span><span class="st">&quot;green&quot;</span>)<span class="op">+</span></span>
-<span id="cb171-10"><a href="histograma.html#cb171-10"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Histograma&quot;</span>)<span class="op">+</span></span>
-<span id="cb171-11"><a href="histograma.html#cb171-11"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="st">&quot;Resposta&quot;</span>, <span class="dt">y=</span><span class="st">&quot;Frequência&quot;</span>)<span class="op">+</span></span>
-<span id="cb171-12"><a href="histograma.html#cb171-12"></a><span class="kw">stat_function</span>(<span class="dt">fun =</span> <span class="cf">function</span>(x) <span class="kw">dnorm</span>(x, <span class="dt">mean =</span> mean, <span class="dt">sd =</span> sd) <span class="op">*</span><span class="st"> </span>n <span class="op">*</span><span class="st"> </span>largura,</span>
-<span id="cb171-13"><a href="histograma.html#cb171-13"></a>    <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">size =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="histograma.html#cb171-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Carregar pacote</span></span>
+<span id="cb171-2"><a href="histograma.html#cb171-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb171-3"><a href="histograma.html#cb171-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb171-4"><a href="histograma.html#cb171-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Obs. Não esquecer de criar uma data.frame (Ex. chamei de data no início do material)</span></span>
+<span id="cb171-5"><a href="histograma.html#cb171-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb171-6"><a href="histograma.html#cb171-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Criar histograma</span></span>
+<span id="cb171-7"><a href="histograma.html#cb171-7" aria-hidden="true" tabindex="-1"></a>mean<span class="ot">=</span><span class="fu">mean</span>(resposta);sd<span class="ot">=</span> <span class="fu">sd</span>(resposta);n<span class="ot">=</span><span class="fu">length</span>(resposta); largura<span class="ot">=</span><span class="dv">20</span></span>
+<span id="cb171-8"><a href="histograma.html#cb171-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(data<span class="sc">$</span>resposta))<span class="sc">+</span></span>
+<span id="cb171-9"><a href="histograma.html#cb171-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">20</span>, <span class="at">col=</span><span class="st">&quot;red&quot;</span>, <span class="at">fill=</span><span class="st">&quot;green&quot;</span>)<span class="sc">+</span></span>
+<span id="cb171-10"><a href="histograma.html#cb171-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">&quot;Histograma&quot;</span>)<span class="sc">+</span></span>
+<span id="cb171-11"><a href="histograma.html#cb171-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">&quot;Resposta&quot;</span>, <span class="at">y=</span><span class="st">&quot;Frequência&quot;</span>)<span class="sc">+</span></span>
+<span id="cb171-12"><a href="histograma.html#cb171-12" aria-hidden="true" tabindex="-1"></a><span class="fu">stat_function</span>(<span class="at">fun =</span> <span class="cf">function</span>(x) <span class="fu">dnorm</span>(x, <span class="at">mean =</span> mean, <span class="at">sd =</span> sd) <span class="sc">*</span> n <span class="sc">*</span> largura,</span>
+<span id="cb171-13"><a href="histograma.html#cb171-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">size =</span> <span class="dv">1</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-156-1.png" width="672" /></p>
 <p><strong>binwidth</strong> = largura de caixa</p>
 <p><strong>col</strong>= cor do contorno das caixas</p>
 <p><strong>fill</strong>= cor do interior das caixas</p>
 <p><strong>Comando para plotar a curva normal:</strong></p>
-<p>stat_function(fun = function(x) dnorm(x, mean = mean, sd = sd) * n * lagura,color = “red”, size = 1)</p>
+<p>stat_function(fun = function(x) dnorm(x, mean = mean, sd = sd) * n * lagura,color = “red,” size = 1)</p>
 <p><br><br></p>
 <hr />
 </div>
@@ -742,90 +742,90 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <hr />
 <div id="simulando-dados" class="section level3" number="6.2.1">
 <h3><span class="header-section-number">6.2.1</span> Simulando dados</h3>
-<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="histograma.html#cb172-1"></a>x=<span class="kw">seq</span>(<span class="op">-</span><span class="dv">3</span>,<span class="dv">3</span>,<span class="dt">length=</span><span class="dv">400</span>)</span>
-<span id="cb172-2"><a href="histograma.html#cb172-2"></a>y=<span class="kw">dnorm</span>(x,<span class="dv">0</span>,<span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="histograma.html#cb172-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>,<span class="dv">3</span>,<span class="at">length=</span><span class="dv">400</span>)</span>
+<span id="cb172-2"><a href="histograma.html#cb172-2" aria-hidden="true" tabindex="-1"></a>y<span class="ot">=</span><span class="fu">dnorm</span>(x,<span class="dv">0</span>,<span class="dv">1</span>)</span></code></pre></div>
 <p><br></p>
 </div>
 <div id="gráfico-simples-1" class="section level3" number="6.2.2">
 <h3><span class="header-section-number">6.2.2</span> gráfico simples</h3>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="histograma.html#cb173-1"></a><span class="kw">plot</span>(x,</span>
-<span id="cb173-2"><a href="histograma.html#cb173-2"></a>     y,</span>
-<span id="cb173-3"><a href="histograma.html#cb173-3"></a>     <span class="dt">type=</span><span class="st">&quot;l&quot;</span>,</span>
-<span id="cb173-4"><a href="histograma.html#cb173-4"></a>     <span class="dt">xlab=</span><span class="st">&quot;&quot;</span>,</span>
-<span id="cb173-5"><a href="histograma.html#cb173-5"></a>     <span class="dt">ylim=</span><span class="kw">c</span>(<span class="op">-</span><span class="fl">0.1</span>,<span class="fl">0.5</span>),</span>
-<span id="cb173-6"><a href="histograma.html#cb173-6"></a>     <span class="dt">ylab=</span><span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="histograma.html#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,</span>
+<span id="cb173-2"><a href="histograma.html#cb173-2" aria-hidden="true" tabindex="-1"></a>     y,</span>
+<span id="cb173-3"><a href="histograma.html#cb173-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">type=</span><span class="st">&quot;l&quot;</span>,</span>
+<span id="cb173-4"><a href="histograma.html#cb173-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;&quot;</span>,</span>
+<span id="cb173-5"><a href="histograma.html#cb173-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.1</span>,<span class="fl">0.5</span>),</span>
+<span id="cb173-6"><a href="histograma.html#cb173-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;&quot;</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-158-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="removendo-marca-da-escala" class="section level3" number="6.2.3">
 <h3><span class="header-section-number">6.2.3</span> Removendo marca da escala</h3>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="histograma.html#cb174-1"></a><span class="kw">plot</span>(x,y,<span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">axes=</span>F,<span class="dt">xlab=</span><span class="st">&quot;&quot;</span>,<span class="dt">ylim=</span><span class="kw">c</span>(<span class="op">-</span><span class="fl">0.1</span>,<span class="fl">0.5</span>),</span>
-<span id="cb174-2"><a href="histograma.html#cb174-2"></a>     <span class="dt">ylab=</span><span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="histograma.html#cb174-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y,<span class="at">type=</span><span class="st">&quot;l&quot;</span>,<span class="at">axes=</span>F,<span class="at">xlab=</span><span class="st">&quot;&quot;</span>,<span class="at">ylim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.1</span>,<span class="fl">0.5</span>),</span>
+<span id="cb174-2"><a href="histograma.html#cb174-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;&quot;</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-159-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="preenchimento-tracejado" class="section level3" number="6.2.4">
 <h3><span class="header-section-number">6.2.4</span> Preenchimento tracejado</h3>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="histograma.html#cb175-1"></a><span class="kw">plot</span>(x,y,<span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">axes=</span>F,<span class="dt">xlab=</span><span class="st">&quot;&quot;</span>,<span class="dt">ylim=</span><span class="kw">c</span>(<span class="op">-</span><span class="fl">0.1</span>,<span class="fl">0.5</span>),</span>
-<span id="cb175-2"><a href="histograma.html#cb175-2"></a>     <span class="dt">ylab=</span><span class="st">&quot;&quot;</span>,<span class="dt">col=</span><span class="st">&quot;white&quot;</span>)</span>
-<span id="cb175-3"><a href="histograma.html#cb175-3"></a><span class="kw">polygon</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">3</span>,x,<span class="dv">3</span>),<span class="kw">c</span>(<span class="dv">0</span>,y,<span class="dv">0</span>),<span class="dt">density =</span> <span class="dv">30</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="histograma.html#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y,<span class="at">type=</span><span class="st">&quot;l&quot;</span>,<span class="at">axes=</span>F,<span class="at">xlab=</span><span class="st">&quot;&quot;</span>,<span class="at">ylim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.1</span>,<span class="fl">0.5</span>),</span>
+<span id="cb175-2"><a href="histograma.html#cb175-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;&quot;</span>,<span class="at">col=</span><span class="st">&quot;white&quot;</span>)</span>
+<span id="cb175-3"><a href="histograma.html#cb175-3" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>,x,<span class="dv">3</span>),<span class="fu">c</span>(<span class="dv">0</span>,y,<span class="dv">0</span>),<span class="at">density =</span> <span class="dv">30</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-160-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="valor-crítico-90" class="section level3" number="6.2.5">
 <h3><span class="header-section-number">6.2.5</span> Valor crítico (90%)</h3>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="histograma.html#cb176-1"></a><span class="kw">plot</span>(x,y,<span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">axes=</span>F,<span class="dt">xlab=</span><span class="st">&quot;&quot;</span>,<span class="dt">ylim=</span><span class="kw">c</span>(<span class="op">-</span><span class="fl">0.1</span>,<span class="fl">0.5</span>),</span>
-<span id="cb176-2"><a href="histograma.html#cb176-2"></a>     <span class="dt">ylab=</span><span class="st">&quot;&quot;</span>,<span class="dt">col=</span><span class="st">&quot;white&quot;</span>)</span>
-<span id="cb176-3"><a href="histograma.html#cb176-3"></a><span class="kw">polygon</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">3</span>,x,<span class="dv">3</span>),<span class="kw">c</span>(<span class="dv">0</span>,y,<span class="dv">0</span>),<span class="dt">density =</span> <span class="dv">30</span>)</span>
-<span id="cb176-4"><a href="histograma.html#cb176-4"></a>x1=<span class="kw">seq</span>(<span class="op">-</span><span class="fl">1.645</span>,<span class="fl">1.645</span>,<span class="dt">length=</span><span class="dv">100</span>) <span class="co"># 90</span></span>
-<span id="cb176-5"><a href="histograma.html#cb176-5"></a>y1=<span class="kw">dnorm</span>(x1)</span>
-<span id="cb176-6"><a href="histograma.html#cb176-6"></a><span class="kw">polygon</span>(<span class="kw">c</span>(<span class="op">-</span><span class="fl">1.645</span>,x1,<span class="fl">1.645</span>),<span class="kw">c</span>(<span class="dv">0</span>,y1,<span class="dv">0</span>),<span class="dt">col=</span><span class="st">&quot;white&quot;</span>)</span>
-<span id="cb176-7"><a href="histograma.html#cb176-7"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>);</span>
-<span id="cb176-8"><a href="histograma.html#cb176-8"></a><span class="kw">lines</span>(<span class="dt">x=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>),<span class="dt">y=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="kw">max</span>(y)),<span class="dt">lty=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="histograma.html#cb176-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y,<span class="at">type=</span><span class="st">&quot;l&quot;</span>,<span class="at">axes=</span>F,<span class="at">xlab=</span><span class="st">&quot;&quot;</span>,<span class="at">ylim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.1</span>,<span class="fl">0.5</span>),</span>
+<span id="cb176-2"><a href="histograma.html#cb176-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;&quot;</span>,<span class="at">col=</span><span class="st">&quot;white&quot;</span>)</span>
+<span id="cb176-3"><a href="histograma.html#cb176-3" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>,x,<span class="dv">3</span>),<span class="fu">c</span>(<span class="dv">0</span>,y,<span class="dv">0</span>),<span class="at">density =</span> <span class="dv">30</span>)</span>
+<span id="cb176-4"><a href="histograma.html#cb176-4" aria-hidden="true" tabindex="-1"></a>x1<span class="ot">=</span><span class="fu">seq</span>(<span class="sc">-</span><span class="fl">1.645</span>,<span class="fl">1.645</span>,<span class="at">length=</span><span class="dv">100</span>) <span class="co"># 90</span></span>
+<span id="cb176-5"><a href="histograma.html#cb176-5" aria-hidden="true" tabindex="-1"></a>y1<span class="ot">=</span><span class="fu">dnorm</span>(x1)</span>
+<span id="cb176-6"><a href="histograma.html#cb176-6" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.645</span>,x1,<span class="fl">1.645</span>),<span class="fu">c</span>(<span class="dv">0</span>,y1,<span class="dv">0</span>),<span class="at">col=</span><span class="st">&quot;white&quot;</span>)</span>
+<span id="cb176-7"><a href="histograma.html#cb176-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>);</span>
+<span id="cb176-8"><a href="histograma.html#cb176-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>),<span class="at">y=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fu">max</span>(y)),<span class="at">lty=</span><span class="dv">2</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-161-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="valor-crítico-95" class="section level3" number="6.2.6">
 <h3><span class="header-section-number">6.2.6</span> Valor crítico (95%)</h3>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="histograma.html#cb177-1"></a><span class="kw">plot</span>(x,y,<span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">axes=</span>F,<span class="dt">xlab=</span><span class="st">&quot;&quot;</span>,<span class="dt">ylim=</span><span class="kw">c</span>(<span class="op">-</span><span class="fl">0.1</span>,<span class="fl">0.5</span>),</span>
-<span id="cb177-2"><a href="histograma.html#cb177-2"></a>     <span class="dt">ylab=</span><span class="st">&quot;&quot;</span>,<span class="dt">col=</span><span class="st">&quot;white&quot;</span>)</span>
-<span id="cb177-3"><a href="histograma.html#cb177-3"></a><span class="kw">polygon</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">3</span>,x,<span class="dv">3</span>),<span class="kw">c</span>(<span class="dv">0</span>,y,<span class="dv">0</span>),<span class="dt">density =</span> <span class="dv">30</span>)</span>
-<span id="cb177-4"><a href="histograma.html#cb177-4"></a>x1=<span class="kw">seq</span>(<span class="op">-</span><span class="fl">1.96</span>,<span class="fl">1.96</span>,<span class="dt">length=</span><span class="dv">100</span>) <span class="co"># 95%</span></span>
-<span id="cb177-5"><a href="histograma.html#cb177-5"></a>y1=<span class="kw">dnorm</span>(x1)</span>
-<span id="cb177-6"><a href="histograma.html#cb177-6"></a><span class="kw">polygon</span>(<span class="kw">c</span>(<span class="op">-</span><span class="fl">1.96</span>,x1,<span class="fl">1.96</span>),<span class="kw">c</span>(<span class="dv">0</span>,y1,<span class="dv">0</span>),<span class="dt">col=</span><span class="st">&quot;white&quot;</span>)</span>
-<span id="cb177-7"><a href="histograma.html#cb177-7"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>);</span>
-<span id="cb177-8"><a href="histograma.html#cb177-8"></a><span class="kw">lines</span>(<span class="dt">x=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>),<span class="dt">y=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="kw">max</span>(y)),<span class="dt">lty=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="histograma.html#cb177-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y,<span class="at">type=</span><span class="st">&quot;l&quot;</span>,<span class="at">axes=</span>F,<span class="at">xlab=</span><span class="st">&quot;&quot;</span>,<span class="at">ylim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.1</span>,<span class="fl">0.5</span>),</span>
+<span id="cb177-2"><a href="histograma.html#cb177-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;&quot;</span>,<span class="at">col=</span><span class="st">&quot;white&quot;</span>)</span>
+<span id="cb177-3"><a href="histograma.html#cb177-3" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>,x,<span class="dv">3</span>),<span class="fu">c</span>(<span class="dv">0</span>,y,<span class="dv">0</span>),<span class="at">density =</span> <span class="dv">30</span>)</span>
+<span id="cb177-4"><a href="histograma.html#cb177-4" aria-hidden="true" tabindex="-1"></a>x1<span class="ot">=</span><span class="fu">seq</span>(<span class="sc">-</span><span class="fl">1.96</span>,<span class="fl">1.96</span>,<span class="at">length=</span><span class="dv">100</span>) <span class="co"># 95%</span></span>
+<span id="cb177-5"><a href="histograma.html#cb177-5" aria-hidden="true" tabindex="-1"></a>y1<span class="ot">=</span><span class="fu">dnorm</span>(x1)</span>
+<span id="cb177-6"><a href="histograma.html#cb177-6" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.96</span>,x1,<span class="fl">1.96</span>),<span class="fu">c</span>(<span class="dv">0</span>,y1,<span class="dv">0</span>),<span class="at">col=</span><span class="st">&quot;white&quot;</span>)</span>
+<span id="cb177-7"><a href="histograma.html#cb177-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>);</span>
+<span id="cb177-8"><a href="histograma.html#cb177-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>),<span class="at">y=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fu">max</span>(y)),<span class="at">lty=</span><span class="dv">2</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-162-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="valor-crítico-99" class="section level3" number="6.2.7">
 <h3><span class="header-section-number">6.2.7</span> Valor crítico (99%)</h3>
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="histograma.html#cb178-1"></a><span class="kw">plot</span>(x,y,<span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">axes=</span>F,<span class="dt">xlab=</span><span class="st">&quot;&quot;</span>,<span class="dt">ylim=</span><span class="kw">c</span>(<span class="op">-</span><span class="fl">0.1</span>,<span class="fl">0.5</span>),</span>
-<span id="cb178-2"><a href="histograma.html#cb178-2"></a>     <span class="dt">ylab=</span><span class="st">&quot;&quot;</span>,<span class="dt">col=</span><span class="st">&quot;white&quot;</span>)</span>
-<span id="cb178-3"><a href="histograma.html#cb178-3"></a><span class="kw">polygon</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">3</span>,x,<span class="dv">3</span>),<span class="kw">c</span>(<span class="dv">0</span>,y,<span class="dv">0</span>),<span class="dt">density =</span> <span class="dv">30</span>)</span>
-<span id="cb178-4"><a href="histograma.html#cb178-4"></a>x1=<span class="kw">seq</span>(<span class="op">-</span><span class="fl">2.575</span>,<span class="fl">2.575</span>,<span class="dt">length=</span><span class="dv">100</span>) <span class="co"># 99</span></span>
-<span id="cb178-5"><a href="histograma.html#cb178-5"></a>y1=<span class="kw">dnorm</span>(x1)</span>
-<span id="cb178-6"><a href="histograma.html#cb178-6"></a><span class="kw">polygon</span>(<span class="kw">c</span>(<span class="op">-</span><span class="fl">2.575</span>,x1,<span class="fl">2.575</span>),<span class="kw">c</span>(<span class="dv">0</span>,y1,<span class="dv">0</span>),<span class="dt">col=</span><span class="st">&quot;white&quot;</span>)</span>
-<span id="cb178-7"><a href="histograma.html#cb178-7"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>);</span>
-<span id="cb178-8"><a href="histograma.html#cb178-8"></a><span class="kw">lines</span>(<span class="dt">x=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>),<span class="dt">y=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="kw">max</span>(y)),<span class="dt">lty=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="histograma.html#cb178-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y,<span class="at">type=</span><span class="st">&quot;l&quot;</span>,<span class="at">axes=</span>F,<span class="at">xlab=</span><span class="st">&quot;&quot;</span>,<span class="at">ylim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.1</span>,<span class="fl">0.5</span>),</span>
+<span id="cb178-2"><a href="histograma.html#cb178-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;&quot;</span>,<span class="at">col=</span><span class="st">&quot;white&quot;</span>)</span>
+<span id="cb178-3"><a href="histograma.html#cb178-3" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>,x,<span class="dv">3</span>),<span class="fu">c</span>(<span class="dv">0</span>,y,<span class="dv">0</span>),<span class="at">density =</span> <span class="dv">30</span>)</span>
+<span id="cb178-4"><a href="histograma.html#cb178-4" aria-hidden="true" tabindex="-1"></a>x1<span class="ot">=</span><span class="fu">seq</span>(<span class="sc">-</span><span class="fl">2.575</span>,<span class="fl">2.575</span>,<span class="at">length=</span><span class="dv">100</span>) <span class="co"># 99</span></span>
+<span id="cb178-5"><a href="histograma.html#cb178-5" aria-hidden="true" tabindex="-1"></a>y1<span class="ot">=</span><span class="fu">dnorm</span>(x1)</span>
+<span id="cb178-6"><a href="histograma.html#cb178-6" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="fl">2.575</span>,x1,<span class="fl">2.575</span>),<span class="fu">c</span>(<span class="dv">0</span>,y1,<span class="dv">0</span>),<span class="at">col=</span><span class="st">&quot;white&quot;</span>)</span>
+<span id="cb178-7"><a href="histograma.html#cb178-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>);</span>
+<span id="cb178-8"><a href="histograma.html#cb178-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>),<span class="at">y=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fu">max</span>(y)),<span class="at">lty=</span><span class="dv">2</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-163-1.png" width="672" /></p>
 <p><br></p>
 </div>
 <div id="adicionando-legendas" class="section level3" number="6.2.8">
 <h3><span class="header-section-number">6.2.8</span> Adicionando legendas</h3>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="histograma.html#cb179-1"></a><span class="kw">plot</span>(x,y,<span class="dt">type=</span><span class="st">&quot;l&quot;</span>,<span class="dt">axes=</span>F,<span class="dt">xlab=</span><span class="st">&quot;&quot;</span>,<span class="dt">ylim=</span><span class="kw">c</span>(<span class="op">-</span><span class="fl">0.1</span>,<span class="fl">0.5</span>),</span>
-<span id="cb179-2"><a href="histograma.html#cb179-2"></a>     <span class="dt">ylab=</span><span class="st">&quot;&quot;</span>,<span class="dt">col=</span><span class="st">&quot;white&quot;</span>)</span>
-<span id="cb179-3"><a href="histograma.html#cb179-3"></a><span class="kw">polygon</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">3</span>,x,<span class="dv">3</span>),<span class="kw">c</span>(<span class="dv">0</span>,y,<span class="dv">0</span>),<span class="dt">density =</span> <span class="dv">30</span>)</span>
-<span id="cb179-4"><a href="histograma.html#cb179-4"></a>x1=<span class="kw">seq</span>(<span class="op">-</span><span class="fl">1.96</span>,<span class="fl">1.96</span>,<span class="dt">length=</span><span class="dv">100</span>)</span>
-<span id="cb179-5"><a href="histograma.html#cb179-5"></a>y1=<span class="kw">dnorm</span>(x1)</span>
-<span id="cb179-6"><a href="histograma.html#cb179-6"></a><span class="kw">polygon</span>(<span class="kw">c</span>(<span class="op">-</span><span class="fl">1.96</span>,x1,<span class="fl">1.96</span>),<span class="kw">c</span>(<span class="dv">0</span>,y1,<span class="dv">0</span>),<span class="dt">col=</span><span class="st">&quot;white&quot;</span>)</span>
-<span id="cb179-7"><a href="histograma.html#cb179-7"></a><span class="kw">abline</span>(<span class="dt">h=</span><span class="dv">0</span>);</span>
-<span id="cb179-8"><a href="histograma.html#cb179-8"></a><span class="kw">lines</span>(<span class="dt">x=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>),<span class="dt">y=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="kw">max</span>(y)),<span class="dt">lty=</span><span class="dv">2</span>)</span>
-<span id="cb179-9"><a href="histograma.html#cb179-9"></a><span class="kw">text</span>(<span class="op">-</span><span class="fl">1.96</span>,<span class="op">-</span>.<span class="dv">05</span>,<span class="kw">expression</span>(<span class="kw">frac</span>(<span class="op">-</span>Z,(alpha<span class="op">/</span><span class="dv">2</span>))))</span>
-<span id="cb179-10"><a href="histograma.html#cb179-10"></a><span class="kw">text</span>(<span class="op">+</span><span class="fl">1.96</span>,<span class="op">-</span>.<span class="dv">05</span>,<span class="kw">expression</span>(<span class="kw">frac</span>(Z,(alpha<span class="op">/</span><span class="dv">2</span>))))</span>
-<span id="cb179-11"><a href="histograma.html#cb179-11"></a><span class="kw">text</span>(<span class="op">-</span><span class="fl">2.5</span>,<span class="fl">0.1</span>,<span class="kw">expression</span>(<span class="kw">frac</span>(alpha,<span class="dv">2</span>)))</span>
-<span id="cb179-12"><a href="histograma.html#cb179-12"></a><span class="kw">text</span>(<span class="op">+</span><span class="fl">2.5</span>,<span class="fl">0.1</span>,<span class="kw">expression</span>(<span class="kw">frac</span>(alpha,<span class="dv">2</span>)))</span>
-<span id="cb179-13"><a href="histograma.html#cb179-13"></a><span class="kw">axis</span>(<span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="histograma.html#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y,<span class="at">type=</span><span class="st">&quot;l&quot;</span>,<span class="at">axes=</span>F,<span class="at">xlab=</span><span class="st">&quot;&quot;</span>,<span class="at">ylim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.1</span>,<span class="fl">0.5</span>),</span>
+<span id="cb179-2"><a href="histograma.html#cb179-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;&quot;</span>,<span class="at">col=</span><span class="st">&quot;white&quot;</span>)</span>
+<span id="cb179-3"><a href="histograma.html#cb179-3" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>,x,<span class="dv">3</span>),<span class="fu">c</span>(<span class="dv">0</span>,y,<span class="dv">0</span>),<span class="at">density =</span> <span class="dv">30</span>)</span>
+<span id="cb179-4"><a href="histograma.html#cb179-4" aria-hidden="true" tabindex="-1"></a>x1<span class="ot">=</span><span class="fu">seq</span>(<span class="sc">-</span><span class="fl">1.96</span>,<span class="fl">1.96</span>,<span class="at">length=</span><span class="dv">100</span>)</span>
+<span id="cb179-5"><a href="histograma.html#cb179-5" aria-hidden="true" tabindex="-1"></a>y1<span class="ot">=</span><span class="fu">dnorm</span>(x1)</span>
+<span id="cb179-6"><a href="histograma.html#cb179-6" aria-hidden="true" tabindex="-1"></a><span class="fu">polygon</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.96</span>,x1,<span class="fl">1.96</span>),<span class="fu">c</span>(<span class="dv">0</span>,y1,<span class="dv">0</span>),<span class="at">col=</span><span class="st">&quot;white&quot;</span>)</span>
+<span id="cb179-7"><a href="histograma.html#cb179-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>);</span>
+<span id="cb179-8"><a href="histograma.html#cb179-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>),<span class="at">y=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fu">max</span>(y)),<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb179-9"><a href="histograma.html#cb179-9" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="sc">-</span><span class="fl">1.96</span>,<span class="sc">-</span>.<span class="dv">05</span>,<span class="fu">expression</span>(<span class="fu">frac</span>(<span class="sc">-</span>Z,(alpha<span class="sc">/</span><span class="dv">2</span>))))</span>
+<span id="cb179-10"><a href="histograma.html#cb179-10" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="sc">+</span><span class="fl">1.96</span>,<span class="sc">-</span>.<span class="dv">05</span>,<span class="fu">expression</span>(<span class="fu">frac</span>(Z,(alpha<span class="sc">/</span><span class="dv">2</span>))))</span>
+<span id="cb179-11"><a href="histograma.html#cb179-11" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="sc">-</span><span class="fl">2.5</span>,<span class="fl">0.1</span>,<span class="fu">expression</span>(<span class="fu">frac</span>(alpha,<span class="dv">2</span>)))</span>
+<span id="cb179-12"><a href="histograma.html#cb179-12" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="sc">+</span><span class="fl">2.5</span>,<span class="fl">0.1</span>,<span class="fu">expression</span>(<span class="fu">frac</span>(alpha,<span class="dv">2</span>)))</span>
+<span id="cb179-13"><a href="histograma.html#cb179-13" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-164-1.png" width="672" /></p>
 <p><br><br><br></p>
 <hr />
@@ -861,10 +861,11 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
-"theme": "white",
+"theme": "sepia",
 "family": "sans",
 "size": 2
 },

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title> 18 layout (graphics) | Aplicações práticas do software R para Agronomia</title>
   <meta name="description" content="Este é um livro virtual desenvolvido com a finalidade de fornecer tutoriais práticos das principais análises estatísticas e apresentação de dados utilizando o software R" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content=" 18 layout (graphics) | Aplicações práticas do software R para Agronomia" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Gabriel Danilo Shimizu" />
 
 
-<meta name="date" content="2020-10-24" />
+<meta name="date" content="2021-06-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +33,8 @@
   
 <link rel="prev" href="expression.html"/>
 <link rel="next" href="ggplot2.html"/>
-<script src="libs/header-attrs-2.5/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -51,18 +51,17 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.2/htmlwidgets.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
 <script src="libs/chart.js-2.4.0/./dist/Chart.min.js"></script>
 <script src="libs/chartJSRadar-binding-0.3.1/chartJSRadar.js"></script>
-<script src="libs/plotly-binding-4.9.2.1/plotly.js"></script>
+<script src="libs/plotly-binding-4.9.4.1/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-1.52.2/plotly-latest.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -128,6 +127,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -661,7 +661,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="gráfico-simples-2" class="section level3" number="18.0.2">
 <h3><span class="header-section-number">18.0.2</span> Gráfico Simples</h3>
 <hr />
-<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb443-1"><a href="layout-graphics.html#cb443-1"></a><span class="kw">plot</span>(<span class="dv">1</span>,<span class="dv">1</span>, <span class="dt">ylab=</span><span class="st">&quot;Eixo Y&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;Eixo X&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb443-1"><a href="layout-graphics.html#cb443-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span>,<span class="dv">1</span>, <span class="at">ylab=</span><span class="st">&quot;Eixo Y&quot;</span>,<span class="at">xlab=</span><span class="st">&quot;Eixo X&quot;</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-383-1.png" width="672" /></p>
 <hr />
 </div>
@@ -672,8 +672,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>O comando par(…) é utilizado para alterar os parâmetros gráficos e deve ser executando antes do gráfico. Entretanto, uma vez executado essa linha de comando, todos os outros gráficos irão apresentar o mesmo layout, exceto se fechar o Rstudio ou limpar todos os gráficos.</p>
 <p>O comando mai representa o tamanho de margem e deve-se digitar um vetor numérico com quatro valores, sendo respectivamente em ordem, inferior, esquerda, superior e direita (<code>mai=c(bottom, left, top, right)</code>).</p>
 <p><br></p>
-<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="layout-graphics.html#cb444-1"></a><span class="kw">par</span>(<span class="dt">mai=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>))</span>
-<span id="cb444-2"><a href="layout-graphics.html#cb444-2"></a><span class="kw">plot</span>(<span class="dv">1</span>,<span class="dv">1</span>, <span class="dt">ylab=</span><span class="st">&quot;Eixo Y&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;Eixo X&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="layout-graphics.html#cb444-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mai=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb444-2"><a href="layout-graphics.html#cb444-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span>,<span class="dv">1</span>, <span class="at">ylab=</span><span class="st">&quot;Eixo Y&quot;</span>,<span class="at">xlab=</span><span class="st">&quot;Eixo X&quot;</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-384-1.png" width="672" /></p>
 <hr />
 </div>
@@ -682,8 +682,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <hr />
 <p>O comando para alterar a fonte do gráfico também é realizada dentro de par(…). Os argumentos do comando é <code>family="fonte"</code>.</p>
 <p><code>par(family="serif")</code>: Times New Roman</p>
-<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="layout-graphics.html#cb445-1"></a><span class="kw">par</span>(<span class="dt">family=</span><span class="st">&quot;serif&quot;</span>)</span>
-<span id="cb445-2"><a href="layout-graphics.html#cb445-2"></a><span class="kw">plot</span>(<span class="dv">1</span>,<span class="dv">1</span>, <span class="dt">ylab=</span><span class="st">&quot;Eixo Y&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;Eixo X&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="layout-graphics.html#cb445-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">family=</span><span class="st">&quot;serif&quot;</span>)</span>
+<span id="cb445-2"><a href="layout-graphics.html#cb445-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span>,<span class="dv">1</span>, <span class="at">ylab=</span><span class="st">&quot;Eixo Y&quot;</span>,<span class="at">xlab=</span><span class="st">&quot;Eixo X&quot;</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-385-1.png" width="672" /></p>
 <p><br></p>
 <hr />
@@ -692,20 +692,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">18.0.5</span> Cor do gráfico</h3>
 <hr />
 <p>Especificando a cor do gráfico (Geral, exceto eixos)</p>
-<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="layout-graphics.html#cb446-1"></a><span class="kw">par</span>(<span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</span>
-<span id="cb446-2"><a href="layout-graphics.html#cb446-2"></a><span class="kw">plot</span>(<span class="dv">1</span>,<span class="dv">1</span>, <span class="dt">ylab=</span><span class="st">&quot;Eixo Y&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;Eixo X&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="layout-graphics.html#cb446-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span>
+<span id="cb446-2"><a href="layout-graphics.html#cb446-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span>,<span class="dv">1</span>, <span class="at">ylab=</span><span class="st">&quot;Eixo Y&quot;</span>,<span class="at">xlab=</span><span class="st">&quot;Eixo X&quot;</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-386-1.png" width="672" /></p>
 <p>Especificando a cor da escala dos eixos do gráfico</p>
-<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="layout-graphics.html#cb447-1"></a><span class="kw">par</span>(<span class="dt">col.axis=</span><span class="st">&quot;red&quot;</span>)</span>
-<span id="cb447-2"><a href="layout-graphics.html#cb447-2"></a><span class="kw">plot</span>(<span class="dv">1</span>,<span class="dv">1</span>, <span class="dt">ylab=</span><span class="st">&quot;&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="layout-graphics.html#cb447-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">col.axis=</span><span class="st">&quot;red&quot;</span>)</span>
+<span id="cb447-2"><a href="layout-graphics.html#cb447-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span>,<span class="dv">1</span>, <span class="at">ylab=</span><span class="st">&quot;&quot;</span>,<span class="at">xlab=</span><span class="st">&quot;&quot;</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-387-1.png" width="672" /></p>
 <p>Especificando cor do nome dos eixos</p>
-<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="layout-graphics.html#cb448-1"></a><span class="kw">par</span>(<span class="dt">col.lab=</span><span class="st">&quot;red&quot;</span>)</span>
-<span id="cb448-2"><a href="layout-graphics.html#cb448-2"></a><span class="kw">plot</span>(<span class="dv">1</span>,<span class="dv">1</span>, <span class="dt">ylab=</span><span class="st">&quot;Eixo Y&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;Eixo X&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="layout-graphics.html#cb448-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">col.lab=</span><span class="st">&quot;red&quot;</span>)</span>
+<span id="cb448-2"><a href="layout-graphics.html#cb448-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span>,<span class="dv">1</span>, <span class="at">ylab=</span><span class="st">&quot;Eixo Y&quot;</span>,<span class="at">xlab=</span><span class="st">&quot;Eixo X&quot;</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-388-1.png" width="672" /></p>
 <p>Especificando cor do título</p>
-<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb449-1"><a href="layout-graphics.html#cb449-1"></a><span class="kw">par</span>(<span class="dt">col.main=</span><span class="st">&quot;red&quot;</span>)</span>
-<span id="cb449-2"><a href="layout-graphics.html#cb449-2"></a><span class="kw">plot</span>(<span class="dv">1</span>,<span class="dv">1</span>, <span class="dt">ylab=</span><span class="st">&quot;Eixo Y&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;Eixo X&quot;</span>,<span class="dt">main=</span><span class="st">&quot;title&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb449-1"><a href="layout-graphics.html#cb449-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">col.main=</span><span class="st">&quot;red&quot;</span>)</span>
+<span id="cb449-2"><a href="layout-graphics.html#cb449-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span>,<span class="dv">1</span>, <span class="at">ylab=</span><span class="st">&quot;Eixo Y&quot;</span>,<span class="at">xlab=</span><span class="st">&quot;Eixo X&quot;</span>,<span class="at">main=</span><span class="st">&quot;title&quot;</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-389-1.png" width="672" /></p>
 <p><br></p>
 <hr />
@@ -713,8 +713,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="tamanho-de-letra" class="section level3" number="18.0.6">
 <h3><span class="header-section-number">18.0.6</span> Tamanho de letra</h3>
 <hr />
-<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="layout-graphics.html#cb450-1"></a><span class="kw">par</span>(<span class="dt">cex=</span><span class="fl">1.3</span>)</span>
-<span id="cb450-2"><a href="layout-graphics.html#cb450-2"></a><span class="kw">plot</span>(<span class="dv">1</span>,<span class="dv">1</span>, <span class="dt">ylab=</span><span class="st">&quot;Eixo Y&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;Eixo X&quot;</span>,<span class="dt">main=</span><span class="st">&quot;title&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="layout-graphics.html#cb450-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">cex=</span><span class="fl">1.3</span>)</span>
+<span id="cb450-2"><a href="layout-graphics.html#cb450-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span>,<span class="dv">1</span>, <span class="at">ylab=</span><span class="st">&quot;Eixo Y&quot;</span>,<span class="at">xlab=</span><span class="st">&quot;Eixo X&quot;</span>,<span class="at">main=</span><span class="st">&quot;title&quot;</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-390-1.png" width="672" /></p>
 <ul>
 <li><code>cex.axis</code> : Tamanho da fonte das escalas de Y e X</li>
@@ -726,8 +726,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="alinhamento-de-titulo" class="section level3" number="18.0.7">
 <h3><span class="header-section-number">18.0.7</span> Alinhamento de titulo</h3>
 <hr />
-<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="layout-graphics.html#cb451-1"></a><span class="kw">plot</span>(<span class="dv">1</span>,<span class="dv">1</span>, <span class="dt">ylab=</span><span class="st">&quot;Eixo Y&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;Eixo X&quot;</span>)</span>
-<span id="cb451-2"><a href="layout-graphics.html#cb451-2"></a><span class="kw">title</span>(<span class="st">&quot;title&quot;</span>, <span class="dt">adj=</span><span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="layout-graphics.html#cb451-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span>,<span class="dv">1</span>, <span class="at">ylab=</span><span class="st">&quot;Eixo Y&quot;</span>,<span class="at">xlab=</span><span class="st">&quot;Eixo X&quot;</span>)</span>
+<span id="cb451-2"><a href="layout-graphics.html#cb451-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;title&quot;</span>, <span class="at">adj=</span><span class="dv">0</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-391-1.png" width="672" /></p>
 <p><br></p>
 <hr />
@@ -735,7 +735,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="escala-de-y-na-horizontal" class="section level3" number="18.0.8">
 <h3><span class="header-section-number">18.0.8</span> Escala de Y na horizontal</h3>
 <hr />
-<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="layout-graphics.html#cb452-1"></a><span class="kw">plot</span>(<span class="dv">1</span>,<span class="dv">1</span>, <span class="dt">ylab=</span><span class="st">&quot;Eixo Y&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;Eixo X&quot;</span>,<span class="dt">las=</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="layout-graphics.html#cb452-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span>,<span class="dv">1</span>, <span class="at">ylab=</span><span class="st">&quot;Eixo Y&quot;</span>,<span class="at">xlab=</span><span class="st">&quot;Eixo X&quot;</span>,<span class="at">las=</span><span class="dv">1</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-392-1.png" width="672" /></p>
 <p><br></p>
 <hr />
@@ -743,9 +743,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="sobrepor-gráficos" class="section level3" number="18.0.9">
 <h3><span class="header-section-number">18.0.9</span> Sobrepor gráficos</h3>
 <hr />
-<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="layout-graphics.html#cb453-1"></a><span class="kw">plot</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>), <span class="dt">ylab=</span><span class="st">&quot;Eixo Y&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;Eixo X&quot;</span>,<span class="dt">main=</span><span class="st">&quot;title&quot;</span>, <span class="dt">type=</span><span class="st">&quot;o&quot;</span>,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</span>
-<span id="cb453-2"><a href="layout-graphics.html#cb453-2"></a><span class="kw">par</span>(<span class="dt">new=</span>T)</span>
-<span id="cb453-3"><a href="layout-graphics.html#cb453-3"></a><span class="kw">plot</span>(<span class="kw">c</span>(<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">1</span>), <span class="dt">ylab=</span><span class="st">&quot;&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;&quot;</span>,<span class="dt">main=</span><span class="st">&quot;&quot;</span>, <span class="dt">type=</span><span class="st">&quot;o&quot;</span>,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="layout-graphics.html#cb453-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>), <span class="at">ylab=</span><span class="st">&quot;Eixo Y&quot;</span>,<span class="at">xlab=</span><span class="st">&quot;Eixo X&quot;</span>,<span class="at">main=</span><span class="st">&quot;title&quot;</span>, <span class="at">type=</span><span class="st">&quot;o&quot;</span>,<span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span>
+<span id="cb453-2"><a href="layout-graphics.html#cb453-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">new=</span>T)</span>
+<span id="cb453-3"><a href="layout-graphics.html#cb453-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">1</span>), <span class="at">ylab=</span><span class="st">&quot;&quot;</span>,<span class="at">xlab=</span><span class="st">&quot;&quot;</span>,<span class="at">main=</span><span class="st">&quot;&quot;</span>, <span class="at">type=</span><span class="st">&quot;o&quot;</span>,<span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-393-1.png" width="672" /></p>
 <p><br></p>
 <hr />
@@ -754,9 +754,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">18.0.10</span> Dois ou mais gráficos em uma saída</h3>
 <hr />
 <p><code>mfrow=c(1,2)</code>: vetor de dados em que o primeiro representa o número de linhas e o segundo o número de colunas (Neste caso, uma linha e duas colunas)</p>
-<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb454-1"><a href="layout-graphics.html#cb454-1"></a><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb454-2"><a href="layout-graphics.html#cb454-2"></a><span class="kw">plot</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>), <span class="dt">ylab=</span><span class="st">&quot;Eixo Y&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;Eixo X&quot;</span>,<span class="dt">main=</span><span class="st">&quot;title&quot;</span>, <span class="dt">type=</span><span class="st">&quot;o&quot;</span>,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</span>
-<span id="cb454-3"><a href="layout-graphics.html#cb454-3"></a><span class="kw">plot</span>(<span class="kw">c</span>(<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">1</span>), <span class="dt">ylab=</span><span class="st">&quot;Eixo Y&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;Eixo X&quot;</span>,<span class="dt">main=</span><span class="st">&quot;title&quot;</span>, <span class="dt">type=</span><span class="st">&quot;o&quot;</span>,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb454-1"><a href="layout-graphics.html#cb454-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb454-2"><a href="layout-graphics.html#cb454-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>), <span class="at">ylab=</span><span class="st">&quot;Eixo Y&quot;</span>,<span class="at">xlab=</span><span class="st">&quot;Eixo X&quot;</span>,<span class="at">main=</span><span class="st">&quot;title&quot;</span>, <span class="at">type=</span><span class="st">&quot;o&quot;</span>,<span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span>
+<span id="cb454-3"><a href="layout-graphics.html#cb454-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">1</span>), <span class="at">ylab=</span><span class="st">&quot;Eixo Y&quot;</span>,<span class="at">xlab=</span><span class="st">&quot;Eixo X&quot;</span>,<span class="at">main=</span><span class="st">&quot;title&quot;</span>, <span class="at">type=</span><span class="st">&quot;o&quot;</span>,<span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-394-1.png" width="672" /></p>
 <p><br></p>
 <hr />
@@ -767,14 +767,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Saída com dois gráficas na primeira linha e um gráfico na segunda linha e necessário criar uma matriz com as posições.</p>
 <p>Exemplo de matriz:</p>
 <p>Matriz com quatro valores (<code>c(1,3,2,3)</code>) e duas colunas (<code>ncol=2</code>). Neste caso, a linha 1 apresenta os valores 1 e 2, que representam o primeiro e o segundo plot. A linha 2 apresenta os valores 3 e 3 que representa o terceiro plot.</p>
-<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="layout-graphics.html#cb455-1"></a><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="dt">ncol=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="layout-graphics.html#cb455-1" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">ncol=</span><span class="dv">2</span>)</span></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    1    2
 ## [2,]    3    3</code></pre>
-<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="layout-graphics.html#cb457-1"></a><span class="kw">layout</span>(<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="dt">ncol=</span><span class="dv">2</span>))</span>
-<span id="cb457-2"><a href="layout-graphics.html#cb457-2"></a><span class="kw">plot</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>), <span class="dt">ylab=</span><span class="st">&quot;Eixo Y&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;Eixo X&quot;</span>,<span class="dt">main=</span><span class="st">&quot;title&quot;</span>, <span class="dt">type=</span><span class="st">&quot;o&quot;</span>,<span class="dt">col=</span><span class="st">&quot;red&quot;</span>)</span>
-<span id="cb457-3"><a href="layout-graphics.html#cb457-3"></a><span class="kw">plot</span>(<span class="kw">c</span>(<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">1</span>), <span class="dt">ylab=</span><span class="st">&quot;Eixo Y&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;Eixo X&quot;</span>,<span class="dt">main=</span><span class="st">&quot;title&quot;</span>, <span class="dt">type=</span><span class="st">&quot;o&quot;</span>,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)</span>
-<span id="cb457-4"><a href="layout-graphics.html#cb457-4"></a><span class="kw">plot</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">6</span>,<span class="dv">1</span>,<span class="dv">6</span>,<span class="dv">1</span>,<span class="dv">6</span>), <span class="dt">ylab=</span><span class="st">&quot;Eixo Y&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;Eixo X&quot;</span>,<span class="dt">main=</span><span class="st">&quot;title&quot;</span>, <span class="dt">type=</span><span class="st">&quot;o&quot;</span>,<span class="dt">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="layout-graphics.html#cb457-1" aria-hidden="true" tabindex="-1"></a><span class="fu">layout</span>(<span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">ncol=</span><span class="dv">2</span>))</span>
+<span id="cb457-2"><a href="layout-graphics.html#cb457-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>), <span class="at">ylab=</span><span class="st">&quot;Eixo Y&quot;</span>,<span class="at">xlab=</span><span class="st">&quot;Eixo X&quot;</span>,<span class="at">main=</span><span class="st">&quot;title&quot;</span>, <span class="at">type=</span><span class="st">&quot;o&quot;</span>,<span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span>
+<span id="cb457-3"><a href="layout-graphics.html#cb457-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">1</span>), <span class="at">ylab=</span><span class="st">&quot;Eixo Y&quot;</span>,<span class="at">xlab=</span><span class="st">&quot;Eixo X&quot;</span>,<span class="at">main=</span><span class="st">&quot;title&quot;</span>, <span class="at">type=</span><span class="st">&quot;o&quot;</span>,<span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span>
+<span id="cb457-4"><a href="layout-graphics.html#cb457-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">6</span>,<span class="dv">1</span>,<span class="dv">6</span>,<span class="dv">1</span>,<span class="dv">6</span>), <span class="at">ylab=</span><span class="st">&quot;Eixo Y&quot;</span>,<span class="at">xlab=</span><span class="st">&quot;Eixo X&quot;</span>,<span class="at">main=</span><span class="st">&quot;title&quot;</span>, <span class="at">type=</span><span class="st">&quot;o&quot;</span>,<span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
 <p><img src="index_files/figure-html/unnamed-chunk-396-1.png" width="672" /></p>
 <p><br></p>
 </div>
@@ -812,10 +812,11 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
-"theme": "white",
+"theme": "sepia",
 "family": "sans",
 "size": 2
 },
